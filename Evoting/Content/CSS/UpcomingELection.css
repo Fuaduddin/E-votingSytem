@@ -1,0 +1,42 @@
+﻿.upcoming_election_containertitle{
+    padding: 4%;
+    color: black;
+}
+.election_container_tab{
+    background-color: white;
+    height: 730px;
+    width: 419px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.election_container_tab:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.imgfillelection{
+    width: 100%;
+    height: 285px;
+}
+.election_details {
+    padding: 5%;
+    text-align: left; 
+    background-color: white;
+}
+.election_details_text{
+    text-align: left !important;
+    font-size: 19px;
+    line-height: 29px;
+}
+.election_details_title{
+    font-size: 22px;
+}
+.election_details_date{
+    font-size: 18px;
+}
+.upcoming_election_container {
+    margin-top: 3%;
+    display: grid;
+    gap: 2%;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Result */

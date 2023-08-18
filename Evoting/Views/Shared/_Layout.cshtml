@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Voting System</title>
+    <!-- Bootstrap -->
+
+    <!--Online Style Sheet-->
+    <link href="~/Content/CSS/aboutstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/CSS/demostyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/homestyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/loginstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/pollstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/profilestyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/registerstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/regstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/statstyle.css" rel="stylesheet" />
+    <link href="~/Content/CSS/votestyle.css" rel="stylesheet" />
+
+    <!--CUSTOME CSS START-->
+    <link href="~/Content/CSS/Indexpage.css" rel="stylesheet" />
+    <link href="~/Content/CSS/UpcomingELection.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid" id="wrap">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1" aria-expanded="false"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="/HomePage/Index">E-Voting System</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="defaultNavbar1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/HomePage/Appointment">Make Apointment</a></li>
+                        <li><a href="/HomePage/Login">Login</a></li>
+                        <li><a href="/HomePage/UpcomingElection">Upcoming Election</a></li>
+                        <li><a href="/HomePage/Result">Results</a></li>
+                        <li><a href="/HomePage/CandidateProfile">Candidate Profiles</a></li>
+                        <li><a href="/HomePage/Statics">Statistics</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+  
+        <!-- Render Body Start-->
+        @RenderBody()
+        <!-- Render Body End-->
+
+        <footer id="footer_details"></footer>
+    </div>
+    <!--Custome JS-->
+    <script>
+        const date = new Date()
+        document.getElementById("footer_details").innerHTML ="&copy; Copyright"+ date.getFullYear();
+    </script>
+    <!--Online JS-->
+    <script src="~/Content/JS/bootstrap.js"></script>
+    <script src="~/Content/JS/jquery-1.11.3.min.js"></script>
+    <script src="~/Content/JS/jquery.easing-1.3.js"></script>
+    <script src="~/Content/JS/jquery.js"></script>
+    <script src="~/Content/JS/jquery.parallax.js"></script>
+    <script src="~/Content/JS/nivo-lightbox.min.js"></script>
+    <script src="~/Content/JS/owl.carousel.min.js"></script>
+    <script src="~/Content/JS/plugins.js"></script>
+    <script src="~/Content/JS/smoothscroll.js"></script>
+    <script src="~/Content/JS/wow.min.js"></script>
+</body>
+</html>

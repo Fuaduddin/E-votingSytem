@@ -1,0 +1,13 @@
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.dll
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.Models.dll
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.pdb
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\bin\Debug\Evoting.Models.pdb
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CoreCompileInputs.cache
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb
