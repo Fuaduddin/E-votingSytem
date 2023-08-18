@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {}
+  },
+  "projects": {
+    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
+        "projectName": "Evoting.DataLayerSQL",
+        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
+        "packagesPath": "C:\\Users\\Fuad\\.nuget\\packages\\",
+        "outputPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Fuad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
+              },
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              },
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
+        "projectName": "Evoting.DataLayer",
+        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              },
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
+        "projectName": "Evoting.Models",
+        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
+        "projectName": "Evoting.Utility",
+        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    }
+  }
+}

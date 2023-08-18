@@ -4,3 +4,9 @@ D:\Protfolios\E-voting\Project\Evoting\Evoting.Utility\obj\Debug\Evoting.Utility
 D:\Protfolios\E-voting\Project\Evoting\Evoting.Utility\obj\Debug\Evoting.Utility.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\Evoting.Utility\obj\Debug\Evoting.Utility.dll
 D:\Protfolios\E-voting\Project\Evoting\Evoting.Utility\obj\Debug\Evoting.Utility.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\bin\Debug\Evoting.Utility.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\bin\Debug\Evoting.Utility.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\obj\Debug\Evoting.Utility.csproj.CoreCompileInputs.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\obj\Debug\Evoting.Utility.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\obj\Debug\Evoting.Utility.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.Utility\obj\Debug\Evoting.Utility.csproj.AssemblyReference.cache

@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PartyDataLayer.cs" />
+    <Compile Include="IElectionSettingsDataLayerProvider.cs" />
+    <Compile Include="PartyDataLayerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

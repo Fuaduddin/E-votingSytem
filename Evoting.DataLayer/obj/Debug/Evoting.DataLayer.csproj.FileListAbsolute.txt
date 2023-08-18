@@ -9,3 +9,14 @@ D:\Protfolios\E-voting\Project\Evoting\Evoting.DataLayer\obj\Debug\Evoting.DataL
 D:\Protfolios\E-voting\Project\Evoting\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.DataLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.DataLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.Models.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.Utility.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.Models.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\bin\Debug\Evoting.Utility.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.csproj.CoreCompileInputs.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.csproj.CopyComplete
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayer\obj\Debug\Evoting.DataLayer.pdb
