@@ -1,0 +1,97 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+@{
+    ViewBag.Title = "AddNewZone";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">ADD NEW ZONE</h4>
+                @using (Html.BeginForm("AddNewZone", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(Model => Model.Zone.ZoneId)
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select Zone</label>
+                        @Html.DropDownListFor(model => model.Zone.ZoneName, new SelectList("", "", ""), new { @class = "form-control", id = "division", @placeholder = "Zone Name" })
+                        @Html.ValidationMessageFor(Model => Model.Zone.ZoneName)
+                    </div>
+                    if (Model.Zone.ZoneId > 0 && Model.Zone != null)
+                    {
+                       
+                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                    else
+                    {
+                       
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Zone Details Table</h4>
+                <p class="card-description">
+                    Zone <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial No</th>
+                                <th>Zone Name</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ZoneList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var zone in Model.ZoneList)
+                                {
+
+                                    <tr>
+                                        <td>@serialno</td>
+                                        <td>@zone.ZoneName</td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteZone", new { Id = zone.ZoneId }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const division = data;
+    $('#division').append($('<option/>').attr("value"," ").text("Please Select a Zone"));
+    $(function () {
+    $.each(division, function (i, option) {
+        $('#division').append($('<option/>').attr("value", option.name).text(option.name));
+    });
+});
+
+</script>

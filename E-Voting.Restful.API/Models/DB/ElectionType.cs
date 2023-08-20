@@ -14,7 +14,16 @@ namespace E_Voting.Restful.API.Models.DB
     
     public partial class ElectionType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ElectionType()
+        {
+            this.Election_Details = new HashSet<Election_Detail>();
+        }
+    
         public int ElectionID { get; set; }
         public string ElectionName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Election_Detail> Election_Details { get; set; }
     }
 }

@@ -49,5 +49,25 @@ namespace Evoting.BusinessLayer
             var zone = provider.GetAllZone();
             return zone;
         }
+
+        // Area
+        public static bool AddNewArea(areamodel area)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsAdded = provider.AddNewArea(area);
+            return IsAdded;
+        }
+        public static bool DeleteArea(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsDeleted = provider.DeleteArea(id);
+            return IsDeleted;
+        }
+        public static List<areamodel> GetAllArea()
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetAllArea();
+            return area;
+        }
     }
 }

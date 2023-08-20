@@ -15,7 +15,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class ZonesController : ApiController
     {
-        private Entities db = new Entities();
+        private Entities2 db = new Entities2();
 
         // GET: api/Zones
         public IQueryable<Zone> GetZones()
@@ -115,5 +115,6 @@ namespace E_Voting.Restful.API.Controllers
         {
             return db.Zones.Count(e => e.ZoneId == id) > 0;
         }
+
     }
 }

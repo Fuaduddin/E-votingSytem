@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Model.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="AdminProfilePIc" ColumnName="AdminProfilePIc" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPhoneNumber" ColumnName="AdminPhoneNumber" />
+          <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+          <ScalarProperty Name="AdminZone" ColumnName="AdminZone" />
+          <ScalarProperty Name="AdminArea" ColumnName="AdminArea" />
+          <ScalarProperty Name="AdminAddressPresent" ColumnName="AdminAddressPresent" />
+          <ScalarProperty Name="AdminAddressPermanent" ColumnName="AdminAddressPermanent" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminAssignments">
+      <EntityTypeMapping TypeName="Model.AdminAssignment">
+        <MappingFragment StoreEntitySet="AdminAssignment">
+          <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="AssignmentIssueDate" ColumnName="AssignmentIssueDate" />
+          <ScalarProperty Name="AssignmentFixedDate" ColumnName="AssignmentFixedDate" />
+          <ScalarProperty Name="AssignmentUpdate" ColumnName="AssignmentUpdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appointments">
+      <EntityTypeMapping TypeName="Model.Appointment">
+        <MappingFragment StoreEntitySet="Appointment">
+          <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+          <ScalarProperty Name="AppointmentSubject" ColumnName="AppointmentSubject" />
+          <ScalarProperty Name="AppointmentDetails" ColumnName="AppointmentDetails" />
+          <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
+          <ScalarProperty Name="UserEmaul" ColumnName="UserEmaul" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="Model.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="AreaTitle" ColumnName="AreaTitle" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Candidates">
+      <EntityTypeMapping TypeName="Model.Candidate">
+        <MappingFragment StoreEntitySet="Candidate">
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="CandidateImage" ColumnName="CandidateImage" />
+          <ScalarProperty Name="CandidateName" ColumnName="CandidateName" />
+          <ScalarProperty Name="CandidatePhoneNumber" ColumnName="CandidatePhoneNumber" />
+          <ScalarProperty Name="CandidateEmail" ColumnName="CandidateEmail" />
+          <ScalarProperty Name="CandidateZone" ColumnName="CandidateZone" />
+          <ScalarProperty Name="CandidateArea" ColumnName="CandidateArea" />
+          <ScalarProperty Name="CandidatePermanentAddress" ColumnName="CandidatePermanentAddress" />
+          <ScalarProperty Name="CandidatePresentAddress" ColumnName="CandidatePresentAddress" />
+          <ScalarProperty Name="CandidateNID" ColumnName="CandidateNID" />
+          <ScalarProperty Name="CandidateParty" ColumnName="CandidateParty" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Election_Details">
+      <EntityTypeMapping TypeName="Model.Election_Detail">
+        <MappingFragment StoreEntitySet="Election Details">
+          <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
+          <ScalarProperty Name="ElectionName" ColumnName="ElectionName" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
+          <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionCandidates">
+      <EntityTypeMapping TypeName="Model.ElectionCandidate">
+        <MappingFragment StoreEntitySet="ElectionCandidate">
+          <ScalarProperty Name="ElectionCandidateID" ColumnName="ElectionCandidateID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
+          <ScalarProperty Name="ElectionComplete" ColumnName="ElectionComplete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionTypes">
+      <EntityTypeMapping TypeName="Model.ElectionType">
+        <MappingFragment StoreEntitySet="ElectionType">
+          <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
+          <ScalarProperty Name="ElectionName" ColumnName="ElectionName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parties">
+      <EntityTypeMapping TypeName="Model.Party">
+        <MappingFragment StoreEntitySet="Party">
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="PartySymbol" ColumnName="PartySymbol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="Model.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+          <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
+          <ScalarProperty Name="TotalVoter" ColumnName="TotalVoter" />
+          <ScalarProperty Name="TotalGivenVote" ColumnName="TotalGivenVote" />
+          <ScalarProperty Name="SelectedCandidate" ColumnName="SelectedCandidate" />
+          <ScalarProperty Name="SelectedCandidateVote" ColumnName="SelectedCandidateVote" />
+          <ScalarProperty Name="RunnerUpCandidate" ColumnName="RunnerUpCandidate" />
+          <ScalarProperty Name="RunnerUpCandidateVote" ColumnName="RunnerUpCandidateVote" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserIDNo" ColumnName="UserIDNo" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="UserLastLogin" ColumnName="UserLastLogin" />
+          <ScalarProperty Name="UserTotalLogin" ColumnName="UserTotalLogin" />
+          <ScalarProperty Name="UserLastLogout" ColumnName="UserLastLogout" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Votes">
+      <EntityTypeMapping TypeName="Model.Vote">
+        <MappingFragment StoreEntitySet="Vote">
+          <ScalarProperty Name="VoteID" ColumnName="VoteID" />
+          <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
+          <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
+          <ScalarProperty Name="VoterID" ColumnName="VoterID" />
+          <ScalarProperty Name="VoteDate" ColumnName="VoteDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voters">
+      <EntityTypeMapping TypeName="Model.Voter">
+        <MappingFragment StoreEntitySet="Voter">
+          <ScalarProperty Name="VoterID" ColumnName="VoterID" />
+          <ScalarProperty Name="VoterImage" ColumnName="VoterImage" />
+          <ScalarProperty Name="VoterName" ColumnName="VoterName" />
+          <ScalarProperty Name="VoterPhoneNumber" ColumnName="VoterPhoneNumber" />
+          <ScalarProperty Name="VoterEmail" ColumnName="VoterEmail" />
+          <ScalarProperty Name="VoterZone" ColumnName="VoterZone" />
+          <ScalarProperty Name="VoterArea" ColumnName="VoterArea" />
+          <ScalarProperty Name="VoterPresentAddress" ColumnName="VoterPresentAddress" />
+          <ScalarProperty Name="VoterPermanentAddress" ColumnName="VoterPermanentAddress" />
+          <ScalarProperty Name="VoterNID" ColumnName="VoterNID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="Model.Zone">
+        <MappingFragment StoreEntitySet="Zone">
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

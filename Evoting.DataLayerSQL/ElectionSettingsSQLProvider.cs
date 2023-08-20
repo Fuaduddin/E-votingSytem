@@ -18,16 +18,16 @@ namespace Evoting.DataLayerSQL
         // Election Type
         public bool AddNewElectionType(ElectionModel electiontype)
         {
-            bool Isadded;
+            bool Isadded=true;
             try
             {
                 HttpResponseMessage responseADD = GlobalSettings.WebApiClient.PostAsJsonAsync("ElectionTypes", electiontype).Result;
-                Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
+               // Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Adding Data. " + ex.Message);
                 Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
             }
             return Isadded;
         }
@@ -40,8 +40,8 @@ namespace Evoting.DataLayerSQL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Getting Single Data." + ex.Message);
                 IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
             }
             return IsDeleted;
         }
@@ -51,7 +51,8 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.GetAsync("ElectionTypes").Result;
-                electiontype = (List<ElectionModel>)responseSingle.Content.ReadAsAsync<IEnumerable<List<ElectionModel>>>().Result;
+                // electiontype = (List<ElectionModel>)responseSingle.Content.ReadAsAsync<IEnumerable<List<ElectionModel>>>().Result;
+                electiontype = (List<ElectionModel>)responseSingle.Content.ReadAsAsync<IEnumerable<ElectionModel>>().Result;
             }
             catch (Exception ex)
             {
@@ -63,16 +64,16 @@ namespace Evoting.DataLayerSQL
         // Zone
         public bool AddNewZone(zoneModel zone)
         {
-            bool Isadded;
+            bool Isadded=true;
             try
             {
                 HttpResponseMessage responseADD = GlobalSettings.WebApiClient.PostAsJsonAsync("Zones", zone).Result;
-                Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
+                //Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Adding Data. " + ex.Message);
                 Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
             }
             return Isadded;
         }
@@ -85,8 +86,8 @@ namespace Evoting.DataLayerSQL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Getting Single Data." + ex.Message);
                 IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
             }
             return IsDeleted;
         }
@@ -96,13 +97,58 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.GetAsync("Zones").Result;
-                electiontype = (List<zoneModel>)responseSingle.Content.ReadAsAsync<IEnumerable<List<zoneModel>>>().Result;
+                electiontype = (List<zoneModel>)responseSingle.Content.ReadAsAsync<IEnumerable<zoneModel>>().Result;
             }
             catch (Exception ex)
             {
                 throw new Exception("Exception Getting Single Data." + ex.Message);
             }
             return electiontype;
+        }
+
+        //Area
+        public bool AddNewArea(areamodel Area)
+        {
+            bool Isadded=true;
+            try
+            {
+                HttpResponseMessage responseADD = GlobalSettings.WebApiClient.PostAsJsonAsync("Areas", Area).Result;
+                //Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
+            }
+            catch (Exception ex)
+            {
+                Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
+            }
+            return Isadded;
+        }
+        public bool DeleteArea(int id)
+        {
+            bool IsDeleted = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.DeleteAsync("Areas/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);    
+            }
+            return IsDeleted;
+        }
+        public List<areamodel> GetAllArea()
+        {
+            List<areamodel> AllArea = new List<areamodel>();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.GetAsync("Areas").Result;
+                AllArea = (List<areamodel>)responseSingle.Content.ReadAsAsync<IEnumerable<areamodel>>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return AllArea;
         }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "a969NznfV0NN61UX6a3aViMyHlZoXBBeb89+73msH9b9AIFE/2Mam03fcQP6rWKleYfBd/ZVZ6is1FxM935Pkg==",
+  "success": true,
+  "projectFilePath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fuad\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\Fuad\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.9\\microsoft.aspnet.webapi.client.5.2.9.nupkg.sha512",
+    "C:\\Users\\Fuad\\.nuget\\packages\\newtonsoft.json\\6.0.4\\newtonsoft.json.6.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

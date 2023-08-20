@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Evoting.Models;
 using Evoting.BusinessLayer;
+using System.ComponentModel.Design;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
@@ -12,12 +13,12 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
     {
         // GET: Election
         // Election Type
-        public ActionResult Index()
+        public ActionResult AddNewElectionType()
         {
             SuperAdminAndAdminViewModel electiontype = new SuperAdminAndAdminViewModel();
-            electiontype.ElectionType = new ElectionModel();                                                                                                                                                                                                                                         
+            electiontype.ElectionType = new ElectionModel();
             electiontype.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
-            return View("Index", electiontype);
+            return View("AddNewElectionType", electiontype);
         }
         [HttpPost]
         public ActionResult AddNewElectionType(ElectionModel electiontype)
@@ -41,7 +42,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel electiontypeview = new SuperAdminAndAdminViewModel();
             electiontypeview.ElectionType = new ElectionModel();
             electiontypeview.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
-            return View("Index", electiontypeview);
+            return View("AddNewElectionType", electiontypeview);
         }
         public ActionResult DeleteElectionType(int id)
         {
@@ -59,7 +60,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel electiontype = new SuperAdminAndAdminViewModel();
             electiontype.ElectionType = new ElectionModel();
             electiontype.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
-            return View("Index", electiontype);
+            return View("AddNewElectionType", electiontype);
         }
 
         //Zone
@@ -68,7 +69,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel zonedetails = new SuperAdminAndAdminViewModel();
             zonedetails.Zone = new zoneModel();
             zonedetails.ZoneList = ElectionSettingsManager.GetAllZone();
-            return View("Index", zonedetails);
+            return View("AddNewZone", zonedetails);
         }
         [HttpPost]
         public ActionResult AddNewZone(zoneModel zone)
@@ -114,10 +115,63 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel zonedetails = new SuperAdminAndAdminViewModel();
             zonedetails.Zone = new zoneModel();
             zonedetails.ZoneList = ElectionSettingsManager.GetAllZone();
-            return View("Index", zonedetails);
+            return View("AddNewZone", zonedetails);
         }
 
         // Area
+        public ActionResult AddNewArea()
+        {
+            SuperAdminAndAdminViewModel Areadetails = new SuperAdminAndAdminViewModel();
+            Areadetails.Area = new areamodel();
+            Areadetails.AreaList = ElectionSettingsManager.GetAllArea();
+            return View("AddNewArea", Areadetails);
+        }
+        [HttpPost]
+        public ActionResult AddNewArea(areamodel area)
+        {
+            SuperAdminAndAdminViewModel zonedetails = new SuperAdminAndAdminViewModel();
+            if (ModelState.IsValid)
+            {
+                if (ElectionSettingsManager.AddNewArea(area))
+                {
+                    ViewData["Message"] = "Your data have been Added";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been Added";
+                }
+            }
+            else
+            {
+                ViewData["Message"] = "!!!!!! ERROR !!!!!!!";
+            }
+            zonedetails.Area = new areamodel();
+            zonedetails.AreaList = ElectionSettingsManager.GetAllArea();
+            return View("AddNewArea", zonedetails);
+        }
+        public ActionResult DeleteArea(int id)
+        {
+            if (id > 0)
+            {
+                if (ElectionSettingsManager.DeleteArea(id))
+                {
+                    ViewData["Message"] = "Your data have been deleted";
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data have not been deleted";
+                }
+            }
+            else
+            {
+                ViewData["Message"] = "!!!!!! ERROR !!!!!!!";
+            }
+            SuperAdminAndAdminViewModel areadetails = new SuperAdminAndAdminViewModel();
+            areadetails.Area = new areamodel();
+            areadetails.AreaList = ElectionSettingsManager.GetAllArea();
+            return View("AddNewArea", areadetails);
+        }
 
     }
 }

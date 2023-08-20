@@ -24,8 +24,8 @@ namespace Evoting.DataLayerSQL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Adding Data. " + ex.Message);
                 Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
             }
             return Isadded;
         }
@@ -38,8 +38,9 @@ namespace Evoting.DataLayerSQL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Updating Data. " + ex.Message);
                 IsUpdated = false;
+                throw new Exception("Exception Updating Data. " + ex.Message);
+                
             }
             return IsUpdated;
         }
@@ -66,8 +67,8 @@ namespace Evoting.DataLayerSQL
             }
             catch (Exception ex)
             {
-                throw new Exception("Exception Getting Single Data." + ex.Message);
                 IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
             }
             return IsDeleted;
         }

@@ -28,3 +28,5 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\D
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\System.Net.Http.Formatting.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Newtonsoft.Json.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Utility.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.dll

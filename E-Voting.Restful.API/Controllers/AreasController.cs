@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class AreasController : ApiController
     {
-        private Entities db = new Entities();
+        private Entities2 db = new Entities2();
 
         // GET: api/Areas
         public IQueryable<Area> GetAreas()
@@ -115,5 +116,40 @@ namespace E_Voting.Restful.API.Controllers
         {
             return db.Areas.Count(e => e.AreaID == id) > 0;
         }
+
+
+
+        /// <summary>
+        ///  Custome
+        /// </summary>
+        // GET: api/GetZoneWiseArea/5
+        //[Route("api/GetZoneWiseArea/{id}")]
+        //[HttpGet]
+        //public async Task<IEnumerable<Area>> GetZoneWiseArea(int id)
+        //{
+        //    List<Area> arealist = new List<Area>();
+        //    arealist= db.Areas.Where(x=>x.ZoneID == id).ToList();
+        //    //Zone zone = await db.Zones.FindAsync(id);
+        //    if (arealist == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(arealist);
+        //}
+        //// GET: api/searchresult/searchname
+        //[Route("api/GetSearchAreaList/{searchname}")]
+        //[HttpGet]
+        //public async Task<IEnumerable<Area>> GetSearchAreaList([FromUri]string searchname)
+        //{
+        //    List<Area> arealist = new List<Area>();
+        //    arealist = (List<Area>)(from area in db.Areas where area.AreaTitle.Contains(searchname) select area);
+        //    //Zone zone = await db.Zones.FindAsync(id);
+        //    if (arealist == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return Ok(arealist);
+        //}
     }
 }

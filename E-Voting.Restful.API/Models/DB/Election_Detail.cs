@@ -27,7 +27,13 @@ namespace E_Voting.Restful.API.Models.DB
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public int ZoneID { get; set; }
+        public string ElectionDetails { get; set; }
+        public string ElectionStatus { get; set; }
+        public Nullable<int> AreaID { get; set; }
+        public Nullable<int> ElectionType { get; set; }
     
+        public virtual Area Area { get; set; }
+        public virtual ElectionType ElectionType1 { get; set; }
         public virtual Zone Zone { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }

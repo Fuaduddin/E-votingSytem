@@ -1,0 +1,91 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+@{
+    ViewBag.Title = "AddNewElectionType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">ADD New Election Type</h4>
+
+                @using (Html.BeginForm("AddNewElectionType", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(Model => Model.ElectionType.ElectionID)
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Enter Election Type</label>
+                        @Html.TextBoxFor(Model => Model.ElectionType.ElectionName, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Election Type" });
+                        @Html.ValidationMessageFor(Model => Model.ElectionType.ElectionName)
+                    </div>
+                    if (Model.ElectionType.ElectionID > 0 && Model.ElectionType != null)
+                    {
+                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Election Type Details Table</h4>
+                <p class="card-description">
+                    Election <code>Type</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Election Type</th>
+                                <th>Update Details</th>
+                                <th>Delete Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ElectionTypeList.Count>0)
+                            {
+                                int serialno = 1;
+                                foreach (var electiontype in Model.ElectionTypeList)
+                                {
+
+                                    <tr>
+                                        <td>@serialno</td>
+                                        <td>@electiontype.ElectionName</td>
+                                        <td><button type="button" class="btn btn-success btn-rounded btn-fw">Update</button></td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteElectionType", new { Id = @electiontype.ElectionID}, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                     <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
