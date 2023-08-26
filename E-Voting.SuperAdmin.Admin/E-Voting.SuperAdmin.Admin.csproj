@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>E_Voting.SuperAdmin.Admin</RootNamespace>
     <AssemblyName>E-Voting.SuperAdmin.Admin</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44380</IISExpressSSLPort>
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +63,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.Composition.Registration" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -85,16 +87,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -140,6 +140,7 @@
     <Content Include="Content\JS\codemirror.js" />
     <Content Include="Content\JS\context-menu.js" />
     <Content Include="Content\JS\cropper.js" />
+    <Content Include="Content\JS\Custome\Common.js" />
     <Content Include="Content\JS\Custome\Custome.js" />
     <Content Include="Content\JS\Custome\JSON.js" />
     <Content Include="Content\JS\dashboard.js" />
@@ -1440,10 +1441,12 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Party\Index.cshtml" />
+    <Content Include="Views\Party\AddNewParty.cshtml" />
     <Content Include="Views\DashBoard\DashBoard.cshtml" />
     <Content Include="Views\ElectionSettings\AddNewElectionType.cshtml" />
     <Content Include="Views\ElectionSettings\AddNewZone.cshtml" />
+    <Content Include="Views\ElectionSettings\AddNewArea.cshtml" />
+    <Content Include="Views\ElectionSettings\AddNewElectionDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1459,6 +1462,10 @@
     <ProjectReference Include="..\Evoting.BusinessLayer\Evoting.BusinessLayer.csproj">
       <Project>{322c82e5-ca24-401d-b95b-e6fb539b1008}</Project>
       <Name>Evoting.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evoting.GlobalSetting\Evoting.GlobalSetting.csproj">
+      <Project>{16a9b15d-b2c6-4ac3-a2de-a41c77be09a5}</Project>
+      <Name>Evoting.GlobalSetting</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evoting.Models\Evoting.Models.csproj">
       <Project>{4ff7efcc-d717-4107-9592-dbeb1d5544c6}</Project>

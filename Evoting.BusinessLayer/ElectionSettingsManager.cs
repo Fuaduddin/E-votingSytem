@@ -69,5 +69,50 @@ namespace Evoting.BusinessLayer
             var area = provider.GetAllArea();
             return area;
         }
+        public static areamodel GetSingleArea(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetSIngleArea(id);
+            return area;
+        }
+        public static bool UpdateArea(areamodel areadetails)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.UpdateArea(areadetails);
+            return area;
+        }
+
+        // ElectionDetails
+        //public static bool AddNewElectionDetails(ElectionDetailsModel electiondetails)
+        //{
+        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+        //    bool IsAdded = provider.AddNewArea(area);
+        //    return IsAdded;
+        //}
+        //public static bool DeleteElectionDetails(int id)
+        //{
+        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+        //    bool IsDeleted = provider.DeleteArea(id);
+        //    return IsDeleted;
+        //}
+        //public static List<ElectionDetailsModel> GetAllElectionDetails()
+        //{
+        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+        //    var area = provider.GetAllArea();
+        //    return area;
+        //}
+        //public static ElectionDetailsModel GetSingleElectionDetails(int id)
+        //{
+        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+        //    var area = provider.GetSIngleArea(id);
+        //    return area;
+        //}
+        //public static bool UpdateElectionDetails(ElectionDetailsModel areadetails)
+        //{
+        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+        //    var area = provider.UpdateArea(areadetails);
+        //    return area;
+        //}
+
     }
 }

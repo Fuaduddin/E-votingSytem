@@ -1,0 +1,103 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AddNewArea";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">ADD NEW AREA</h4>
+                @using (Html.BeginForm("AddNewArea", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(Model => Model.Area.AreaID)
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select Zone</label>
+                        @Html.DropDownListFor(model => model.Area.ZoneID, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", id = "val-skill", @placeholder = "Zone Name" })
+                        @Html.ValidationMessageFor(Model => Model.Area.ZoneID)
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select Area</label>
+                        @Html.DropDownListFor(model => model.Area.AreaName, new SelectList("", "", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
+                        @Html.ValidationMessageFor(Model => Model.Area.AreaName)
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Enter Area Title</label>
+                        @Html.TextBoxFor(Model => Model.Area.AreaTitle, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Election Type" });
+                        @Html.ValidationMessageFor(Model => Model.Area.AreaTitle)
+                    </div>
+                    if (Model.Area.AreaID > 0 && Model.Area != null)
+                    {
+
+                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                    else
+                    {
+
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Area Details Table</h4>
+                <p class="card-description">
+                    Area <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial No</th>
+                                <th>Area Name</th>
+                                <th>Area Title</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AreaList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var area in Model.AreaList)
+                                {
+
+                                    <tr>
+                                        <td>@serialno</td>
+                                        <td>@area.AreaName</td>
+                                        <td>@area.AreaTitle</td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteZone", new { Id = area.AreaID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteZone", new { Id = area.AreaID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JS/Custome/Common.js"></script>

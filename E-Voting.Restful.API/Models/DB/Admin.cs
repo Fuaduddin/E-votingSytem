@@ -30,6 +30,7 @@ namespace E_Voting.Restful.API.Models.DB
         public string AdminAddressPresent { get; set; }
         public string AdminAddressPermanent { get; set; }
         public int UserID { get; set; }
+        public string AdminGender { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual User User { get; set; }

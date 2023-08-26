@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Evoting.Models;
+using Evoting.BusinessLayer;
+using Evoting.GlobalSetting;
+using System.Web.WebPages;
 
 namespace Evoting.Controllers
 {
@@ -17,7 +21,34 @@ namespace Evoting.Controllers
         // Election Related Pages
         public ActionResult Appointment()
         {
-            return View();
+           GlobalSettingsPatternsandConstant constant = new GlobalSettingsPatternsandConstant();
+           CustomerViewModel appointment = new CustomerViewModel();
+           appointment.Appointment=new AppointmentModel();
+           appointment.AppointmentSubjectList = constant.GetAllSubject();
+           return View("Appointment", appointment);
+        }
+
+        [HttpPost]
+        public ActionResult Appointment(AppointmentModel appointment)
+        {
+            if(ModelState.IsValid)
+            {
+                if (AppointmentManager.AddNewAppointment(appointment))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!! Error !!!!!!!!!";
+                }
+            }
+            else
+            {
+                ViewData["Message"] = "!!!!!!! Error !!!!!!!!!";
+            }
+            return View("Appointment");
+  
         }
         public ActionResult UpcomingElection()
         {

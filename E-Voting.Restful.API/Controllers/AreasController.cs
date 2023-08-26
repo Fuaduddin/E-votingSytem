@@ -16,7 +16,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class AreasController : ApiController
     {
-        private Entities2 db = new Entities2();
+        private Entities3 db = new Entities3();
 
         // GET: api/Areas
         public IQueryable<Area> GetAreas()

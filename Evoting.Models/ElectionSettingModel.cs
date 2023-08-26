@@ -46,4 +46,26 @@ namespace Evoting.Models
 
         //public virtual ICollection<Voter> Voters { get; set; }
     }
+    public class ElectionDetailsModel
+    {
+        public int ElectionID { get; set; }
+        public string ElectionName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int ZoneID { get; set; }
+        public string ElectionDetails { get; set; }
+        public string ElectionStatus { get; set; }
+        public int AreaID { get; set; }
+        public int ElectionType { get; set; }
+
+        //public virtual Area Area { get; set; }
+        //public virtual ElectionType ElectionType1 { get; set; }
+        //public virtual Zone Zone { get; set; }
+      
+        //public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }
+       
+        //public virtual ICollection<Result> Results { get; set; }
+       
+        //public virtual ICollection<Vote> Votes { get; set; }
+    }
 }

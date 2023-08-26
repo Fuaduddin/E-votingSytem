@@ -14,6 +14,7 @@
     <Property Name="AdminAddressPresent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="AdminAddressPermanent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="AdminGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Area" Relationship="Self.FK_Admin_Area" FromRole="Admin" ToRole="Area" />
     <NavigationProperty Name="User" Relationship="Self.FK_Admin_User" FromRole="Admin" ToRole="User" />
     <NavigationProperty Name="Zone" Relationship="Self.FK_Admin_Zone" FromRole="Admin" ToRole="Zone" />
@@ -41,6 +42,8 @@
     <Property Name="AppointmentDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserPhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserEmaul" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AssignToAdmin" Type="Int32" />
+    <Property Name="AssignmentUpdate" Type="Int32" />
     <NavigationProperty Name="AdminAssignments" Relationship="Self.FK_AdminAssignment_Appointment" FromRole="Appointment" ToRole="AdminAssignment" />
   </EntityType>
   <EntityType Name="Area">
@@ -50,7 +53,9 @@
     <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AreaTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ZoneID" Type="Int32" />
+    <Property Name="AreaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_Area" FromRole="Area" ToRole="Admin" />
+    <NavigationProperty Name="Election_Details" Relationship="Self.AreaDetails" FromRole="Area" ToRole="Election_Details" />
     <NavigationProperty Name="Zone" Relationship="Self.FK_Area_Zone" FromRole="Area" ToRole="Zone" />
     <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_Area" FromRole="Area" ToRole="Candidate" />
     <NavigationProperty Name="Voters" Relationship="Self.FK_Voter_Area" FromRole="Area" ToRole="Voter" />
@@ -71,6 +76,7 @@
     <Property Name="CandidateNID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CandidateParty" Type="Int32" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="CandidateGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Area" Relationship="Self.FK_Candidate_Area" FromRole="Candidate" ToRole="Area" />
     <NavigationProperty Name="Party" Relationship="Self.FK_Candidate_Party" FromRole="Candidate" ToRole="Party" />
     <NavigationProperty Name="User" Relationship="Self.FK_Candidate_User" FromRole="Candidate" ToRole="User" />
@@ -87,6 +93,12 @@
     <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ZoneID" Type="Int32" Nullable="false" />
+    <Property Name="ElectionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="AreaID" Type="Int32" />
+    <Property Name="ElectionType" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="Self.AreaDetails" FromRole="Election_Details" ToRole="Area" />
+    <NavigationProperty Name="ElectionType1" Relationship="Self.ElectionTypeDetails" FromRole="Election_Details" ToRole="ElectionType" />
     <NavigationProperty Name="Zone" Relationship="Self.FK_Election_Details_Zone" FromRole="Election_Details" ToRole="Zone" />
     <NavigationProperty Name="ElectionCandidates" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="Election_Details" ToRole="ElectionCandidate" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Election_Details" FromRole="Election_Details" ToRole="Result" />
@@ -109,6 +121,7 @@
     </Key>
     <Property Name="ElectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ElectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Election_Details" Relationship="Self.ElectionTypeDetails" FromRole="ElectionType" ToRole="Election_Details" />
   </EntityType>
   <EntityType Name="Party">
     <Key>
@@ -144,6 +157,7 @@
     <Property Name="UserTotalLogin" Type="Int32" />
     <Property Name="UserLastLogout" Type="DateTime" Precision="3" />
     <Property Name="UserRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_User" FromRole="User" ToRole="Admin" />
     <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_User" FromRole="User" ToRole="Candidate" />
     <NavigationProperty Name="Voters" Relationship="Self.FK_Voter_User" FromRole="User" ToRole="Voter" />
@@ -176,6 +190,7 @@
     <Property Name="VoterPermanentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="VoterNID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="VoterGender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Area" Relationship="Self.FK_Voter_Area" FromRole="Voter" ToRole="Area" />
     <NavigationProperty Name="User" Relationship="Self.FK_Voter_User" FromRole="Voter" ToRole="User" />
     <NavigationProperty Name="Votes" Relationship="Self.FK_Vote_Voter" FromRole="Voter" ToRole="Vote" />
@@ -250,6 +265,18 @@
       </Principal>
       <Dependent Role="AdminAssignment">
         <PropertyRef Name="AppointmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AreaDetails">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="AreaID" />
+      </Principal>
+      <Dependent Role="Election_Details">
+        <PropertyRef Name="AreaID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -349,6 +376,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ElectionTypeDetails">
+    <End Role="ElectionType" Type="Self.ElectionType" Multiplicity="0..1" />
+    <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElectionType">
+        <PropertyRef Name="ElectionID" />
+      </Principal>
+      <Dependent Role="Election_Details">
+        <PropertyRef Name="ElectionType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Election_Details_Zone">
     <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
     <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="*" />
@@ -433,7 +472,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="AdminAssignments" EntityType="Self.AdminAssignment" />
     <EntitySet Name="Appointments" EntityType="Self.Appointment" />
@@ -468,6 +507,10 @@
       <End Role="Appointment" EntitySet="Appointments" />
       <End Role="AdminAssignment" EntitySet="AdminAssignments" />
     </AssociationSet>
+    <AssociationSet Name="AreaDetails" Association="Self.AreaDetails">
+      <End Role="Area" EntitySet="Areas" />
+      <End Role="Election_Details" EntitySet="Election_Details" />
+    </AssociationSet>
     <AssociationSet Name="FK_Area_Zone" Association="Self.FK_Area_Zone">
       <End Role="Zone" EntitySet="Zones" />
       <End Role="Area" EntitySet="Areas" />
@@ -499,6 +542,10 @@
     <AssociationSet Name="FK_Vote_Candidate" Association="Self.FK_Vote_Candidate">
       <End Role="Candidate" EntitySet="Candidates" />
       <End Role="Vote" EntitySet="Votes" />
+    </AssociationSet>
+    <AssociationSet Name="ElectionTypeDetails" Association="Self.ElectionTypeDetails">
+      <End Role="ElectionType" EntitySet="ElectionTypes" />
+      <End Role="Election_Details" EntitySet="Election_Details" />
     </AssociationSet>
     <AssociationSet Name="FK_Election_Details_Zone" Association="Self.FK_Election_Details_Zone">
       <End Role="Zone" EntitySet="Zones" />

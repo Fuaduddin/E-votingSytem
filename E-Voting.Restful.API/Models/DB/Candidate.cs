@@ -33,6 +33,7 @@ namespace E_Voting.Restful.API.Models.DB
         public string CandidateNID { get; set; }
         public Nullable<int> CandidateParty { get; set; }
         public int UserID { get; set; }
+        public string CandidateGender { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual Party Party { get; set; }

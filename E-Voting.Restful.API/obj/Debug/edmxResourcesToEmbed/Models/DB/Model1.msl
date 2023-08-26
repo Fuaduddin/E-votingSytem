@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities3">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="Model.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -14,6 +14,7 @@
           <ScalarProperty Name="AdminAddressPresent" ColumnName="AdminAddressPresent" />
           <ScalarProperty Name="AdminAddressPermanent" ColumnName="AdminAddressPermanent" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="AdminGender" ColumnName="AdminGender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -37,6 +38,8 @@
           <ScalarProperty Name="AppointmentDetails" ColumnName="AppointmentDetails" />
           <ScalarProperty Name="UserPhoneNumber" ColumnName="UserPhoneNumber" />
           <ScalarProperty Name="UserEmaul" ColumnName="UserEmaul" />
+          <ScalarProperty Name="AssignToAdmin" ColumnName="AssignToAdmin" />
+          <ScalarProperty Name="AssignmentUpdate" ColumnName="AssignmentUpdate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -46,6 +49,7 @@
           <ScalarProperty Name="AreaID" ColumnName="AreaID" />
           <ScalarProperty Name="AreaTitle" ColumnName="AreaTitle" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,6 +68,7 @@
           <ScalarProperty Name="CandidateNID" ColumnName="CandidateNID" />
           <ScalarProperty Name="CandidateParty" ColumnName="CandidateParty" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CandidateGender" ColumnName="CandidateGender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -75,6 +80,10 @@
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
+          <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+          <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -129,6 +138,7 @@
           <ScalarProperty Name="UserTotalLogin" ColumnName="UserTotalLogin" />
           <ScalarProperty Name="UserLastLogout" ColumnName="UserLastLogout" />
           <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -157,6 +167,7 @@
           <ScalarProperty Name="VoterPermanentAddress" ColumnName="VoterPermanentAddress" />
           <ScalarProperty Name="VoterNID" ColumnName="VoterNID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="VoterGender" ColumnName="VoterGender" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

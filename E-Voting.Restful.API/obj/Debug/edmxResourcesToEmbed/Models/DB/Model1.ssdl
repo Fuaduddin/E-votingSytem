@@ -14,6 +14,7 @@
     <Property Name="AdminAddressPresent" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AdminAddressPermanent" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="AdminGender" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="AdminAssignment">
     <Key>
@@ -35,6 +36,8 @@
     <Property Name="AppointmentDetails" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserPhoneNumber" Type="nvarchar(max)" Nullable="false" />
     <Property Name="UserEmaul" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AssignToAdmin" Type="int" />
+    <Property Name="AssignmentUpdate" Type="int" />
   </EntityType>
   <EntityType Name="Area">
     <Key>
@@ -43,6 +46,7 @@
     <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AreaTitle" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ZoneID" Type="int" />
+    <Property Name="AreaName" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Candidate">
     <Key>
@@ -60,6 +64,7 @@
     <Property Name="CandidateNID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CandidateParty" Type="int" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CandidateGender" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Election Details">
     <Key>
@@ -70,6 +75,10 @@
     <Property Name="StartDate" Type="datetime" Nullable="false" />
     <Property Name="EndDate" Type="datetime" Nullable="false" />
     <Property Name="ZoneID" Type="int" Nullable="false" />
+    <Property Name="ElectionDetails" Type="varchar(max)" />
+    <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
+    <Property Name="AreaID" Type="int" />
+    <Property Name="ElectionType" Type="int" />
   </EntityType>
   <EntityType Name="ElectionCandidate">
     <Key>
@@ -119,6 +128,7 @@
     <Property Name="UserTotalLogin" Type="int" />
     <Property Name="UserLastLogout" Type="datetime" />
     <Property Name="UserRole" Type="nvarchar(max)" />
+    <Property Name="UserStatus" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Vote">
     <Key>
@@ -145,6 +155,7 @@
     <Property Name="VoterPermanentAddress" Type="nvarchar(max)" Nullable="false" />
     <Property Name="VoterNID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="VoterGender" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Zone">
     <Key>
@@ -153,6 +164,30 @@
     <Property Name="ZoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ZoneName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <Association Name="AreaDetails">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Election Details" Type="Self.Election Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="AreaID" />
+      </Principal>
+      <Dependent Role="Election Details">
+        <PropertyRef Name="AreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ElectionTypeDetails">
+    <End Role="ElectionType" Type="Self.ElectionType" Multiplicity="0..1" />
+    <End Role="Election Details" Type="Self.Election Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElectionType">
+        <PropertyRef Name="ElectionID" />
+      </Principal>
+      <Dependent Role="Election Details">
+        <PropertyRef Name="ElectionType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Admin_Area">
     <End Role="Area" Type="Self.Area" Multiplicity="1" />
     <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -408,6 +443,14 @@
     <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Zone" EntityType="Self.Zone" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="AreaDetails" Association="Self.AreaDetails">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Election Details" EntitySet="Election Details" />
+    </AssociationSet>
+    <AssociationSet Name="ElectionTypeDetails" Association="Self.ElectionTypeDetails">
+      <End Role="ElectionType" EntitySet="ElectionType" />
+      <End Role="Election Details" EntitySet="Election Details" />
+    </AssociationSet>
     <AssociationSet Name="FK_Admin_Area" Association="Self.FK_Admin_Area">
       <End Role="Area" EntitySet="Area" />
       <End Role="Admin" EntitySet="Admin" />

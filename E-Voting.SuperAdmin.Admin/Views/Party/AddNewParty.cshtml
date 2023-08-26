@@ -1,0 +1,102 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">ADD NEW PARTY</h4>
+                @using (Html.BeginForm("AddNewParty", "Party", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(model => model.Party.PartyID)
+                    <div class="form-group">
+                        <label for="exampleInputUsername1">Enter Party Name</label>
+                        @Html.TextBoxFor(model => model.Party.PartyName, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Party Name" })
+                        @Html.ValidationMessageFor(model => model.Party.PartyName)
+                    </div>
+                    <div class="form-group">
+                        <label>Symbol upload</label>
+                        <input type="file" name="File" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                    </div>
+                    if (Model.Party.PartyID > 0 && Model.Party != null)
+                    {
+
+                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                    else
+                    {
+
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Party Details Table</h4>
+                <p class="card-description">
+                    Party <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Serial No</th>
+                                <th>Party Name</th>
+                                <th>Party Symbol</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.PartyList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var party in Model.PartyList)
+                                {
+
+                                    <tr>
+                                        <td>@serialno</td>
+                                        <td>@party.PartyName</td>
+                                        <td><img src="@party.PartySymbol" /> </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleParty", new { Id = party.PartyID }, new { @class = "btn btn-success", type = "button" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteZone", new { Id = party.PartyID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

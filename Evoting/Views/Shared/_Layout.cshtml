@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>E-Voting System</title>
     <!-- Bootstrap -->
-
     <!--Online Style Sheet-->
     <link href="~/Content/CSS/aboutstyle.css" rel="stylesheet" />
     <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
@@ -20,6 +19,13 @@
     <link href="~/Content/CSS/statstyle.css" rel="stylesheet" />
     <link href="~/Content/CSS/votestyle.css" rel="stylesheet" />
 
+
+    <script src="~/Content/JS/off-canvas.js"></script>
+    <!-- plugins:css -->
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
     <!--CUSTOME CSS START-->
     <link href="~/Content/CSS/Indexpage.css" rel="stylesheet" />
     <link href="~/Content/CSS/UpcomingELection.css" rel="stylesheet" />
@@ -48,18 +54,20 @@
             </div>
             <!-- /.container-fluid -->
         </nav>
-  
+
         <!-- Render Body Start-->
         @RenderBody()
         <!-- Render Body End-->
 
         <footer id="footer_details"></footer>
     </div>
-    <!--Custome JS-->
+    <!--Custome JS Start-->
     <script>
         const date = new Date()
-        document.getElementById("footer_details").innerHTML ="&copy; Copyright"+ date.getFullYear();
+        document.getElementById("footer_details").innerHTML = "&copy; Copyright" + date.getFullYear();
     </script>
+    <script src="~/Content/CustomeJS/Custome.js"></script>
+    <!--Custome JS END-->
     <!--Online JS-->
     <script src="~/Content/JS/bootstrap.js"></script>
     <script src="~/Content/JS/jquery-1.11.3.min.js"></script>
@@ -71,5 +79,8 @@
     <script src="~/Content/JS/plugins.js"></script>
     <script src="~/Content/JS/smoothscroll.js"></script>
     <script src="~/Content/JS/wow.min.js"></script>
+    <!-- inject:js -->
+
+
 </body>
 </html>

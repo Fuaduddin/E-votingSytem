@@ -29,6 +29,7 @@ namespace E_Voting.Restful.API.Models.DB
         public Nullable<int> UserTotalLogin { get; set; }
         public Nullable<System.DateTime> UserLastLogout { get; set; }
         public string UserRole { get; set; }
+        public string UserStatus { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Admin> Admins { get; set; }

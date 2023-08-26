@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XkvyHaidEdoVZYtjf0UXff870pKVpRSwJdeZULdu2qtTWUrWqmGKoKuwlzjg3GbfQJML/gp+1f2ubWBIjkBJKg==",
+  "success": true,
+  "projectFilePath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Fuad\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512"
+  ],
+  "logs": []
+}

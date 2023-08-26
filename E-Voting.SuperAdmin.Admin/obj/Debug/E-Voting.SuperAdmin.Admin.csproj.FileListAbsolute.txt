@@ -76,6 +76,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Vot
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.dll.config
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.pdb
@@ -131,6 +133,7 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\b
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\EntityFramework.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\EntityFramework.SqlServer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.BusinessLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.GlobalSetting.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.Models.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.Utility.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -149,7 +152,10 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\b
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\System.Web.Webpages.Deployment.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\System.Web.Webpages.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\System.Web.Webpages.Razor.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayerSQL.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.BusinessLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.GlobalSetting.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.Models.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.Utility.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\EntityFramework.xml
@@ -170,12 +176,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\b
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\System.Web.Helpers.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\System.Web.Mvc.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CoreCompileInputs.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayerSQL.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayer.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayerSQL.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayerSQL.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayer.pdb

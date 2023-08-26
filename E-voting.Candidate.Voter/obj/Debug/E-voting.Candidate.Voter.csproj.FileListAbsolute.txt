@@ -76,6 +76,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voti
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.dll.config
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.pdb
@@ -131,6 +133,7 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bi
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\EntityFramework.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\EntityFramework.SqlServer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.BusinessLayer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.GlobalSetting.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.Models.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.Utility.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
@@ -143,7 +146,10 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bi
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\System.Web.Webpages.Deployment.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\System.Web.Webpages.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\System.Web.Webpages.Razor.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayerSQL.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.BusinessLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.GlobalSetting.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.Models.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.Utility.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\EntityFramework.xml
@@ -157,12 +163,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bi
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\System.Web.Helpers.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\System.Web.Mvc.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CoreCompileInputs.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayerSQL.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayer.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayerSQL.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayerSQL.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayer.pdb

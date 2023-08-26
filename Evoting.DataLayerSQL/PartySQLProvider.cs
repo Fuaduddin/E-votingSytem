@@ -9,6 +9,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Evoting.Utility;
+using Evoting.GlobalSetting;
 
 namespace Evoting.DataLayerSQL
 {
@@ -19,7 +20,7 @@ namespace Evoting.DataLayerSQL
             bool Isadded;
             try
             {
-                HttpResponseMessage responseADD = GlobalSettings.WebApiClient.PostAsJsonAsync("Parties", party).Result;
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Parties", party).Result;
                 Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
@@ -34,7 +35,7 @@ namespace Evoting.DataLayerSQL
             bool IsUpdated=true;
             try
             {
-                HttpResponseMessage responseADD = GlobalSettings.WebApiClient.PutAsJsonAsync("Parties/"+ party.PartyID.ToString(), party).Result;
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Parties/"+ party.PartyID.ToString(), party).Result;
             }
             catch (Exception ex)
             {
@@ -49,7 +50,7 @@ namespace Evoting.DataLayerSQL
             PartyModel party = new PartyModel();
             try
             {
-                HttpResponseMessage responseSingle=GlobalSettings.WebApiClient.GetAsync("Parties/" + id.ToString()).Result;
+                HttpResponseMessage responseSingle= GlobalSettingsWebAPI.WebApiClient.GetAsync("Parties/" + id.ToString()).Result;
                 party = (PartyModel)responseSingle.Content.ReadAsAsync<IEnumerable<PartyModel>>().Result;
             }
             catch(Exception ex)
@@ -63,7 +64,7 @@ namespace Evoting.DataLayerSQL
             bool IsDeleted = true;
             try
             {
-                HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.DeleteAsync("Parties/" + id.ToString()).Result;
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("Parties/" + id.ToString()).Result;
             }
             catch (Exception ex)
             {
@@ -77,8 +78,8 @@ namespace Evoting.DataLayerSQL
             List<PartyModel> party = new List<PartyModel>();
             try
             {
-                HttpResponseMessage responseSingle = GlobalSettings.WebApiClient.GetAsync("Parties").Result;
-                party = (List<PartyModel>)responseSingle.Content.ReadAsAsync<IEnumerable<List<PartyModel>>>().Result;
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Parties").Result;
+                party = (List<PartyModel>)responseSingle.Content.ReadAsAsync<IEnumerable<PartyModel>>().Result;
             }
             catch (Exception ex)
             {

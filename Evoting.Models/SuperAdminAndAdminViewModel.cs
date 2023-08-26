@@ -15,6 +15,7 @@ namespace Evoting.Models
         public ElectionModel ElectionType { get; set; }
         public zoneModel Zone { get; set; }
         public areamodel Area { get; set; }
+        public ElectionDetailsModel ElectionDetails { get; set; }
         //public ElectionSettingModel ElectionType { get; set; }
 
 
@@ -28,6 +29,7 @@ namespace Evoting.Models
         public List<ElectionModel> ElectionTypeList { get; set; }
         public List<zoneModel> ZoneList { get; set; }
         public List<areamodel> AreaList { get; set; }
+        public List<ElectionDetailsModel> ElectionDetailsList { get; set; }
 
 
 

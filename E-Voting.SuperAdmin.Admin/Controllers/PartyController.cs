@@ -6,25 +6,31 @@ using System.Web;
 using System.Web.Mvc;
 using Evoting.BusinessLayer;
 using Newtonsoft.Json;
+using Evoting.GlobalSetting;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
     public class PartyController : Controller
     {
+        private readonly GlobalSettingsExtension settings = new GlobalSettingsExtension();
         // GET: Party
-        public ActionResult Index()
+        public ActionResult AddNewParty()
         {
             SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
             party.Party = new PartyModel();
-            party.PartyList = perpageshowdata(1,10);
+            party.PartyList = perpageshowdata(1, 10);
             party.TotalPage = pagecount(10);
-            return View("Index", party);
+            return View("AddNewParty", party);
         }
         [HttpPost]
-        public ActionResult AddNewParty(PartyModel partyModel)
+        public ActionResult AddNewParty(PartyModel partyModel, HttpPostedFileBase File)
         {
             if(partyModel.PartyID>0)
             {
+                if(File.ContentLength>0)
+                {
+                    partyModel.PartySymbol = settings.UploadImage(File);
+                }
                 if(PartyManager.UpdateParty(partyModel))
                 {
                     ViewData["Message"] = "Your data have been Updated";
@@ -37,9 +43,11 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             else
             {
+                if(File.ContentLength > 0) { partyModel.PartySymbol = settings.UploadImage(File); }
                 if(ModelState.IsValid)
                 {
-                    if(PartyManager.AddNewParty(partyModel))
+                   
+                    if (PartyManager.AddNewParty(partyModel))
                     {
                         ViewData["Message"] = "Your data have been Added";
                         ModelState.Clear();
@@ -58,7 +66,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             party.Party = new PartyModel();
             party.PartyList = perpageshowdata(1, 10);
             party.TotalPage = pagecount(10);
-            return View("Index", party);
+            return View("AddNewParty", party);
         }
         public ActionResult GetSingleParty(int id)
         {
@@ -70,7 +78,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             party.Party = new PartyModel();
             party.PartyList = perpageshowdata(1, 10);
             party.TotalPage = pagecount(10);
-            return View("Index");
+            return View("AddNewParty");
         }
         public ActionResult DeleteParty(int id)
         {
@@ -86,7 +94,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             party.Party = new PartyModel();
             party.PartyList = perpageshowdata(1, 10);
             party.TotalPage = pagecount(10);
-            return View("Index");
+            return View("AddNewParty");
         }
         // All Extra Feauture
         private List<PartyModel> GetPaginationParty(int pageindex, int pagesize)

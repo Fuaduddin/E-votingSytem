@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Evoting.DataLayerSQL</RootNamespace>
     <AssemblyName>Evoting.DataLayerSQL</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppointmentSQLProvider.cs" />
     <Compile Include="ElectionSettingsSQLProvider.cs" />
     <Compile Include="PartySQLProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,6 +51,10 @@
     <ProjectReference Include="..\Evoting.DataLayer\Evoting.DataLayer.csproj">
       <Project>{7eb3a489-7633-4d03-a9ee-385a0dcdbd6f}</Project>
       <Name>Evoting.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Evoting.GlobalSetting\Evoting.GlobalSetting.csproj">
+      <Project>{16a9b15d-b2c6-4ac3-a2de-a41c77be09a5}</Project>
+      <Name>Evoting.GlobalSetting</Name>
     </ProjectReference>
     <ProjectReference Include="..\Evoting.Models\Evoting.Models.csproj">
       <Project>{4ff7efcc-d717-4107-9592-dbeb1d5544c6}</Project>

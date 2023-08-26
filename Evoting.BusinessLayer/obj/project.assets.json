@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.8": {
+    ".NETFramework,Version=v4.8.1": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -62,7 +62,9 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0"
         },
@@ -75,10 +77,11 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
+          "Evoting.GlobalSetting": "1.0.0",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.9"
@@ -88,6 +91,15 @@
         },
         "runtime": {
           "bin/placeholder/Evoting.DataLayerSQL.dll": {}
+        }
+      },
+      "Evoting.GlobalSetting/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
         }
       },
       "Evoting.Models/1.0.0": {
@@ -109,7 +121,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8/win": {
+    ".NETFramework,Version=v4.8.1/win": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -170,7 +182,9 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0"
         },
@@ -183,10 +197,11 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
+          "Evoting.GlobalSetting": "1.0.0",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.9"
@@ -196,6 +211,15 @@
         },
         "runtime": {
           "bin/placeholder/Evoting.DataLayerSQL.dll": {}
+        }
+      },
+      "Evoting.GlobalSetting/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
         }
       },
       "Evoting.Models/1.0.0": {
@@ -217,7 +241,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8/win-arm64": {
+    ".NETFramework,Version=v4.8.1/win-arm64": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -278,7 +302,9 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0"
         },
@@ -291,10 +317,11 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
+          "Evoting.GlobalSetting": "1.0.0",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.9"
@@ -304,6 +331,15 @@
         },
         "runtime": {
           "bin/placeholder/Evoting.DataLayerSQL.dll": {}
+        }
+      },
+      "Evoting.GlobalSetting/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
         }
       },
       "Evoting.Models/1.0.0": {
@@ -325,7 +361,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8/win-x64": {
+    ".NETFramework,Version=v4.8.1/win-x64": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -386,7 +422,9 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0"
         },
@@ -399,10 +437,11 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
+          "Evoting.GlobalSetting": "1.0.0",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.9"
@@ -412,6 +451,15 @@
         },
         "runtime": {
           "bin/placeholder/Evoting.DataLayerSQL.dll": {}
+        }
+      },
+      "Evoting.GlobalSetting/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
         }
       },
       "Evoting.Models/1.0.0": {
@@ -433,7 +481,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8/win-x86": {
+    ".NETFramework,Version=v4.8.1/win-x86": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -494,7 +542,9 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0"
         },
@@ -507,10 +557,11 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
+        "framework": ".NETFramework,Version=v4.8.1",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
+          "Evoting.GlobalSetting": "1.0.0",
           "Evoting.Models": "1.0.0",
           "Evoting.Utility": "1.0.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.9"
@@ -520,6 +571,15 @@
         },
         "runtime": {
           "bin/placeholder/Evoting.DataLayerSQL.dll": {}
+        }
+      },
+      "Evoting.GlobalSetting/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Evoting.GlobalSetting.dll": {}
         }
       },
       "Evoting.Models/1.0.0": {
@@ -656,6 +716,11 @@
       "path": "../Evoting.DataLayerSQL/Evoting.DataLayerSQL.csproj",
       "msbuildProject": "../Evoting.DataLayerSQL/Evoting.DataLayerSQL.csproj"
     },
+    "Evoting.GlobalSetting/1.0.0": {
+      "type": "project",
+      "path": "../Evoting.GlobalSetting/Evoting.GlobalSetting.csproj",
+      "msbuildProject": "../Evoting.GlobalSetting/Evoting.GlobalSetting.csproj"
+    },
     "Evoting.Models/1.0.0": {
       "type": "project",
       "path": "../Evoting.Models/Evoting.Models.csproj",
@@ -668,7 +733,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.8": [
+    ".NETFramework,Version=v4.8.1": [
       "Evoting.DataLayer >= 1.0.0",
       "Evoting.DataLayerSQL >= 1.0.0",
       "Evoting.Models >= 1.0.0",
@@ -698,14 +763,14 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net48"
+        "net481"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net48": {
+        "net481": {
           "projectReferences": {
             "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
               "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj"
@@ -721,7 +786,7 @@
       }
     },
     "frameworks": {
-      "net48": {
+      "net481": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": {
             "target": "Package",
