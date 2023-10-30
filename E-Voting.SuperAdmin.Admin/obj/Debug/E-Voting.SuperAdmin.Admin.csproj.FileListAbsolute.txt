@@ -76,8 +76,6 @@ D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Vot
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.dll.config
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\E-Voting.SuperAdmin.Admin.pdb
@@ -178,6 +176,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\b
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayerSQL.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.DataLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.pdb

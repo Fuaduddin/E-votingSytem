@@ -7,6 +7,7 @@ using Evoting.Models;
 using Evoting.BusinessLayer;
 using System.ComponentModel.Design;
 using Evoting.GlobalSetting;
+using Newtonsoft.Json;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
@@ -65,6 +66,42 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             electiontype.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
             return View("AddNewElectionType", electiontype);
         }
+
+
+        // All Extra Feautures not complete
+        private List<PartyModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountElectiontype(int perpagedata)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        }
+        public List<PartyModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+
+        public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+            party.TotalPage = pagecountElectiontype(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataArea(pageindex, pagesize);
+            party.TotalPage = pagecountArea(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
 
         //Zone
         public ActionResult AddNewZone()
@@ -150,6 +187,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                 //   area.Zones = (zoneModel)ElectionSettingsManager.GetSingleZone(area.ZoneID);
                     if (ElectionSettingsManager.AddNewArea(area))
                     {
                         ViewData["Message"] = "Your data have been Added";
@@ -159,7 +197,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     {
                         ViewData["Message"] = "Your data have not been Added";
                     }
-                }
+              }
                 else
                 {
                     ViewData["Message"] = "!!!!!! ERROR !!!!!!!";
@@ -203,6 +241,40 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             return View("AddNewArea", Areadetails);
         }
 
+        // All Extra Feautures not complete
+        private List<PartyModel> GetPaginationArea(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountArea(int perpagedata)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        }
+        public List<PartyModel> perpageshowdataArea(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+
+        public JsonResult GetpaginatiotabledataArea(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataArea(pageindex, pagesize);
+            party.TotalPage = pagecountArea(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchAreaData(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataArea(pageindex, pagesize);
+            party.TotalPage = pagecountArea(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         // Election Details
         public ActionResult AddNewElectionDetails()
         {
@@ -210,7 +282,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             electiondetails.ElectionDetails= new ElectionDetailsModel();
             electiondetails.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
            // electiondetails.AreaList = ElectionSettingsManager.GetAllArea();
-            electiondetails.ZoneList = ElectionSettingsManager.GetAllZone();
+           // electiondetails.ZoneList = ElectionSettingsManager.GetAllZone();
             return View("AddNewElectionDetails", electiondetails);
             
         }
@@ -249,6 +321,40 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             Areadetails.AreaList = ElectionSettingsManager.GetAllArea();
             Areadetails.ZoneList = ElectionSettingsManager.GetAllZone();
             return View("AddNewArea", Areadetails);
+        }
+
+
+        // All Extra Feautures not complete
+        private List<PartyModel> GetPaginationElectionDetails(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountElectionDetails(int perpagedata)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        }
+        public List<PartyModel> perpageshowdataElectionDetails(int pageindex, int pagesize)
+        {
+            List<PartyModel> partylist = PartyManager.GetAllParty();
+            return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        public JsonResult GetpaginatiotabledataElectionDetails(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+            party.TotalPage = pagecountElectiontype(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchElectionDetailsData(int pageindex, int pagesize)
+        {
+            SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+            party.PartyList = perpageshowdataArea(pageindex, pagesize);
+            party.TotalPage = pagecountArea(pagesize);
+            var result = JsonConvert.SerializeObject(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

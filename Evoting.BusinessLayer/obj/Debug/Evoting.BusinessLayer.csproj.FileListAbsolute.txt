@@ -11,8 +11,6 @@ D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.B
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
@@ -27,6 +25,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\D
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Models.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.GlobalSetting.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb

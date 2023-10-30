@@ -13,13 +13,15 @@ namespace Evoting.Controllers
     public class HomePageController : Controller
     {
         // GET: HomePage
+        [Route("Home")]
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
-        // Election Related Pages
-        public ActionResult Appointment()
+		// Election Related Pages
+		[Route("Appointment")]
+		public ActionResult Appointment()
         {
            GlobalSettingsPatternsandConstant constant = new GlobalSettingsPatternsandConstant();
            CustomerViewModel appointment = new CustomerViewModel();
@@ -35,7 +37,7 @@ namespace Evoting.Controllers
             {
                 if (AppointmentManager.AddNewAppointment(appointment))
                 {
-                    ViewData["Message"] = "Your data have been Updated";
+                    ViewData["Message"] = "In 72 hours Our agents will contact with you.. ";
                     ModelState.Clear();
                 }
                 else
@@ -50,25 +52,29 @@ namespace Evoting.Controllers
             return View("Appointment");
   
         }
-        public ActionResult UpcomingElection()
+		[Route("UpcomingElection")]
+		public ActionResult UpcomingElection()
         {
             return View();
         }
-        public ActionResult Result()
+		[Route("Result")]
+		public ActionResult Result()
         {
             return View();
         }
-        public ActionResult CandidateProfile()
+		[Route("CandidateProfile")]
+		public ActionResult CandidateProfile()
         {
             return View();
         }
-        public ActionResult Statics()
+		[Route("Statics")]
+		public ActionResult Statics()
         {
             return View();
         }
-
-        // Login & Logout
-        public ActionResult Login()
+		[Route("Login")]
+		// Login & Logout
+		public ActionResult Login()
         {
             return View();
         }

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities3">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities5">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="Model.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -77,13 +77,21 @@
         <MappingFragment StoreEntitySet="Election Details">
           <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
           <ScalarProperty Name="ElectionName" ColumnName="ElectionName" />
+          <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
+          <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElectionAssignmnets">
+      <EntityTypeMapping TypeName="Model.ElectionAssignmnet">
+        <MappingFragment StoreEntitySet="ElectionAssignmnet">
+          <ScalarProperty Name="AssignmentElection" ColumnName="AssignmentElection" />
+          <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
+          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
           <ScalarProperty Name="StartDate" ColumnName="StartDate" />
           <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
-          <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
           <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
-          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-          <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

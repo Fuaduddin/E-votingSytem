@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -34,38 +35,22 @@ namespace Evoting.Models
 
     public class areamodel
     {
+        [Key]
         public int AreaID { get; set; }
+        [Required(ErrorMessage = "Please Enter  Ward Name")]
         public string AreaTitle { get; set; }
-        public int ZoneID { get; set; }
+        [Required(ErrorMessage = "Please Select Zone")]
+        public int? ZoneID { get; set; }
+        [Required(ErrorMessage = "Please Select Area")]
         public string AreaName { get; set; }
-
-        //public virtual ICollection<Admin> Admins { get; set; }
-        //public virtual Zone Zone { get; set; }
-
-        //public virtual ICollection<Candidate> Candidates { get; set; }
-
-        //public virtual ICollection<Voter> Voters { get; set; }
+        public zoneModel ZoneDetailsitem { get; set; }
     }
     public class ElectionDetailsModel
     {
         public int ElectionID { get; set; }
         public string ElectionName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int ZoneID { get; set; }
         public string ElectionDetails { get; set; }
-        public string ElectionStatus { get; set; }
-        public int AreaID { get; set; }
-        public int ElectionType { get; set; }
-
-        //public virtual Area Area { get; set; }
-        //public virtual ElectionType ElectionType1 { get; set; }
-        //public virtual Zone Zone { get; set; }
-      
-        //public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }
-       
-        //public virtual ICollection<Result> Results { get; set; }
-       
-        //public virtual ICollection<Vote> Votes { get; set; }
+        public int? ElectionType { get; set; }
+        public ElectionModel ElectionTypeDetails { get; set; }
     }
 }

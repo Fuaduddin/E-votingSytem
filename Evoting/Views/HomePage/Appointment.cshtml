@@ -63,7 +63,7 @@
         </div>
     </div>
 </section>
-@if (ViewData["Message"] != null)
+@if (ViewData["Message"] == null)
 {
     <section class="registerfromcontainer" style="background-color: lightblue; padding: 3%">
         <div class="container">
@@ -72,8 +72,8 @@
                     <div class="auth-form-light text-left py-5 px-4 px-sm-5 appointmentbodyform">
                         @using (Html.BeginForm("Appointment", "HomePage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "appointmentform pt-3" }))
                         {
-                            <h4 style="text-align: center !important;">New here?</h4>
-                            <h6 style="text-align: center !important;" class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+                            <h2 style="text-align: center !important;">Make Appointment</h2>
+                            <h3 style="text-align: center !important;" class="font-weight-light">With talk with our agents please make an appointment</h3>
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "form-control form-control-lg", id = "exampleInputEmail1", placeholder = "Please Enter your Email Address" })
                                 @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
@@ -111,7 +111,7 @@
 }
 else
             {
-<h4 style=" text-align:center ; color: red;">@ViewData["Message"]</h4>
+               <h4 style=" text-align:center ; color: red;">@ViewData["Message"]</h4>
             }
 
 

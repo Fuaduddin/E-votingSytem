@@ -142,6 +142,7 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\ro
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Antlr3.Runtime.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\EntityFramework.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\EntityFramework.SqlServer.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Evoting.Models.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Microsoft.Web.Infrastructure.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Newtonsoft.Json.dll
@@ -156,6 +157,7 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Sy
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\System.Web.WebPages.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\System.Web.WebPages.Razor.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\WebGrease.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Evoting.Models.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\EntityFramework.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\EntityFramework.SqlServer.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Newtonsoft.Json.xml

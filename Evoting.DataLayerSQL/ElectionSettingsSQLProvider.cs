@@ -106,7 +106,20 @@ namespace Evoting.DataLayerSQL
             }
             return electiontype;
         }
-
+        public zoneModel GetSingleZone(int id)
+        {
+            zoneModel zone = new zoneModel();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Zones/" + id.ToString()).Result;
+                zone = (zoneModel)responseSingle.Content.ReadAsAsync<zoneModel>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return zone;
+        }
         //Area
         public bool AddNewArea(areamodel Area)
         {

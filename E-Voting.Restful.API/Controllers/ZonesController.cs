@@ -10,17 +10,34 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using E_Voting.Restful.API.Models.DB;
+using Evoting.Models;
 
 namespace E_Voting.Restful.API.Controllers
 {
     public class ZonesController : ApiController
     {
-        private Entities3 db = new Entities3();
+        private Entities5 db = new Entities5();
 
         // GET: api/Zones
-        public IQueryable<Zone> GetZones()
+        //public IQueryable<Zone> GetZones()
+        //{
+        //    return db.Zones;
+        //}
+
+        public List<zoneModel> GetZones()
         {
-            return db.Zones;
+            List<zoneModel> ZoneList = new List<zoneModel>();
+            var zones= db.Zones;
+            foreach (var zone in zones)
+            {
+                var ZoneDetails = new zoneModel
+                {
+                    ZoneId = zone.ZoneId,
+                    ZoneName = zone.ZoneName
+                };
+                ZoneList.Add(ZoneDetails);
+            }
+            return ZoneList;
         }
 
         // GET: api/Zones/5
@@ -115,6 +132,5 @@ namespace E_Voting.Restful.API.Controllers
         {
             return db.Zones.Count(e => e.ZoneId == id) > 0;
         }
-
     }
 }

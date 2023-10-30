@@ -76,8 +76,6 @@ D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voti
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.dll.config
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\E-voting.Candidate.Voter.pdb
@@ -165,6 +163,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bi
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayerSQL.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.DataLayer.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.pdb

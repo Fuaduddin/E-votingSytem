@@ -1,5 +1,4 @@
 ﻿@model Evoting.Models.SuperAdminAndAdminViewModel
-
 @{
     ViewBag.Title = "AddNewArea";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,14 +17,25 @@
                         @Html.DropDownListFor(model => model.Area.ZoneID, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", id = "val-skill", @placeholder = "Zone Name" })
                         @Html.ValidationMessageFor(Model => Model.Area.ZoneID)
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Select Area</label>
-                        @Html.DropDownListFor(model => model.Area.AreaName, new SelectList("", "", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
-                        @Html.ValidationMessageFor(Model => Model.Area.AreaName)
-                    </div>
+                    if (Model.Area.AreaID > 0)
+                    {
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Area</label>
+                            @Html.TextBoxFor(Model => Model.Area.AreaName, new { @class = "form-control", id = "exampleInputUsername1", @readonly = "readonly" });
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Select Area</label>
+                            @Html.DropDownListFor(model => model.Area.AreaName, new SelectList("", "", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
+                            @Html.ValidationMessageFor(Model => Model.Area.AreaName)
+                        </div>
+                    }
+
                     <div class="form-group">
                         <label for="exampleInputUsername1">Enter Area Title</label>
-                        @Html.TextBoxFor(Model => Model.Area.AreaTitle, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Election Type" });
+                        @Html.TextBoxFor(Model => Model.Area.AreaTitle, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Ward Name" });
                         @Html.ValidationMessageFor(Model => Model.Area.AreaTitle)
                     </div>
                     if (Model.Area.AreaID > 0 && Model.Area != null)
@@ -61,6 +71,7 @@
                                 <th>Serial No</th>
                                 <th>Area Name</th>
                                 <th>Area Title</th>
+                                <th>Zone Name</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -76,8 +87,9 @@
                                         <td>@serialno</td>
                                         <td>@area.AreaName</td>
                                         <td>@area.AreaTitle</td>
+                                        <td>@area.ZoneDetailsitem.ZoneName</td>
                                         <td>
-                                            @Html.ActionLink("Delete", "DeleteZone", new { Id = area.AreaID }, new { @class = "btn btn-danger", type = "button" })
+                                            @Html.ActionLink("Update", "GetSingleArea", new { Id = area.AreaID }, new { @class = "btn btn-success", type = "button" })
                                         </td>
                                         <td>
                                             @Html.ActionLink("Delete", "DeleteZone", new { Id = area.AreaID }, new { @class = "btn btn-danger", type = "button" })

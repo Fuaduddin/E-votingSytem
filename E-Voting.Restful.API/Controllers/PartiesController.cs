@@ -14,7 +14,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class PartiesController : ApiController
     {
-        private Entities3 db = new Entities3();
+        private Entities5 db = new Entities5();
 
         // GET: api/Parties
         public IQueryable<Party> GetParties()

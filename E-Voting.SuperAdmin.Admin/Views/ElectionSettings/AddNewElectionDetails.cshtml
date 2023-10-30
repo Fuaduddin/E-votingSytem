@@ -34,69 +34,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Zone</label>
-                            <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ElectionDetails.ZoneID, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", id = "val-skill", @placeholder = "Zone Name" })
-                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ZoneID)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Area</label>
-                            <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ElectionDetails.AreaID, new SelectList("", "", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
-                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.AreaID)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Election Start Date</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.ElectionDetails.StartDate, new { @class = "form-control", type = "date", @placeholder = "Enter Election Name" })
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Election End Date</label>
-                            <div class="col-sm-9">
-                                @Html.EditorFor(model => model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", @placeholder = "Enter Election Name" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Election Type</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList, "ElectionID", "ElectionName"), new { @class = "form-control", id = "val-skill", @placeholder = "Zone Name" })
-                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
+                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList("ElectionID", "ElectionName", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
+                                @Html.ValidationMessageFor(Model => Model.Area.AreaName)
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Election Status</label>
-                            @if (Model.ElectionDetails.ElectionID > 0 && Model.ElectionDetails.ElectionStatus != null)
-                            {
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(model => model.ElectionDetails.ElectionStatus, new { @class = "form-control", @placeholder = "Enter Election Name", @readonly = "readonly" })
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(model => model.ElectionDetails.ElectionStatus, new { @class = "form-control", @placeholder = "Pending", @readonly = "readonly", value = "Pending" })
-                                </div>
-                            }
                         </div>
                     </div>
                 </div>

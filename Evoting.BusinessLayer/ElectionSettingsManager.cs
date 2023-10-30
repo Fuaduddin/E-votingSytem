@@ -37,6 +37,12 @@ namespace Evoting.BusinessLayer
             bool IsAdded = provider.AddNewZone(zone);
             return IsAdded;
         }
+        public static zoneModel GetSingleZone(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            zoneModel IsAdded = provider.GetSingleZone(id);
+            return IsAdded;
+        }
         public static bool DeleteZone(int id)
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();

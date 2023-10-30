@@ -168,6 +168,7 @@
     <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\ElectionTypesController.cs" />
+    <Compile Include="Controllers\Election_DetailController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\CustomeAPI.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -188,6 +189,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\Candidate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\ElectionAssignmnet.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\ElectionCandidate.cs">
@@ -336,6 +340,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Evoting.Models\Evoting.Models.csproj">
+      <Project>{4ff7efcc-d717-4107-9592-dbeb1d5544c6}</Project>
+      <Name>Evoting.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
