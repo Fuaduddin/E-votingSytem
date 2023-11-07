@@ -1,0 +1,104 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AssignElection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        @if (Model.ElectionDetails.ElectionID > 0)
+        {
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="card-title">@Model.ElectionDetails.ElectionName</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            @Model.ElectionDetails.ElectionDetails
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <h5>
+                                <b><i>Election Starting Date: </i></b>@Model.ElectionDetails.StartDate
+                            </h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>
+                                <b><i>Election Ending Date: </i></b>@Model.ElectionDetails.EndDate
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>
+                            <b><i>Election Status: </i></b>@Model.ElectionDetails.ElectionStatus
+                        </h5>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>
+                            <b><i>Election Type: </i></b>@Model.ElectionDetails.ElectionTypeDetails.ElectionName
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="card-body">
+            <div class="row">
+                @if (Model.AssignElectionDetailsList.Count > 0)
+                {
+                    <div class="">
+
+                    </div>
+                }
+                @using (Html.BeginForm("AddNewAssignElection", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(Model => Model.AssignElectionDetails.ElectionID, new { value = Model.ElectionDetails.ElectionID })
+                    @Html.HiddenFor(Model => Model.AssignElectionDetails.AssignmentElection)
+                    <div class="">
+                        <div class="col-md-6">
+                            <label class="col-sm-3 col-form-label">Zone</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList, "ElectionID", "ElectionName"), new { @class = "form-control form-control-lg", id = "distrcict", name = "zones", @placeholder = "Zone Name" })
+                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="col-sm-3 col-form-label">Area</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList, "ElectionID", "ElectionName"), new { @class = "form-control form-control-lg", id = "distrcict", name = "areas", @placeholder = "Zone Name" })
+                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        @if (Model.AssignElectionDetailsList.Count > 0)
+                        {
+
+                            <button type="submit" class="btn btn-success mr-2">Update</button>
+                            <button class="btn btn-light">Cancel</button>
+                        }
+                        else
+                        {
+
+                            <button type="submit" class="btn btn-success mr-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        }
+                    </div>
+
+                }
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+

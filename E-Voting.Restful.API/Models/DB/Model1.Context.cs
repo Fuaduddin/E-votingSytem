@@ -13,10 +13,10 @@ namespace E_Voting.Restful.API.Models.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities5 : DbContext
+    public partial class Entities6 : DbContext
     {
-        public Entities5()
-            : base("name=Entities5")
+        public Entities6()
+            : base("name=Entities6")
         {
         }
     

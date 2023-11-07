@@ -79,6 +79,9 @@
           <Property Name="ElectionName" Type="varchar(max)" Nullable="false" />
           <Property Name="ElectionDetails" Type="varchar(max)" />
           <Property Name="ElectionType" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ElectionAssignmnet">
           <Key>
@@ -88,9 +91,6 @@
           <Property Name="ElectionID" Type="int" />
           <Property Name="ZoneID" Type="int" />
           <Property Name="AreaID" Type="int" />
-          <Property Name="StartDate" Type="datetime" />
-          <Property Name="EndDate" Type="datetime" />
-          <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ElectionCandidate">
           <Key>
@@ -658,6 +658,9 @@
           <Property Name="ElectionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ElectionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ElectionType" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="ElectionType1" Relationship="Self.ElectionTypeDetails" FromRole="Election_Details" ToRole="ElectionType" />
           <NavigationProperty Name="ElectionAssignmnet" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="Election_Details" ToRole="ElectionAssignmnet" />
           <NavigationProperty Name="ElectionCandidates" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="Election_Details" ToRole="ElectionCandidate" />
@@ -672,9 +675,6 @@
           <Property Name="ElectionID" Type="Int32" />
           <Property Name="ZoneID" Type="Int32" />
           <Property Name="AreaID" Type="Int32" />
-          <Property Name="StartDate" Type="DateTime" Precision="3" />
-          <Property Name="EndDate" Type="DateTime" Precision="3" />
-          <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Area" Relationship="Self.FK_ElectionAssignmnet_Area" FromRole="ElectionAssignmnet" ToRole="Area" />
           <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="ElectionAssignmnet" ToRole="Election_Details" />
           <NavigationProperty Name="Zone" Relationship="Self.FK_ElectionAssignmnet_Zone" FromRole="ElectionAssignmnet" ToRole="Zone" />
@@ -1059,7 +1059,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="AdminAssignments" EntityType="Self.AdminAssignment" />
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
@@ -1173,7 +1173,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities5">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities6">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="Model.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -1252,6 +1252,9 @@
                 <ScalarProperty Name="ElectionName" ColumnName="ElectionName" />
                 <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
                 <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1262,9 +1265,6 @@
                 <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
                 <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
                 <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

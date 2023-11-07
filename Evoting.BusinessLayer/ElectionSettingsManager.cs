@@ -89,36 +89,62 @@ namespace Evoting.BusinessLayer
         }
 
         // ElectionDetails
-        //public static bool AddNewElectionDetails(ElectionDetailsModel electiondetails)
-        //{
-        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
-        //    bool IsAdded = provider.AddNewArea(area);
-        //    return IsAdded;
-        //}
-        //public static bool DeleteElectionDetails(int id)
-        //{
-        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
-        //    bool IsDeleted = provider.DeleteArea(id);
-        //    return IsDeleted;
-        //}
-        //public static List<ElectionDetailsModel> GetAllElectionDetails()
-        //{
-        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
-        //    var area = provider.GetAllArea();
-        //    return area;
-        //}
-        //public static ElectionDetailsModel GetSingleElectionDetails(int id)
-        //{
-        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
-        //    var area = provider.GetSIngleArea(id);
-        //    return area;
-        //}
-        //public static bool UpdateElectionDetails(ElectionDetailsModel areadetails)
-        //{
-        //    ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
-        //    var area = provider.UpdateArea(areadetails);
-        //    return area;
-        //}
+        public static bool AddNewElectionDetails(ElectionDetailsModel electiondetails)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsAdded = provider.AddNewElectionDetails(electiondetails);
+            return IsAdded;
+        }
+        public static bool DeleteElectionDetails(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsDeleted = provider.DeleteElectionDetails(id);
+            return IsDeleted;
+        }
+        public static List<ElectionDetailsModel> GetAllElectionDetails()
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetAllElectionDetails();
+            return area;
+        }
+        public static ElectionDetailsModel GetSingleElectionDetails(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetSIngleElectionDetails(id);
+            return area;
+        }
+        public static bool UpdateElectionDetails(ElectionDetailsModel areadetails)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.UpdateElectionDetails(areadetails);
+            return area;
+        }
 
+        // ElectionDetails Assignment
+        public static bool AddNewAssignmentElectionDetailsElection(ElectionAssignment assingmentelectiondetails)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsAdded = provider.AddNewAssingmentElectionDetails(assingmentelectiondetails);
+            return IsAdded;
+        }
+        public static List<ElectionAssignment> GetAllAssingElectionDetails()
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetAllAssingElectionDetails();
+            return area;
+        }
+        public static bool DeleteAssingElectionDetails(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsDeleted = provider.DeleteAssingElectionDetails(id);
+            return IsDeleted;
+        }
+
+        public static ElectionAssignment GetSIngleAssingElectionDetails(int id)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetSIngleAssingElectionDetails(id);
+            return area;
+        }
     }
 }

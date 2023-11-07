@@ -10,31 +10,32 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using E_Voting.Restful.API.Models.DB;
+using Evoting.Models;
 
 namespace E_Voting.Restful.API.Controllers
 {
     public class Election_DetailController : ApiController
     {
-        private Entities5 db = new Entities5();
+        private Entities6 db = new Entities6();
 
         // GET: api/Election_Detail
-        public IQueryable<Election_Detail> GetElection_Details()
-        {
-            return db.Election_Details;
-        }
+        //public IQueryable<Election_Detail> GetElection_Details()
+        //{
+        //    return db.Election_Details;
+        //}
 
-        // GET: api/Election_Detail/5
-        [ResponseType(typeof(Election_Detail))]
-        public async Task<IHttpActionResult> GetElection_Detail(int id)
-        {
-            Election_Detail election_Detail = await db.Election_Details.FindAsync(id);
-            if (election_Detail == null)
-            {
-                return NotFound();
-            }
+        //// GET: api/Election_Detail/5
+        //[ResponseType(typeof(Election_Detail))]
+        //public async Task<IHttpActionResult> GetElection_Detail(int id)
+        //{
+        //    Election_Detail election_Detail = await db.Election_Details.FindAsync(id);
+        //    if (election_Detail == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return Ok(election_Detail);
-        }
+        //    return Ok(election_Detail);
+        //}
 
         // PUT: api/Election_Detail/5
         [ResponseType(typeof(void))]
@@ -131,6 +132,63 @@ namespace E_Voting.Restful.API.Controllers
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = election_Detail.ElectionID }, election_Detail);
+        }
+
+        // Custome API Controller
+        // GET: api/Election_Detail
+        [ResponseType(typeof(Election_Detail))]
+        public List<ElectionDetailsModel> GetElection_Details()
+        {
+            var ElectionDetails= db.Election_Details;
+            var ElectionTypeDetails = db.ElectionTypes;
+            var ElectionDetailsList = (from electiondetails in ElectionDetails
+                                       join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
+                                       equals electiondetailstype.ElectionID
+                                       where electiondetails.ElectionType == electiondetailstype.ElectionID
+                                       select new ElectionDetailsModel
+                                       {
+                                           ElectionID = electiondetails.ElectionID,
+                                           ElectionName = electiondetails.ElectionName,
+                                           ElectionDetails = electiondetails.ElectionDetails,
+                                           ElectionStatus = electiondetails.ElectionStatus,
+                                           ElectionType = electiondetails.ElectionType,
+                                           StartDate= electiondetails.StartDate,
+                                           EndDate= electiondetails.EndDate,
+                                           ElectionTypeDetails =new ElectionModel
+                                           {
+                                               ElectionID= electiondetailstype.ElectionID,
+                                               ElectionName=electiondetailstype.ElectionName
+                                           }
+                                       }).ToList();
+            return ElectionDetailsList;
+        }
+
+        //// GET: api/Election_Detail/5
+        [ResponseType(typeof(Election_Detail))]
+        public ElectionDetailsModel GetElection_Detail(int id)
+        {
+            var ElectionDetails = db.Election_Details;
+            var ElectionTypeDetails = db.ElectionTypes;
+            var ElectionDetailsList = (from electiondetails in ElectionDetails
+                                       join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
+                                       equals electiondetailstype.ElectionID
+                                       where electiondetails.ElectionType == electiondetailstype.ElectionID
+                                       select new ElectionDetailsModel
+                                         {
+                                           ElectionID = electiondetails.ElectionID,
+                                           ElectionName = electiondetails.ElectionName,
+                                           ElectionDetails = electiondetails.ElectionDetails,
+                                           ElectionStatus = electiondetails.ElectionStatus,
+                                           ElectionType = electiondetails.ElectionType,
+                                           StartDate = electiondetails.StartDate,
+                                           EndDate = electiondetails.EndDate,
+                                           ElectionTypeDetails = new ElectionModel
+                                           {
+                                               ElectionID = electiondetailstype.ElectionID,
+                                               ElectionName = electiondetailstype.ElectionName
+                                           }
+                                       }).FirstOrDefault();
+            return ElectionDetailsList;
         }
     }
 }

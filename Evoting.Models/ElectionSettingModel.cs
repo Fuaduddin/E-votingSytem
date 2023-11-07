@@ -51,6 +51,20 @@ namespace Evoting.Models
         public string ElectionName { get; set; }
         public string ElectionDetails { get; set; }
         public int? ElectionType { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string ElectionStatus { get; set; }
         public ElectionModel ElectionTypeDetails { get; set; }
+    }
+    public class ElectionAssignment
+    {
+        public int AssignmentElection { get; set; }
+        public int? ElectionID { get; set; }
+        public int? ZoneID { get; set; }
+        public int? AreaID { get; set; }
+        public ElectionDetailsModel ElectionDetails { get; set; }
+        public string ZoneName { get; set; }
+        public string AreaTitle { get; set; }
+        public string AreaName { get; set; }
     }
 }

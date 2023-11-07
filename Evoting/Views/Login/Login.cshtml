@@ -1,0 +1,26 @@
+﻿@model Evoting.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddNewElectionDetails", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data", @class = "loginform" }))
+{
+    <div class="container">
+        <label for="textfield"><b>NID</b></label>
+        @Html.TextBoxFor(model => model.UserDetails.UserID, new { placeholder = "Enter NID", name = "name", id = "textfield" })
+        <label for="password"><b>Password</b></label>
+        @Html.TextBoxFor(model => model.UserDetails.UserPassword, new { placeholder = "Enter Password", name = "password", id = "password" })
+    </div>
+    <div class="container">
+        <span class="psw"><a href="~/Views/HomePage/Appointment.cshtml">Not yet registered?</a></span>
+    </div>
+}
+<style>
+    .loginform {
+        border: none;
+        text-align: left;
+    }
+</style>
+

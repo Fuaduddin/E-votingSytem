@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Evoting.Utility;
 using Evoting.GlobalSetting;
+using static System.Collections.Specialized.BitVector32;
 
 
 namespace Evoting.DataLayerSQL
@@ -192,8 +193,136 @@ namespace Evoting.DataLayerSQL
             }
             return IsUpdated;
         }
-   
-         // Election Details
-    
+
+        // ElectionDetails
+        public bool AddNewElectionDetails(ElectionDetailsModel electiondetails)
+        {
+            bool Isadded = true;
+            try
+            {
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Election_Detail", electiondetails).Result;
+                
+            }
+            catch (Exception ex)
+            {
+                Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
+            }
+            return Isadded;
+        }
+        public bool DeleteElectionDetails(int id)
+        {
+            bool IsDeleted = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("Election_Detail/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsDeleted;
+        }
+        public List<ElectionDetailsModel> GetAllElectionDetails()
+        {
+            List<ElectionDetailsModel> elections = new List<ElectionDetailsModel>();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Election_Detail").Result;
+                elections = (List<ElectionDetailsModel>)responseSingle.Content.ReadAsAsync<IEnumerable<ElectionDetailsModel>>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return elections;
+        }
+        public ElectionDetailsModel GetSIngleElectionDetails(int id)
+        {
+            ElectionDetailsModel election = new ElectionDetailsModel();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Election_Detail/" + id.ToString()).Result;
+                election = (ElectionDetailsModel)responseSingle.Content.ReadAsAsync<ElectionDetailsModel>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return election;
+        }
+        public bool UpdateElectionDetails(ElectionDetailsModel electiondetails)
+        {
+            bool IsUpdated = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Election_Detail/" + electiondetails.ElectionID.ToString(), electiondetails).Result;
+            }
+            catch (Exception ex)
+            {
+                IsUpdated = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsUpdated;
+        }
+
+        // Assignment Election Details
+        public bool AddNewAssingmentElectionDetails(ElectionAssignment AssingmentElectionDetails)
+        {
+            bool isAdded = true;
+            try
+            {
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("ElectionAssignmnets", AssingmentElectionDetails).Result;
+            }
+            catch (Exception ex)
+            {
+                isAdded = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return isAdded;
+        }
+        public List<ElectionAssignment> GetAllAssingElectionDetails()
+        {
+            List<ElectionAssignment> AllAssingElectionDetails = new List<ElectionAssignment>();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets").Result;
+                AllAssingElectionDetails = (List<ElectionAssignment>)responseSingle.Content.ReadAsAsync<IEnumerable<areamodel>>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return AllAssingElectionDetails;
+        }
+        public bool DeleteAssingElectionDetails(int id)
+        {
+            bool IsDeleted = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("ElectionAssignmnets/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsDeleted;
+        }
+        public ElectionAssignment GetSIngleAssingElectionDetails(int id)
+        {
+            ElectionAssignment election = new ElectionAssignment();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets/" + id.ToString()).Result;
+                election = (ElectionAssignment)responseSingle.Content.ReadAsAsync<ElectionAssignment>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return election;
+        }
     }
 }

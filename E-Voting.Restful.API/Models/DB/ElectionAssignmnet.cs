@@ -18,9 +18,6 @@ namespace E_Voting.Restful.API.Models.DB
         public Nullable<int> ElectionID { get; set; }
         public Nullable<int> ZoneID { get; set; }
         public Nullable<int> AreaID { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-        public string ElectionStatus { get; set; }
     
         public virtual Area Area { get; set; }
         public virtual Election_Detail Election_Details { get; set; }

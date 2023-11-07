@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities5">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities6">
     <EntitySetMapping Name="Admins">
       <EntityTypeMapping TypeName="Model.Admin">
         <MappingFragment StoreEntitySet="Admin">
@@ -79,6 +79,9 @@
           <ScalarProperty Name="ElectionName" ColumnName="ElectionName" />
           <ScalarProperty Name="ElectionDetails" ColumnName="ElectionDetails" />
           <ScalarProperty Name="ElectionType" ColumnName="ElectionType" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -89,9 +92,6 @@
           <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="AreaID" ColumnName="AreaID" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="ElectionStatus" ColumnName="ElectionStatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

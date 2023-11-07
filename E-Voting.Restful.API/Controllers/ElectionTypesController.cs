@@ -15,13 +15,13 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class ElectionTypesController : ApiController
     {
-        private Entities5 db = new Entities5(); 
+        private Entities6 db = new Entities6(); 
 
         // GET: api/ElectionTypes
-        public IQueryable<ElectionType> GetElectionTypes()
-        {
-            return db.ElectionTypes;
-        }
+        //public IQueryable<ElectionType> GetElectionTypes()
+        //{
+        //    return db.ElectionTypes;
+        //}
 
         // GET: api/ElectionTypes/5
         [ResponseType(typeof(ElectionType))]
@@ -114,6 +114,25 @@ namespace E_Voting.Restful.API.Controllers
         private bool ElectionTypeExists(int id)
         {
             return db.ElectionTypes.Count(e => e.ElectionID == id) > 0;
+        }
+
+        // Custome API
+
+        // GET: api/ElectionTypes
+        public List<ElectionType> GetElectionTypes()
+        {
+            List<ElectionType> ElectionTypes = new List<ElectionType>();
+            var ElectionTypeList= db.ElectionTypes;
+            foreach (var electionType in ElectionTypeList)
+            {
+                var type = new ElectionType()
+                {
+                    ElectionID = electionType.ElectionID,
+                    ElectionName = electionType.ElectionName
+                };
+                ElectionTypes.Add(type);
+            }
+            return ElectionTypes;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class AppointmentsController : ApiController
     {
-        private Entities5 db = new Entities5();
+        private Entities6 db = new Entities6();
 
         // GET: api/Appointments
         public IQueryable<Appointment> GetAppointments()

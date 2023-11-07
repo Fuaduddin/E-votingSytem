@@ -92,6 +92,9 @@
     <Property Name="ElectionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ElectionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ElectionType" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="ElectionType1" Relationship="Self.ElectionTypeDetails" FromRole="Election_Details" ToRole="ElectionType" />
     <NavigationProperty Name="ElectionAssignmnet" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="Election_Details" ToRole="ElectionAssignmnet" />
     <NavigationProperty Name="ElectionCandidates" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="Election_Details" ToRole="ElectionCandidate" />
@@ -106,9 +109,6 @@
     <Property Name="ElectionID" Type="Int32" />
     <Property Name="ZoneID" Type="Int32" />
     <Property Name="AreaID" Type="Int32" />
-    <Property Name="StartDate" Type="DateTime" Precision="3" />
-    <Property Name="EndDate" Type="DateTime" Precision="3" />
-    <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Area" Relationship="Self.FK_ElectionAssignmnet_Area" FromRole="ElectionAssignmnet" ToRole="Area" />
     <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="ElectionAssignmnet" ToRole="Election_Details" />
     <NavigationProperty Name="Zone" Relationship="Self.FK_ElectionAssignmnet_Zone" FromRole="ElectionAssignmnet" ToRole="Zone" />
@@ -493,7 +493,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities5" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities6" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="AdminAssignments" EntityType="Self.AdminAssignment" />
     <EntitySet Name="Appointments" EntityType="Self.Appointment" />

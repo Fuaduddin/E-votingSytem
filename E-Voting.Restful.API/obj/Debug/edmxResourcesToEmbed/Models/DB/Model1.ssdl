@@ -74,6 +74,9 @@
     <Property Name="ElectionName" Type="varchar(max)" Nullable="false" />
     <Property Name="ElectionDetails" Type="varchar(max)" />
     <Property Name="ElectionType" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ElectionAssignmnet">
     <Key>
@@ -83,9 +86,6 @@
     <Property Name="ElectionID" Type="int" />
     <Property Name="ZoneID" Type="int" />
     <Property Name="AreaID" Type="int" />
-    <Property Name="StartDate" Type="datetime" />
-    <Property Name="EndDate" Type="datetime" />
-    <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ElectionCandidate">
     <Key>

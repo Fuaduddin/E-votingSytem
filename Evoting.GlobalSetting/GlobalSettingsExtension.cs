@@ -24,7 +24,7 @@ namespace Evoting.GlobalSetting
                     Directory.CreateDirectory(imagepath);
                 }
                 imageurl = Path.Combine(imagepath, filename);
-                savepath = "/Image/" + filename;
+                savepath = "~/Content/Image/" + filename;
                 CategoryImage.SaveAs(imageurl);
             }
             return savepath;

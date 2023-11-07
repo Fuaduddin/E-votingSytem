@@ -1399,6 +1399,7 @@
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\ElectionSettingsController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1447,6 +1448,9 @@
     <Content Include="Views\ElectionSettings\AddNewZone.cshtml" />
     <Content Include="Views\ElectionSettings\AddNewArea.cshtml" />
     <Content Include="Views\ElectionSettings\AddNewElectionDetails.cshtml" />
+    <Content Include="Views\ElectionSettings\GetAllElectionDetails.cshtml" />
+    <Content Include="Views\ElectionSettings\AddNewAssignmentElectionDetails.cshtml" />
+    <Content Include="Views\ElectionSettings\AssignElection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1456,7 +1460,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Image\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evoting.BusinessLayer\Evoting.BusinessLayer.csproj">

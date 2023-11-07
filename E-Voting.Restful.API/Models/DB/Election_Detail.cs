@@ -26,6 +26,9 @@ namespace E_Voting.Restful.API.Models.DB
         public string ElectionName { get; set; }
         public string ElectionDetails { get; set; }
         public Nullable<int> ElectionType { get; set; }
+        public Nullable<System.DateTime> StartDate { get; set; }
+        public Nullable<System.DateTime> EndDate { get; set; }
+        public string ElectionStatus { get; set; }
     
         public virtual ElectionType ElectionType1 { get; set; }
         public virtual ElectionAssignmnet ElectionAssignmnet { get; set; }

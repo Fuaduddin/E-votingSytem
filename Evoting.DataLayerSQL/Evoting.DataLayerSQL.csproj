@@ -46,6 +46,7 @@
     <Compile Include="ElectionSettingsSQLProvider.cs" />
     <Compile Include="PartySQLProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaffSettingSQLProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evoting.DataLayer\Evoting.DataLayer.csproj">

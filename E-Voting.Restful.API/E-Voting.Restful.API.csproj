@@ -167,6 +167,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
+    <Compile Include="Controllers\ElectionAssignmnetsController.cs" />
     <Compile Include="Controllers\ElectionTypesController.cs" />
     <Compile Include="Controllers\Election_DetailController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />

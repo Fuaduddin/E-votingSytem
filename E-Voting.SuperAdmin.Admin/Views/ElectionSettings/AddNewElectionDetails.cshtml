@@ -9,7 +9,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">ADD New Election</h4>
-            @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("AddNewElectionDetails", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.HiddenFor(Model => Model.ElectionDetails.ElectionID)
                 <div class="row">
@@ -34,12 +34,30 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Start Date</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.StartDate, new { @class = "form-control", type="date",placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">End Date</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Election Type</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList("ElectionID", "ElectionName", ""), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
-                                @Html.ValidationMessageFor(Model => Model.Area.AreaName)
+                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList,"ElectionID", "ElectionName"), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
+                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
                             </div>
                         </div>
                     </div>

@@ -2593,6 +2593,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2671,6 +2672,7 @@
     <Content Include="Views\HomePage\CandidateProfile.cshtml" />
     <Content Include="Views\HomePage\Result.cshtml" />
     <Content Include="Views\HomePage\Appointment.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
