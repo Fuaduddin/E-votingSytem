@@ -23,10 +23,10 @@ namespace Evoting.Controllers
 		[Route("Appointment")]
 		public ActionResult Appointment()
         {
-           GlobalSettingsPatternsandConstant constant = new GlobalSettingsPatternsandConstant();
+            GlobalCommonData constant = new GlobalCommonData();
            CustomerViewModel appointment = new CustomerViewModel();
            appointment.Appointment=new AppointmentModel();
-           appointment.AppointmentSubjectList = constant.GetAllSubject();
+           appointment.AppointmentSubject = constant.AppointmentSubject;
            return View("Appointment", appointment);
         }
 
@@ -72,11 +72,18 @@ namespace Evoting.Controllers
         {
             return View();
         }
-		[Route("Login")]
+        public ActionResult about()
+        {
+            return View("about");
+        }
+        [Route("Login")]
 		// Login & Logout
 		public ActionResult Login()
         {
             return View();
         }
+
+
+        
     }
 }

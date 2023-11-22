@@ -17,7 +17,7 @@ namespace Evoting.Models
         public areamodel Area { get; set; }
         public ElectionDetailsModel ElectionDetails { get; set; }
         //public ElectionSettingModel ElectionType { get; set; }
-        public ElectionAssignment AssignElectionDetails { get; set; }
+        public ElectionAssignmentModel AssignElectionDetails { get; set; }
         public VoterModel Voter { get; set; }
         public CandidateModel Candidate { get; set; }
         public AdminModel Admin { get; set; }
@@ -32,7 +32,7 @@ namespace Evoting.Models
         public List<zoneModel> ZoneList { get; set; }
         public List<areamodel> AreaList { get; set; }
         public List<ElectionDetailsModel> ElectionDetailsList { get; set; }
-        public List<ElectionAssignment> AssignElectionDetailsList { get; set; }
+        public List<ElectionAssignmentModel> AssignElectionDetailsList { get; set; }
         public List<VoterModel> VoterList { get; set; }
         public List<CandidateModel> CandidateList { get; set; }
         public List<AdminModel> AdminList { get; set; }
@@ -43,5 +43,8 @@ namespace Evoting.Models
 
         // Extra Feauture
         public int TotalPage { get; set; }
+        public List<Options> genders { get; set; }
+        public List<Options> AppointmentSubject { get; set; }
+        public List<Options> ElectionStatus { get; set; }
     }
 }

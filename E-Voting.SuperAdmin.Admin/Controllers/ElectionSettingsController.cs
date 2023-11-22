@@ -356,7 +356,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         public ActionResult GetAllAssignElection()
         {
             SuperAdminAndAdminViewModel electiondetails = new SuperAdminAndAdminViewModel();
-            electiondetails.AssignElectionDetails = new ElectionAssignment();
+            electiondetails.AssignElectionDetails = new ElectionAssignmentModel();
             //electiondetails.ElectionDetails = ElectionSettingsManager.GetSingleElectionDetails(id);
             electiondetails.AreaList = ElectionSettingsManager.GetAllArea();
             electiondetails.ZoneList = ElectionSettingsManager.GetAllZone();
@@ -408,7 +408,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel electiondetails = new SuperAdminAndAdminViewModel();
             if (id > 0)
             {
-                electiondetails.AssignElectionDetails = new ElectionAssignment();
+                electiondetails.AssignElectionDetails = new ElectionAssignmentModel();
                 electiondetails.ElectionDetails = ElectionSettingsManager.GetSingleElectionDetails(id);
                 electiondetails.AreaList = ElectionSettingsManager.GetAllArea();
                 electiondetails.ZoneList = ElectionSettingsManager.GetAllZone();
@@ -423,7 +423,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 var n = 0;
                 foreach (var zone in zones)
                 {
-                    var AsssingAreaElection = new ElectionAssignment()
+                    var AsssingAreaElection = new ElectionAssignmentModel()
                     {
                         ElectionID = election.AssignElectionDetails.ElectionID,
                         ZoneID = zone,

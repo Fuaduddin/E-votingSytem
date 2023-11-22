@@ -4,52 +4,5 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="candidate_profile">
-                <div class="election_Icon">
-
-                </div>
-                <div class="election_details">
-                    <h3>57 no ward nirbachon</h3>
-                    <div class="election_basic_details">
-                        <ul class="basic_details">
-                            <li>
-                                Election Date: 12.8.23
-                            </li>
-                            <li>
-                                Election  Zone: Dhaka
-                            </li>
-                            <li>
-                                Election  Area: Dhaka
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="election_details">
-                        <ul class="voting_details">
-                            <li>
-                                total Voter:
-                            </li>
-                            <li>
-                                total vote:
-                            </li>
-                        </ul>
-                        <hr />
-                        <ul class="selected_candidate_details">
-                            <li>
-                                Selected candidate:
-                                Obtaine Vote:
-                            </li>
-                            <li>
-                                Runner up candidate:
-                                Obtaine Vote:
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@Html.Partial("~/Views/Partial/_ElectionResult.cshtml")
 

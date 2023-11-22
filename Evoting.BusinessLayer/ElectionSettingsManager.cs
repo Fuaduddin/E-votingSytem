@@ -121,13 +121,13 @@ namespace Evoting.BusinessLayer
         }
 
         // ElectionDetails Assignment
-        public static bool AddNewAssignmentElectionDetailsElection(ElectionAssignment assingmentelectiondetails)
+        public static bool AddNewAssignmentElectionDetailsElection(ElectionAssignmentModel assingmentelectiondetails)
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
             bool IsAdded = provider.AddNewAssingmentElectionDetails(assingmentelectiondetails);
             return IsAdded;
         }
-        public static List<ElectionAssignment> GetAllAssingElectionDetails()
+        public static List<ElectionAssignmentModel> GetAllAssingElectionDetails()
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
             var area = provider.GetAllAssingElectionDetails();
@@ -140,7 +140,7 @@ namespace Evoting.BusinessLayer
             return IsDeleted;
         }
 
-        public static ElectionAssignment GetSIngleAssingElectionDetails(int id)
+        public static ElectionAssignmentModel GetSIngleAssingElectionDetails(int id)
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
             var area = provider.GetSIngleAssingElectionDetails(id);

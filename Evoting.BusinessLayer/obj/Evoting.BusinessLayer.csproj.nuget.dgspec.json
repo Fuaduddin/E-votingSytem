@@ -213,7 +213,11 @@
         "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj",
         "frameworks": {
           "net481": {
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              }
+            }
           }
         }
       },

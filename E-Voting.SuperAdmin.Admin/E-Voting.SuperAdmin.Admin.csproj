@@ -1451,6 +1451,8 @@
     <Content Include="Views\ElectionSettings\GetAllElectionDetails.cshtml" />
     <Content Include="Views\ElectionSettings\AddNewAssignmentElectionDetails.cshtml" />
     <Content Include="Views\ElectionSettings\AssignElection.cshtml" />
+    <Content Include="Views\ElectionSettings\GetAllAssignmentElectionDetails.cshtml" />
+    <Content Include="Views\Staff\AddNewVoter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1462,7 +1464,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Image\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Staff\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evoting.BusinessLayer\Evoting.BusinessLayer.csproj">

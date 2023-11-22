@@ -10,6 +10,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Security;
 using E_Voting.Restful.API.Models.DB;
 using Evoting.Models;
 
@@ -121,31 +122,21 @@ namespace E_Voting.Restful.API.Controllers
         // Custome API Controller
 
         // GET: api/ElectionAssignmnets
-        public List<ElectionAssignment> GetElectionAssignmnets()
+        public List<ElectionAssignmentModel> GetElectionAssignmnets()
         {    
             var ElectionDetails = db.Election_Details;
             var ElectionTypeDetails = db.ElectionTypes;
             var Assingelection= db.ElectionAssignmnets;
-            var Zones = db.Zones;
-            var Areas=db.Areas;
             var AssingmentElectionList = (from assingmentelectiondetails in Assingelection
                                           join electiondetails in ElectionDetails on assingmentelectiondetails.ElectionID
                                           equals electiondetails.ElectionID
-                                          join Zonesdetails in Zones on assingmentelectiondetails.ZoneID
-                                          equals Zonesdetails.ZoneId
-                                          join Areasdetails in Areas on assingmentelectiondetails.AreaID
-                                          equals Areasdetails.AreaID
                                           join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
                                           equals electiondetailstype.ElectionID
                                           where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
-                                          select new ElectionAssignment
+                                          select new ElectionAssignmentModel
                                           {
+                                              AssignmentElection=assingmentelectiondetails.AssignmentElection,
                                               ElectionID = electiondetails.ElectionID,
-                                              ZoneID = Zonesdetails.ZoneId,
-                                              AreaID = Areasdetails.AreaID,
-                                              ZoneName = Zonesdetails.ZoneName,
-                                              AreaTitle = Areasdetails.AreaTitle,
-                                              AreaName = Areasdetails.AreaName,
                                               ElectionDetails = new ElectionDetailsModel
                                               {
                                                   ElectionID = electiondetails.ElectionID,
@@ -160,14 +151,56 @@ namespace E_Voting.Restful.API.Controllers
                                                       ElectionID = electiondetailstype.ElectionID,
                                                       ElectionName = electiondetailstype.ElectionName
                                                   }
-                                              }
+                                              },
                                           }).ToList();
+            foreach(var assingments in AssingmentElectionList)
+            {
+                assingments.AreaList = GetAreaDetails(assingments.AssignmentElection);
+                assingments.ZoneList= GetZoneDetails(assingments.AssignmentElection);
+            }
             return AssingmentElectionList;
         }
-
+        private List<zoneModel> GetZoneDetails(int id)
+        {
+            var Zones = db.Zones;
+            var Assingelection = db.ElectionAssignmnets;
+            var AssignedZone = Assingelection.Where(x => x.ElectionID == id).ToList();
+            var ZoneList = new List<zoneModel>();
+            foreach (var ZoneDetailsitem in AssignedZone)
+            {
+                var Zone = Zones.Where(x => x.ZoneId == ZoneDetailsitem.ZoneID).FirstOrDefault();
+                var ZoneDetails = new zoneModel
+                {
+                    ZoneId = Zone.ZoneId,
+                    ZoneName = Zone.ZoneName
+                };
+                ZoneList.Add(ZoneDetails);
+            }
+            return ZoneList;
+        }
+        private List<areamodel> GetAreaDetails(int id)
+        {
+            var Areas = db.Areas;
+            var Assingelection = db.ElectionAssignmnets;
+            var AssignedArea = Assingelection.Where(x => x.ElectionID == id).ToList();
+            var AreaList = new List<areamodel>();
+            foreach (var AreasDetailsitem in AssignedArea)
+            {
+                var Area = Areas.Where(x => x.AreaID == AreasDetailsitem.AreaID).FirstOrDefault();
+                var areaDetails = new areamodel
+                {
+                    AreaID = Area.AreaID,
+                    AreaName= Area.AreaName,
+                    AreaTitle= Area.AreaTitle,
+                    ZoneID=Area.ZoneID
+                };
+                AreaList.Add(areaDetails);
+            }
+            return AreaList;
+        }
         // GET: api/ElectionAssignmnets/5
         [ResponseType(typeof(ElectionAssignmnet))]
-        public ElectionAssignment GetElectionAssignmnet(int id)
+        public ElectionAssignmentModel GetElectionAssignmnet(int id)
         {
             var ElectionDetails = db.Election_Details;
             var ElectionTypeDetails = db.ElectionTypes;
@@ -177,22 +210,14 @@ namespace E_Voting.Restful.API.Controllers
             var AssingmentElectionList = (from assingmentelectiondetails in Assingelection
                                           join electiondetails in ElectionDetails on assingmentelectiondetails.ElectionID
                                           equals electiondetails.ElectionID
-                                          join Zonesdetails in Zones on assingmentelectiondetails.ZoneID
-                                          equals Zonesdetails.ZoneId
-                                          join Areasdetails in Areas on assingmentelectiondetails.AreaID
-                                          equals Areasdetails.AreaID
                                           join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
                                           equals electiondetailstype.ElectionID
                                           where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
-                                          select new ElectionAssignment
+                                          select new ElectionAssignmentModel
                                           {
+                                              AssignmentElection = assingmentelectiondetails.AssignmentElection,
                                               ElectionID = electiondetails.ElectionID,
-                                              ZoneID = Zonesdetails.ZoneId,
-                                              AreaID = Areasdetails.AreaID,
-                                              ZoneName = Zonesdetails.ZoneName,
-                                              AreaTitle = Areasdetails.AreaTitle,
-                                              AreaName = Areasdetails.AreaName,
-                                              ElectionDetails = new ElectionDetailsModel()
+                                              ElectionDetails = new ElectionDetailsModel
                                               {
                                                   ElectionID = electiondetails.ElectionID,
                                                   ElectionName = electiondetails.ElectionName,
@@ -201,12 +226,14 @@ namespace E_Voting.Restful.API.Controllers
                                                   ElectionType = electiondetails.ElectionType,
                                                   StartDate = electiondetails.StartDate,
                                                   EndDate = electiondetails.EndDate,
-                                                  ElectionTypeDetails = new ElectionModel()
+                                                  ElectionTypeDetails = new ElectionModel
                                                   {
                                                       ElectionID = electiondetailstype.ElectionID,
                                                       ElectionName = electiondetailstype.ElectionName
                                                   }
-                                              }
+                                              },
+                                              AreaList = GetAreaDetails((int)assingmentelectiondetails.AssignmentElection),
+                                              ZoneList = GetZoneDetails((int)assingmentelectiondetails.AssignmentElection)
                                           }).FirstOrDefault();
             return AssingmentElectionList;
         }

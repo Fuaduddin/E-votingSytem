@@ -1,0 +1,89 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AddNewVoter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ADD New Election</h4>
+            @using (Html.BeginForm("AddNewVoter", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(Model => Model.Voter.VoterID)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Name</label>
+                            <br />
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Voter.VoterName, new { @class = "form-control", @placeholder = "Enter Election Name" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-form-label">Phone Number</label>
+                            <div class="">
+                                @Html.TextAreaFor(Model => Model.Voter.VoterPhoneNumber, new { @class = "form-control", rows = "6", placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-form-label">Email Address</label>
+                            <div class="">
+                                @Html.TextAreaFor(Model => Model.Voter.VoterEmail, new { @class = "form-control", rows = "6", placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Start Date</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.StartDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">End Date</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Election Type</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList, "ElectionID", "ElectionName"), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
+                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                if (Model.ElectionDetails.ElectionID > 0 && Model.ElectionDetails != null)
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+                else
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+

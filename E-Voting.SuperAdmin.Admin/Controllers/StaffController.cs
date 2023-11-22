@@ -114,6 +114,39 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             return IsExisted;
         }
+        // All Extra Feautures not complete
+        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+        //private int pagecountElectiontype(int perpagedata)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        //}
+        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+
+        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+        //    party.TotalPage = pagecountElectiontype(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
+        //    party.TotalPage = pagecountArea(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+
 
         /// <summary>
         /// /Candidate Details
@@ -211,26 +244,93 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             return IsExisted;
         }
+        // All Extra Feautures not complete
+        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+        //private int pagecountElectiontype(int perpagedata)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        //}
+        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+
+        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+        //    party.TotalPage = pagecountElectiontype(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
+        //    party.TotalPage = pagecountArea(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+
         /// <summary>
         /// /Admin Details
         /// </summary>
         /// <returns></returns>
-        public ActionResult AddNewAdmin()
-        {
-            SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
-            Admin.Admin = new AdminModel();
-            Admin.ZoneList = ElectionSettingsManager.GetAllZone();
-            Admin.AreaList = ElectionSettingsManager.GetAllArea();
-            return View("AddNewAdmin", Admin);
-        }
-        [HttpPost]
-        public ActionResult AddNewAdmin()
-        {
-            SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
-            Admin.Admin = new AdminModel();
-            Admin.ZoneList = ElectionSettingsManager.GetAllZone();
-            Admin.AreaList = ElectionSettingsManager.GetAllArea();
-            return View("AddNewAdmin", Admin);
-        }
+        //public ActionResult AddNewAdmin()
+        //{
+        //    SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
+        //    Admin.Admin = new AdminModel();
+        //    Admin.ZoneList = ElectionSettingsManager.GetAllZone();
+        //    Admin.AreaList = ElectionSettingsManager.GetAllArea();
+        //    return View("AddNewAdmin", Admin);
+        //}
+        //[HttpPost]
+        //public ActionResult AddNewAdmin()
+        //{
+        //    SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
+        //    Admin.Admin = new AdminModel();
+        //    Admin.ZoneList = ElectionSettingsManager.GetAllZone();
+        //    Admin.AreaList = ElectionSettingsManager.GetAllArea();
+        //    return View("AddNewAdmin", Admin);
+        //}
+
+
+        // All Extra Feautures not complete
+        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+        //private int pagecountElectiontype(int perpagedata)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        //}
+        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+
+        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+        //    party.TotalPage = pagecountElectiontype(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
+        //    party.TotalPage = pagecountArea(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
     }
 }

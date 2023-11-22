@@ -46,6 +46,8 @@
     <Compile Include="AdminModel.cs" />
     <Compile Include="AppointmentModel.cs" />
     <Compile Include="CandidateModel.cs" />
+    <Compile Include="CommonModel.cs" />
+    <Compile Include="VoterCandidateViewModel.cs" />
     <Compile Include="VoterModel.cs" />
     <Compile Include="CustomerViewModel.cs" />
     <Compile Include="ElectionSettingModel.cs" />

@@ -268,7 +268,7 @@ namespace Evoting.DataLayerSQL
         }
 
         // Assignment Election Details
-        public bool AddNewAssingmentElectionDetails(ElectionAssignment AssingmentElectionDetails)
+        public bool AddNewAssingmentElectionDetails(ElectionAssignmentModel AssingmentElectionDetails)
         {
             bool isAdded = true;
             try
@@ -282,13 +282,13 @@ namespace Evoting.DataLayerSQL
             }
             return isAdded;
         }
-        public List<ElectionAssignment> GetAllAssingElectionDetails()
+        public List<ElectionAssignmentModel> GetAllAssingElectionDetails()
         {
-            List<ElectionAssignment> AllAssingElectionDetails = new List<ElectionAssignment>();
+            List<ElectionAssignmentModel> AllAssingElectionDetails = new List<ElectionAssignmentModel>();
             try
             {
                 HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets").Result;
-                AllAssingElectionDetails = (List<ElectionAssignment>)responseSingle.Content.ReadAsAsync<IEnumerable<areamodel>>().Result;
+                AllAssingElectionDetails = (List<ElectionAssignmentModel>)responseSingle.Content.ReadAsAsync<IEnumerable<areamodel>>().Result;
             }
             catch (Exception ex)
             {
@@ -310,13 +310,13 @@ namespace Evoting.DataLayerSQL
             }
             return IsDeleted;
         }
-        public ElectionAssignment GetSIngleAssingElectionDetails(int id)
+        public ElectionAssignmentModel GetSIngleAssingElectionDetails(int id)
         {
-            ElectionAssignment election = new ElectionAssignment();
+            ElectionAssignmentModel election = new ElectionAssignmentModel();
             try
             {
                 HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets/" + id.ToString()).Result;
-                election = (ElectionAssignment)responseSingle.Content.ReadAsAsync<ElectionAssignment>().Result;
+                election = (ElectionAssignmentModel)responseSingle.Content.ReadAsAsync<ElectionAssignmentModel>().Result;
             }
             catch (Exception ex)
             {

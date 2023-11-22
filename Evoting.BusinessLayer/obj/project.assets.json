@@ -95,6 +95,9 @@
       },
       "Evoting.GlobalSetting/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Evoting.Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Evoting.GlobalSetting.dll": {}
         },
@@ -215,6 +218,9 @@
       },
       "Evoting.GlobalSetting/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Evoting.Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Evoting.GlobalSetting.dll": {}
         },
@@ -335,6 +341,9 @@
       },
       "Evoting.GlobalSetting/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Evoting.Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Evoting.GlobalSetting.dll": {}
         },
@@ -455,6 +464,9 @@
       },
       "Evoting.GlobalSetting/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Evoting.Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Evoting.GlobalSetting.dll": {}
         },
@@ -575,6 +587,9 @@
       },
       "Evoting.GlobalSetting/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "Evoting.Models": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Evoting.GlobalSetting.dll": {}
         },

@@ -56,15 +56,14 @@ namespace Evoting.Models
         public string ElectionStatus { get; set; }
         public ElectionModel ElectionTypeDetails { get; set; }
     }
-    public class ElectionAssignment
+    public class ElectionAssignmentModel
     {
         public int AssignmentElection { get; set; }
         public int? ElectionID { get; set; }
         public int? ZoneID { get; set; }
         public int? AreaID { get; set; }
         public ElectionDetailsModel ElectionDetails { get; set; }
-        public string ZoneName { get; set; }
-        public string AreaTitle { get; set; }
-        public string AreaName { get; set; }
+        public List<areamodel> AreaList { get; set; }
+        public List<zoneModel>ZoneList { get; set; }
     }
 }

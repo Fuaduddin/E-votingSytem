@@ -7,3 +7,5 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\D
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.dll
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.pdb

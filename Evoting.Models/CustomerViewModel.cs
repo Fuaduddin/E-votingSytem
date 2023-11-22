@@ -16,6 +16,8 @@ namespace Evoting.Models
 
 
         // Extra Feautures
-        public List<string> AppointmentSubjectList { get; set; }
+        public List<Options> genders { get; set; }
+        public List<Options> AppointmentSubject { get; set; }
+        public List<Options> ElectionStatus { get; set; }
     }
 }
