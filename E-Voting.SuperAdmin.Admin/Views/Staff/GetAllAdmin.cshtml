@@ -1,0 +1,97 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "GetAllAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Admin Table</h4>
+                <p class="card-description">
+                    Admin <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Admin Image</th>
+                                <th>Admin Details</th>
+                                <th>Contact Information</th>
+                                <th>Address Details</th>
+                                <th>User Profile Details</th>
+                                <th>User Profile Status</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AdminList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var AdminDetails in Model.AdminList)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @serialno
+                                        </td>
+                                        <td class="py-1">
+                                            <img src="@AdminDetails.AdminProfilePIc" alt="image">
+                                        </td>
+                                        <td>
+                                            <span><b><i>Full Name: </i></b>@AdminDetails.AdminName</span> <br />
+                                            <span><b><i>Gender: </i></b>@AdminDetails.AdminGender</span> <br />
+                                            <span><b><i>User ID </i></b>@AdminDetails.User.UserID.ToString()</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Phone Number: </i></b>@AdminDetails.AdminPhoneNumber</span> <br />
+                                            <span><b><i>Email Address: </i></b>@AdminDetails.AdminEmail</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Zone Name: </i></b>@AdminDetails.Zone.ZoneName</span> <br />
+                                            <span><b><i>Area Name: </i></b>@AdminDetails.Area.AreaName</span> <br />
+                                            <span><b><i>Permanent Address: </i></b>@AdminDetails.AdminAddressPermanent</span> <br />
+                                            <span><b><i>Present Address: </i></b>@AdminDetails.AdminAddressPresent</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Last Login: </i></b>@AdminDetails.User.UserLastLogin</span> <br />
+                                            <span><b><i>Total Login: </i></b>@AdminDetails.User.UserTotalLogin</span> <br />
+                                            <span><b><i>Last Logout: </i></b>@AdminDetails.User.UserLastLogout</span> <br />
+                                        </td>
+
+                                        <td>
+                                            @AdminDetails.User.UserStatus
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteAdmin", new { Id = AdminDetails.AdminID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = AdminDetails.AdminID }, new { @class = "btn btn-success", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

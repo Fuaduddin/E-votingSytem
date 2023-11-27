@@ -100,8 +100,40 @@ namespace Evoting.BusinessLayer
         public static bool UpdateAdmin(AdminModel Admin)
         {
             StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
-            var OutPut = provider.AddNewAdmin(Admin);
+            var OutPut = provider.UpdateAdmin(Admin);
             return OutPut;
         }
+
+        // User 
+        public static int AddNewUser(UserModel User)
+        {
+            StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+            var OutPut = provider.AddNewUser(User);
+            return OutPut;
+        }
+        //public static List<AdminModel> GetAllUser()
+        //{
+        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+        //    var OutPut = provider.GetAllUser();
+        //    return OutPut;
+        //}
+        //public static bool DeleteUser(int id)
+        //{
+        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+        //    var OutPut = provider.DeleteUser(id);
+        //    return OutPut;
+        //}
+        //public static AdminModel GetSingleUser(int id)
+        //{
+        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+        //    var OutPut = provider.GetSingleUser(id);
+        //    return OutPut;
+        //}
+        //public static bool UpdateUser(AdminModel Admin)
+        //{
+        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+        //    var OutPut = provider.AddNewUser(Admin);
+        //    return OutPut;
+        //}
     }
 }

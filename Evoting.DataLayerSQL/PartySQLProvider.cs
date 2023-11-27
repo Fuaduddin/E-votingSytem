@@ -17,7 +17,7 @@ namespace Evoting.DataLayerSQL
     {
         public bool AddNewParty(PartyModel party)
         {
-            bool Isadded;
+            bool Isadded=true;
             try
             {
                 HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Parties", party).Result;

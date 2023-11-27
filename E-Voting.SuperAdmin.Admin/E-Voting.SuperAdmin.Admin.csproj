@@ -1400,6 +1400,7 @@
     <Compile Include="Controllers\ElectionSettingsController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Extension\ExtensionMethods.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1453,6 +1454,10 @@
     <Content Include="Views\ElectionSettings\AssignElection.cshtml" />
     <Content Include="Views\ElectionSettings\GetAllAssignmentElectionDetails.cshtml" />
     <Content Include="Views\Staff\AddNewVoter.cshtml" />
+    <Content Include="Views\Staff\AddNewCandidate.cshtml" />
+    <Content Include="Views\Staff\AddNewAdmin.cshtml" />
+    <Content Include="Views\Staff\GetAllAdmin.cshtml" />
+    <Content Include="Views\Staff\GetAllVoter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

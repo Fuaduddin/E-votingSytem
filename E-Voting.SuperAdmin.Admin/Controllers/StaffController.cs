@@ -8,12 +8,16 @@ using Evoting.BusinessLayer;
 using System.ComponentModel.Design;
 using Evoting.GlobalSetting;
 using Newtonsoft.Json;
+using static Evoting.GlobalSetting.Enums;
+using E_Voting.SuperAdmin.Admin.Extension;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
     public class StaffController : Controller
     {
         private readonly GlobalSettingsExtension settings = new GlobalSettingsExtension();
+        private readonly GlobalCommonData CommonData = new GlobalCommonData();
+        private readonly ExtensionMethods extension = new ExtensionMethods();
         // GET: Staff
         /// <summary>
         /// /Voter Details
@@ -30,27 +34,30 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         {
             SuperAdminAndAdminViewModel Voter= new SuperAdminAndAdminViewModel();
             Voter.Voter=new VoterModel();
+            Voter.Voter.User= new UserModel();
             Voter.ZoneList = ElectionSettingsManager.GetAllZone();
             Voter.AreaList = ElectionSettingsManager.GetAllArea();
+            Voter.genders = CommonData.genders;
             return View("AddNewVoter", Voter);
         }
         [HttpPost]
-        public ActionResult AddNewVoter(VoterModel VoterDetails)
+        public ActionResult AddNewVoter(SuperAdminAndAdminViewModel VoterDetails, HttpPostedFileBase File)
         {
-            if(VoterDetails.VoterID>0)
+            if(VoterDetails.Voter.VoterID>0)
             {
-                if(StaffManager.UpdateVoter(VoterDetails))
+                if(StaffManager.UpdateVoter(VoterDetails.Voter))
                 {
                     ViewData["Message"] = "Your data have been Updated";
                 }
                 else
                 {
                     ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                    return View("AddNewVoter", VoterDetails.Voter);
                 }
             }
             else
             {
-                if (CheckVoterExistorNot(VoterDetails.VoterNID))
+                if (CheckVoterExistorNot(VoterDetails.Voter.VoterNID))
                 {
                     ViewData["Message"] = "Your data is already existed";
                 }
@@ -58,8 +65,10 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        VoterDetails.User.UserPassword = settings.PasswordEncrypt(VoterDetails.VoterNID);
-                        if (StaffManager.AddNewVoter(VoterDetails))
+                        VoterDetails.Voter.User = NewUserSettingsDetails(VoterDetails.Voter.VoterNID,VoterDetails.Voter.User.UserPassword);
+                        VoterDetails.Voter.User.UserRole = Role.Voter.ToString();
+                        VoterDetails.Voter.VoterImage= extension.UploadImage(File);
+                        if (StaffManager.AddNewVoter(VoterDetails.Voter))
                         {
                             ViewData["Message"] = "Your data have been added";
                             ModelState.Clear();
@@ -67,6 +76,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                         else
                         {
                             ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                            return View("AddNewVoter", VoterDetails.Voter);
                         }
                     }
                 }
@@ -104,16 +114,9 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             return View("AddNewVoter", Voter);
         }
         // check if exsist
-        private bool CheckVoterExistorNot(string NIDNumber)
-        {
-            bool IsExisted=false;
-            var GetAllVoter =StaffManager.GetAllVoter();
-            if(GetAllVoter.Count(e => e.VoterNID == NIDNumber) > 0)
-            {
-                IsExisted=true;
-            }
-            return IsExisted;
-        }
+
+
+
         // All Extra Feautures not complete
         //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
         //{
@@ -234,16 +237,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             return View("AddNewCandidate", Candidate);
         }
-        private bool CheckCandidaterExistorNot(string NIDNumber)
-        {
-            bool IsExisted = false;
-            var GetAllCandidate= StaffManager.GetAllCandidate();
-            if (GetAllCandidate.Count(e => e.CandidateNID == NIDNumber) > 0)
-            {
-                IsExisted = true;
-            }
-            return IsExisted;
-        }
+
         // All Extra Feautures not complete
         //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
         //{
@@ -281,25 +275,97 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         /// /Admin Details
         /// </summary>
         /// <returns></returns>
-        //public ActionResult AddNewAdmin()
-        //{
-        //    SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
-        //    Admin.Admin = new AdminModel();
-        //    Admin.ZoneList = ElectionSettingsManager.GetAllZone();
-        //    Admin.AreaList = ElectionSettingsManager.GetAllArea();
-        //    return View("AddNewAdmin", Admin);
-        //}
-        //[HttpPost]
-        //public ActionResult AddNewAdmin()
-        //{
-        //    SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
-        //    Admin.Admin = new AdminModel();
-        //    Admin.ZoneList = ElectionSettingsManager.GetAllZone();
-        //    Admin.AreaList = ElectionSettingsManager.GetAllArea();
-        //    return View("AddNewAdmin", Admin);
-        //}
+        public ActionResult AddNewAdmin()
+        {
+            SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
+            Admin.Admin = new AdminModel();
+            Admin.ZoneList = ElectionSettingsManager.GetAllZone();
+            Admin.AreaList = ElectionSettingsManager.GetAllArea();
+            Admin.genders = CommonData.genders;
+            return View("AddNewAdmin", Admin);
+        }
+        [HttpPost]
+        public ActionResult AddNewAdmin(SuperAdminAndAdminViewModel AdminDetails, HttpPostedFileBase File)
+        {
+            if(AdminDetails.Admin.AdminID>0)
+            {
+                if(File.ContentLength > 0)
+                {
 
-
+                }
+                if (StaffManager.UpdateAdmin(AdminDetails.Admin))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                }
+            }
+            else
+            {
+                // if(ModelState.IsValid)
+                if (AdminDetails.Admin != null)
+                {
+                    AdminDetails.Admin.User = NewUserSettingsDetails(AdminDetails.Admin.User.UserID, AdminDetails.Admin.User.UserPassword);
+                    AdminDetails.Admin.User.UserRole = Role.Admin.ToString();
+                    AdminDetails.Admin.AdminProfilePIc = extension.UploadImage(File);
+                    if(StaffManager.AddNewAdmin(AdminDetails.Admin))
+                    {
+                        ViewData["Message"] = "Your data have been Added";
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                    }
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                   // return View("AddNewAdmin", Admin);
+                }
+                
+            }
+            SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
+            Admin.Admin = new AdminModel();
+            Admin.ZoneList = ElectionSettingsManager.GetAllZone();
+            Admin.AreaList = ElectionSettingsManager.GetAllArea();
+            return View("GetAllAdmin", Admin);
+        }
+        public ActionResult GetAllAdmin()
+        {
+            SuperAdminAndAdminViewModel Admin = new SuperAdminAndAdminViewModel();
+            Admin.AdminList=StaffManager.GetAllAdmin();
+            return View("GetAllAdmin", Admin);
+        }
+        public ActionResult DeleteAdmin(int id)
+        {
+            if (id > 0)
+            {
+                if (StaffManager.DeleteCandidate(id))
+                {
+                    ViewData["Message"] = "Your data have been deleted";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                }
+            }
+            SuperAdminAndAdminViewModel Voter = new SuperAdminAndAdminViewModel();
+            Voter.CandidateList = StaffManager.GetAllCandidate();
+            return View("GetAllVoter", Voter);
+        }
+        public ActionResult GetSingleAdmin(int id)
+        {
+            SuperAdminAndAdminViewModel Candidate = new SuperAdminAndAdminViewModel();
+            if (id > 0)
+            {
+                Candidate.Candidate = StaffManager.GetSingleCandiate(id);
+                Candidate.ZoneList = ElectionSettingsManager.GetAllZone();
+                Candidate.AreaList = ElectionSettingsManager.GetAllArea();
+            }
+            return View("AddNewCandidate", Candidate);
+        }
         // All Extra Feautures not complete
         //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
         //{
@@ -332,5 +398,46 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         //    party.TotalPage = pagecountArea(pagesize);
         //    var result = JsonConvert.SerializeObject(party);
         //    return Json(result, JsonRequestBehavior.AllowGet);
+
+        /// <summary>
+        /// /Common Internal Function
+        /// </summary>
+        /// <returns></returns>
+
+        // Make New User Details Settings
+        internal UserModel NewUserSettingsDetails(string UserNID, string UserPassword)
+        {
+            var UserDetails = new UserModel()
+            {
+                UserID = settings.PasswordEncrypt(UserNID),
+                UserPassword = settings.PasswordEncrypt(UserPassword),
+                UserLastLogin = DateTime.Now,
+                UserStatus = Status.Active.ToString(),
+                UserTotalLogin = 0,
+                UserLastLogout = DateTime.Now
+            };
+            return UserDetails;
+        }
+        /// Check Exist ID
+        private bool CheckCandidaterExistorNot(string NIDNumber)
+        {
+            bool IsExisted = false;
+            var GetAllCandidate = StaffManager.GetAllCandidate();
+            if (GetAllCandidate.Count(e => e.CandidateNID == NIDNumber) > 0)
+            {
+                IsExisted = true;
+            }
+            return IsExisted;
+        }
+        private bool CheckVoterExistorNot(string NIDNumber)
+        {
+            bool IsExisted = false;
+            var GetAllVoter = StaffManager.GetAllVoter();
+            if (GetAllVoter.Count(e => e.VoterNID == NIDNumber) > 0)
+            {
+                IsExisted = true;
+            }
+            return IsExisted;
+        }
     }
 }

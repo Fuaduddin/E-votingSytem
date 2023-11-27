@@ -14,5 +14,10 @@ namespace Evoting.GlobalSetting
           Voter,
           Admin
         }
+        public enum Status
+        {
+            Active,
+            Inactive
+        }
     }
 }

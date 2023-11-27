@@ -27,6 +27,11 @@ namespace Evoting.GlobalSetting
             var genders = new List<Options>();
             genders.Add(new Options
             {
+                label = "Please Select Gender",
+                value = " "
+            });
+            genders.Add(new Options
+            {
                 label = "Male",
                 value = "Male"
             });

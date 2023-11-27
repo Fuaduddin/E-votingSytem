@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="col-12 grid-margin">
+<div class="col-12 container grid-margin">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">ADD New Election</h4>
+            <h4 class="card-title">ADD New Voter</h4>
             @using (Html.BeginForm("AddNewVoter", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.HiddenFor(Model => Model.Voter.VoterID)
@@ -24,37 +24,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group row">
-                            <label class="col-form-label">Phone Number</label>
-                            <div class="">
-                                @Html.TextAreaFor(Model => Model.Voter.VoterPhoneNumber, new { @class = "form-control", rows = "6", placeholder = "Enter Election Details1" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-form-label">Email Address</label>
-                            <div class="">
-                                @Html.TextAreaFor(Model => Model.Voter.VoterEmail, new { @class = "form-control", rows = "6", placeholder = "Enter Election Details1" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Start Date</label>
+                            <label class="col-sm-3 col-form-label">NID Number & User ID</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.ElectionDetails.StartDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">End Date</label>
-                            <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
+                                @Html.TextBoxFor(model => model.Voter.VoterNID, new { @class = "form-control", @placeholder = "Enter NID Number" })
                             </div>
                         </div>
                     </div>
@@ -62,15 +36,95 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Election Type</label>
+                            <label class="col-sm-3 col-form-label">Gender</label>
                             <div class="col-sm-9">
-                                @Html.DropDownListFor(model => model.ElectionDetails.ElectionType, new SelectList(Model.ElectionTypeList, "ElectionID", "ElectionName"), new { @class = "form-control", id = "distrcict", @placeholder = "Zone Name" })
-                                @Html.ValidationMessageFor(Model => Model.ElectionDetails.ElectionType)
+                                @Html.DropDownListFor(model => model.Voter.VoterGender, new SelectList(Model.genders, "value", "label"), new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
                 </div>
-                if (Model.ElectionDetails.ElectionID > 0 && Model.ElectionDetails != null)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Voter.VoterPhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Voter.VoterEmail, new { @class = "form-control", placeholder = "Enter Email Address" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Zone</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Voter.VoterZone, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Area</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Voter.VoterArea, new SelectList(Model.AreaList, "AreaID", "AreaName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Permanent Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Voter.VoterPermanentAddress, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Voter.VoterPermanentAddress)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Present Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Voter.VoterPresentAddress, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Voter.VoterPresentAddress)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Password</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Voter.User.UserPassword, new { @class = "form-control", @placeholder = "Enter User Password" })
+                                @Html.ValidationMessageFor(Model => Model.Voter.User.UserPassword)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Profile Image</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" id="formFile" name="File">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                if (Model.Voter.VoterID > 0)
                 {
 
                     <button type="submit" class="btn btn-success mr-2">Update</button>

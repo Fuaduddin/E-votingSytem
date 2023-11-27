@@ -7,12 +7,14 @@ using System.Web.Mvc;
 using Evoting.BusinessLayer;
 using Newtonsoft.Json;
 using Evoting.GlobalSetting;
+using E_Voting.SuperAdmin.Admin.Extension;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
     public class PartyController : Controller
     {
         private readonly GlobalSettingsExtension settings = new GlobalSettingsExtension();
+        private readonly ExtensionMethods extension = new ExtensionMethods();
         // GET: Party
         public ActionResult AddNewParty()
         {
@@ -29,7 +31,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             {
                 if(File.ContentLength>0)
                 {
-                    partyModel.PartySymbol = settings.UploadImage(File);
+                    partyModel.PartySymbol = extension.UploadImage(File);
                 }
                 if(PartyManager.UpdateParty(partyModel))
                 {
@@ -43,7 +45,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             else
             {
-                if(File.ContentLength > 0) { partyModel.PartySymbol = settings.UploadImage(File); }
+                if(File.ContentLength > 0) { partyModel.PartySymbol = extension.UploadImage(File); }
                 if(ModelState.IsValid)
                 {
                    

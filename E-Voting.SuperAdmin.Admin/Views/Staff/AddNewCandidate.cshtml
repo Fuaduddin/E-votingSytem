@@ -1,0 +1,154 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AddNewCandidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 container grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ADD New Voter</h4>
+            @using (Html.BeginForm("AddNewCandidate", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(Model => Model.Candidate.CandidateID)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Name</label>
+                            <br />
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Candidate.CandidateName, new { @class = "form-control", @placeholder = "Enter Election Name" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">NID Number & User ID</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Candidate.CandidateNID, new { @class = "form-control", @placeholder = "Enter NID Number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.Candidate.CandidateGender, new SelectList(Model.genders, "value", "label"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Candidate.CandidatePhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Candidate.CandidateEmail, new { @class = "form-control", placeholder = "Enter Email Address" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Permanent Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Candidate.CandidatePermanentAddress, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Candidate.CandidatePermanentAddress)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Present Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Candidate.CandidatePresentAddress, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Candidate.CandidatePresentAddress)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Password</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Candidate.User.UserPassword, new { @class = "form-control", @placeholder = "Enter User Password" })
+                                @Html.ValidationMessageFor(Model => Model.Candidate.User.UserPassword)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Zone</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Candidate.CandidateZone, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Area</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Candidate.CandidateArea, new SelectList(Model.AreaList, "AreaID", "AreaName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Party</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Candidate.CandidateParty, new SelectList(Model.PartyList, "PartyID", "PartyName"), new { @class = "form-control", type = "date" })
+                                @Html.ValidationMessageFor(Model => Model.Candidate.User.UserPassword)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Profile Image</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" id="formFile" name="File">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                if (Model.Candidate.CandidateID > 0)
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+                else
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+

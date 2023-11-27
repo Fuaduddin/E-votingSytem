@@ -10,25 +10,6 @@ namespace Evoting.GlobalSetting
 {
     public class GlobalSettingsExtension
     {
-        public string UploadImage(HttpPostedFileBase CategoryImage)
-        {
-            string savepath = "";
-            string imageurl, imagepath, filepath;
-            if (CategoryImage.ContentLength > 0)
-            {
-                var filename = Path.GetFileName(Guid.NewGuid() + CategoryImage.FileName);
-                imagepath = HttpContext.Current.Server.MapPath("~/Image/");
-                filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images/");
-                if (imagepath == null)
-                {
-                    Directory.CreateDirectory(imagepath);
-                }
-                imageurl = Path.Combine(imagepath, filename);
-                savepath = "~/Content/Image/" + filename;
-                CategoryImage.SaveAs(imageurl);
-            }
-            return savepath;
-        }
         public string PasswordDencrypt(string Password)
         {
             string encryptedpassword;

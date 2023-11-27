@@ -21,6 +21,7 @@ namespace Evoting.Models
         public VoterModel Voter { get; set; }
         public CandidateModel Candidate { get; set; }
         public AdminModel Admin { get; set; }
+        public UserModel User { get; set; }
 
 
 

@@ -1,0 +1,143 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AddNewAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 container grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ADD New Admin</h4>
+            @using (Html.BeginForm("AddNewAdmin", "Staff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(Model => Model.Voter.VoterID)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Full Name</label>
+                            <br />
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Admin.AdminName, new { @class = "form-control", @placeholder = "Enter Full Name" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">NID Number & User ID</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Admin.User.UserID, new { @class = "form-control", @placeholder = "Enter NID Number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Gender</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.Admin.AdminGender, new SelectList(Model.genders, "value", "label"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Admin.AdminPhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(Model => Model.Admin.AdminEmail, new { @class = "form-control", placeholder = "Enter Email Address" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Zone</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Admin.AdminZone, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Select Area</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(Model => Model.Admin.AdminArea, new SelectList(Model.AreaList, "AreaID", "AreaName"), new { @class = "form-control", type = "date" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Permanent Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Admin.AdminAddressPermanent, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Admin.AdminAddressPermanent)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Present Address</label>
+                            <div class="col-sm-9">
+                                @Html.TextAreaFor(model => model.Admin.AdminAddressPresent, new { @class = "form-control", @placeholder = "Enter Permanent Address" })
+                                @Html.ValidationMessageFor(Model => Model.Admin.AdminAddressPresent)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User Password</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Admin.User.UserPassword, new { @class = "form-control", @placeholder = "Enter User Password" })
+                                @Html.ValidationMessageFor(Model => Model.Admin.User.UserPassword)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Profile Image</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" id="formFile" name="File">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                if (Model.Admin.AdminID > 0)
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+                else
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+

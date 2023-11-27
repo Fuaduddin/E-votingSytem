@@ -425,7 +425,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 {
                     var AsssingAreaElection = new ElectionAssignmentModel()
                     {
-                        ElectionID = election.AssignElectionDetails.ElectionID,
+                        ElectionID = election.ElectionDetails.ElectionID,
                         ZoneID = zone,
                         AreaID = areas[n],
                     };

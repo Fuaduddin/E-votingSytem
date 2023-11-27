@@ -45,6 +45,7 @@
     <Compile Include="IElectionSettingsDataLayerProvider.cs" />
     <Compile Include="PartyDataLayerProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IStaffSettingsController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evoting.Models\Evoting.Models.csproj">

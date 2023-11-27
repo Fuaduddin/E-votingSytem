@@ -60,7 +60,7 @@
         }
         @using (Html.BeginForm("AddNewAssignElection", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(Model => Model.AssignElectionDetails.ElectionID, new { value = Model.ElectionDetails.ElectionID })
+            @Html.HiddenFor(Model => Model.ElectionDetails.ElectionID)
             @Html.HiddenFor(Model => Model.AssignElectionDetails.AssignmentElection)
             <div class="d-flex">
                 <div class="col-md-6">
