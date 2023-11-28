@@ -13,10 +13,10 @@ namespace E_Voting.Restful.API.Models.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities6 : DbContext
+    public partial class Entities : DbContext
     {
-        public Entities6()
-            : base("name=Entities6")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -27,6 +27,7 @@ namespace E_Voting.Restful.API.Models.DB
     
         public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<AdminAssignment> AdminAssignments { get; set; }
+        public virtual DbSet<Announcement> Announcements { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Candidate> Candidates { get; set; }

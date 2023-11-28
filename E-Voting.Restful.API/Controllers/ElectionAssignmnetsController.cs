@@ -18,7 +18,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class ElectionAssignmnetsController : ApiController
     {
-        private Entities6 db = new Entities6();
+        private Entities db = new Entities();
 
         //// GET: api/ElectionAssignmnets
         //public IQueryable<ElectionAssignmnet> GetElectionAssignmnets()
@@ -75,19 +75,19 @@ namespace E_Voting.Restful.API.Controllers
         }
 
         // POST: api/ElectionAssignmnets
-        [ResponseType(typeof(ElectionAssignmnet))]
-        public async Task<IHttpActionResult> PostElectionAssignmnet(ElectionAssignmnet electionAssignmnet)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[ResponseType(typeof(ElectionAssignmnet))]
+        //public async Task<IHttpActionResult> PostElectionAssignmnet(ElectionAssignmnet electionAssignmnet)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            db.ElectionAssignmnets.Add(electionAssignmnet);
-            await db.SaveChangesAsync();
+        //    db.ElectionAssignmnets.Add(electionAssignmnet);
+        //    await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = electionAssignmnet.AssignmentElection }, electionAssignmnet);
-        }
+        //    return CreatedAtRoute("DefaultApi", new { id = electionAssignmnet.AssignmentElection }, electionAssignmnet);
+        //}
 
         // DELETE: api/ElectionAssignmnets/5
         [ResponseType(typeof(ElectionAssignmnet))]
@@ -120,7 +120,19 @@ namespace E_Voting.Restful.API.Controllers
         }
 
         // Custome API Controller
-
+        [ResponseType(typeof(ElectionAssignmnet))]
+        public int PostElectionAssignmnet(ElectionAssignmentModel electionAssignmnet)
+        {
+            var AssignmentElection = new ElectionAssignmnet()
+            {
+                ElectionID=electionAssignmnet.ElectionID,
+                ZoneID=electionAssignmnet.ZoneID,
+                AreaID=electionAssignmnet.AreaID
+            };
+            db.ElectionAssignmnets.Add(AssignmentElection);
+            db.SaveChanges();
+            return AssignmentElection.AssignmentElection;
+        }
         // GET: api/ElectionAssignmnets
         public List<ElectionAssignmentModel> GetElectionAssignmnets()
         {    

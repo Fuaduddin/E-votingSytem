@@ -17,7 +17,7 @@ namespace E_Voting.Restful.API.Controllers
 {
     public class AdminsController : ApiController
     {
-        private Entities6 db = new Entities6();
+        private Entities db = new Entities();
 
         // GET: api/Admins
         //public IQueryable<Admin> GetAdmins()

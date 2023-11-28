@@ -10,7 +10,7 @@ namespace Evoting.Models
 {
     public class CustomerViewModel
     {
-        public AppointmentModel Appointment { get; set; }
+        public AppointmentAnnoucementModel Appointment { get; set; }
         public UserModel UserDetails { get; set; }
 
 

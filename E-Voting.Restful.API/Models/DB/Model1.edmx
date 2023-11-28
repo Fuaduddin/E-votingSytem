@@ -32,6 +32,16 @@
           <Property Name="AssignmentFixedDate" Type="datetime" />
           <Property Name="AssignmentUpdate" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnoucemntID" />
+          </Key>
+          <Property Name="AnnoucemntID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnnoucementTitle" Type="nchar" MaxLength="200" Nullable="false" />
+          <Property Name="AnoucementDetails" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AnnoucementImage" Type="nvarchar(max)" />
+          <Property Name="PublishedDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="AppointmentID" />
@@ -100,6 +110,8 @@
           <Property Name="CandidateID" Type="int" Nullable="false" />
           <Property Name="ElectionID" Type="int" Nullable="false" />
           <Property Name="ElectionComplete" Type="int" Nullable="false" />
+          <Property Name="AssignmentElectionID" Type="int" />
+          <Property Name="CandidateSymbol" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ElectionType">
           <Key>
@@ -176,6 +188,18 @@
           <Property Name="ZoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ZoneName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="AssingmentElectionDetails">
+          <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
+          <End Role="ElectionCandidate" Type="Self.ElectionCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ElectionAssignmnet">
+              <PropertyRef Name="AssignmentElection" />
+            </Principal>
+            <Dependent Role="ElectionCandidate">
+              <PropertyRef Name="AssignmentElectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="ElectionTypeDetails">
           <End Role="ElectionType" Type="Self.ElectionType" Multiplicity="0..1" />
           <End Role="Election Details" Type="Self.Election Details" Multiplicity="*" />
@@ -455,6 +479,7 @@
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminAssignment" EntityType="Self.AdminAssignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
@@ -468,6 +493,10 @@
           <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zone" EntityType="Self.Zone" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="AssingmentElectionDetails" Association="Self.AssingmentElectionDetails">
+            <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnet" />
+            <End Role="ElectionCandidate" EntitySet="ElectionCandidate" />
+          </AssociationSet>
           <AssociationSet Name="ElectionTypeDetails" Association="Self.ElectionTypeDetails">
             <End Role="ElectionType" EntitySet="ElectionType" />
             <End Role="Election Details" EntitySet="Election Details" />
@@ -599,6 +628,16 @@
           <NavigationProperty Name="Admin" Relationship="Self.FK_AdminAssignment_Admin" FromRole="AdminAssignment" ToRole="Admin" />
           <NavigationProperty Name="Appointment" Relationship="Self.FK_AdminAssignment_Appointment" FromRole="AdminAssignment" ToRole="Appointment" />
         </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnoucemntID" />
+          </Key>
+          <Property Name="AnnoucemntID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnnoucementTitle" Type="String" MaxLength="200" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AnoucementDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnnoucementImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PublishedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="AppointmentID" />
@@ -677,6 +716,7 @@
           <Property Name="AreaID" Type="Int32" />
           <NavigationProperty Name="Area" Relationship="Self.FK_ElectionAssignmnet_Area" FromRole="ElectionAssignmnet" ToRole="Area" />
           <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="ElectionAssignmnet" ToRole="Election_Details" />
+          <NavigationProperty Name="ElectionCandidates" Relationship="Self.AssingmentElectionDetails" FromRole="ElectionAssignmnet" ToRole="ElectionCandidate" />
           <NavigationProperty Name="Zone" Relationship="Self.FK_ElectionAssignmnet_Zone" FromRole="ElectionAssignmnet" ToRole="Zone" />
         </EntityType>
         <EntityType Name="ElectionCandidate">
@@ -687,8 +727,11 @@
           <Property Name="CandidateID" Type="Int32" Nullable="false" />
           <Property Name="ElectionID" Type="Int32" Nullable="false" />
           <Property Name="ElectionComplete" Type="Int32" Nullable="false" />
+          <Property Name="AssignmentElectionID" Type="Int32" />
+          <Property Name="CandidateSymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Candidate" Relationship="Self.FK_ElectionCandidate_Candidate" FromRole="ElectionCandidate" ToRole="Candidate" />
           <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="ElectionCandidate" ToRole="Election_Details" />
+          <NavigationProperty Name="ElectionAssignmnet" Relationship="Self.AssingmentElectionDetails" FromRole="ElectionCandidate" ToRole="ElectionAssignmnet" />
         </EntityType>
         <EntityType Name="ElectionType">
           <Key>
@@ -1011,6 +1054,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="AssingmentElectionDetails">
+          <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
+          <End Role="ElectionCandidate" Type="Self.ElectionCandidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ElectionAssignmnet">
+              <PropertyRef Name="AssignmentElection" />
+            </Principal>
+            <Dependent Role="ElectionCandidate">
+              <PropertyRef Name="AssignmentElectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ElectionAssignmnet_Zone">
           <End Role="Zone" Type="Self.Zone" Multiplicity="0..1" />
           <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="*" />
@@ -1059,9 +1114,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities6" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="AdminAssignments" EntityType="Self.AdminAssignment" />
+          <EntitySet Name="Announcements" EntityType="Self.Announcement" />
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="Areas" EntityType="Self.Area" />
           <EntitySet Name="Candidates" EntityType="Self.Candidate" />
@@ -1151,6 +1207,10 @@
             <End Role="Election_Details" EntitySet="Election_Details" />
             <End Role="Vote" EntitySet="Votes" />
           </AssociationSet>
+          <AssociationSet Name="AssingmentElectionDetails" Association="Self.AssingmentElectionDetails">
+            <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
+            <End Role="ElectionCandidate" EntitySet="ElectionCandidates" />
+          </AssociationSet>
           <AssociationSet Name="FK_ElectionAssignmnet_Zone" Association="Self.FK_ElectionAssignmnet_Zone">
             <End Role="Zone" EntitySet="Zones" />
             <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
@@ -1173,7 +1233,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities6">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Admins">
             <EntityTypeMapping TypeName="Model.Admin">
               <MappingFragment StoreEntitySet="Admin">
@@ -1200,6 +1260,17 @@
                 <ScalarProperty Name="AssignmentIssueDate" ColumnName="AssignmentIssueDate" />
                 <ScalarProperty Name="AssignmentFixedDate" ColumnName="AssignmentFixedDate" />
                 <ScalarProperty Name="AssignmentUpdate" ColumnName="AssignmentUpdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="Model.Announcement">
+              <MappingFragment StoreEntitySet="Announcement">
+                <ScalarProperty Name="AnnoucemntID" ColumnName="AnnoucemntID" />
+                <ScalarProperty Name="AnnoucementTitle" ColumnName="AnnoucementTitle" />
+                <ScalarProperty Name="AnoucementDetails" ColumnName="AnoucementDetails" />
+                <ScalarProperty Name="AnnoucementImage" ColumnName="AnnoucementImage" />
+                <ScalarProperty Name="PublishedDate" ColumnName="PublishedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1275,6 +1346,8 @@
                 <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
                 <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
                 <ScalarProperty Name="ElectionComplete" ColumnName="ElectionComplete" />
+                <ScalarProperty Name="AssignmentElectionID" ColumnName="AssignmentElectionID" />
+                <ScalarProperty Name="CandidateSymbol" ColumnName="CandidateSymbol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

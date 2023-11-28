@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentSQLProvider.cs" />
+    <Compile Include="AppointmentAnnoucementSQLProvider.cs" />
     <Compile Include="ElectionSettingsSQLProvider.cs" />
     <Compile Include="PartySQLProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

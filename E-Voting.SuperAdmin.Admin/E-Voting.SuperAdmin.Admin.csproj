@@ -1396,6 +1396,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AppointmentAnnoucementController.cs" />
     <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\ElectionSettingsController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
@@ -1458,6 +1459,10 @@
     <Content Include="Views\Staff\AddNewAdmin.cshtml" />
     <Content Include="Views\Staff\GetAllAdmin.cshtml" />
     <Content Include="Views\Staff\GetAllVoter.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\AddNewAnnoucement.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\GetAllAnnoucement.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\AddNewAppointment.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\GetAllAppointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

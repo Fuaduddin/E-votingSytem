@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppointmentManager.cs" />
+    <Compile Include="AppointmentAnnoucementManager.cs" />
     <Compile Include="StaffManager.cs" />
     <Compile Include="ElectionSettingsManager.cs" />
     <Compile Include="PartyManager.cs" />

@@ -22,12 +22,15 @@ namespace Evoting.Models
         public CandidateModel Candidate { get; set; }
         public AdminModel Admin { get; set; }
         public UserModel User { get; set; }
-
+        public AnnoucementModel Annoucement { get; set; }
+        public AppointmentAnnoucementModel Appointment { get; set; }
 
 
 
 
         // All List
+        public List<AppointmentAnnoucementModel> AppointmentList { get; set; }
+        public List<AnnoucementModel> AnnoucementList { get; set; }
         public List<PartyModel> PartyList { get; set; }
         public List<ElectionModel> ElectionTypeList { get; set; }
         public List<zoneModel> ZoneList { get; set; }

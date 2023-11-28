@@ -1,0 +1,76 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "AddNewAppointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">ADD New Annoucement</h4>
+            @using (Html.BeginForm("AddNewAppointment", "AppointmentAnnoucement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(Model => Model.Appointment.AppointmentID)
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <br />
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "form-control", @placeholder = "Annoucement Title" })
+                                @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Appointment.UserPhoneNumber, new { @class = "form-control", rows = "6", placeholder = "Annoucement Details" })
+                                @Html.ValidationMessageFor(model => model.Appointment.UserPhoneNumber)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Annoucement Details</label>
+                            <div class="col-sm-9">
+                                @Html.DropDownListFor(model => model.Appointment.AppointmentSubject, new SelectList(Model.AppointmentSubject, "value", "label"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Appointment Details</label>
+                            <div class="col-sm-9">
+
+                                @Html.TextAreaFor(model => model.Appointment.AppointmentDetails, new { @class = "form-control", rows = "6", placeholder = "Annoucement Details" })
+                                @Html.ValidationMessageFor(model => model.Appointment.AppointmentDetails)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                if (Model.Appointment.AppointmentID > 0 && Model.Appointment != null)
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Update</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+                else
+                {
+
+                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                }
+            }
+        </div>
+    </div>
+</div>
+

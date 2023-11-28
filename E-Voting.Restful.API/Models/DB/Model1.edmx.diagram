@@ -4,22 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bd709dbbeb1b4461873aa5f39659c6c5" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Admin" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.AdminAssignment" Width="1.5" PointX="10.5" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Appointment" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Area" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Candidate" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Election_Detail" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ElectionAssignmnet" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ElectionCandidate" Width="1.5" PointX="13.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ElectionType" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Result" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Vote" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Voter" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Zone" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+      <Diagram DiagramId="bea9d142131d4779964fbe63ed8c09ae" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Admin" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AdminAssignment" Width="1.5" PointX="10.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Announcement" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Appointment" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Area" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Candidate" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Election_Detail" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ElectionAssignmnet" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ElectionCandidate" Width="1.5" PointX="10.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ElectionType" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Party" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Result" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Vote" Width="1.5" PointX="10.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Voter" Width="1.5" PointX="5.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zone" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Admin_Area" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Admin_User" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Admin_Zone" ManuallyRouted="false" />
@@ -39,6 +40,7 @@
         <AssociationConnector Association="Model.FK_ElectionCandidate_Election_Details" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Result_Election_Details" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Vote_Election_Details" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.AssingmentElectionDetails" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_ElectionAssignmnet_Zone" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Voter_User" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Vote_Voter" ManuallyRouted="false" />

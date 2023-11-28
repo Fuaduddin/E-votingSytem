@@ -87,6 +87,8 @@ D:\Protfolios\E-voting\Project\Evoting\E-Voting.Restful.API\obj\Debug\E-Voting.R
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.dll
 D:\Protfolios\E-voting\Project\Evoting\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.pdb
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.AssemblyReference.cache
+D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\E-Voting.Restful.API.dll.config
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\E-Voting.Restful.API.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\E-Voting.Restful.API.pdb
@@ -173,8 +175,6 @@ D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Sy
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\System.Web.WebPages.Razor.xml
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Antlr3.Runtime.pdb
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.CoreCompileInputs.cache
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.dll
 D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\obj\Debug\E-Voting.Restful.API.pdb

@@ -25,17 +25,17 @@ namespace Evoting.Controllers
         {
             GlobalCommonData constant = new GlobalCommonData();
            CustomerViewModel appointment = new CustomerViewModel();
-           appointment.Appointment=new AppointmentModel();
+           appointment.Appointment=new AppointmentAnnoucementModel();
            appointment.AppointmentSubject = constant.AppointmentSubject;
            return View("Appointment", appointment);
         }
 
         [HttpPost]
-        public ActionResult Appointment(AppointmentModel appointment)
+        public ActionResult Appointment(AppointmentAnnoucementModel appointment)
         {
             if(ModelState.IsValid)
             {
-                if (AppointmentManager.AddNewAppointment(appointment))
+                if (AppointmentAnnoucementManager.AddNewAppointment(appointment))
                 {
                     ViewData["Message"] = "In 72 hours Our agents will contact with you.. ";
                     ModelState.Clear();

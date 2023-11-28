@@ -14,6 +14,12 @@ namespace E_Voting.Restful.API.Models.DB
     
     public partial class ElectionAssignmnet
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ElectionAssignmnet()
+        {
+            this.ElectionCandidates = new HashSet<ElectionCandidate>();
+        }
+    
         public int AssignmentElection { get; set; }
         public Nullable<int> ElectionID { get; set; }
         public Nullable<int> ZoneID { get; set; }
@@ -21,6 +27,8 @@ namespace E_Voting.Restful.API.Models.DB
     
         public virtual Area Area { get; set; }
         public virtual Election_Detail Election_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }
         public virtual Zone Zone { get; set; }
     }
 }
