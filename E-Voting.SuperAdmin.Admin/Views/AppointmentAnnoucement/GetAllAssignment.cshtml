@@ -1,7 +1,7 @@
 ﻿@model Evoting.Models.SuperAdminAndAdminViewModel
 
 @{
-    ViewBag.Title = "GetAllAppointment";
+    ViewBag.Title = "GetAllAssignment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,9 +9,9 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Appointment Details Table</h4>
+                <h4 class="card-title">Appointment Assignment Details Table</h4>
                 <p class="card-description">
-                    Appointment <code>Details</code>
+                    Appointment Assignment <code>Details</code>
                 </p>
                 <div class="table-responsive">
                     <div class="">
@@ -21,69 +21,62 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Appointment Subject</th>
-                                <th>Appointment Description</th>
+                                <th>Appointment Assignment Subject</th>
+                                <th>Appointment Assignment Description</th>
                                 <th>User Details</th>
                                 <th>Appointment Assign to</th>
-                                <th>Appointment Update</th>
+                                <th>Appointment Assignment Fixed Date</th>
+                                <th>Appointment Assignment Update</th>
                                 <th>Delete</th>
                                 <th>Update</th>
-                                <th>Assign to</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (Model.AppointmentList.Count > 0)
+                            @if (Model.AssignemntAppointmentList.Count > 0)
                             {
                                 int serialno = 1;
-                                foreach (var Appointment in Model.AppointmentList)
+                                foreach (var AssignemntAppointmentdetails in Model.AssignemntAppointmentList)
                                 {
 
                                     <tr>
                                         <td>@serialno</td>
-                                        <td>@Appointment.AppointmentSubject</td>
-                                        <td>@Appointment.AppointmentDetails</td>
+                                        <td>@AssignemntAppointmentdetails.Appointment.AppointmentSubject</td>
+                                        <td>@AssignemntAppointmentdetails.Appointment.AppointmentDetails</td>
                                         <td>
-                                            <span><b><i>Email: </i></b>@Appointment.UserEmaul</span> <br />
-                                            <span><b><i>Phone Number: </i></b>@Appointment.UserPhoneNumber</span> <br />
+                                            <span><b><i>Email: </i></b>@AssignemntAppointmentdetails.Appointment.UserEmaul</span> <br />
+                                            <span><b><i>Phone Number: </i></b>@AssignemntAppointmentdetails.Appointment.UserPhoneNumber</span> <br />
                                         </td>
-                                        @if (Appointment.AssignToAdmin > 0)
+                                        <td>@AssignemntAppointmentdetails.Admin.AdminName</td>
+                                        @if (AssignemntAppointmentdetails.AssignmentFixedDate != null)
                                         {
                                             <td>
-                                                <span><b><i>Assigned </i></b></span>
+                                                <span><b><i>@AssignemntAppointmentdetails.AssignmentFixedDate  </i></b></span>
                                             </td>
                                         }
                                         else
                                         {
                                             <td>
-                                                <span><b><i>Pending</i></b></span>
+                                                <span><b><i>Pending </i></b></span>
                                             </td>
                                         }
-                                        @if (Appointment.AssignmentUpdate > 0)
+                                        @if (AssignemntAppointmentdetails.AssignmentUpdate >0)
                                         {
                                             <td>
-                                                <span><b><i>Complete </i></b></span>
+                                                <span><b><i>Complete  </i></b></span>
                                             </td>
                                         }
                                         else
                                         {
                                             <td>
-                                                <span><b><i>Pending</i></b></span>
+                                                <span><b><i>Pending </i></b></span>
                                             </td>
                                         }
-
                                         <td>
-                                            @Html.ActionLink("Delete", "DeleteAssignment", new { Id = Appointment.AppointmentID }, new { @class = "btn btn-danger", type = "button" })
+                                            @Html.ActionLink("Delete", "DeleteAnnoucement", new { Id = AssignemntAppointmentdetails.AssignmentID }, new { @class = "btn btn-danger", type = "button" })
                                         </td>
                                         <td>
-                                            @Html.ActionLink("Update", "GetSingleAssignment", new { Id = Appointment.AppointmentID }, new { @class = "btn btn-danger", type = "button" })
+                                            @Html.ActionLink("Update", "GetSingleAnnoucement", new { Id = AssignemntAppointmentdetails.AssignmentID }, new { @class = "btn btn-danger", type = "button" })
                                         </td>
-                                        @if (Appointment.AssignToAdmin == 0)
-                                        {
-                                            <td>
-                                                @Html.ActionLink("Assign to Admin", "AddNewAssignment", new { Id = Appointment.AppointmentID }, new { @class = "btn btn-danger", type = "button" })
-                                            </td>
-                                        }
-
                                     </tr>
                                     serialno++;
                                 }
@@ -102,6 +95,4 @@
         </div>
     </div>
 </div>
-
-
 

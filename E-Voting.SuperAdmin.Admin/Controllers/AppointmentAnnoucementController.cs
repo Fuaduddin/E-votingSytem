@@ -124,6 +124,39 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         //    var result = JsonConvert.SerializeObject(party);
         //    return Json(result, JsonRequestBehavior.AllowGet);
         //}
+        // All Extra Feautures not complete
+        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+        //private int pagecountElectiontype(int perpagedata)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        //}
+        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+
+        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+        //    party.TotalPage = pagecountElectiontype(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
+        //    party.TotalPage = pagecountArea(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
 
         // Appointment
         public ActionResult AddNewAAppointment()
@@ -184,7 +217,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         {
             if (id > 0)
             {
-                if (AppointmentAnnoucementManager.DeleteAppointment(id))
+                if (AppointmentAnnoucementManager.DeleteAssignmentAppointment(id))
                 {
                     ViewData["Message"] = "Your data have been Deleted";
                 }
@@ -203,5 +236,120 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             Appointment.Appointment = AppointmentAnnoucementManager.GetSingleAppointment(id);
             return View("AddNewAppointment", Appointment);
         }
+
+        // Assign to admin
+        public ActionResult AddNewAssignment(int id)
+        {
+
+            SuperAdminAndAdminViewModel AssignmentAppointment = new SuperAdminAndAdminViewModel();
+            AssignmentAppointment.Appointment = AppointmentAnnoucementManager.GetSingleAppointment(id);
+            AssignmentAppointment.AdminList = StaffManager.GetAllAdmin();
+            AssignmentAppointment.AssignemntAppointment = new AssignmentAppointment();
+            return View("AddNewAssignment", AssignmentAppointment);
+        }
+        [HttpPost]
+        public ActionResult AddNewAssignment(SuperAdminAndAdminViewModel AssignmentAppointment)
+        {
+            if (AssignmentAppointment.AssignemntAppointment.AssignmentID > 0)
+            {
+                if (AppointmentAnnoucementManager.UpdateAssignmentAppointment(AssignmentAppointment.AssignemntAppointment))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                    ModelState.Clear();
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!! ERROR !!!!!!!!!!";
+                }
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    AssignmentAppointment.AssignemntAppointment.AssignmentIssueDate= DateTime.Now;
+                    AssignmentAppointment.AssignemntAppointment.AppointmentID = AssignmentAppointment.Appointment.AppointmentID;
+                    AssignmentAppointment.AssignemntAppointment.AssignmentUpdate = 0;
+                    if (AppointmentAnnoucementManager.AddNewAssignmentAppointment(AssignmentAppointment.AssignemntAppointment))
+                    {
+                        ViewData["Message"] = "Your data have been Added ";
+                        ModelState.Clear();
+                        SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
+                        AssignmentAppointmentList.AssignemntAppointmentList = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+                    }
+                    else
+                    {
+                        ViewData["Message"] = "!!!!!!! Error !!!!!!!!!";
+                    }
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!! Error !!!!!!!!!";
+                }
+            }
+            return View("GetAllAssignment");
+        }
+        public ActionResult GetAllAssignment()
+        {
+            SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
+            AssignmentAppointmentList.AssignemntAppointmentList = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            return View("GetAllAssignment", AssignmentAppointmentList);
+        }
+        public ActionResult DeleteAssignment(int id)
+        {
+            if (id > 0)
+            {
+                if (AppointmentAnnoucementManager.DeleteAssignmentAppointment(id))
+                {
+                    ViewData["Message"] = "Your data have been Deleted";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!! ERROR !!!!!!!!!!";
+                }
+            }
+            SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
+            AssignmentAppointmentList.AssignemntAppointmentList = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            return View("GetAllAssignment", AssignmentAppointmentList);
+        }
+        public ActionResult GetSingleAssignment(int id)
+        {
+            SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
+            AssignmentAppointmentList.AssignemntAppointment = AppointmentAnnoucementManager.GetSingleAssignmentAppointment(id);
+            return View("AddNewAssignment", AssignmentAppointmentList);
+        }
+
+        // All Extra Feautures not complete
+        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+        //private int pagecountElectiontype(int perpagedata)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
+        //}
+        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
+        //{
+        //    List<PartyModel> partylist = PartyManager.GetAllParty();
+        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        //}
+
+        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
+        //    party.TotalPage = pagecountElectiontype(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
+        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
+        //{
+        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
+        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
+        //    party.TotalPage = pagecountArea(pagesize);
+        //    var result = JsonConvert.SerializeObject(party);
+        //    return Json(result, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

@@ -73,5 +73,38 @@ namespace Evoting.BusinessLayer
             var Annoucement = provider.DeleteAnnoucement(id);
             return Annoucement;
         }
+
+        // Assignment Appointment Start
+
+        public static bool AddNewAssignmentAppointment(AssignmentAppointment AssingAppointment)
+        {
+            AppointmentAnnoucementSQLProvider provider = new AppointmentAnnoucementSQLProvider();
+            var Annoucement = provider.AddNewAssignmentAppointment(AssingAppointment);
+            return Annoucement;
+        }
+        public static bool UpdateAssignmentAppointment(AssignmentAppointment AssingAppointment)
+        {
+            AppointmentAnnoucementSQLProvider provider = new AppointmentAnnoucementSQLProvider();
+            var Annoucement = provider.UpdateAssignmentAppointment(AssingAppointment);
+            return Annoucement;
+        }
+        public static List<AssignmentAppointment> GetAllAssignmentAppointment()
+        {
+            AppointmentAnnoucementSQLProvider provider = new AppointmentAnnoucementSQLProvider();
+            var Annoucement = provider.GetAllAssignmentAppointment();
+            return Annoucement;
+        }
+        public static AssignmentAppointment GetSingleAssignmentAppointment(int id)
+        {
+            AppointmentAnnoucementSQLProvider provider = new AppointmentAnnoucementSQLProvider();
+            var Annoucement = provider.GetSingleAssignmentAppointment(id);
+            return Annoucement;
+        }
+        public static bool DeleteAssignmentAppointment(int id)
+        {
+            AppointmentAnnoucementSQLProvider provider = new AppointmentAnnoucementSQLProvider();
+            var Annoucement = provider.DeleteAssignmentAppointment(id);
+            return Annoucement;
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace Evoting.Models
         public int UserIDNo { get; set; }
         public string UserID { get; set; }
         public string UserPassword { get; set; }
-        public DateTime UserLastLogin { get; set; }
+        public DateTime? UserLastLogin { get; set; }
         public int UserTotalLogin { get; set; }
-        public DateTime UserLastLogout { get; set; }
+        public DateTime? UserLastLogout { get; set; }
         public string UserRole { get; set; }
         public string UserStatus { get; set; }
     }

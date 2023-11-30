@@ -12,6 +12,13 @@ namespace Evoting.Models
     {
         public AppointmentAnnoucementModel Appointment { get; set; }
         public UserModel UserDetails { get; set; }
+        public AnnoucementModel Annoucement { get; set; }
+
+
+
+        // All List
+        public List<AnnoucementModel> AnnoucementList { get; set; }
+
 
 
 

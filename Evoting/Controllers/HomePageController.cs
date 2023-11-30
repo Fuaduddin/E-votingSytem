@@ -16,7 +16,9 @@ namespace Evoting.Controllers
         [Route("Home")]
         public ActionResult Index()
         {
-            return View("Index");
+            CustomerViewModel EvotingHomePage = new CustomerViewModel();
+            EvotingHomePage.AnnoucementList = AppointmentAnnoucementManager.GetAllAnnoucement();
+            return View("Index",EvotingHomePage);
         }
 
 		// Election Related Pages

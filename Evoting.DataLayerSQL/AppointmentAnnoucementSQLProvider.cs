@@ -154,5 +154,78 @@ namespace Evoting.DataLayerSQL
             }
             return IsDeleted;
         }
+
+        // Assign Appointment
+        public bool AddNewAssignmentAppointment(AssignmentAppointment AssingAppointment)
+        {
+            bool Isadded = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("AdminAssignments", AssingAppointment).Result;
+            }
+            catch (Exception ex)
+            {
+                Isadded = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return Isadded;
+        }
+        public bool UpdateAssignmentAppointment(AssignmentAppointment AssingAppointment)
+        {
+            bool IsUpdated = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("AdminAssignments/" + AssingAppointment.AssignmentID.ToString(), AssingAppointment).Result;
+            }
+            catch (Exception ex)
+            {
+                IsUpdated = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsUpdated;
+        }
+        public List<AssignmentAppointment> GetAllAssignmentAppointment()
+        {
+            List<AssignmentAppointment> AssignmentAppointList = new List<AssignmentAppointment>();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("AdminAssignments").Result;
+                AssignmentAppointList = (List<AssignmentAppointment>)responseSingle.Content.ReadAsAsync<IEnumerable<AssignmentAppointment>>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return AssignmentAppointList;
+        }
+        public AssignmentAppointment GetSingleAssignmentAppointment(int id)
+        {
+            AssignmentAppointment annoucement = new AssignmentAppointment();
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("AdminAssignments/" + id.ToString()).Result;
+                annoucement = (AssignmentAppointment)responseSingle.Content.ReadAsAsync<AssignmentAppointment>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return annoucement;
+        }
+        public bool DeleteAssignmentAppointment(int id)
+        {
+            bool IsDeleted = true;
+            try
+            {
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("AdminAssignments/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsDeleted = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsDeleted;
+        }
     }
 }
+

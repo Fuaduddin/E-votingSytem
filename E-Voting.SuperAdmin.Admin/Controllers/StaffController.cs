@@ -411,10 +411,8 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             {
                 UserID = settings.PasswordEncrypt(UserNID),
                 UserPassword = settings.PasswordEncrypt(UserPassword),
-                UserLastLogin = DateTime.Now,
                 UserStatus = Status.Active.ToString(),
                 UserTotalLogin = 0,
-                UserLastLogout = DateTime.Now
             };
             return UserDetails;
         }

@@ -1,4 +1,12 @@
-﻿<!-- Start Blog Area -->
+﻿@model Evoting.Models.CustomerViewModel
+
+@{ 
+    var LatestAnnoucement = Model.AnnoucementList.OrderByDescending(x=>x.PublishedDate).Take(3).ToList();
+    var ConstantImagePath = "~/Content/img/blog/3.jpg";
+}
+
+
+<!-- Start Blog Area -->
 <div id="blog" class="blog-area">
     <div class="blog-inner area-padding">
         <div class="blog-overly"></div>
@@ -10,13 +18,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!-- Start Left Blog -->
+            @if (LatestAnnoucement == null)
+            {
+                <div class="row">
+                    <b>
+                        <i>
+                            <h4 style="color:black; text-align: center; font-size: 29px;"> There is no latest news</h4>
+                        </i>
+                    </b> 
+                </div>
+            }
+            else
+            {
+        <div class="row">
+            @foreach (var LatestNews in LatestAnnoucement)
+            {
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="single-blog">
                         <div class="single-blog-img">
-                            <a href="blog.html">
-                                <img src="~/Content/img/blog/1.jpg" alt="">
+                            <a href="/SinglePage/SinglePageAnnoucement/@LatestNews.AnnoucemntID">
+                                <img src="@(LatestNews.AnnoucementImage != null ? LatestNews.AnnoucementImage : ConstantImagePath )" alt="">
                             </a>
                         </div>
                         <div class="blog-meta">
@@ -25,88 +46,27 @@
                                 <a href="#">13 comments</a>
                             </span>
                             <span class="date-type">
-                                <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                                <i class="fa fa-calendar"></i>@LatestNews.PublishedDate.ToString() / @LatestNews.PublishedDate.ToString()
                             </span>
                         </div>
                         <div class="blog-text">
                             <h4>
-                                <a href="blog.html">Assumenda repud eum veniam</a>
+                                <a href="/SinglePage/SinglePageAnnoucement/@LatestNews.AnnoucemntID">@LatestNews.AnnoucementTitle</a>
                             </h4>
                             <p>
-                                Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
+                               @LatestNews.AnoucementDetails
                             </p>
                         </div>
                         <span>
-                            <a href="blog.html" class="ready-btn">Read more</a>
+                            <a href="/SinglePage/SinglePageAnnoucement/@LatestNews.AnnoucemntID" class="ready-btn">Read more</a>
                         </span>
                     </div>
-                    <!-- Start single blog -->
+                   
                 </div>
-                <!-- End Left Blog-->
-                <!-- Start Left Blog -->
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-blog">
-                        <div class="single-blog-img">
-                            <a href="blog.html">
-                                <img src="~/Content/img/blog/2.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blog-meta">
-                            <span class="comments-type">
-                                <i class="fa fa-comment-o"></i>
-                                <a href="#">130 comments</a>
-                            </span>
-                            <span class="date-type">
-                                <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                            </span>
-                        </div>
-                        <div class="blog-text">
-                            <h4>
-                                <a href="blog.html">Explicabo magnam quibusdam.</a>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                            </p>
-                        </div>
-                        <span>
-                            <a href="blog.html" class="ready-btn">Read more</a>
-                        </span>
-                    </div>
-                    <!-- Start single blog -->
-                </div>
-                <!-- End Left Blog-->
-                <!-- Start Right Blog-->
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="single-blog">
-                        <div class="single-blog-img">
-                            <a href="blog.html">
-                                <img src="~/Content/img/blog/3.jpg" alt="">
-                            </a>
-                        </div>
-                        <div class="blog-meta">
-                            <span class="comments-type">
-                                <i class="fa fa-comment-o"></i>
-                                <a href="#">10 comments</a>
-                            </span>
-                            <span class="date-type">
-                                <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
-                            </span>
-                        </div>
-                        <div class="blog-text">
-                            <h4>
-                                <a href="blog.html">Lorem ipsum dolor sit amet</a>
-                            </h4>
-                            <p>
-                                Lorem ipsum dolor sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.sit amet conse adipis elit Assumenda repud eum veniam optio modi sit explicabo nisi magnam quibusdam.
-                            </p>
-                        </div>
-                        <span>
-                            <a href="blog.html" class="ready-btn">Read more</a>
-                        </span>
-                    </div>
-                </div>
-                <!-- End Right Blog-->
-            </div>
+            }
+        </div>
+            }
+
         </div>
     </div>
 </div>

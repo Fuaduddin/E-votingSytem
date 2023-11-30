@@ -1,4 +1,4 @@
-﻿
+﻿@model Evoting.Models.CustomerViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -100,5 +100,5 @@
 @Html.Partial("~/Views/Partial/_RecentElection.cshtml")
 @Html.Partial("~/Views/Partial/_Testimonial.cshtml")
 @Html.Partial("~/Views/Partial/_GivevoteBanner.cshtml")
-@Html.Partial("~/Views/Partial/_Annoucement.cshtml")
+@Html.Partial("~/Views/Partial/_Annoucement.cshtml", Model)
 <!-- End Partial view -->

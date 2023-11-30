@@ -1463,6 +1463,8 @@
     <Content Include="Views\AppointmentAnnoucement\GetAllAnnoucement.cshtml" />
     <Content Include="Views\AppointmentAnnoucement\AddNewAppointment.cshtml" />
     <Content Include="Views\AppointmentAnnoucement\GetAllAppointment.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\AddNewAssignment.cshtml" />
+    <Content Include="Views\AppointmentAnnoucement\GetAllAssignment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
