@@ -273,7 +273,7 @@ namespace Evoting.DataLayerSQL
             bool isAdded = true;
             try
             {
-                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("ElectionAssignmnets", AssingmentElectionDetails).Result;
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("ElectionAssignments", AssingmentElectionDetails).Result;
             }
             catch (Exception ex)
             {
@@ -282,13 +282,13 @@ namespace Evoting.DataLayerSQL
             }
             return isAdded;
         }
-        public List<ElectionAssignmentModel> GetAllAssingElectionDetails()
+        public List<ElectionDetailsModel> GetAllAssingElectionDetails()
         {
-            List<ElectionAssignmentModel> AllAssingElectionDetails = new List<ElectionAssignmentModel>();
+            List<ElectionDetailsModel> AllAssingElectionDetails = new List<ElectionDetailsModel>();
             try
             {
-                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets").Result;
-                AllAssingElectionDetails = (List<ElectionAssignmentModel>)responseSingle.Content.ReadAsAsync<IEnumerable<areamodel>>().Result;
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignments").Result;
+                AllAssingElectionDetails = (List<ElectionDetailsModel>)responseSingle.Content.ReadAsAsync<IEnumerable<ElectionDetailsModel>>().Result;
             }
             catch (Exception ex)
             {
@@ -301,7 +301,7 @@ namespace Evoting.DataLayerSQL
             bool IsDeleted = true;
             try
             {
-                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("ElectionAssignmnets/" + id.ToString()).Result;
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("ElectionAssignments/" + id.ToString()).Result;
             }
             catch (Exception ex)
             {
@@ -315,7 +315,7 @@ namespace Evoting.DataLayerSQL
             ElectionAssignmentModel election = new ElectionAssignmentModel();
             try
             {
-                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignmnets/" + id.ToString()).Result;
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignments/" + id.ToString()).Result;
                 election = (ElectionAssignmentModel)responseSingle.Content.ReadAsAsync<ElectionAssignmentModel>().Result;
             }
             catch (Exception ex)

@@ -26,6 +26,7 @@ namespace Evoting.Models
         public areamodel Area { get; set; }
         public UserModel User { get; set; }
         public zoneModel Zone { get; set; }
+        public AssignmentCandidateModel AssignmentCandidate { get; set; }
     }
     public class AssignmentCandidateModel
     {
@@ -33,7 +34,11 @@ namespace Evoting.Models
         public int CandidateID { get; set; }
         public int ElectionID { get; set; }
         public int ElectionComplete { get; set; }
+        public string CandidateSymbol { get; set; }
+        public int ZoneandArea { get; set; }
+
         public CandidateModel Candidate { get; set; }
-        public virtual ElectionDetailsModel Election_Details { get; set; }
+        public  ElectionDetailsModel Election_Details { get; set; }
+        public  ElectionAssignmentModel ElectionAssignment { get; set; }
     }
 }

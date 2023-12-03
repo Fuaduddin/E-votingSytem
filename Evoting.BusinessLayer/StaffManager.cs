@@ -111,12 +111,12 @@ namespace Evoting.BusinessLayer
             var OutPut = provider.AddNewUser(User);
             return OutPut;
         }
-        //public static List<AdminModel> GetAllUser()
-        //{
-        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
-        //    var OutPut = provider.GetAllUser();
-        //    return OutPut;
-        //}
+        public static List<UserModel> GetAllUser()
+        {
+            StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+            var OutPut = provider.GetAllUser();
+            return OutPut;
+        }
         //public static bool DeleteUser(int id)
         //{
         //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
@@ -129,11 +129,11 @@ namespace Evoting.BusinessLayer
         //    var OutPut = provider.GetSingleUser(id);
         //    return OutPut;
         //}
-        //public static bool UpdateUser(AdminModel Admin)
-        //{
-        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
-        //    var OutPut = provider.AddNewUser(Admin);
-        //    return OutPut;
-        //}
+        public static bool UpdateUser(UserModel User)
+        {
+            StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+            var OutPut = provider.UpdateUser(User);
+            return OutPut;
+        }
     }
 }

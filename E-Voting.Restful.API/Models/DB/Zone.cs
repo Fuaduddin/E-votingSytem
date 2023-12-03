@@ -20,7 +20,7 @@ namespace E_Voting.Restful.API.Models.DB
             this.Admins = new HashSet<Admin>();
             this.Areas = new HashSet<Area>();
             this.Candidates = new HashSet<Candidate>();
-            this.ElectionAssignmnets = new HashSet<ElectionAssignmnet>();
+            this.ElectionAssignments = new HashSet<ElectionAssignment>();
             this.Voters = new HashSet<Voter>();
         }
     
@@ -34,7 +34,7 @@ namespace E_Voting.Restful.API.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Candidate> Candidates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ElectionAssignmnet> ElectionAssignmnets { get; set; }
+        public virtual ICollection<ElectionAssignment> ElectionAssignments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Voter> Voters { get; set; }
     }

@@ -36,7 +36,7 @@ namespace Evoting.DataLayer
 
         //Election Assing
         bool AddNewAssingmentElectionDetails(ElectionAssignmentModel AssingmentElectionDetails);
-        List<ElectionAssignmentModel> GetAllAssingElectionDetails();
+        List<ElectionDetailsModel> GetAllAssingElectionDetails();
         bool DeleteAssingElectionDetails(int id);
         ElectionAssignmentModel GetSIngleAssingElectionDetails(int id);
     }

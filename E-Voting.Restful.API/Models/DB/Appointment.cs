@@ -27,6 +27,7 @@ namespace E_Voting.Restful.API.Models.DB
         public string UserEmaul { get; set; }
         public Nullable<int> AssignToAdmin { get; set; }
         public Nullable<int> AssignmentUpdate { get; set; }
+        public string CustomerName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdminAssignment> AdminAssignments { get; set; }

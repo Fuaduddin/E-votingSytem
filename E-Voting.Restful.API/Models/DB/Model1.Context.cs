@@ -32,7 +32,7 @@ namespace E_Voting.Restful.API.Models.DB
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Candidate> Candidates { get; set; }
         public virtual DbSet<Election_Detail> Election_Details { get; set; }
-        public virtual DbSet<ElectionAssignmnet> ElectionAssignmnets { get; set; }
+        public virtual DbSet<ElectionAssignment> ElectionAssignments { get; set; }
         public virtual DbSet<ElectionCandidate> ElectionCandidates { get; set; }
         public virtual DbSet<ElectionType> ElectionTypes { get; set; }
         public virtual DbSet<Party> Parties { get; set; }

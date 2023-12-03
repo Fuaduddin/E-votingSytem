@@ -11,6 +11,7 @@ namespace Evoting.Models
         public int AppointmentID { get; set; }
         public string AppointmentSubject { get; set; }
         public string AppointmentDetails { get; set; }
+        public string CustomerName { get; set; }
         public string UserPhoneNumber { get; set; }
         public string UserEmaul { get; set; }
         public int AssignToAdmin { get; set; }

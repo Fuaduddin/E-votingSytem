@@ -47,6 +47,7 @@
     <Compile Include="AppointmentAnnoucementModel.cs" />
     <Compile Include="CandidateModel.cs" />
     <Compile Include="CommonModel.cs" />
+    <Compile Include="GiveVoteModel.cs" />
     <Compile Include="VoterCandidateViewModel.cs" />
     <Compile Include="VoterModel.cs" />
     <Compile Include="CustomerViewModel.cs" />

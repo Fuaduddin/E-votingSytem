@@ -54,6 +54,7 @@
     <Property Name="UserEmaul" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="AssignToAdmin" Type="Int32" />
     <Property Name="AssignmentUpdate" Type="Int32" />
+    <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="AdminAssignments" Relationship="Self.FK_AdminAssignment_Appointment" FromRole="Appointment" ToRole="AdminAssignment" />
   </EntityType>
   <EntityType Name="Area">
@@ -67,7 +68,7 @@
     <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_Area" FromRole="Area" ToRole="Admin" />
     <NavigationProperty Name="Zone" Relationship="Self.FK_Area_Zone" FromRole="Area" ToRole="Zone" />
     <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_Area" FromRole="Area" ToRole="Candidate" />
-    <NavigationProperty Name="ElectionAssignmnets" Relationship="Self.FK_ElectionAssignmnet_Area" FromRole="Area" ToRole="ElectionAssignmnet" />
+    <NavigationProperty Name="ElectionAssignments" Relationship="Self.FK_ElectionAssignment_Area" FromRole="Area" ToRole="ElectionAssignment" />
     <NavigationProperty Name="Voters" Relationship="Self.FK_Voter_Area" FromRole="Area" ToRole="Voter" />
   </EntityType>
   <EntityType Name="Candidate">
@@ -105,24 +106,24 @@
     <Property Name="StartDate" Type="DateTime" Precision="3" />
     <Property Name="EndDate" Type="DateTime" Precision="3" />
     <Property Name="ElectionStatus" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ElectionAssignments" Relationship="Self.ElectionAssingment" FromRole="Election_Details" ToRole="ElectionAssignment" />
     <NavigationProperty Name="ElectionType1" Relationship="Self.ElectionTypeDetails" FromRole="Election_Details" ToRole="ElectionType" />
-    <NavigationProperty Name="ElectionAssignmnet" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="Election_Details" ToRole="ElectionAssignmnet" />
     <NavigationProperty Name="ElectionCandidates" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="Election_Details" ToRole="ElectionCandidate" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Result_Election_Details" FromRole="Election_Details" ToRole="Result" />
     <NavigationProperty Name="Votes" Relationship="Self.FK_Vote_Election_Details" FromRole="Election_Details" ToRole="Vote" />
   </EntityType>
-  <EntityType Name="ElectionAssignmnet">
+  <EntityType Name="ElectionAssignment">
     <Key>
-      <PropertyRef Name="AssignmentElection" />
+      <PropertyRef Name="ElectionAssignID" />
     </Key>
-    <Property Name="AssignmentElection" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ElectionID" Type="Int32" />
-    <Property Name="ZoneID" Type="Int32" />
-    <Property Name="AreaID" Type="Int32" />
-    <NavigationProperty Name="Area" Relationship="Self.FK_ElectionAssignmnet_Area" FromRole="ElectionAssignmnet" ToRole="Area" />
-    <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionAssignmnet_Election_Details" FromRole="ElectionAssignmnet" ToRole="Election_Details" />
-    <NavigationProperty Name="ElectionCandidates" Relationship="Self.AssingmentElectionDetails" FromRole="ElectionAssignmnet" ToRole="ElectionCandidate" />
-    <NavigationProperty Name="Zone" Relationship="Self.FK_ElectionAssignmnet_Zone" FromRole="ElectionAssignmnet" ToRole="Zone" />
+    <Property Name="ElectionAssignID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ElectionID" Type="Int32" Nullable="false" />
+    <Property Name="ZoneID" Type="Int32" Nullable="false" />
+    <Property Name="AreaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Area" Relationship="Self.FK_ElectionAssignment_Area" FromRole="ElectionAssignment" ToRole="Area" />
+    <NavigationProperty Name="Election_Details" Relationship="Self.ElectionAssingment" FromRole="ElectionAssignment" ToRole="Election_Details" />
+    <NavigationProperty Name="ElectionCandidates" Relationship="Self.CandidateElectionZoneandAreaDetails" FromRole="ElectionAssignment" ToRole="ElectionCandidate" />
+    <NavigationProperty Name="Zone" Relationship="Self.FK_ElectionAssignment_Zone" FromRole="ElectionAssignment" ToRole="Zone" />
   </EntityType>
   <EntityType Name="ElectionCandidate">
     <Key>
@@ -132,11 +133,11 @@
     <Property Name="CandidateID" Type="Int32" Nullable="false" />
     <Property Name="ElectionID" Type="Int32" Nullable="false" />
     <Property Name="ElectionComplete" Type="Int32" Nullable="false" />
-    <Property Name="AssignmentElectionID" Type="Int32" />
     <Property Name="CandidateSymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ZoneandArea" Type="Int32" />
     <NavigationProperty Name="Candidate" Relationship="Self.FK_ElectionCandidate_Candidate" FromRole="ElectionCandidate" ToRole="Candidate" />
     <NavigationProperty Name="Election_Details" Relationship="Self.FK_ElectionCandidate_Election_Details" FromRole="ElectionCandidate" ToRole="Election_Details" />
-    <NavigationProperty Name="ElectionAssignmnet" Relationship="Self.AssingmentElectionDetails" FromRole="ElectionCandidate" ToRole="ElectionAssignmnet" />
+    <NavigationProperty Name="ElectionAssignment" Relationship="Self.CandidateElectionZoneandAreaDetails" FromRole="ElectionCandidate" ToRole="ElectionAssignment" />
   </EntityType>
   <EntityType Name="ElectionType">
     <Key>
@@ -228,7 +229,7 @@
     <NavigationProperty Name="Admins" Relationship="Self.FK_Admin_Zone" FromRole="Zone" ToRole="Admin" />
     <NavigationProperty Name="Areas" Relationship="Self.FK_Area_Zone" FromRole="Zone" ToRole="Area" />
     <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_Zone" FromRole="Zone" ToRole="Candidate" />
-    <NavigationProperty Name="ElectionAssignmnets" Relationship="Self.FK_ElectionAssignmnet_Zone" FromRole="Zone" ToRole="ElectionAssignmnet" />
+    <NavigationProperty Name="ElectionAssignments" Relationship="Self.FK_ElectionAssignment_Zone" FromRole="Zone" ToRole="ElectionAssignment" />
     <NavigationProperty Name="Voters" Relationship="Self.FK_Voter_Zone" FromRole="Zone" ToRole="Voter" />
   </EntityType>
   <Association Name="FK_Admin_Area">
@@ -315,14 +316,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ElectionAssignmnet_Area">
-    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="*" />
+  <Association Name="FK_ElectionAssignment_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Area">
         <PropertyRef Name="AreaID" />
       </Principal>
-      <Dependent Role="ElectionAssignmnet">
+      <Dependent Role="ElectionAssignment">
         <PropertyRef Name="AreaID" />
       </Dependent>
     </ReferentialConstraint>
@@ -399,6 +400,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ElectionAssingment">
+    <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Election_Details">
+        <PropertyRef Name="ElectionID" />
+      </Principal>
+      <Dependent Role="ElectionAssignment">
+        <PropertyRef Name="ElectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="ElectionTypeDetails">
     <End Role="ElectionType" Type="Self.ElectionType" Multiplicity="0..1" />
     <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="*" />
@@ -408,18 +421,6 @@
       </Principal>
       <Dependent Role="Election_Details">
         <PropertyRef Name="ElectionType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ElectionAssignmnet_Election_Details">
-    <End Role="Election_Details" Type="Self.Election_Detail" Multiplicity="1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Election_Details">
-        <PropertyRef Name="ElectionID" />
-      </Principal>
-      <Dependent Role="ElectionAssignmnet">
-        <PropertyRef Name="AssignmentElection" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -459,26 +460,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="AssingmentElectionDetails">
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
+  <Association Name="CandidateElectionZoneandAreaDetails">
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="0..1" />
     <End Role="ElectionCandidate" Type="Self.ElectionCandidate" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ElectionAssignmnet">
-        <PropertyRef Name="AssignmentElection" />
+      <Principal Role="ElectionAssignment">
+        <PropertyRef Name="ElectionAssignID" />
       </Principal>
       <Dependent Role="ElectionCandidate">
-        <PropertyRef Name="AssignmentElectionID" />
+        <PropertyRef Name="ZoneandArea" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ElectionAssignmnet_Zone">
-    <End Role="Zone" Type="Self.Zone" Multiplicity="0..1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="*" />
+  <Association Name="FK_ElectionAssignment_Zone">
+    <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Zone">
         <PropertyRef Name="ZoneId" />
       </Principal>
-      <Dependent Role="ElectionAssignmnet">
+      <Dependent Role="ElectionAssignment">
         <PropertyRef Name="ZoneID" />
       </Dependent>
     </ReferentialConstraint>
@@ -527,7 +528,7 @@
     <EntitySet Name="Areas" EntityType="Self.Area" />
     <EntitySet Name="Candidates" EntityType="Self.Candidate" />
     <EntitySet Name="Election_Details" EntityType="Self.Election_Detail" />
-    <EntitySet Name="ElectionAssignmnets" EntityType="Self.ElectionAssignmnet" />
+    <EntitySet Name="ElectionAssignments" EntityType="Self.ElectionAssignment" />
     <EntitySet Name="ElectionCandidates" EntityType="Self.ElectionCandidate" />
     <EntitySet Name="ElectionTypes" EntityType="Self.ElectionType" />
     <EntitySet Name="Parties" EntityType="Self.Party" />
@@ -564,9 +565,9 @@
       <End Role="Area" EntitySet="Areas" />
       <End Role="Candidate" EntitySet="Candidates" />
     </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Area" Association="Self.FK_ElectionAssignmnet_Area">
+    <AssociationSet Name="FK_ElectionAssignment_Area" Association="Self.FK_ElectionAssignment_Area">
       <End Role="Area" EntitySet="Areas" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignments" />
     </AssociationSet>
     <AssociationSet Name="FK_Voter_Area" Association="Self.FK_Voter_Area">
       <End Role="Area" EntitySet="Areas" />
@@ -592,13 +593,13 @@
       <End Role="Candidate" EntitySet="Candidates" />
       <End Role="Vote" EntitySet="Votes" />
     </AssociationSet>
+    <AssociationSet Name="ElectionAssingment" Association="Self.ElectionAssingment">
+      <End Role="Election_Details" EntitySet="Election_Details" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignments" />
+    </AssociationSet>
     <AssociationSet Name="ElectionTypeDetails" Association="Self.ElectionTypeDetails">
       <End Role="ElectionType" EntitySet="ElectionTypes" />
       <End Role="Election_Details" EntitySet="Election_Details" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Election_Details" Association="Self.FK_ElectionAssignmnet_Election_Details">
-      <End Role="Election_Details" EntitySet="Election_Details" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
     </AssociationSet>
     <AssociationSet Name="FK_ElectionCandidate_Election_Details" Association="Self.FK_ElectionCandidate_Election_Details">
       <End Role="Election_Details" EntitySet="Election_Details" />
@@ -612,13 +613,13 @@
       <End Role="Election_Details" EntitySet="Election_Details" />
       <End Role="Vote" EntitySet="Votes" />
     </AssociationSet>
-    <AssociationSet Name="AssingmentElectionDetails" Association="Self.AssingmentElectionDetails">
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
+    <AssociationSet Name="CandidateElectionZoneandAreaDetails" Association="Self.CandidateElectionZoneandAreaDetails">
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignments" />
       <End Role="ElectionCandidate" EntitySet="ElectionCandidates" />
     </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Zone" Association="Self.FK_ElectionAssignmnet_Zone">
+    <AssociationSet Name="FK_ElectionAssignment_Zone" Association="Self.FK_ElectionAssignment_Zone">
       <End Role="Zone" EntitySet="Zones" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnets" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignments" />
     </AssociationSet>
     <AssociationSet Name="FK_Voter_User" Association="Self.FK_Voter_User">
       <End Role="User" EntitySet="Users" />

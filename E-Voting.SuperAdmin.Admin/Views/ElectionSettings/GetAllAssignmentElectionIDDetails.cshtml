@@ -1,0 +1,88 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "GetAllAssignmentElectionIDDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Assigment Election Details Table</h4>
+                <p class="card-description">
+                    Assigment Election <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Election Title</th>
+                                <th>Election Description</th>
+                                <th>Election Type</th>
+                                <th>Election Details</th>
+                                <th>Zones</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ElectionDetailsList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var electiondetails in Model.ElectionDetailsList)
+                                {
+
+                                    <tr>
+                                        <td>@serialno</td>
+                                        <td>@electiondetails.ElectionName</td>
+                                        <td>@electiondetails.ElectionDetails</td>
+                                        <td>@electiondetails.ElectionTypeDetails.ElectionName</td>
+                                        <td>
+                                            <span><b><i>Starting Date: </i></b>@electiondetails.StartDate.ToString()</span> <br />
+                                            <span><b><i>Ending Date: </i></b>@electiondetails.EndDate.ToString()</span> <br />
+                                        </td>
+                                        <td>
+                                            @if (electiondetails.ZoneList.Count > 0)
+                                            {
+                                                <ul>
+                                                    @foreach (var Zone in electiondetails.ZoneList)
+                                                    {
+                                                        <li>
+                                                            <a href="#" class="" id=""> <b><i> @Zone.ZoneName</i></b></a>
+
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteAssignmentElectionIDDetails", new { Id = electiondetails.ElectionID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleAssignmentElectionIDDetails", new { Id = electiondetails.ElectionID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

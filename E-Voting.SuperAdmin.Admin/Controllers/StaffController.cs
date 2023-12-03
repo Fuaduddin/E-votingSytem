@@ -165,6 +165,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         {
             SuperAdminAndAdminViewModel Candidate = new SuperAdminAndAdminViewModel();
             Candidate.Candidate = new CandidateModel();
+            Candidate.ElectionDetailsList=ElectionSettingsManager.GetAllElectionDetails();
             Candidate.ZoneList = ElectionSettingsManager.GetAllZone();
             Candidate.AreaList = ElectionSettingsManager.GetAllArea();
             return View("AddNewCandidate", Candidate);
@@ -195,8 +196,17 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     {
                         if(StaffManager.AddNewCandidate(CandidateDetails))
                         {
-                            ViewData["Message"] = "Your data have been added";
-                            ModelState.Clear();
+                            //var ElectionDetailsList= ElectionSettingsManager.GetAllAssingElectionDetails();
+                            //CandidateDetails.AssignmentCandidate.ZoneandArea= ElectionDetailsList.Select(x=>x.ElectionID== && )
+                            //if ()
+                            //{
+                            //    ViewData["Message"] = "Your data have been added";
+                            //    ModelState.Clear();
+                            //}
+                            //else
+                            //{
+                            //    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                            //}
                         }
                         else
                         {
@@ -409,7 +419,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         {
             var UserDetails = new UserModel()
             {
-                UserID = settings.PasswordEncrypt(UserNID),
+                UserID = UserNID,
                 UserPassword = settings.PasswordEncrypt(UserPassword),
                 UserStatus = Status.Active.ToString(),
                 UserTotalLogin = 0,

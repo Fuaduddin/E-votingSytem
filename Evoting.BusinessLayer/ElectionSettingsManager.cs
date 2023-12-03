@@ -121,13 +121,13 @@ namespace Evoting.BusinessLayer
         }
 
         // ElectionDetails Assignment
-        public static bool AddNewAssignmentElectionDetailsElection(ElectionAssignmentModel assingmentelectiondetails)
+        public static bool AddNewAssignmentElectionIDDetailsElection(ElectionAssignmentModel assingmentelectiondetails)
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
             bool IsAdded = provider.AddNewAssingmentElectionDetails(assingmentelectiondetails);
             return IsAdded;
         }
-        public static List<ElectionAssignmentModel> GetAllAssingElectionDetails()
+        public static List<ElectionDetailsModel> GetAllAssingElectionDetails()
         {
             ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
             var area = provider.GetAllAssingElectionDetails();

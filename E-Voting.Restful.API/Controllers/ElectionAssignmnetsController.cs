@@ -16,44 +16,44 @@ using Evoting.Models;
 
 namespace E_Voting.Restful.API.Controllers
 {
-    public class ElectionAssignmnetsController : ApiController
+    public class ElectionAssignmentsController : ApiController
     {
         private Entities db = new Entities();
 
-        //// GET: api/ElectionAssignmnets
-        //public IQueryable<ElectionAssignmnet> GetElectionAssignmnets()
+        //// GET: api/ElectionAssignments
+        //public IQueryable<ElectionAssignment> GetElectionAssignments()
         //{
-        //    return db.ElectionAssignmnets;
+        //    return db.ElectionAssignments;
         //}
 
-        //// GET: api/ElectionAssignmnets/5
-        //[ResponseType(typeof(ElectionAssignmnet))]
-        //public async Task<IHttpActionResult> GetElectionAssignmnet(int id)
+        //// GET: api/ElectionAssignments/5
+        //[ResponseType(typeof(ElectionAssignment))]
+        //public async Task<IHttpActionResult> GetElectionAssignment(int id)
         //{
-        //    ElectionAssignmnet electionAssignmnet = await db.ElectionAssignmnets.FindAsync(id);
-        //    if (electionAssignmnet == null)
+        //    ElectionAssignment ElectionAssignment = await db.ElectionAssignments.FindAsync(id);
+        //    if (ElectionAssignment == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    return Ok(electionAssignmnet);
+        //    return Ok(ElectionAssignment);
         //}
 
-        // PUT: api/ElectionAssignmnets/5
+        // PUT: api/ElectionAssignments/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutElectionAssignmnet(int id, ElectionAssignmnet electionAssignmnet)
+        public async Task<IHttpActionResult> PutElectionAssignment(int id, ElectionAssignment ElectionAssignment)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != electionAssignmnet.AssignmentElection)
+            if (id != ElectionAssignment.ElectionAssignID)
             {
                 return BadRequest();
             }
 
-            db.Entry(electionAssignmnet).State = EntityState.Modified;
+            db.Entry(ElectionAssignment).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace E_Voting.Restful.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ElectionAssignmnetExists(id))
+                if (!ElectionAssignmentExists(id))
                 {
                     return NotFound();
                 }
@@ -74,35 +74,35 @@ namespace E_Voting.Restful.API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ElectionAssignmnets
-        //[ResponseType(typeof(ElectionAssignmnet))]
-        //public async Task<IHttpActionResult> PostElectionAssignmnet(ElectionAssignmnet electionAssignmnet)
+        // POST: api/ElectionAssignments
+        //[ResponseType(typeof(ElectionAssignment))]
+        //public async Task<IHttpActionResult> PostElectionAssignment(ElectionAssignment ElectionAssignment)
         //{
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
         //    }
 
-        //    db.ElectionAssignmnets.Add(electionAssignmnet);
+        //    db.ElectionAssignments.Add(ElectionAssignment);
         //    await db.SaveChangesAsync();
 
-        //    return CreatedAtRoute("DefaultApi", new { id = electionAssignmnet.AssignmentElection }, electionAssignmnet);
+        //    return CreatedAtRoute("DefaultApi", new { id = ElectionAssignment.AssignmentElectionID }, ElectionAssignment);
         //}
 
-        // DELETE: api/ElectionAssignmnets/5
-        [ResponseType(typeof(ElectionAssignmnet))]
-        public async Task<IHttpActionResult> DeleteElectionAssignmnet(int id)
+        // DELETE: api/ElectionAssignments/5
+        [ResponseType(typeof(ElectionAssignment))]
+        public async Task<IHttpActionResult> DeleteElectionAssignment(int id)
         {
-            ElectionAssignmnet electionAssignmnet = await db.ElectionAssignmnets.FindAsync(id);
-            if (electionAssignmnet == null)
+            ElectionAssignment ElectionAssignment = await db.ElectionAssignments.FindAsync(id);
+            if (ElectionAssignment == null)
             {
                 return NotFound();
             }
 
-            db.ElectionAssignmnets.Remove(electionAssignmnet);
+            db.ElectionAssignments.Remove(ElectionAssignment);
             await db.SaveChangesAsync();
 
-            return Ok(electionAssignmnet);
+            return Ok(ElectionAssignment);
         }
 
         protected override void Dispose(bool disposing)
@@ -114,140 +114,175 @@ namespace E_Voting.Restful.API.Controllers
             base.Dispose(disposing);
         }
 
-        private bool ElectionAssignmnetExists(int id)
+        private bool ElectionAssignmentExists(int id)
         {
-            return db.ElectionAssignmnets.Count(e => e.AssignmentElection == id) > 0;
+            return db.ElectionAssignments.Count(e => e.ElectionAssignID == id) > 0;
         }
 
         // Custome API Controller
-        [ResponseType(typeof(ElectionAssignmnet))]
-        public int PostElectionAssignmnet(ElectionAssignmentModel electionAssignmnet)
+        [ResponseType(typeof(ElectionAssignment))]
+        public int PostElectionAssignment(ElectionAssignmentModel ElectionAssignment)
         {
-            var AssignmentElection = new ElectionAssignmnet()
+            var AssignmentElectionID = new ElectionAssignment()
             {
-                ElectionID=electionAssignmnet.ElectionID,
-                ZoneID=electionAssignmnet.ZoneID,
-                AreaID=electionAssignmnet.AreaID
+                ElectionID=ElectionAssignment.ElectionID,
+                ZoneID=ElectionAssignment.ZoneID,
+                AreaID=ElectionAssignment.AreaID
             };
-            db.ElectionAssignmnets.Add(AssignmentElection);
+            db.ElectionAssignments.Add(AssignmentElectionID);
             db.SaveChanges();
-            return AssignmentElection.AssignmentElection;
+            return AssignmentElectionID.ElectionAssignID;
         }
-        // GET: api/ElectionAssignmnets
-        public List<ElectionAssignmentModel> GetElectionAssignmnets()
+        // GET: api/ElectionAssignments
+        public List<ElectionDetailsModel> GetElectionAssignments()
         {    
             var ElectionDetails = db.Election_Details;
             var ElectionTypeDetails = db.ElectionTypes;
-            var Assingelection= db.ElectionAssignmnets;
-            var AssingmentElectionList = (from assingmentelectiondetails in Assingelection
-                                          join electiondetails in ElectionDetails on assingmentelectiondetails.ElectionID
-                                          equals electiondetails.ElectionID
+            var Assingelection= db.ElectionAssignments;
+            var ZonesDetailsList = db.Zones;
+            var AssingmentElectionList = (from electiondetails in ElectionDetails
                                           join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
                                           equals electiondetailstype.ElectionID
-                                          where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
-                                          select new ElectionAssignmentModel
+                                          where electiondetails.ElectionType == electiondetailstype.ElectionID
+                                          select new ElectionDetailsModel
                                           {
-                                              AssignmentElection=assingmentelectiondetails.AssignmentElection,
                                               ElectionID = electiondetails.ElectionID,
-                                              ElectionDetails = new ElectionDetailsModel
+                                              ElectionName = electiondetails.ElectionName,
+                                              ElectionDetails = electiondetails.ElectionDetails,
+                                              ElectionStatus = electiondetails.ElectionStatus,
+                                              ElectionType = electiondetails.ElectionType,
+                                              StartDate = electiondetails.StartDate,
+                                              EndDate = electiondetails.EndDate,
+                                              ElectionTypeDetails = new ElectionModel
                                               {
-                                                  ElectionID = electiondetails.ElectionID,
-                                                  ElectionName = electiondetails.ElectionName,
-                                                  ElectionDetails = electiondetails.ElectionDetails,
-                                                  ElectionStatus = electiondetails.ElectionStatus,
-                                                  ElectionType = electiondetails.ElectionType,
-                                                  StartDate = electiondetails.StartDate,
-                                                  EndDate = electiondetails.EndDate,
-                                                  ElectionTypeDetails = new ElectionModel
-                                                  {
-                                                      ElectionID = electiondetailstype.ElectionID,
-                                                      ElectionName = electiondetailstype.ElectionName
-                                                  }
+                                                  ElectionID = electiondetailstype.ElectionID,
+                                                  ElectionName = electiondetailstype.ElectionName
                                               },
+                                              ZoneList = (from assingmentelectiondetails in Assingelection
+                                                          join ZonesDetails in ZonesDetailsList on assingmentelectiondetails.ZoneID
+                                                          equals ZonesDetails.ZoneId where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
+                                                          select new zoneModel
+                                                          {
+                                                              ZoneId = ZonesDetails.ZoneId,
+                                                              ZoneName = ZonesDetails.ZoneName
+                                                          }).ToList()
                                           }).ToList();
-            foreach(var assingments in AssingmentElectionList)
-            {
-                assingments.AreaList = GetAreaDetails(assingments.AssignmentElection);
-                assingments.ZoneList= GetZoneDetails(assingments.AssignmentElection);
-            }
+
             return AssingmentElectionList;
         }
-        private List<zoneModel> GetZoneDetails(int id)
-        {
-            var Zones = db.Zones;
-            var Assingelection = db.ElectionAssignmnets;
-            var AssignedZone = Assingelection.Where(x => x.ElectionID == id).ToList();
-            var ZoneList = new List<zoneModel>();
-            foreach (var ZoneDetailsitem in AssignedZone)
-            {
-                var Zone = Zones.Where(x => x.ZoneId == ZoneDetailsitem.ZoneID).FirstOrDefault();
-                var ZoneDetails = new zoneModel
-                {
-                    ZoneId = Zone.ZoneId,
-                    ZoneName = Zone.ZoneName
-                };
-                ZoneList.Add(ZoneDetails);
-            }
-            return ZoneList;
-        }
-        private List<areamodel> GetAreaDetails(int id)
-        {
-            var Areas = db.Areas;
-            var Assingelection = db.ElectionAssignmnets;
-            var AssignedArea = Assingelection.Where(x => x.ElectionID == id).ToList();
-            var AreaList = new List<areamodel>();
-            foreach (var AreasDetailsitem in AssignedArea)
-            {
-                var Area = Areas.Where(x => x.AreaID == AreasDetailsitem.AreaID).FirstOrDefault();
-                var areaDetails = new areamodel
-                {
-                    AreaID = Area.AreaID,
-                    AreaName= Area.AreaName,
-                    AreaTitle= Area.AreaTitle,
-                    ZoneID=Area.ZoneID
-                };
-                AreaList.Add(areaDetails);
-            }
-            return AreaList;
-        }
-        // GET: api/ElectionAssignmnets/5
-        [ResponseType(typeof(ElectionAssignmnet))]
-        public ElectionAssignmentModel GetElectionAssignmnet(int id)
+        public ElectionDetailsModel GetElectionAssignment(int id)
         {
             var ElectionDetails = db.Election_Details;
             var ElectionTypeDetails = db.ElectionTypes;
-            var Assingelection = db.ElectionAssignmnets;
-            var Zones = db.Zones;
-            var Areas = db.Areas;
-            var AssingmentElectionList = (from assingmentelectiondetails in Assingelection
-                                          join electiondetails in ElectionDetails on assingmentelectiondetails.ElectionID
-                                          equals electiondetails.ElectionID
+            var Assingelection = db.ElectionAssignments;
+            var ZonesDetailsList = db.Zones;
+            var AssingmentElectionList = (from electiondetails in ElectionDetails
                                           join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
                                           equals electiondetailstype.ElectionID
-                                          where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
-                                          select new ElectionAssignmentModel
+                                          where electiondetails.ElectionType == electiondetailstype.ElectionID
+                                          select new ElectionDetailsModel
                                           {
-                                              AssignmentElection = assingmentelectiondetails.AssignmentElection,
                                               ElectionID = electiondetails.ElectionID,
-                                              ElectionDetails = new ElectionDetailsModel
+                                              ElectionName = electiondetails.ElectionName,
+                                              ElectionDetails = electiondetails.ElectionDetails,
+                                              ElectionStatus = electiondetails.ElectionStatus,
+                                              ElectionType = electiondetails.ElectionType,
+                                              StartDate = electiondetails.StartDate,
+                                              EndDate = electiondetails.EndDate,
+                                              ElectionTypeDetails = new ElectionModel
                                               {
-                                                  ElectionID = electiondetails.ElectionID,
-                                                  ElectionName = electiondetails.ElectionName,
-                                                  ElectionDetails = electiondetails.ElectionDetails,
-                                                  ElectionStatus = electiondetails.ElectionStatus,
-                                                  ElectionType = electiondetails.ElectionType,
-                                                  StartDate = electiondetails.StartDate,
-                                                  EndDate = electiondetails.EndDate,
-                                                  ElectionTypeDetails = new ElectionModel
-                                                  {
-                                                      ElectionID = electiondetailstype.ElectionID,
-                                                      ElectionName = electiondetailstype.ElectionName
-                                                  }
+                                                  ElectionID = electiondetailstype.ElectionID,
+                                                  ElectionName = electiondetailstype.ElectionName
                                               },
-                                              AreaList = GetAreaDetails((int)assingmentelectiondetails.AssignmentElection),
-                                              ZoneList = GetZoneDetails((int)assingmentelectiondetails.AssignmentElection)
+                                              ZoneList = (from assingmentelectiondetails in Assingelection
+                                                          join ZonesDetails in ZonesDetailsList on assingmentelectiondetails.ZoneID
+                                                          equals ZonesDetails.ZoneId
+                                                          where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
+                                                          select new zoneModel
+                                                          {
+                                                              ZoneId = ZonesDetails.ZoneId,
+                                                              ZoneName = ZonesDetails.ZoneName
+                                                          }).ToList()
                                           }).FirstOrDefault();
+
             return AssingmentElectionList;
         }
+        //private List<zoneModel> GetZoneDetails(int id)
+        //{
+        //    var Zones = db.Zones;
+        //    var Assingelection = db.ElectionAssignments;
+        //    var AssignedZone = 
+        //    var ZoneList = new List<zoneModel>();
+        //    foreach (var ZoneDetailsitem in AssignedZone)
+        //    {
+        //        var Zone = Zones.Where(x => x.ZoneId == ZoneDetailsitem.ZoneID).FirstOrDefault();
+        //        var ZoneDetails = new zoneModel
+        //        {
+        //            ZoneId = Zone.ZoneId,
+        //            ZoneName = Zone.ZoneName
+        //        };
+        //        ZoneList.Add(ZoneDetails);
+        //    }
+        //    return ZoneList;
+        //}
+        //private List<areamodel> GetAreaDetails(int id)
+        //{
+        //    var Areas = db.Areas;
+        //    var Assingelection = db.ElectionAssignments;
+        //    var AssignedArea = Assingelection.Where(x => x.ElectionID == id).ToList();
+        //    var AreaList = new List<areamodel>();
+        //    foreach (var AreasDetailsitem in AssignedArea)
+        //    {
+        //        var Area = Areas.Where(x => x.AreaID == AreasDetailsitem.AreaID).FirstOrDefault();
+        //        var areaDetails = new areamodel
+        //        {
+        //            AreaID = Area.AreaID,
+        //            AreaName= Area.AreaName,
+        //            AreaTitle= Area.AreaTitle,
+        //            ZoneID=Area.ZoneID
+        //        };
+        //        AreaList.Add(areaDetails);
+        //    }
+        //    return AreaList;
+        //}
+        // GET: api/ElectionAssignments/5
+        //[ResponseType(typeof(ElectionAssignment))]
+        //public ElectionAssignmentModel GetElectionAssignment(int id)
+        //{
+        //    var ElectionDetails = db.Election_Details;
+        //    var ElectionTypeDetails = db.ElectionTypes;
+        //    var Assingelection = db.ElectionAssignments;
+        //    var Zones = db.Zones;
+        //    var Areas = db.Areas;
+        //    var AssingmentElectionList = (from assingmentelectiondetails in Assingelection
+        //                                  join electiondetails in ElectionDetails on assingmentelectiondetails.ElectionID
+        //                                  equals electiondetails.ElectionID
+        //                                  join electiondetailstype in ElectionTypeDetails on electiondetails.ElectionType
+        //                                  equals electiondetailstype.ElectionID
+        //                                  where assingmentelectiondetails.ElectionID == electiondetails.ElectionID
+        //                                  select new ElectionAssignmentModel
+        //                                  {
+        //                                      ElectionAssignID = assingmentelectiondetails.ElectionAssignID,
+        //                                      ElectionID = electiondetails.ElectionID,
+        //                                      ElectionDetails = new ElectionDetailsModel
+        //                                      {
+        //                                          ElectionID = electiondetails.ElectionID,
+        //                                          ElectionName = electiondetails.ElectionName,
+        //                                          ElectionDetails = electiondetails.ElectionDetails,
+        //                                          ElectionStatus = electiondetails.ElectionStatus,
+        //                                          ElectionType = electiondetails.ElectionType,
+        //                                          StartDate = electiondetails.StartDate,
+        //                                          EndDate = electiondetails.EndDate,
+        //                                          ElectionTypeDetails = new ElectionModel
+        //                                          {
+        //                                              ElectionID = electiondetailstype.ElectionID,
+        //                                              ElectionName = electiondetailstype.ElectionName
+        //                                          }
+        //                                      },
+        //                                      AreaList = GetAreaDetails((int)assingmentelectiondetails.ElectionAssignID),
+        //                                      ZoneList = GetZoneDetails((int)assingmentelectiondetails.ElectionAssignID)
+        //                                  }).FirstOrDefault();
+        //    return AssingmentElectionList;
+        //}
     }
 }

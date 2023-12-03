@@ -48,6 +48,7 @@
     <Property Name="UserEmaul" Type="nvarchar(max)" Nullable="false" />
     <Property Name="AssignToAdmin" Type="int" />
     <Property Name="AssignmentUpdate" Type="int" />
+    <Property Name="CustomerName" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Area">
     <Key>
@@ -88,14 +89,14 @@
     <Property Name="EndDate" Type="datetime" />
     <Property Name="ElectionStatus" Type="nchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="ElectionAssignmnet">
+  <EntityType Name="ElectionAssignment">
     <Key>
-      <PropertyRef Name="AssignmentElection" />
+      <PropertyRef Name="ElectionAssignID" />
     </Key>
-    <Property Name="AssignmentElection" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ElectionID" Type="int" />
-    <Property Name="ZoneID" Type="int" />
-    <Property Name="AreaID" Type="int" />
+    <Property Name="ElectionAssignID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ElectionID" Type="int" Nullable="false" />
+    <Property Name="ZoneID" Type="int" Nullable="false" />
+    <Property Name="AreaID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ElectionCandidate">
     <Key>
@@ -105,8 +106,8 @@
     <Property Name="CandidateID" Type="int" Nullable="false" />
     <Property Name="ElectionID" Type="int" Nullable="false" />
     <Property Name="ElectionComplete" Type="int" Nullable="false" />
-    <Property Name="AssignmentElectionID" Type="int" />
     <Property Name="CandidateSymbol" Type="nvarchar(max)" />
+    <Property Name="ZoneandArea" Type="int" />
   </EntityType>
   <EntityType Name="ElectionType">
     <Key>
@@ -183,15 +184,27 @@
     <Property Name="ZoneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ZoneName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <Association Name="AssingmentElectionDetails">
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
+  <Association Name="CandidateElectionZoneandAreaDetails">
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="0..1" />
     <End Role="ElectionCandidate" Type="Self.ElectionCandidate" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ElectionAssignmnet">
-        <PropertyRef Name="AssignmentElection" />
+      <Principal Role="ElectionAssignment">
+        <PropertyRef Name="ElectionAssignID" />
       </Principal>
       <Dependent Role="ElectionCandidate">
-        <PropertyRef Name="AssignmentElectionID" />
+        <PropertyRef Name="ZoneandArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ElectionAssingment">
+    <End Role="Election Details" Type="Self.Election Details" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Election Details">
+        <PropertyRef Name="ElectionID" />
+      </Principal>
+      <Dependent Role="ElectionAssignment">
+        <PropertyRef Name="ElectionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -327,38 +340,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ElectionAssignmnet_Area">
-    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="*" />
+  <Association Name="FK_ElectionAssignment_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Area">
         <PropertyRef Name="AreaID" />
       </Principal>
-      <Dependent Role="ElectionAssignmnet">
+      <Dependent Role="ElectionAssignment">
         <PropertyRef Name="AreaID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ElectionAssignmnet_Election Details">
-    <End Role="Election Details" Type="Self.Election Details" Multiplicity="1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Election Details">
-        <PropertyRef Name="ElectionID" />
-      </Principal>
-      <Dependent Role="ElectionAssignmnet">
-        <PropertyRef Name="AssignmentElection" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ElectionAssignmnet_Zone">
-    <End Role="Zone" Type="Self.Zone" Multiplicity="0..1" />
-    <End Role="ElectionAssignmnet" Type="Self.ElectionAssignmnet" Multiplicity="*" />
+  <Association Name="FK_ElectionAssignment_Zone">
+    <End Role="Zone" Type="Self.Zone" Multiplicity="1" />
+    <End Role="ElectionAssignment" Type="Self.ElectionAssignment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Zone">
         <PropertyRef Name="ZoneId" />
       </Principal>
-      <Dependent Role="ElectionAssignmnet">
+      <Dependent Role="ElectionAssignment">
         <PropertyRef Name="ZoneID" />
       </Dependent>
     </ReferentialConstraint>
@@ -479,7 +480,7 @@
     <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Election Details" EntityType="Self.Election Details" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ElectionAssignmnet" EntityType="Self.ElectionAssignmnet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ElectionAssignment" EntityType="Self.ElectionAssignment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ElectionCandidate" EntityType="Self.ElectionCandidate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ElectionType" EntityType="Self.ElectionType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
@@ -488,9 +489,13 @@
     <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Zone" EntityType="Self.Zone" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="AssingmentElectionDetails" Association="Self.AssingmentElectionDetails">
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnet" />
+    <AssociationSet Name="CandidateElectionZoneandAreaDetails" Association="Self.CandidateElectionZoneandAreaDetails">
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignment" />
       <End Role="ElectionCandidate" EntitySet="ElectionCandidate" />
+    </AssociationSet>
+    <AssociationSet Name="ElectionAssingment" Association="Self.ElectionAssingment">
+      <End Role="Election Details" EntitySet="Election Details" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignment" />
     </AssociationSet>
     <AssociationSet Name="ElectionTypeDetails" Association="Self.ElectionTypeDetails">
       <End Role="ElectionType" EntitySet="ElectionType" />
@@ -536,17 +541,13 @@
       <End Role="Zone" EntitySet="Zone" />
       <End Role="Candidate" EntitySet="Candidate" />
     </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Area" Association="Self.FK_ElectionAssignmnet_Area">
+    <AssociationSet Name="FK_ElectionAssignment_Area" Association="Self.FK_ElectionAssignment_Area">
       <End Role="Area" EntitySet="Area" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnet" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignment" />
     </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Election Details" Association="Self.FK_ElectionAssignmnet_Election Details">
-      <End Role="Election Details" EntitySet="Election Details" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ElectionAssignmnet_Zone" Association="Self.FK_ElectionAssignmnet_Zone">
+    <AssociationSet Name="FK_ElectionAssignment_Zone" Association="Self.FK_ElectionAssignment_Zone">
       <End Role="Zone" EntitySet="Zone" />
-      <End Role="ElectionAssignmnet" EntitySet="ElectionAssignmnet" />
+      <End Role="ElectionAssignment" EntitySet="ElectionAssignment" />
     </AssociationSet>
     <AssociationSet Name="FK_ElectionCandidate_Candidate" Association="Self.FK_ElectionCandidate_Candidate">
       <End Role="Candidate" EntitySet="Candidate" />

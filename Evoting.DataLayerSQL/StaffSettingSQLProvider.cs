@@ -244,34 +244,34 @@ namespace Evoting.DataLayerSQL
             }
             return IsAdded;
         }
-        //public List<VoterModel> GetAllUser()
-        //{
-        //    List<VoterModel> Voters = new List<VoterModel>();
-        //    try
-        //    {
-        //        HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.GetAsync("Users").Result;
-        //        Voters = ResponseGetAll.Content.ReadAsAsync<List<VoterModel>>().Result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return Voters;
-        //}
-        //public bool UpdateUser(VoterModel Voter)
-        //{
-        //    bool IsUpdated = true;
-        //    try
-        //    {
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        IsUpdated = false;
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return IsUpdated;
-        //}
+        public List<UserModel> GetAllUser()
+        {
+            List<UserModel> Users = new List<UserModel>();
+            try
+            {
+                HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.GetAsync("Users").Result;
+                Users = ResponseGetAll.Content.ReadAsAsync<List<UserModel>>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Users;
+        }
+        public bool UpdateUser(UserModel user)
+        {
+            bool IsUpdated = true;
+            try
+            {
+                HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Users/"+user.UserIDNo.ToString(),user).Result;
+            }
+            catch (Exception ex)
+            {
+                IsUpdated = false;
+                throw new Exception(ex.Message);
+            }
+            return IsUpdated;
+        }
         //public VoterModel GetSingleUser(int id)
         //{
         //    VoterModel Voter = new VoterModel();

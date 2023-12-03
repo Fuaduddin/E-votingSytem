@@ -4,23 +4,176 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <!--Extra CSS-->
+    <link href="~/Content/vendors/feather/feather.css" rel="stylesheet">
+    <link href="~/Content/vendors/ti-icons/css/themify-icons.css" rel="stylesheet">
+    <link href="~/Content/vendors/css/vendor.bundle.base.css" rel="stylesheet">
+    <link href="~/Content/vendors/vertical-layout-light/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
 
-@using (Html.BeginForm("AddNewElectionDetails", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data", @class = "loginform" }))
-{
-    <div class="container">
-        <label for="textfield"><b>NID</b></label>
-        @Html.TextBoxFor(model => model.UserDetails.UserID, new { placeholder = "Enter NID", name = "name", id = "textfield" })
-        <label for="password"><b>Password</b></label>
-        @Html.TextBoxFor(model => model.UserDetails.UserPassword, new { placeholder = "Enter Password", name = "password", id = "password" })
+<div class="container-scroller area-padding-login">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+        <div class="content-wrapper d-flex align-items-center auth px-0">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 mx-auto">
+                    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                        <div class="brand-logo">
+                            <h1 style=" text-align: center;"><span>E-Voting</span>System</h1>
+                        </div>
+                        <h4>Hello! let's get started</h4>
+                        <h6 class="font-weight-light">Sign in to continue.</h6>
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { enctype = "multipart/form-data", @class = "loginform pt-3" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.UserDetails.UserID, new { placeholder = "Enter NID", name = "name", id = "textfield", @class = "form-control form-control-lg" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.UserDetails.UserPassword, new { placeholder = "Enter Password", name = "password", id = "password", @class = "form-control form-control-lg" })
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                              
+                            </div>
+                            <div class="my-2 d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <label class="form-check-label text-muted" style=" font-size: 15px;">
+                                        <input class="form-check-input" type="checkbox" id="check1" name="candidateoption" value="candidate">
+                                        I am a candidate
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                                <a href="#" class="auth-link text-black" style=" font-size: 15px;">Forgot password?</a>
+                            </div>
+                            <div class="text-center mt-4 font-weight-light" style=" font-size: 15px;">
+                                Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
     </div>
-    <div class="container">
-        <span class="psw"><a href="~/Views/HomePage/Appointment.cshtml">Not yet registered?</a></span>
-    </div>
-}
+    <!-- page-body-wrapper ends -->
+</div>
+<script src="~/Content/js/off-canvas.js"></script>
+<script src="~/Content/js/hoverable-collapse.js"></script>
+<script src="~/Content/js/template.js"></script>
+<script src="~/Content/js/settings.js"></script>
+<script src="~/Content/js/todolist.js"></script>
+<script src="~/Content/vendors/js/vendor.bundle.base.js"></script>
 <style>
-    .loginform {
-        border: none;
-        text-align: left;
+    .nav {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        padding-left: 0 !important;
+        margin-bottom: 0 !important;
+        list-style: none !important;
+        flex-direction: row !important;
+    }
+
+    .form-check {
+        position: relative;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0;
+    }
+
+    .area-padding-login {
+        padding: 20px 0px 43px !important;
+    }
+    .form-check .form-check-label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: 0;
+        margin-top: 0;
+        z-index: 1;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+    .form-check {
+        position: relative;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 0;
+    }
+    .auth form .form-group .form-control {
+        font-size: 1.9375rem !important;
+    }
+    .form-check .form-check-label input[type="checkbox"] + .input-helper:before {
+        content: "";
+        width: 18px;
+        height: 18px;
+        border-radius: 2px;
+        border: solid #4B49AC;
+        border-width: 2px;
+        -webkit-transition: all;
+        -moz-transition: all;
+        -ms-transition: all;
+        -o-transition: all;
+        transition: all;
+        transition-duration: 0s;
+        -webkit-transition-duration: 250ms;
+        transition-duration: 250ms;
+    }
+    .form-check .form-check-label input[type="checkbox"] + .input-helper:before, .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+        -webkit-transition: all;
+        -moz-transition: all;
+        -ms-transition: all;
+        -o-transition: all;
+        transition: all;
+        transition-duration: 0s;
+        -webkit-transition-duration: 250ms;
+        transition-duration: 250ms;
+        font-family: themify;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        content: '\e64c';
+        font-size: .9375rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+        -webkit-transition: all;
+        -moz-transition: all;
+        -ms-transition: all;
+        -o-transition: all;
+        transition: all;
+        transition-duration: 0s;
+        -webkit-transition-duration: 250ms;
+        transition-duration: 250ms;
+        font-family: themify;
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        -o-transform: scale(0);
+        transform: scale(0);
+        content: '\e64c';
+        font-size: .9375rem;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .form-check .form-check-label input[type="checkbox"] + .input-helper:before, .form-check .form-check-label input[type="checkbox"] + .input-helper:after {
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 </style>
-

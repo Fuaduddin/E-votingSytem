@@ -17,6 +17,7 @@ namespace E_Voting.Restful.API.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Election_Detail()
         {
+            this.ElectionAssignments = new HashSet<ElectionAssignment>();
             this.ElectionCandidates = new HashSet<ElectionCandidate>();
             this.Results = new HashSet<Result>();
             this.Votes = new HashSet<Vote>();
@@ -30,8 +31,9 @@ namespace E_Voting.Restful.API.Models.DB
         public Nullable<System.DateTime> EndDate { get; set; }
         public string ElectionStatus { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ElectionAssignment> ElectionAssignments { get; set; }
         public virtual ElectionType ElectionType1 { get; set; }
-        public virtual ElectionAssignmnet ElectionAssignmnet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

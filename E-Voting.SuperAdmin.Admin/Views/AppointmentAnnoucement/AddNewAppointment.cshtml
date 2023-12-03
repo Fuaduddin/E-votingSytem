@@ -18,6 +18,18 @@
                             <label class="col-sm-3 col-form-label">Email</label>
                             <br />
                             <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Appointment.CustomerName, new { @class = "form-control", @placeholder = "Annoucement Title" })
+                                @Html.ValidationMessageFor(model => model.Appointment.CustomerName)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <br />
+                            <div class="col-sm-9">
                                 @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "form-control", @placeholder = "Annoucement Title" })
                                 @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
                             </div>

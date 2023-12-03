@@ -396,12 +396,12 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         //}
 
 
-        // AssignmentElectionDetails
-        public ActionResult GetAllAssignmentElectionDetails()
+        // AssignmentElectionIDDetails
+        public ActionResult GetAllAssignmentElectionIDDetails()
         {
             SuperAdminAndAdminViewModel electiondetails = new SuperAdminAndAdminViewModel();
-            electiondetails.AssignElectionDetailsList = ElectionSettingsManager.GetAllAssingElectionDetails();
-            return View("GetAllElectionDetails", electiondetails);
+            electiondetails.ElectionDetailsList = ElectionSettingsManager.GetAllAssingElectionDetails();
+            return View("GetAllAssignmentElectionIDDetails", electiondetails);
         }
         public ActionResult AssignElection(int id)
         {
@@ -429,14 +429,14 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                         ZoneID = zone,
                         AreaID = areas[n],
                     };
-                    ElectionSettingsManager.AddNewAssignmentElectionDetailsElection(AsssingAreaElection);
+                    ElectionSettingsManager.AddNewAssignmentElectionIDDetailsElection(AsssingAreaElection);
                     n++;
                 }
             }
 
-            return View("GetAllAssignmentElectionDetails");
+            return View("GetAllAssignmentElectionIDDetails");
         }
-        public ActionResult DeleteAssignmentElectionDetails(int id)
+        public ActionResult DeleteAssignmentElectionIDDetails(int id)
         {
             if (id > 0)
             {
@@ -449,38 +449,35 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     ViewData["Message"] = "Your data not have  been Deleted";
                 }
             }
-            SuperAdminAndAdminViewModel electiontype = new SuperAdminAndAdminViewModel();
-            electiontype.ElectionType = new ElectionModel();
-            electiontype.ElectionTypeList = ElectionSettingsManager.GetAllElectionType();
-            return View("GetAllAssignmentElectionDetails", electiontype);
+            SuperAdminAndAdminViewModel AssignElectionDetails = new SuperAdminAndAdminViewModel();
+            AssignElectionDetails.ElectionDetailsList = ElectionSettingsManager.GetAllAssingElectionDetails();
+            return View("GetAllAssignmentElectionIDDetails", AssignElectionDetails);
         }
-        public ActionResult GetSingleAssignmentElectionDetails(int id)
+        public ActionResult GetSingleAssignmentElectionIDDetails(int id)
         {
-            SuperAdminAndAdminViewModel Areadetails = new SuperAdminAndAdminViewModel();
-            Areadetails.Area = ElectionSettingsManager.GetSingleArea(id);
-            Areadetails.AreaList = ElectionSettingsManager.GetAllArea();
-            Areadetails.ZoneList = ElectionSettingsManager.GetAllZone();
-            return View("AddNewAssignmentElectionDetails", Areadetails);
+            SuperAdminAndAdminViewModel AssignElectionDetails = new SuperAdminAndAdminViewModel();
+            AssignElectionDetails.ElectionDetails = ElectionSettingsManager.GetSingleElectionDetails(id);
+            return View("AddNewAssignmentElectionIDDetails", AssignElectionDetails);
         }
 
 
         // All Extra Feautures not complete
-        //private List<PartyModel> GetPaginationAssignmentElectionDetails(int pageindex, int pagesize)
+        //private List<PartyModel> GetPaginationAssignmentElectionIDDetails(int pageindex, int pagesize)
         //{
         //    List<PartyModel> partylist = PartyManager.GetAllParty();
         //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
         //}
-        //private int pagecountAssignmentElectionDetails(int perpagedata)
+        //private int pagecountAssignmentElectionIDDetails(int perpagedata)
         //{
         //    List<PartyModel> partylist = PartyManager.GetAllParty();
         //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
         //}
-        //public List<PartyModel> perpageshowdataAssignmentElectionDetails(int pageindex, int pagesize)
+        //public List<PartyModel> perpageshowdataAssignmentElectionIDDetails(int pageindex, int pagesize)
         //{
         //    List<PartyModel> partylist = PartyManager.GetAllParty();
         //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
         //}
-        //public JsonResult GetpaginatiotabledataAssignmentElectionDetails(int pageindex, int pagesize)
+        //public JsonResult GetpaginatiotabledataAssignmentElectionIDDetails(int pageindex, int pagesize)
         //{
         //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
         //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
@@ -488,7 +485,7 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         //    var result = JsonConvert.SerializeObject(party);
         //    return Json(result, JsonRequestBehavior.AllowGet);
         //}
-        //public JsonResult SearchAssignmentElectionDetails(int pageindex, int pagesize)
+        //public JsonResult SearchAssignmentElectionIDDetails(int pageindex, int pagesize)
         //{
         //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
         //    party.PartyList = perpageshowdataArea(pageindex, pagesize);

@@ -158,8 +158,10 @@ namespace E_Voting.Restful.API.Controllers
                                            {
                                                ElectionID= electiondetailstype.ElectionID,
                                                ElectionName=electiondetailstype.ElectionName
-                                           }
+                                           },
+                                           
                                        }).ToList();
+            
             return ElectionDetailsList;
         }
 

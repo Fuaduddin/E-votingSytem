@@ -51,6 +51,7 @@
           <ScalarProperty Name="UserEmaul" ColumnName="UserEmaul" />
           <ScalarProperty Name="AssignToAdmin" ColumnName="AssignToAdmin" />
           <ScalarProperty Name="AssignmentUpdate" ColumnName="AssignmentUpdate" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -96,10 +97,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ElectionAssignmnets">
-      <EntityTypeMapping TypeName="Model.ElectionAssignmnet">
-        <MappingFragment StoreEntitySet="ElectionAssignmnet">
-          <ScalarProperty Name="AssignmentElection" ColumnName="AssignmentElection" />
+    <EntitySetMapping Name="ElectionAssignments">
+      <EntityTypeMapping TypeName="Model.ElectionAssignment">
+        <MappingFragment StoreEntitySet="ElectionAssignment">
+          <ScalarProperty Name="ElectionAssignID" ColumnName="ElectionAssignID" />
           <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
           <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
           <ScalarProperty Name="AreaID" ColumnName="AreaID" />
@@ -113,8 +114,8 @@
           <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
           <ScalarProperty Name="ElectionID" ColumnName="ElectionID" />
           <ScalarProperty Name="ElectionComplete" ColumnName="ElectionComplete" />
-          <ScalarProperty Name="AssignmentElectionID" ColumnName="AssignmentElectionID" />
           <ScalarProperty Name="CandidateSymbol" ColumnName="CandidateSymbol" />
+          <ScalarProperty Name="ZoneandArea" ColumnName="ZoneandArea" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

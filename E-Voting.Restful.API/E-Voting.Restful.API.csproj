@@ -200,7 +200,7 @@
     <Compile Include="Models\DB\Candidate.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB\ElectionAssignmnet.cs">
+    <Compile Include="Models\DB\ElectionAssignment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\ElectionCandidate.cs">
