@@ -146,5 +146,20 @@ namespace Evoting.BusinessLayer
             var area = provider.GetSIngleAssingElectionDetails(id);
             return area;
         }
+        public static int GetSingleAssingElectionDetailsList(int electionID, int zoneID, int areaID)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            var area = provider.GetSingleAssingElectionDetailsList(electionID, zoneID, areaID);
+            return area;
+        }
+
+
+        // Assign Candidate
+        public static bool AddNewAssignCandidate(AssignmentCandidateModel AssignmentCandidate)
+        {
+            ElectionSettingsSQLProvider provider = new ElectionSettingsSQLProvider();
+            bool IsAdded = provider.AddNewCandidateAssignment(AssignmentCandidate);
+            return IsAdded;
+        }
     }
 }

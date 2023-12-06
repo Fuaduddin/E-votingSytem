@@ -42,7 +42,7 @@ namespace Evoting.BusinessLayer
             return OutPut;
         }
         // Candidate
-        public static bool AddNewCandidate(CandidateModel Candidate)
+        public static int AddNewCandidate(CandidateModel Candidate)
         {
             StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
             var OutPut = provider.AddNewCandidate(Candidate);
@@ -66,12 +66,12 @@ namespace Evoting.BusinessLayer
             var OutPut = provider.GetSingleCandidate(id);
             return OutPut;
         }
-        public static bool UpdateCandidate(CandidateModel Candidate)
-        {
-            StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
-            var OutPut = provider.AddNewCandidate(Candidate);
-            return OutPut;
-        }
+        //public static bool UpdateCandidate(CandidateModel Candidate)
+        //{
+        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+        //    var OutPut = provider.AddNewCandidate(Candidate);
+        //    return OutPut;
+        //}
         // Admin
         public static bool AddNewAdmin(AdminModel Admin)
         {

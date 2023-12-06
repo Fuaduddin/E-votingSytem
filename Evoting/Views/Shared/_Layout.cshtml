@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Evoting.BusinessLayer;
+@using Evoting.GlobalSetting;
+@{ 
+    var ElectionType = ElectionSettingsManager.GetAllElectionType();
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -92,12 +98,16 @@
 
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Candidate Profiles<span class="caret"></span></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href=/HomePage/CandidateProfile>Drop Down 1</a></li>
-                                            <li><a href=/HomePage/CandidateProfile>Drop Down 2</a></li>
-                                        </ul>
+                                        @if (ElectionType != null)
+                                        {
+                                            <ul class="dropdown-menu" role="menu">
+                                                @foreach(var Type in ElectionType)
+                                                 {
+                                                    <li><a href=/HomePage/CandidateProfile/@Type.ElectionID>@Type.ElectionName</a></li>
+                                                 }
+                                            </ul>
+                                        }
                                     </li>
-
                                     <li>
                                         <a class="page-scroll" href="/HomePage/Statics">Statistics</a>
                                     </li>
@@ -192,7 +202,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="copyright text-center">
                             <p id="footer_details">
-                                
+
                             </p>
                         </div>
                     </div>
@@ -235,25 +245,28 @@
         .area-padding {
             padding: 158px 0px 43px !important;
         }
+
         .suscribe-input input {
             font-size: 20px !important;
         }
+
         .subs-feilds {
             border: 1px solid #fff;
             display: inline-block;
-             height: unset !important;
+            height: unset !important;
             margin-top: 30px;
             width: 60%;
             border-radius: 30px;
             overflow: hidden;
         }
+
         .suscribe-input button {
             border-radius: 0 0 0 0 !important;
         }
-            .extra_desing {
+
+        .extra_desing {
             background: transparent none repeat scroll 0 0;
             border: medium none;
-           
             float: left;
             font-size: 15px;
             line-height: 24px;
@@ -263,6 +276,7 @@
             /* color: white; */
             font-size: 20px !important;
         }
+
         div.card {
             width: 250px;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

@@ -25,15 +25,15 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             return View("AddNewParty", party);
         }
         [HttpPost]
-        public ActionResult AddNewParty(PartyModel partyModel, HttpPostedFileBase File)
+        public ActionResult AddNewParty(SuperAdminAndAdminViewModel partyModel, HttpPostedFileBase File)
         {
-            if(partyModel.PartyID>0)
+            if(partyModel.Party.PartyID>0)
             {
                 if(File.ContentLength>0)
                 {
-                    partyModel.PartySymbol = extension.UploadImage(File);
+                    partyModel.Party.PartySymbol = extension.UploadImage(File);
                 }
-                if(PartyManager.UpdateParty(partyModel))
+                if(PartyManager.UpdateParty(partyModel.Party))
                 {
                     ViewData["Message"] = "Your data have been Updated";
                     ModelState.Clear();
@@ -45,11 +45,11 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             }
             else
             {
-                if(File.ContentLength > 0) { partyModel.PartySymbol = extension.UploadImage(File); }
+                if(File.ContentLength > 0) { partyModel.Party.PartySymbol = extension.UploadImage(File); }
                 if(ModelState.IsValid)
                 {
                    
-                    if (PartyManager.AddNewParty(partyModel))
+                    if (PartyManager.AddNewParty(partyModel.Party))
                     {
                         ViewData["Message"] = "Your data have been Added";
                         ModelState.Clear();

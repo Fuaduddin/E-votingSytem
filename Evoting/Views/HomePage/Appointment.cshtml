@@ -4,7 +4,27 @@
     ViewBag.Title = "Appointment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<!-- Start Bottom Header -->
+<div class="header-bg page-area">
+    <div class="home-overly"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="slider-content text-center">
+                    <div class="header-bottom">
+                        <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
+                            <h1 class="title2">How to become a Voter/Candidate</h1>
+                        </div>
+                        <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
+                            <h2 class="title3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Header -->
 @Html.Partial("~/Views/Partial/_RegistrationRules.cshtml")
 
 @if (ViewData["Message"] == null)
@@ -25,9 +45,11 @@
                                     </p>
                                     <div class="subs-feilds">
                                         <div class="suscribe-input">
-                                            @Html.TextBoxFor(model => model.Appointment.CustomerName, new { @class = "email form-control width-80", id = "exampleInputEmail1", placeholder = "Please Enter your Email Address" })
+                                            @Html.TextBoxFor(model => model.Appointment.CustomerName, new { @class = "email form-control width-80", id = "exampleInputEmail1", placeholder = "Please Enter your Full Name" })
                                             @Html.ValidationMessageFor(model => model.Appointment.CustomerName)
                                         </div>
+                                    </div>
+                                    <div class="subs-feilds">
                                         <div class="suscribe-input">
                                             @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "email form-control width-80", id = "exampleInputEmail1", placeholder = "Please Enter your Email Address" })
                                             @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
@@ -64,11 +86,11 @@
                                     <div class="suscribe-input" style=" display: flex;  justify-content: center; ">
 
                                         <button type="submit" id="sus_submit" class="add-btn width-20">Make Appointment</button>
-                         
+
                                     </div>
                                     <div class="suscribe-input" style=" display: flex;  justify-content: center; ">
 
-                                       
+
                                         <div class="text-center mt-4 font-weight-light" style="color:white">
                                             Already have an account? <a href="login.html" class="text-primary" style="color:white">Login</a>
                                         </div>

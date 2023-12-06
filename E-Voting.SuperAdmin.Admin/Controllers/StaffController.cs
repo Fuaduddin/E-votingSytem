@@ -168,51 +168,71 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             Candidate.ElectionDetailsList=ElectionSettingsManager.GetAllElectionDetails();
             Candidate.ZoneList = ElectionSettingsManager.GetAllZone();
             Candidate.AreaList = ElectionSettingsManager.GetAllArea();
+            Candidate.genders = CommonData.genders;
+            Candidate.PartyList=PartyManager.GetAllParty();
             return View("AddNewCandidate", Candidate);
         }
         [HttpPost]
-        public ActionResult AddNewCandidate(CandidateModel CandidateDetails)
+        public ActionResult AddNewCandidate(SuperAdminAndAdminViewModel CandidateDetails, HttpPostedFileBase File, HttpPostedFileBase ElectionIcon)
         {
-            if(CandidateDetails.CandidateID>0)
+            if(CandidateDetails.Candidate.CandidateID>0)
             {
-                if(StaffManager.UpdateCandidate(CandidateDetails))
-                {
-                    ViewData["Message"] = "Your data have been Updated";
-                }
-                else
-                {
-                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
-                }
+                //if(StaffManager.UpdateCandidate(CandidateDetails)>0)
+                //{
+                //    ViewData["Message"] = "Your data have been Updated";
+                //}
+                //else
+                //{
+                //    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                //}
             }
             else
             {
-                if(CheckCandidaterExistorNot(CandidateDetails.CandidateNID))
+                if (CheckVoterExistorNot(CandidateDetails.Candidate.CandidateNID))
                 {
-                    ViewData["Message"] = "Your data is already existed";
-                }
-                else
-                {
-                    if(ModelState.IsValid)
+                    if (CheckElectionValidation(CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID))
                     {
-                        if(StaffManager.AddNewCandidate(CandidateDetails))
-                        {
-                            //var ElectionDetailsList= ElectionSettingsManager.GetAllAssingElectionDetails();
-                            //CandidateDetails.AssignmentCandidate.ZoneandArea= ElectionDetailsList.Select(x=>x.ElectionID== && )
-                            //if ()
-                            //{
-                            //    ViewData["Message"] = "Your data have been added";
-                            //    ModelState.Clear();
-                            //}
-                            //else
-                            //{
-                            //    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
-                            //}
-                        }
-                        else
+                        if(CheckCandidateExistorNot(CandidateDetails.Candidate.CandidateNID))
                         {
                             ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
                         }
+                        else
+                        {
+                            if (ModelState.IsValid)
+                            {
+                                CandidateDetails.Candidate.User = NewUserSettingsDetails(CandidateDetails.Candidate.User.UserID, CandidateDetails.Candidate.User.UserPassword);
+                                CandidateDetails.Candidate.User.UserRole = Role.Candidate.ToString();
+                                CandidateDetails.Candidate.CandidateImage = extension.UploadImage(File);
+                                //CandidateDetails.Candidate.AssignmentCandidate.ZoneandArea = ElectionSettingsManager.GetSingleAssingElectionDetailsList(CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID,
+                                //                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ZoneID,
+                                //                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.AreaID);
+                                CandidateDetails.Candidate.AssignmentCandidate.ZoneandArea = CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID;
+                                CandidateDetails.Candidate.AssignmentCandidate.ElectionComplete = 0;
+                                
+                                CandidateDetails.Candidate.AssignmentCandidate.CandidateSymbol = extension.UploadImage(ElectionIcon);
+                                CandidateDetails.Candidate.AssignmentCandidate.CandidateID = StaffManager.AddNewCandidate(CandidateDetails.Candidate);
+                                if (ElectionSettingsManager.AddNewAssignCandidate(CandidateDetails.Candidate.AssignmentCandidate))
+                                {
+                                    ViewData["Message"] = "Your data have been added";
+                                    ModelState.Clear();
+                                }
+                                else
+                                {
+                                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                                }
+                            }
+                        }
+                   
                     }
+                    else
+                    {
+                        ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                    }
+
+                }
+                else
+                {
+                    ViewData["Message"] = "User Does not Have any Voter Account";
                 }
             }
             SuperAdminAndAdminViewModel Candidate = new SuperAdminAndAdminViewModel();
@@ -427,11 +447,11 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             return UserDetails;
         }
         /// Check Exist ID
-        private bool CheckCandidaterExistorNot(string NIDNumber)
+        private bool CheckCandidateExistorNot(string NIDNumber)
         {
             bool IsExisted = false;
-            var GetAllCandidate = StaffManager.GetAllCandidate();
-            if (GetAllCandidate.Count(e => e.CandidateNID == NIDNumber) > 0)
+            var GetAllVoter = StaffManager.GetAllCandidate();
+            if (GetAllVoter.Count(e => e.CandidateNID == NIDNumber) > 0)
             {
                 IsExisted = true;
             }
@@ -446,6 +466,17 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 IsExisted = true;
             }
             return IsExisted;
+        }
+        private bool CheckElectionValidation(int ElectionID)
+        {
+            bool Validated = true;
+            var ElectionValidation = ElectionSettingsManager.GetAllElectionDetails().Where(x=> x.ElectionID== ElectionID).FirstOrDefault();
+            var TodaysDate=DateTime.Now;
+            //if(TodaysDate > ElectionValidation.StartDate)
+            //{
+            //    Validated = false;
+            //}
+            return Validated;
         }
     }
 }

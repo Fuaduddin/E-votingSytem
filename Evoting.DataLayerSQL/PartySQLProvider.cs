@@ -21,7 +21,7 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Parties", party).Result;
-                Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
+                //Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {

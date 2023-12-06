@@ -18,7 +18,7 @@
                             <label class="col-sm-3 col-form-label">Full Name</label>
                             <br />
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Candidate.CandidateName, new { @class = "form-control", @placeholder = "Enter Election Name" })
+                                @Html.TextBoxFor(model => model.Candidate.CandidateName, new { @class = "form-control", @placeholder = "Enter Full Name" })
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">NID Number & User ID</label>
+                            <label class="col-sm-3 col-form-label">NID Number</label>
                             <div class="col-sm-9">
                                 @Html.TextBoxFor(model => model.Candidate.CandidateNID, new { @class = "form-control", @placeholder = "Enter NID Number" })
                             </div>
@@ -86,7 +86,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">User ID</label>
+                            <div class="col-sm-9">
+                                @Html.TextBoxFor(model => model.Candidate.User.UserID, new { @class = "form-control", @placeholder = "Enter User Password" })
+                                @Html.ValidationMessageFor(Model => Model.Candidate.User.UserID)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">User Password</label>
                             <div class="col-sm-9">
@@ -120,7 +129,7 @@
                             <label class="col-sm-3 col-form-label">Party</label>
                             <div class="col-sm-9">
                                 @Html.DropDownListFor(Model => Model.Candidate.CandidateParty, new SelectList(Model.PartyList, "PartyID", "PartyName"), new { @class = "form-control", type = "date" })
-                                @Html.ValidationMessageFor(Model => Model.Candidate.User.UserPassword)
+                                @Html.ValidationMessageFor(Model => Model.Candidate.CandidateParty)
                             </div>
                         </div>
                     </div>
@@ -164,7 +173,16 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Candidate Symbol</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="file" id="formFile" name="ElectionIcon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 if (Model.Candidate.CandidateID > 0)
                 {
 

@@ -170,7 +170,9 @@
     <Compile Include="Controllers\AnnouncementsController.cs" />
     <Compile Include="Controllers\AppointmentsController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
+    <Compile Include="Controllers\CandidatesController.cs" />
     <Compile Include="Controllers\ElectionAssignmnetsController.cs" />
+    <Compile Include="Controllers\ElectionCandidatesController.cs" />
     <Compile Include="Controllers\ElectionTypesController.cs" />
     <Compile Include="Controllers\Election_DetailController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />

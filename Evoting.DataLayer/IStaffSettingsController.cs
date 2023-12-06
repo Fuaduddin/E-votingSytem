@@ -17,7 +17,7 @@ namespace Evoting.DataLayer
         bool DeleteVoter(int id);
 
         // Candidates
-        bool AddNewCandidate(CandidateModel Candidate);
+        int AddNewCandidate(CandidateModel Candidate);
         List<CandidateModel> GetAllCandidate();
         bool UpdateCandidate(CandidateModel Candidate);
         CandidateModel GetSingleCandidate(int id);

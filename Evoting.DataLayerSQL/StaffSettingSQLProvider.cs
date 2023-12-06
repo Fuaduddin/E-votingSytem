@@ -87,19 +87,20 @@ namespace Evoting.DataLayerSQL
 
         // Candidate
 
-        public bool AddNewCandidate(CandidateModel Candidate)
+        public int AddNewCandidate(CandidateModel Candidate)
         {
-            bool IsAdded = true;
+            int candidateID;
             try
             {
-
+                HttpResponseMessage ResponseADDED = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Candidates", Candidate).Result;
+                candidateID=ResponseADDED.Content.ReadAsAsync<int>().Result;
             }
             catch (Exception ex)
             {
-                IsAdded = false;
+               
                 throw new Exception(ex.Message);
             }
-            return IsAdded;
+            return candidateID;
         }
         public List<CandidateModel> GetAllCandidate()
         {

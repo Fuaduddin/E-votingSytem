@@ -21,10 +21,15 @@ namespace E_Voting.Restful.API.Controllers
         private Entities db = new Entities();
 
         //// GET: api/ElectionAssignments
-        //public IQueryable<ElectionAssignment> GetElectionAssignments()
-        //{
-        //    return db.ElectionAssignments;
-        //}
+        [Route("api/ElectionAssignments/{electionID}/{zoneID}/{areaID}")]
+        [ResponseType(typeof(ElectionAssignment))]
+        public int GetElectionAssignmentsList(int electionID,int zoneID, int areaID)
+        {
+            var electionassignmentlist= db.ElectionAssignments.Where(x=>x.ElectionID== electionID
+                                                                     && x.ZoneID== zoneID
+                                                                     && x.AreaID== areaID).FirstOrDefault();
+            return electionassignmentlist.ElectionAssignID;
+        }
 
         //// GET: api/ElectionAssignments/5
         //[ResponseType(typeof(ElectionAssignment))]
@@ -207,6 +212,7 @@ namespace E_Voting.Restful.API.Controllers
 
             return AssingmentElectionList;
         }
+        
         //private List<zoneModel> GetZoneDetails(int id)
         //{
         //    var Zones = db.Zones;

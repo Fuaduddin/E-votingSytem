@@ -324,5 +324,39 @@ namespace Evoting.DataLayerSQL
             }
             return election;
         }
+        public int GetSingleAssingElectionDetailsList(int electionID, int zoneID, int areaID)
+        {
+            // ElectionAssignmentModel AllAssingElectionDetails = new ElectionAssignmentModel();
+            int AssingmentDetailsID;
+            try
+            {
+                
+                HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionAssignments/" + electionID.ToString()+ "/" + zoneID.ToString() + "/" + areaID.ToString()).Result;
+                AssingmentDetailsID = responseSingle.Content.ReadAsAsync<int>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return AssingmentDetailsID;
+        }
+
+
+        // Candidate Election Assignment 
+        public bool AddNewCandidateAssignment(AssignmentCandidateModel CandidateAssignemnt)
+        {
+            bool IsAdded = true;
+            try
+            {
+                HttpResponseMessage ResponseAdded = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("ElectionCandidates", CandidateAssignemnt).Result;
+            }
+            catch (Exception ex)
+            {
+                IsAdded = false;
+                throw new Exception("Exception Getting Single Data." + ex.Message);
+            }
+            return IsAdded;
+        }
+        
     }
 }

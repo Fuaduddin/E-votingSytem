@@ -11,11 +11,11 @@
                 <h4 class="card-title">ADD NEW PARTY</h4>
                 @using (Html.BeginForm("AddNewParty", "Party", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    @Html.HiddenFor(model => model.Party.PartyID)
+                    @Html.HiddenFor(Model => Model.Party.PartyID)
                     <div class="form-group">
                         <label for="exampleInputUsername1">Enter Party Name</label>
-                        @Html.TextBoxFor(model => model.Party.PartyName, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Party Name" })
-                        @Html.ValidationMessageFor(model => model.Party.PartyName)
+                        @Html.TextBoxFor(Model => Model.Party.PartyName, new { @class = "form-control", id = "exampleInputUsername1", @placeholder = "Enter Party Name" })
+                        @Html.ValidationMessageFor(Model => Model.Party.PartyName)
                     </div>
                     <div class="form-group">
                         <label>Symbol upload</label>
