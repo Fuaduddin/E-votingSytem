@@ -8,6 +8,13 @@ namespace Evoting.Models
 {
     public class VoterCandidateViewModel
     {
+        public CandidateModel Candidate { get; set; }
+        public GiveVoteModel GiveVote { get; set; }
+
+
+        // All List
+        public List<CandidateModel> CandidateList { get; set; }
+
 
         // Extra Feauture
         public int TotalPage { get; set; }

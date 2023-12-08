@@ -19,5 +19,11 @@ namespace Evoting.GlobalSetting
             Active,
             Inactive
         }
+        public enum ElectionStatus
+        {
+            Pending,
+            Complete,
+            Cancle
+        }
     }
 }

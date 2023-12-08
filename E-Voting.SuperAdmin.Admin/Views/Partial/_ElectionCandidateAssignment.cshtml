@@ -1,0 +1,42 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Election Details</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(Model => Model.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID, new SelectList(Model.ElectionDetailsList, "ElectionID", "ElectionName"), new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(Model => Model.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Select Zone</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(Model => Model.Candidate.AssignmentCandidate.ElectionAssignment.ZoneID, new SelectList(Model.ZoneList, "ZoneId", "ZoneName"), new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Select Area</label>
+            <div class="col-sm-9">
+                @Html.DropDownListFor(Model => Model.Candidate.AssignmentCandidate.ElectionAssignment.AreaID, new SelectList(Model.AreaList, "AreaID", "AreaName"), new { @class = "form-control", type = "date" })
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Candidate Symbol</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="file" id="formFile" name="ElectionIcon">
+            </div>
+        </div>
+    </div>
+</div>
+

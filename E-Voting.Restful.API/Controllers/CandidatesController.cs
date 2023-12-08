@@ -37,40 +37,40 @@ namespace E_Voting.Restful.API.Controllers
             return Ok(candidate);
         }
 
-        // PUT: api/Candidates/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCandidate(int id, Candidate candidate)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// PUT: api/Candidates/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutCandidate(int id, Candidate candidate)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != candidate.CandidateID)
-            {
-                return BadRequest();
-            }
+        //    if (id != candidate.CandidateID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            db.Entry(candidate).State = EntityState.Modified;
+        //    db.Entry(candidate).State = EntityState.Modified;
 
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CandidateExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await db.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CandidateExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
         // POST: api/Candidates
         //[ResponseType(typeof(Candidate))]
@@ -153,5 +153,40 @@ namespace E_Voting.Restful.API.Controllers
             db.SaveChanges();
             return CandidateDetails.CandidateID;
         }
+
+        // PUT: api/Candidates/5
+        [ResponseType(typeof(void))]
+        public bool PutCandidate(int id, CandidateModel candidate)
+        {
+            bool IsUpdated = true;
+            try
+            {
+                var CandidateDetails=db.Candidates.Where(x=>x.CandidateID==id).FirstOrDefault();
+                if(CandidateDetails!=null)
+                {
+                    CandidateDetails.CandidateImage = candidate.CandidateImage;
+                    CandidateDetails.CandidateName=candidate.CandidateName;
+                    CandidateDetails.CandidatePhoneNumber = candidate.CandidatePhoneNumber;
+                    CandidateDetails.CandidateEmail = candidate.CandidateEmail;
+                    CandidateDetails.CandidateZone = candidate.CandidateZone;
+                    CandidateDetails.CandidateArea = candidate.CandidateArea;
+                    CandidateDetails.CandidatePermanentAddress = candidate.CandidatePermanentAddress;
+                    CandidateDetails.CandidatePresentAddress = candidate.CandidatePresentAddress;
+                    CandidateDetails.CandidateNID = candidate.CandidateNID;
+                    CandidateDetails.CandidateParty = candidate.CandidateParty;
+                    CandidateDetails.CandidateGender = candidate.CandidateGender;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                IsUpdated = false;
+                throw new Exception (ex.Message);
+
+            }
+
+            return IsUpdated;
+        }
+
     }
 }

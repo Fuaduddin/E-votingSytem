@@ -1,0 +1,47 @@
+﻿@model Evoting.Models.VoterCandidateViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12 stretch-card grid-margin grid-margin-md-0 mb-4">
+    <div class="card data-icon-card-primary">
+        <div class="card-body">
+            <p class="card-title text-white">Number of Meetings</p>
+            <div class="row">
+                <div class="col-8 text-white">
+                    <h3>34040</h3>
+                    <p class="text-white font-weight-500 mb-0">The total number of sessions within the date range.It is calculated as the sum . </p>
+                </div>
+                <div class="col-4 background-icon">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 grid-margin transparent" style="display: flex !important;">
+        @foreach (var Candidte in Model.CandidateList)
+        {
+            <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-tale">
+                    <div class="card-body">
+                        <input type="radio" id="css" name="fav_language" value="@Candidte.CandidateID">
+                        <div style="display: flex !important; align-items: center; justify-content: space-evenly; ">
+                            <div>
+                               
+                                <p class="fs-30 mb-2"><b>@Candidte.CandidateName</b></p>
+                                
+                            </div>
+                            <div>
+
+                                <img src="@Candidte.AssignmentCandidate.CandidateSymbol" />
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

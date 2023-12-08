@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using E_Voting.Restful.API.Models.DB;
+using Evoting.Models;
 
 namespace E_Voting.Restful.API.Controllers
 {
@@ -17,10 +18,10 @@ namespace E_Voting.Restful.API.Controllers
         private Entities db = new Entities();
 
         // GET: api/Parties
-        public IQueryable<Party> GetParties()
-        {
-            return db.Parties;
-        }
+        //public IQueryable<Party> GetParties()
+        //{
+        //    return db.Parties;
+        //}
 
         // GET: api/Parties/5
         [ResponseType(typeof(Party))]
@@ -113,6 +114,25 @@ namespace E_Voting.Restful.API.Controllers
         private bool PartyExists(int id)
         {
             return db.Parties.Count(e => e.PartyID == id) > 0;
+        }
+
+
+        // Custome API Controller Method
+
+        public List<PartyModel> GetParties()
+        {
+            List<PartyModel> PartyList = new List<PartyModel>();
+            foreach (var party in db.Parties)
+            {
+                var PartyDetails = new PartyModel()
+                {
+                    PartyID = party.PartyID,
+                    PartyName = party.PartyName,
+                    PartySymbol = party.PartySymbol
+                };
+                PartyList.Add(PartyDetails);
+            }
+            return PartyList;
         }
     }
 }

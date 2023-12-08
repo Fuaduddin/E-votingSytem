@@ -120,7 +120,7 @@ namespace Evoting.DataLayerSQL
             bool IsUpdated = true;
             try
             {
-
+                HttpResponseMessage ResponseUpdate = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Candidates" + Candidate.CandidateID.ToString(), Candidate).Result;
             }
             catch (Exception ex)
             {

@@ -66,12 +66,13 @@ namespace Evoting.BusinessLayer
             var OutPut = provider.GetSingleCandidate(id);
             return OutPut;
         }
-        //public static bool UpdateCandidate(CandidateModel Candidate)
-        //{
-        //    StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
-        //    var OutPut = provider.AddNewCandidate(Candidate);
-        //    return OutPut;
-        //}
+        public static bool UpdateCandidate(CandidateModel Candidate)
+        {
+            StaffSettingSQLProvider provider = new StaffSettingSQLProvider();
+            var OutPut = provider.UpdateCandidate(Candidate);
+            return OutPut;
+        }
+
         // Admin
         public static bool AddNewAdmin(AdminModel Admin)
         {

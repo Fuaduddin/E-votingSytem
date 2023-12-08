@@ -177,14 +177,14 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         {
             if(CandidateDetails.Candidate.CandidateID>0)
             {
-                //if(StaffManager.UpdateCandidate(CandidateDetails)>0)
-                //{
-                //    ViewData["Message"] = "Your data have been Updated";
-                //}
-                //else
-                //{
-                //    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
-                //}
+                if (StaffManager.UpdateCandidate(CandidateDetails.Candidate))
+                {
+                    ViewData["Message"] = "Your data have been Updated";
+                }
+                else
+                {
+                    ViewData["Message"] = "!!!!!!!!! ERROR !!!!!!!!!";
+                }
             }
             else
             {
@@ -203,13 +203,12 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                                 CandidateDetails.Candidate.User = NewUserSettingsDetails(CandidateDetails.Candidate.User.UserID, CandidateDetails.Candidate.User.UserPassword);
                                 CandidateDetails.Candidate.User.UserRole = Role.Candidate.ToString();
                                 CandidateDetails.Candidate.CandidateImage = extension.UploadImage(File);
-                                //CandidateDetails.Candidate.AssignmentCandidate.ZoneandArea = ElectionSettingsManager.GetSingleAssingElectionDetailsList(CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID,
-                                //                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ZoneID,
-                                //                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.AreaID);
-                                CandidateDetails.Candidate.AssignmentCandidate.ZoneandArea = CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID;
+                                CandidateDetails.Candidate.AssignmentCandidate.ZoneandArea = ElectionSettingsManager.GetSingleAssingElectionDetailsList(CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID,
+                                                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ZoneID,
+                                                                                                                                                      CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.AreaID);
                                 CandidateDetails.Candidate.AssignmentCandidate.ElectionComplete = 0;
-                                
                                 CandidateDetails.Candidate.AssignmentCandidate.CandidateSymbol = extension.UploadImage(ElectionIcon);
+                                CandidateDetails.Candidate.AssignmentCandidate.ElectionID = CandidateDetails.Candidate.AssignmentCandidate.ElectionAssignment.ElectionID;
                                 CandidateDetails.Candidate.AssignmentCandidate.CandidateID = StaffManager.AddNewCandidate(CandidateDetails.Candidate);
                                 if (ElectionSettingsManager.AddNewAssignCandidate(CandidateDetails.Candidate.AssignmentCandidate))
                                 {
@@ -222,7 +221,6 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                                 }
                             }
                         }
-                   
                     }
                     else
                     {
@@ -472,10 +470,10 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             bool Validated = true;
             var ElectionValidation = ElectionSettingsManager.GetAllElectionDetails().Where(x=> x.ElectionID== ElectionID).FirstOrDefault();
             var TodaysDate=DateTime.Now;
-            //if(TodaysDate > ElectionValidation.StartDate)
-            //{
-            //    Validated = false;
-            //}
+            if (TodaysDate > ElectionValidation.StartDate)
+            {
+                Validated = false;
+            }
             return Validated;
         }
     }
