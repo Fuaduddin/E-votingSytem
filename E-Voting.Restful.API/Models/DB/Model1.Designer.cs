@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\Models\DB\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.Restful.API\Models\DB\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

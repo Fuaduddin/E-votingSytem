@@ -19,12 +19,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/AdminAssignments
-        //public IQueryable<AdminAssignment> GetAdminAssignments()
-        //{
-        //    return db.AdminAssignments;
-        //}
-
         // GET: api/AdminAssignments/5
         [ResponseType(typeof(AdminAssignment))]
         public async Task<IHttpActionResult> GetAdminAssignment(int id)

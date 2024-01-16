@@ -1,0 +1,300 @@
+﻿@using Evoting.BusinessLayer;
+@using Evoting.GlobalSetting;
+@{ 
+    var ElectionType = ElectionSettingsManager.GetAllElectionType();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <title>E-Voting System</title>
+    <!-- Favicons -->
+    <link href="~/Content/img/favicon.png" rel="icon">
+    <link href="~/Content/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="~/Content/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--Online Style Sheet-->
+    <link href="~/Content/lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+    <link href="~/Content/lib/owlcarousel/owl.carousel.css" rel="stylesheet">
+    <link href="~/Content/lib/owlcarousel/owl.transitions.css" rel="stylesheet">
+    <link href="~/Content/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/animate/animate.min.css" rel="stylesheet">
+    <link href="~/Content/lib/venobox/venobox.css" rel="stylesheet">
+
+    <!-- Nivo Slider Theme -->
+    <link href="~/Content/css/nivo-slider-theme.css" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="~/Content//css/style.css" rel="stylesheet">
+
+    <!-- Responsive Stylesheet File -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet">
+    <script src="~/Content/JS/off-canvas.js"></script>
+    <!-- plugins:css -->
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!--CUSTOME CSS START-->
+    <link href="~/Content/CSS/Indexpage.css" rel="stylesheet" />
+    <link href="~/Content/CSS/UpcomingELection.css" rel="stylesheet" />
+
+
+
+</head>
+<body data-spy="scroll" data-target="#navbar-example">
+
+    <div id="preloader"></div>
+
+    <header>
+        <!-- header-area start -->
+        <div id="sticker" class="header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+
+                        <!-- Navigation -->
+                        <nav class="navbar navbar-default">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <!-- Brand -->
+                                <a class="navbar-brand page-scroll sticky-logo" href="/HomePage/Index">
+                                    <h1><span>E-Voting</span>System</h1>
+                                    <!-- Uncomment below if you prefer to use an image logo -->
+                                    <!-- <img src="img/logo.png" alt="" title=""> -->
+                                </a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example" style="background-color: rgba(0, 0, 0, 0.40);">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active">
+                                        <a class="page-scroll" href="/HomePage/Index">Home</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/HomePage/about">About</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/HomePage/Appointment">Make Apointment</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/HomePage/UpcomingElection">Upcoming Election</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/HomePage/Result">Results</a>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Candidate Profiles<span class="caret"></span></a>
+                                        @if (ElectionType != null)
+                                        {
+                                            <ul class="dropdown-menu" role="menu">
+                                                @foreach(var Type in ElectionType)
+                                                 {
+                                                    <li><a href=/HomePage/CandidateProfile/@Type.ElectionID>@Type.ElectionName</a></li>
+                                                 }
+                                            </ul>
+                                        }
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="/HomePage/Statics">Statistics</a>
+                                    </li>
+                                    <li>
+                                        <a class="page-scroll" href="#contact">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- navbar-collapse -->
+                        </nav>
+                        <!-- END: Navigation -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header-area end -->
+    </header>
+    <!-- header end -->
+    <!-- Render Body Start-->
+    @RenderBody()
+    <!-- Render Body End-->
+    <!-- Start Footer bottom Area -->
+    <footer>
+        <div class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <div class="footer-logo">
+                                    <h2><span>e</span>Business</h2>
+                                </div>
+
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                                <div class="footer-icons">
+                                    <ul>
+                                        <li>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-google"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>information</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                                </p>
+                                <div class="footer-contacts">
+                                    <p><span>Tel:</span> +123 456 789</p>
+                                    <p><span>Email:</span> contact@example.com</p>
+                                    <p><span>Working Hours:</span> 9am-5pm</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>Instagram</h4>
+                                <div class="flicker-img">
+                                    <a href="#"><img src="img/portfolio/1.jpg" alt=""></a>
+                                    <a href="#"><img src="img/portfolio/2.jpg" alt=""></a>
+                                    <a href="#"><img src="img/portfolio/3.jpg" alt=""></a>
+                                    <a href="#"><img src="img/portfolio/4.jpg" alt=""></a>
+                                    <a href="#"><img src="img/portfolio/5.jpg" alt=""></a>
+                                    <a href="#"><img src="img/portfolio/6.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="copyright text-center">
+                            <p id="footer_details">
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="~/Content/lib/jquery/jquery.min.js"></script>
+    <script src="~/Content/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/Content/lib/venobox/venobox.min.js"></script>
+    <script src="~/Content/lib/knob/jquery.knob.js"></script>
+    <script src="~/Content/lib/wow/wow.min.js"></script>
+    <script src="~/Content/lib/parallax/parallax.js"></script>
+    <script src="~/Content/lib/easing/easing.min.js"></script>
+    <script src="~/Content/lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <script src="~/Content/lib/appear/jquery.appear.js"></script>
+    <script src="~/Content/lib/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- Contact Form JavaScript File -->
+    <script src="~/Content/contactform/contactform.js"></script>
+
+    <script src="~/Content/js/main.js"></script>
+
+
+
+    <!--Custome JS Start-->
+    <script>
+        const date = new Date()
+        document.getElementById("footer_details").innerHTML = "&copy; Copyright Fuad Uddin " + date.getFullYear();
+    </script>
+    <script src="~/Content/CustomeJS/Custome.js"></script>
+    <!--Custome JS END-->
+    <!--Common CSS Start-->
+    <style>
+        .area-padding {
+            padding: 158px 0px 43px !important;
+        }
+
+        .suscribe-input input {
+            font-size: 20px !important;
+        }
+
+        .subs-feilds {
+            border: 1px solid #fff;
+            display: inline-block;
+            height: unset !important;
+            margin-top: 30px;
+            width: 60%;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .suscribe-input button {
+            border-radius: 0 0 0 0 !important;
+        }
+
+        .extra_desing {
+            background: transparent none repeat scroll 0 0;
+            border: medium none;
+            float: left;
+            font-size: 15px;
+            line-height: 24px;
+            padding: 11px 15px;
+            width: 70%;
+            height: 50px;
+            /* color: white; */
+            font-size: 20px !important;
+        }
+
+        div.card {
+            width: 250px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+
+        div.header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 40px;
+        }
+
+        div.container {
+            padding: 10px;
+        }
+    </style>
+
+    <!--Common CSS END-->
+</body>
+</html>

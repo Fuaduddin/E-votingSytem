@@ -8,10 +8,15 @@ namespace Evoting.Controllers
 {
     public class SinglePageController : Controller
     {
+        [Route("")]
         // GET: SinglePage
         public ActionResult SinglePageAnnoucement(int id)
         {
-            return View();
+            return View("SinglePageAnnoucement");
+        }
+        public ActionResult SinglePageElectionDetails(int id)
+        {
+            return View("SinglePageElectionDetails");
         }
     }
 }

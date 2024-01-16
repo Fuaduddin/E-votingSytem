@@ -18,26 +18,6 @@ namespace E_Voting.Restful.API.Controllers
     public class AreasController : ApiController
     {
         private Entities db = new Entities();
-
-        // GET: api/Areas
-        //public IQueryable<Area> GetAreas()
-        //{
-        //    return db.Areas;
-        //}
-
-        // GET: api/Areas/5
-        //[ResponseType(typeof(Area))]
-        //public async Task<IHttpActionResult> GetArea(int id)
-        //{
-        //    Area area = await db.Areas.FindAsync(id);
-        //    if (area == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(area);
-        //}
-
         // PUT: api/Areas/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutArea(int id, Area area)
@@ -72,21 +52,6 @@ namespace E_Voting.Restful.API.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/Areas
-        //[ResponseType(typeof(Area))]
-        //public async Task<IHttpActionResult> PostArea(Area area)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Areas.Add(area);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = area.AreaID }, area);
-        //}
 
         // DELETE: api/Areas/5
         [ResponseType(typeof(Area))]

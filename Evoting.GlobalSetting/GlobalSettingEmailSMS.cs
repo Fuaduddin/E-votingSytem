@@ -70,6 +70,7 @@ namespace Evoting.GlobalSetting
             catch (Exception ex)
             {
                 IsSent = false;
+                throw new Exception (ex.ToString());
             }
             return IsSent;
         }
@@ -83,9 +84,10 @@ namespace Evoting.GlobalSetting
             {
                 SendingMail(Emailbody, CustomerEmail, SendingVotingConfirmationSUbject);
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
                 IsSent=false;
+                throw new Exception(ex.ToString());
             }
             return IsSent;
         }
@@ -99,9 +101,10 @@ namespace Evoting.GlobalSetting
             {
                 SendingMail(Emailbody, CustomerEmail, SendingUserAccountActivationConfirmationSubject);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 IsSent = false;
+                throw new Exception(ex.ToString());
             }
             return IsSent;
         }

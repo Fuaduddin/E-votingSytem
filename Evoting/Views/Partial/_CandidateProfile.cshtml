@@ -1,4 +1,6 @@
-﻿<!-- Start team Area -->
+﻿@model Evoting.Models.CustomerViewModel
+@using Evoting.GlobalSetting;
+<!-- Start team Area -->
 <div id="team" class="our-team-area area-padding">
     <div class="container">
         <div class="row">
@@ -8,142 +10,51 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="team-top">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/img/team/1.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+        @if (Model.CandidateList.Count > 0)
+        {
+            <div class="row">
+                <div class="team-top">
+                    @foreach (var Candidate in Model.CandidateList.OrderByDescending(x => x.CandidateID).Take(4).ToList())
+                    {
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="single-team-member">
+                                <div class="team-img">
+                                    <a href="#">
+                                        <img src="@(GlobalSettingsPatternsandConstant.ImageURLWeb+ Candidate.CandidateImage)" alt="">
+                                    </a>
+                                    <div class="team-social-icon text-center">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="team-content text-center">
+                                    <h4>@Candidate.CandidateName</h4>
+                                    <p>@(Candidate.Party.PartyName != null ? Candidate.Party.PartyName : "Indipandent Candidate" )</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-content text-center">
-                            <h4>Jhon Mickel</h4>
-                            <p>Seo</p>
-                        </div>
-                    </div>
+                    }
                 </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/img/team/2.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Andrew Arnold</h4>
-                            <p>Web Developer</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/img/team/3.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Lellien Linda</h4>
-                            <p>Web Design</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/img/team/4.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Jhon Powel</h4>
-                            <p>Seo Expert</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="row">
+                <h4 style="color:black; text-align: center; font-size: 29px;">
+                    <b>
+                        <i>
+                            There is no Candidate
+                        </i>
+                    </b>
+                </h4>
+            </div>
+        }
+
     </div>
 </div>
 <!-- End Team Area -->

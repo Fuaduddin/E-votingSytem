@@ -1,4 +1,7 @@
-﻿    <!-- start pricing area -->
+﻿@model Evoting.Models.CustomerViewModel
+
+
+<!-- start pricing area -->
 <div id="pricing" class="pricing-area area-padding">
     <div class="container">
         <div class="row">
@@ -8,57 +11,47 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="pri_table_list">
-                    <h3>basic <br /> <span>$80 / month</span></h3>
-                    <ol>
-                        <li class="check">Online system</li>
-                        <li class="check cross">Full access</li>
-                        <li class="check">Free apps</li>
-                        <li class="check">Multiple slider</li>
-                        <li class="check cross">Free domin</li>
-                        <li class="check cross">Support unlimited</li>
-                        <li class="check">Payment online</li>
-                        <li class="check cross">Cash back</li>
-                    </ol>
-                    <button>sign up now</button>
-                </div>
+        @if (Model.ElectionDetailsList.Count > 0)
+        {
+            <div class="row">
+                @foreach (var ElectionDetails in Model.ElectionDetailsList.OrderByDescending(x=>x.StartDate).Take(3).ToList())
+                {
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="pri_table_list">
+                            <h3>@ElectionDetails.ElectionName</h3>
+                            <div>
+                                <h4>Election Status: @ElectionDetails.ElectionStatus</h4>
+                                <p>@ElectionDetails.ElectionDetails</p>
+                            </div>
+                            <ol>
+                                <li class="check">Online system</li>
+                                <li class="check cross">Full access</li>
+                                <li class="check">Free apps</li>
+                                <li class="check">Multiple slider</li>
+                                <li class="check cross">Free domin</li>
+                                <li class="check cross">Support unlimited</li>
+                                <li class="check">Payment online</li>
+                                <li class="check cross">Cash back</li>
+                            </ol>
+                            <a href="/s"
+                            <button>Details</button>
+                        </div>
+                    </div>
+                }
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="pri_table_list active">
-                    <span class="saleon">top sale</span>
-                    <h3>standard <br /> <span>$110 / month</span></h3>
-                    <ol>
-                        <li class="check">Online system</li>
-                        <li class="check">Full access</li>
-                        <li class="check">Free apps</li>
-                        <li class="check">Multiple slider</li>
-                        <li class="check cross">Free domin</li>
-                        <li class="check">Support unlimited</li>
-                        <li class="check">Payment online</li>
-                        <li class="check cross">Cash back</li>
-                    </ol>
-                    <button>sign up now</button>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="pri_table_list">
-                    <h3>premium <br /> <span>$150 / month</span></h3>
-                    <ol>
-                        <li class="check">Online system</li>
-                        <li class="check">Full access</li>
-                        <li class="check">Free apps</li>
-                        <li class="check">Multiple slider</li>
-                        <li class="check">Free domin</li>
-                        <li class="check">Support unlimited</li>
-                        <li class="check">Payment online</li>
-                        <li class="check">Cash back</li>
-                    </ol>
-                    <button>sign up now</button>
-                </div>
-            </div>
-        </div>
+            }
+        else
+        {
+          <div class="row">
+            <h4 style="color:black; text-align: center; font-size: 29px;">
+             <b>
+                <i>
+                    There is no latest election
+                </i>
+            </b>
+           </h4>
+          </div>
+        }   
     </div>
 </div>
 <!-- End pricing table area -->

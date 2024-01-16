@@ -91,13 +91,12 @@
 <!-- End Slider Area -->
 <!-- Start Partial view -->
 @Html.Partial("~/Views/Partial/_AboutEvoting.cshtml")
-@Html.Partial("~/Views/Partial/_Service.cshtml")
 @Html.Partial("~/Views/Partial/_Achivement.cshtml")
 @Html.Partial("~/Views/Partial/_RegistrationRules.cshtml")
-@Html.Partial("~/Views/Partial/_CandidateProfile.cshtml")
+@Html.Partial("~/Views/Partial/_CandidateProfile.cshtml", Model)
 @Html.Partial("~/Views/Partial/_MakeAppointmentLink.cshtml")
-@Html.Partial("~/Views/Partial/_ElectionResult.cshtml")
-@Html.Partial("~/Views/Partial/_RecentElection.cshtml")
+@Html.Partial("~/Views/Partial/_ElectionResult.cshtml", Model)
+@Html.Partial("~/Views/Partial/_RecentElection.cshtml",Model)
 @Html.Partial("~/Views/Partial/_Testimonial.cshtml")
 @Html.Partial("~/Views/Partial/_GivevoteBanner.cshtml")
 @Html.Partial("~/Views/Partial/_Annoucement.cshtml", Model)

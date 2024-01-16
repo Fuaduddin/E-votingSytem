@@ -18,25 +18,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Election_Detail
-        //public IQueryable<Election_Detail> GetElection_Details()
-        //{
-        //    return db.Election_Details;
-        //}
-
-        //// GET: api/Election_Detail/5
-        //[ResponseType(typeof(Election_Detail))]
-        //public async Task<IHttpActionResult> GetElection_Detail(int id)
-        //{
-        //    Election_Detail election_Detail = await db.Election_Details.FindAsync(id);
-        //    if (election_Detail == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(election_Detail);
-        //}
-
         // PUT: api/Election_Detail/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutElection_Detail(int id, Election_Detail election_Detail)
@@ -71,22 +52,6 @@ namespace E_Voting.Restful.API.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        //// POST: api/Election_Detail
-        //[ResponseType(typeof(Election_Detail))]
-        //public async Task<IHttpActionResult> PostElection_Detail(Election_Detail election_Detail)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Election_Details.Add(election_Detail);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = election_Detail.ElectionID }, election_Detail);
-        //}
-
         // DELETE: api/Election_Detail/5
         [ResponseType(typeof(Election_Detail))]
         public async Task<IHttpActionResult> DeleteElection_Detail(int id)

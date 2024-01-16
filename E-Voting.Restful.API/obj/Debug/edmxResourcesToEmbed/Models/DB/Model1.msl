@@ -147,6 +147,7 @@
           <ScalarProperty Name="SelectedCandidateVote" ColumnName="SelectedCandidateVote" />
           <ScalarProperty Name="RunnerUpCandidate" ColumnName="RunnerUpCandidate" />
           <ScalarProperty Name="RunnerUpCandidateVote" ColumnName="RunnerUpCandidateVote" />
+          <ScalarProperty Name="AssignmentElectionID" ColumnName="AssignmentElectionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -172,6 +173,7 @@
           <ScalarProperty Name="CandidateID" ColumnName="CandidateID" />
           <ScalarProperty Name="VoterID" ColumnName="VoterID" />
           <ScalarProperty Name="VoteDate" ColumnName="VoteDate" />
+          <ScalarProperty Name="AssignmentElectionID" ColumnName="AssignmentElectionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

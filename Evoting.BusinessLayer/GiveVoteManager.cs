@@ -16,7 +16,7 @@ namespace Evoting.BusinessLayer
             var CandidateList=Provider.GetZoneAreaCandidate(ELectionID,ZoneID, AreaID);
             return CandidateList;
         }
-        public static int GiveVote(GiveVoteModel vote)
+        public static bool GiveVote(GiveVoteModel vote)
         {
             GiveVoteSQLProvider Provider =new GiveVoteSQLProvider();
             var GiveVote = Provider.GiveVote(vote);
@@ -26,6 +26,20 @@ namespace Evoting.BusinessLayer
         {
             GiveVoteSQLProvider Provider = new GiveVoteSQLProvider();
             var GiveVote = Provider.GiveVoteList();
+            return GiveVote;
+        }
+
+        // Results
+        public static ElectionResultDetailsModel ElectionResultDetails(int ElectionID)
+        {
+            GiveVoteSQLProvider Provider = new GiveVoteSQLProvider();
+            var GiveVote = Provider.ElectionResultDetails(ElectionID);
+            return GiveVote;
+        }
+        public static ElectionResultDetailsModel GetAllCandidateElectionResultDetails()
+        {
+            GiveVoteSQLProvider Provider = new GiveVoteSQLProvider();
+            var GiveVote = Provider.GetAllCandidateElectionResultDetails();
             return GiveVote;
         }
     }

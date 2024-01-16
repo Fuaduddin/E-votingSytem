@@ -19,9 +19,12 @@ namespace E_Voting.Restful.API.Models.DB
         public int CandidateID { get; set; }
         public int VoterID { get; set; }
         public System.DateTime VoteDate { get; set; }
+        public Nullable<int> AssignmentElectionID { get; set; }
     
-        public virtual Candidate Candidate { get; set; }
         public virtual Election_Detail Election_Details { get; set; }
+        public virtual ElectionAssignment ElectionAssignment { get; set; }
+        public virtual Vote Vote1 { get; set; }
+        public virtual Vote Vote2 { get; set; }
         public virtual Voter Voter { get; set; }
     }
 }

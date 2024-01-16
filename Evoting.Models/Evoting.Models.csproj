@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Evoting.Models</RootNamespace>
     <AssemblyName>Evoting.Models</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -48,6 +48,7 @@
     <Compile Include="CandidateModel.cs" />
     <Compile Include="CommonModel.cs" />
     <Compile Include="GiveVoteModel.cs" />
+    <Compile Include="VoteCountDownModel.cs" />
     <Compile Include="VoterCandidateViewModel.cs" />
     <Compile Include="VoterModel.cs" />
     <Compile Include="CustomerViewModel.cs" />

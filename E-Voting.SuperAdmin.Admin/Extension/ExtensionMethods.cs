@@ -22,7 +22,7 @@ namespace E_Voting.SuperAdmin.Admin.Extension
                     Directory.CreateDirectory(imagepath);
                 }
                 imageurl = Path.Combine(imagepath, filename);
-                savepath = "~/Content/Image/" + filename;
+                savepath = "/Content/Image/" + filename;
                 Image.SaveAs(imageurl);
             }
             return savepath;

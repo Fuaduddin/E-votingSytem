@@ -1,4 +1,5 @@
-﻿using Evoting.Models;
+﻿using Evoting.DataLayer;
+using Evoting.Models;
 using Evoting.Utility;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Evoting.DataLayerSQL
 {
-    public class AppointmentAnnoucementSQLProvider
+    public class AppointmentAnnoucementSQLProvider : IAppointmentAnnoucement
     {
         public bool AddNewAppointment(AppointmentAnnoucementModel appointment)
         {

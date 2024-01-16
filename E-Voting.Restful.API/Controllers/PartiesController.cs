@@ -17,12 +17,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Parties
-        //public IQueryable<Party> GetParties()
-        //{
-        //    return db.Parties;
-        //}
-
         // GET: api/Parties/5
         [ResponseType(typeof(Party))]
         public IHttpActionResult GetParty(int id)

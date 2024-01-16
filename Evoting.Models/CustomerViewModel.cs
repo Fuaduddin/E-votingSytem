@@ -13,13 +13,13 @@ namespace Evoting.Models
         public AppointmentAnnoucementModel Appointment { get; set; }
         public UserModel UserDetails { get; set; }
         public AnnoucementModel Annoucement { get; set; }
-
+        public CandidateModel Candidate { get; set; }
 
 
         // All List
         public List<AnnoucementModel> AnnoucementList { get; set; }
-
-
+        public List<CandidateModel> CandidateList { get; set; }
+        public List<ElectionDetailsModel> ElectionDetailsList { get; set; }
 
 
         // Extra Feautures

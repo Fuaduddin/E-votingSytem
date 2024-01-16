@@ -19,12 +19,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Admins
-        //public IQueryable<Admin> GetAdmins()
-        //{
-        //    return db.Admins;
-        //}
-
         // GET: api/Admins/5
         [ResponseType(typeof(Admin))]
         public async Task<IHttpActionResult> GetAdmin(int id)
@@ -72,21 +66,6 @@ namespace E_Voting.Restful.API.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        // POST: api/Admins
-        //[ResponseType(typeof(Admin))]
-        //public async Task<IHttpActionResult> PostAdmin(Admin admin)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Admins.Add(admin);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = admin.AdminID }, admin);
-        //}
 
         // DELETE: api/Admins/5
         [ResponseType(typeof(Admin))]

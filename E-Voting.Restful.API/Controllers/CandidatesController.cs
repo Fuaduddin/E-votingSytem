@@ -37,56 +37,6 @@ namespace E_Voting.Restful.API.Controllers
             return Ok(candidate);
         }
 
-        //// PUT: api/Candidates/5
-        //[ResponseType(typeof(void))]
-        //public async Task<IHttpActionResult> PutCandidate(int id, Candidate candidate)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    if (id != candidate.CandidateID)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    db.Entry(candidate).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await db.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!CandidateExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return StatusCode(HttpStatusCode.NoContent);
-        //}
-
-        // POST: api/Candidates
-        //[ResponseType(typeof(Candidate))]
-        //public async Task<IHttpActionResult> PostCandidate(Candidate candidate)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Candidates.Add(candidate);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = candidate.CandidateID }, candidate);
-        //}
-
         // DELETE: api/Candidates/5
         [ResponseType(typeof(Candidate))]
         public async Task<IHttpActionResult> DeleteCandidate(int id)

@@ -18,12 +18,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Voters
-        //public IQueryable<Voter> GetVoters()
-        //{
-        //    return db.Voters;
-        //}
-
         // GET: api/Voters/5
         [ResponseType(typeof(Voter))]
         public async Task<IHttpActionResult> GetVoter(int id)
@@ -71,22 +65,6 @@ namespace E_Voting.Restful.API.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        //// POST: api/Voters
-        //[ResponseType(typeof(Voter))]
-        //public async Task<IHttpActionResult> PostVoter(Voter voter)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    db.Voters.Add(voter);
-        //    await db.SaveChangesAsync();
-
-        //    return CreatedAtRoute("DefaultApi", new { id = voter.VoterID }, voter);
-        //}
-
         // DELETE: api/Voters/5
         [ResponseType(typeof(Voter))]
         public async Task<IHttpActionResult> DeleteVoter(int id)

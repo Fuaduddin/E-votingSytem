@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>E_Voting.SuperAdmin.Admin</RootNamespace>
     <AssemblyName>E-Voting.SuperAdmin.Admin</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44380</IISExpressSSLPort>
@@ -90,6 +90,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -1548,6 +1549,7 @@
     <Compile Include="Controllers\ElectionSettingsController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\VotingSettingsController.cs" />
     <Compile Include="Extension\ExtensionMethods.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1612,6 +1614,7 @@
     <Content Include="Views\AppointmentAnnoucement\GetAllAssignment.cshtml" />
     <Content Include="Views\ElectionSettings\GetAllAssignmentElectionIDDetails.cshtml" />
     <Content Include="Views\Partial\_ElectionCandidateAssignment.cshtml" />
+    <Content Include="Views\VotingSettings\ElectionVotingResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

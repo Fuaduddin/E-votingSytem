@@ -18,12 +18,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Zones
-        //public IQueryable<Zone> GetZones()
-        //{
-        //    return db.Zones;
-        //}
-
         public List<zoneModel> GetZones()
         {
             List<zoneModel> ZoneList = new List<zoneModel>();

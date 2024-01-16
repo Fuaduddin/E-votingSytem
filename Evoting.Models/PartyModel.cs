@@ -8,6 +8,7 @@ namespace Evoting.Models
 {
     public class PartyModel
     {
+        [Key]
         public int PartyID { get; set; }
         [Required(ErrorMessage = "Please Enter Party Name")]
         public string PartyName { get; set; }

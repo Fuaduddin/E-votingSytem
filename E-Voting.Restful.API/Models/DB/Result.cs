@@ -22,7 +22,9 @@ namespace E_Voting.Restful.API.Models.DB
         public int SelectedCandidateVote { get; set; }
         public int RunnerUpCandidate { get; set; }
         public int RunnerUpCandidateVote { get; set; }
+        public Nullable<int> AssignmentElectionID { get; set; }
     
         public virtual Election_Detail Election_Details { get; set; }
+        public virtual ElectionAssignment ElectionAssignment { get; set; }
     }
 }

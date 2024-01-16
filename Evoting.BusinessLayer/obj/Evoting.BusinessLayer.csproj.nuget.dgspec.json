@@ -1,52 +1,52 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj": {}
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj": {}
   },
   "projects": {
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
         "projectName": "Evoting.BusinessLayer",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
-        "packagesPath": "C:\\Users\\Fuad\\.nuget\\packages\\",
-        "outputPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\obj\\",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Fuad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net481"
+          "net48"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net481": {
+          "net48": {
             "projectReferences": {
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
               }
             }
           }
         }
       },
       "frameworks": {
-        "net481": {
+        "net48": {
           "dependencies": {
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
@@ -70,52 +70,52 @@
         }
       }
     },
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
         "projectName": "Evoting.DataLayerSQL",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
-        "packagesPath": "C:\\Users\\Fuad\\.nuget\\packages\\",
-        "outputPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\obj\\",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Fuad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net481"
+          "net48"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net481": {
+          "net48": {
             "projectReferences": {
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
               }
             }
           }
         }
       },
       "frameworks": {
-        "net481": {
+        "net48": {
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
@@ -143,46 +143,46 @@
         }
       }
     },
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
         "projectName": "Evoting.DataLayer",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
-        "packagesPath": "C:\\Users\\Fuad\\.nuget\\packages\\",
-        "outputPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\obj\\",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Fuad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net481"
+          "net48"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net481": {
+          "net48": {
             "projectReferences": {
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
               },
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj"
               }
             }
           }
         }
       },
       "frameworks": {
-        "net481": {
+        "net48": {
           "dependencies": {
             "EntityFramework": {
               "target": "Package",
@@ -206,53 +206,53 @@
         }
       }
     },
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj",
         "projectName": "Evoting.GlobalSetting",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.GlobalSetting\\Evoting.GlobalSetting.csproj",
         "frameworks": {
-          "net481": {
+          "net48": {
             "projectReferences": {
-              "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
-                "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+              "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+                "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
               }
             }
           }
         }
       },
       "frameworks": {
-        "net481": {}
+        "net48": {}
       }
     },
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
         "projectName": "Evoting.Models",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj",
         "frameworks": {
-          "net481": {
+          "net48": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "net481": {}
+        "net48": {}
       }
     },
-    "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
+    "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
+        "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
         "projectName": "Evoting.Utility",
-        "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
+        "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Utility\\Evoting.Utility.csproj",
         "frameworks": {
-          "net472": {
+          "net48": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "net472": {}
+        "net48": {}
       }
     }
   }

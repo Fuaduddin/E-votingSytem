@@ -12,36 +12,43 @@ namespace E_voting.Candidate.Voter.Controllers
     public class GiveVoteController : Controller
     {
         // GET: GiveVote
+
         public ActionResult GiveVote()
         {
             VoterCandidateViewModel Voter = new VoterCandidateViewModel();
             Voter.CandidateList = GetVotingCandidate();
-            return View("GiveVote", Voter);
+            if (Voter.CandidateList.Count > 0)
+            {
+                if (CheckGivenVote())
+                {
+                    return View("ErrorPage");
+                }
+                else
+                {
+                    return View("ErrorPage");
+                }
+            }
+            else
+            {
+                return View("ErrorPage");
+            }
         }
-        //public ActionResult GiveVote()
-        //{
-        //    VoterCandidateViewModel Voter = new VoterCandidateViewModel();
-        //    Voter.CandidateList = GetVotingCandidate();
-        //    if (Voter.CandidateList.Count > 0)
-        //    {
-        //        if (CheckGivenVote())
-        //        {
-        //            return View("ErrorPage");
-        //        }
-        //        else
-        //        {
-        //            return View("ErrorPage");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View("ErrorPage");
-        //    }
-        //}
         [HttpPost]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        public ActionResult GiveVote(VoterCandidateViewModel Voter)
+        public ActionResult GiveVote(int CandidateID)
         {
-            return View();
+            if(CandidateID > 0)
+            {
+                var GiveVote = GiveVoteDetails(CandidateID);
+                if (GiveVoteManager.GiveVote(GiveVote))
+                {
+                    ViewData["Message"] = "Your vote have been submitted";
+                }
+            }
+            else
+            {
+                ViewData["Message"] = "!!!!!!! ERROR !!!!!!!!!!";
+            }
+            return View("GivenVote");
         }
         public ActionResult ErrorPage()
         {
@@ -64,8 +71,7 @@ namespace E_voting.Candidate.Voter.Controllers
         {
             var VoterDetails = GetVoterDetails();
             var VotingCandidate = GetElectionDetails();
-            //  var CandidateList = GiveVoteManager.GetZoneAreaWiseCandidate(VotingCandidate.ElectionID,VoterDetails.VoterZone,VoterDetails.VoterArea);
-            var CandidateList = GiveVoteManager.GetZoneAreaWiseCandidate(1,3,3);
+            var CandidateList = GiveVoteManager.GetZoneAreaWiseCandidate(VotingCandidate.ElectionID,VoterDetails.VoterZone,VoterDetails.VoterArea);
             return CandidateList;
         }
         private bool CheckGivenVote()
@@ -78,6 +84,20 @@ namespace E_voting.Candidate.Voter.Controllers
                 NotGivenVote = false;
             }
             return NotGivenVote;
+        }
+        private GiveVoteModel GiveVoteDetails(int id)
+        {
+            GiveVoteModel vote= new GiveVoteModel();
+            var VoterDetails = GetVoterDetails();
+            var ElectionDetails = GetElectionDetails();
+            if (id>0)
+            {
+                vote.VoterID = VoterDetails.VoterID;
+                vote.ElectionID = ElectionDetails.ElectionID;      
+                vote.CandidateID = id;
+                vote.VoteDate=DateTime.Now;
+            }
+            return vote;
         }
     }
 }

@@ -13,7 +13,7 @@ using Evoting.GlobalSetting;
 
 namespace Evoting.DataLayerSQL
 {
-    public class PartySQLProvider: PartyDataLayerProvider
+    public class PartySQLProvider: IPartyDataLayerProvider
     {
         public bool AddNewParty(PartyModel party)
         {

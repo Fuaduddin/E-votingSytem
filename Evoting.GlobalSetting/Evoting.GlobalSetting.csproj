@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Evoting.GlobalSetting</RootNamespace>
     <AssemblyName>Evoting.GlobalSetting</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -37,7 +37,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,7 +58,6 @@
     <Compile Include="GlobalSettingEmailSMS.cs" />
     <Compile Include="GlobalSettingsExtension.cs" />
     <Compile Include="GlobalSettingsPatternsandConstant.cs" />
-    <Compile Include="GlobalSettingsSuperAdmin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Configuration\ConfigurationManager.cs" />
   </ItemGroup>

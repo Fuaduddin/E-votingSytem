@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.8.1": {
+    ".NETFramework,Version=v4.8": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -62,7 +62,7 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
@@ -77,7 +77,7 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
@@ -124,7 +124,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win": {
+    ".NETFramework,Version=v4.8/win": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -185,7 +185,7 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
@@ -200,7 +200,7 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
@@ -247,7 +247,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win-arm64": {
+    ".NETFramework,Version=v4.8/win-arm64": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -308,7 +308,7 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
@@ -323,7 +323,7 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
@@ -370,7 +370,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win-x64": {
+    ".NETFramework,Version=v4.8/win-x64": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -431,7 +431,7 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
@@ -446,7 +446,7 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
@@ -493,7 +493,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win-x86": {
+    ".NETFramework,Version=v4.8/win-x86": {
       "EntityFramework/6.4.4": {
         "type": "package",
         "frameworkAssemblies": [
@@ -554,7 +554,7 @@
       },
       "Evoting.DataLayer/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.Models": "1.0.0",
@@ -569,7 +569,7 @@
       },
       "Evoting.DataLayerSQL/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8.1",
+        "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Evoting.DataLayer": "1.0.0",
@@ -748,7 +748,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.8.1": [
+    ".NETFramework,Version=v4.8": [
       "Evoting.DataLayer >= 1.0.0",
       "Evoting.DataLayerSQL >= 1.0.0",
       "Evoting.Models >= 1.0.0",
@@ -756,52 +756,52 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Fuad\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
+      "projectUniqueName": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
       "projectName": "Evoting.BusinessLayer",
-      "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
-      "packagesPath": "C:\\Users\\Fuad\\.nuget\\packages\\",
-      "outputPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\obj\\",
+      "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\Evoting.BusinessLayer.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.BusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Fuad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net481"
+        "net48"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net481": {
+        "net48": {
           "projectReferences": {
-            "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
-              "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj"
+            "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj": {
+              "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayerSQL\\Evoting.DataLayerSQL.csproj"
             },
-            "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
-              "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
+            "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj": {
+              "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.DataLayer\\Evoting.DataLayer.csproj"
             },
-            "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
-              "projectPath": "D:\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
+            "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj": {
+              "projectPath": "E:\\Final Protfolio Update\\Protfolios\\E-voting\\Project\\Evoting\\E-votingSytem\\Evoting.Models\\Evoting.Models.csproj"
             }
           }
         }
       }
     },
     "frameworks": {
-      "net481": {
+      "net48": {
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": {
             "target": "Package",

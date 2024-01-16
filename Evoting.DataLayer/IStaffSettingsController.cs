@@ -30,5 +30,10 @@ namespace Evoting.DataLayer
         bool UpdateAdmin(AdminModel Admin);
         AdminModel GetSingleAdmin(int id);
         bool DeleteAdmin(int id);
+
+        // User
+        int AddNewUser(UserModel User);
+        List<UserModel> GetAllUser();
+        bool UpdateUser(UserModel user);
     }
 }

@@ -18,7 +18,6 @@ namespace E_Voting.Restful.API.Models.DB
         public Candidate()
         {
             this.ElectionCandidates = new HashSet<ElectionCandidate>();
-            this.Votes = new HashSet<Vote>();
         }
     
         public int CandidateID { get; set; }
@@ -41,7 +40,5 @@ namespace E_Voting.Restful.API.Models.DB
         public virtual Zone Zone { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ElectionCandidate> ElectionCandidates { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

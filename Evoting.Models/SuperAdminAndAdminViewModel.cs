@@ -25,11 +25,11 @@ namespace Evoting.Models
         public AnnoucementModel Annoucement { get; set; }
         public AppointmentAnnoucementModel Appointment { get; set; }
         public AssignmentAppointment AssignemntAppointment { get; set; }
-        
-
+        public VotingResultModel ElectionResultDetails { get; set; }
+        public ElectionResultDetailsModel ElectionResult { get; set; }
 
         // All List
-       
+
         public List<AssignmentAppointment> AssignemntAppointmentList { get; set; }
         public List<AppointmentAnnoucementModel> AppointmentList { get; set; }
         public List<AnnoucementModel> AnnoucementList { get; set; }

@@ -26,19 +26,19 @@ namespace Evoting.DataLayerSQL
             return CandidateList; 
         }
 
-        public int GiveVote(GiveVoteModel Vote)
+        public bool GiveVote(GiveVoteModel Vote)
         {
-            int id = 0;
+            bool GivenVote = true;
             try
             {
                 HttpResponseMessage ResponseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Votes", Vote).Result;
-                id=ResponseADD.Content.ReadAsAsync<int>().Result;
+               // id=ResponseADD.Content.ReadAsAsync<int>().Result;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
             }
-            return id;
+            return GivenVote;
         }
         public List<GiveVoteModel> GiveVoteList()
         {
@@ -54,6 +54,38 @@ namespace Evoting.DataLayerSQL
             }
 
             return VoteList;
+        }
+
+
+        // Election Results
+        public ElectionResultDetailsModel ElectionResultDetails(int ELectionID)
+        {
+            ElectionResultDetailsModel votingResult = new ElectionResultDetailsModel();
+            try
+            {
+                HttpResponseMessage ResponseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Results/" + ELectionID.ToString()).Result;
+                votingResult= ResponseSingle.Content.ReadAsAsync<ElectionResultDetailsModel>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception (ex.ToString());
+            }
+            return votingResult;
+        }
+
+        public ElectionResultDetailsModel GetAllCandidateElectionResultDetails()
+        {
+            ElectionResultDetailsModel votingResult = new ElectionResultDetailsModel();
+            try
+            {
+                HttpResponseMessage ResponseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Results").Result;
+                votingResult = ResponseSingle.Content.ReadAsAsync<ElectionResultDetailsModel>().Result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            return votingResult;
         }
     }
 }

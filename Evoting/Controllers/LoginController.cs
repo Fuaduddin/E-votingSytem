@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Evoting.GlobalSetting;
-using static Evoting.GlobalSetting.Enums;
 using System.Configuration;
 
 namespace Evoting.Controllers
@@ -32,7 +31,7 @@ namespace Evoting.Controllers
                 {
                     return RedirectToAction("DashBoard", "DashBoard");
                 }
-                else if (candidateoption== "candidate" && user.UserPassword== settings.PasswordEncrypt(UserDetails.UserPassword) && user.UserRole == Role.Candidate.ToString() && UserDetails.UserStatus== Status.Active.ToString())
+                else if (candidateoption== "candidate" && user.UserPassword== settings.PasswordEncrypt(UserDetails.UserPassword) && user.UserRole == Enums.Role.Candidate.ToString() && UserDetails.UserStatus== Enums.Status.Active.ToString())
                 {
                     if(StaffManager.UpdateUser(UserDetails))
                     {
@@ -41,7 +40,7 @@ namespace Evoting.Controllers
                         return RedirectToAction("DashBoard", "Candidate"); 
                     }
                 }
-                else if(user.UserRole== Role.Voter.ToString() && user.UserPassword == settings.PasswordEncrypt(UserDetails.UserPassword) && UserDetails.UserStatus == Status.Active.ToString())
+                else if(user.UserRole== Enums.Role.Voter.ToString() && user.UserPassword == settings.PasswordEncrypt(UserDetails.UserPassword) && UserDetails.UserStatus == Enums.Status.Active.ToString())
                 {
                     if (StaffManager.UpdateUser(UserDetails))
                     {
@@ -50,7 +49,7 @@ namespace Evoting.Controllers
                         return RedirectToAction("DashBoard", "Voter"); 
                     }
                 }
-                else if (user.UserRole == Role.Admin.ToString() && user.UserPassword == settings.PasswordEncrypt(UserDetails.UserPassword) && UserDetails.UserStatus == Status.Active.ToString())
+                else if (user.UserRole == Enums.Role.Admin.ToString() && user.UserPassword == settings.PasswordEncrypt(UserDetails.UserPassword) && UserDetails.UserStatus == Enums.Status.Active.ToString())
                 {
                     if (StaffManager.UpdateUser(UserDetails))
                     {

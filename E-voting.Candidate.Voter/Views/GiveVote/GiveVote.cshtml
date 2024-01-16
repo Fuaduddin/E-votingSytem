@@ -19,29 +19,29 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12 grid-margin transparent" style="display: flex !important;">
-        @foreach (var Candidte in Model.CandidateList)
-        {
-            <div class="col-md-3 mb-4 stretch-card transparent">
-                <div class="card card-tale">
-                    <div class="card-body">
-                        <input type="radio" id="css" name="fav_language" value="@Candidte.CandidateID">
-                        <div style="display: flex !important; align-items: center; justify-content: space-evenly; ">
-                            <div>
-                               
-                                <p class="fs-30 mb-2"><b>@Candidte.CandidateName</b></p>
-                                
-                            </div>
-                            <div>
-
-                                <img src="@Candidte.AssignmentCandidate.CandidateSymbol" />
+@using (Html.BeginForm("GiveVote", "GiveVote", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12 grid-margin transparent" style="display: flex !important;">
+            @foreach (var Candidte in Model.CandidateList)
+            {
+                <div class="col-md-3 mb-4 stretch-card transparent">
+                    <div class="card card-tale">
+                        <div class="card-body">
+                            <input type="radio" id="css" name="CandidateID" value="@Candidte.CandidateID">
+                            <div style="display: flex !important; align-items: center; justify-content: space-evenly; ">
+                                <div>
+                                    <p class="fs-30 mb-2"><b>@Candidte.CandidateName</b></p>
+                                </div>
+                                <div>
+                                    <img src="@Candidte.AssignmentCandidate.CandidateSymbol" />
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+        <button type="submit" class="btn btn-success mr-2">Submit</button>
     </div>
-</div>
+}

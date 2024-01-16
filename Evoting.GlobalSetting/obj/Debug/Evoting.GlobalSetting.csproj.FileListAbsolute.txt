@@ -1,11 +1,9 @@
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.GlobalSetting.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.GlobalSetting.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\System.Net.Http.Formatting.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Newtonsoft.Json.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.CoreCompileInputs.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.CopyComplete
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.GlobalSetting.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.GlobalSetting.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\bin\Debug\Evoting.Models.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.AssemblyReference.cache
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.CoreCompileInputs.cache
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.csproj.CopyComplete
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.GlobalSetting\obj\Debug\Evoting.GlobalSetting.pdb

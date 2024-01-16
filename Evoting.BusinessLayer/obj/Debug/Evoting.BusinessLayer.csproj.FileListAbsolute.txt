@@ -11,22 +11,22 @@ D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.B
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
 D:\Protfolios\E-voting\Project\Evoting\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\System.Net.Http.Formatting.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Newtonsoft.Json.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Models.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Utility.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Models.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Utility.pdb
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.AssemblyReference.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CoreCompileInputs.cache
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
-D:\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.BusinessLayer.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\EntityFramework.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\System.Net.Http.Formatting.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Newtonsoft.Json.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Models.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Utility.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayerSQL.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.DataLayer.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Models.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\bin\Debug\Evoting.Utility.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.AssemblyReference.cache
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CoreCompileInputs.cache
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.csproj.CopyComplete
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.dll
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.BusinessLayer\obj\Debug\Evoting.BusinessLayer.pdb

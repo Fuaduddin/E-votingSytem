@@ -13,16 +13,17 @@ namespace Evoting.Controllers
     public class HomePageController : Controller
     {
         // GET: HomePage
-        [Route("Home")]
+        [Route("/Home")]
         public ActionResult Index()
         {
             CustomerViewModel EvotingHomePage = new CustomerViewModel();
             EvotingHomePage.AnnoucementList = AppointmentAnnoucementManager.GetAllAnnoucement();
+            EvotingHomePage.ElectionDetailsList=ElectionSettingsManager.GetAllElectionDetails();
             return View("Index",EvotingHomePage);
         }
 
 		// Election Related Pages
-		[Route("Appointment")]
+		[Route("/Appointment")]
 		public ActionResult Appointment()
         {
             GlobalCommonData constant = new GlobalCommonData();
@@ -54,35 +55,37 @@ namespace Evoting.Controllers
             return View("Appointment");
   
         }
-		[Route("UpcomingElection")]
+		[Route("/UpcomingElection")]
 		public ActionResult UpcomingElection()
         {
-            return View();
+
+            return View("UpcomingElection");
         }
-		[Route("Result")]
+		[Route("/Result")]
 		public ActionResult Result()
         {
-            return View();
+            return View("Result");
         }
-		[Route("CandidateProfile")]
+		[Route("/CandidateProfile")]
 		public ActionResult CandidateProfile()
         {
-            return View();
+            return View("CandidateProfile");
         }
-		[Route("Statics")]
+		[Route("/Statics")]
 		public ActionResult Statics()
         {
-            return View();
+            return View("Statics");
         }
+        [Route("/About")]
         public ActionResult about()
         {
             return View("about");
         }
-        [Route("Login")]
+        [Route("/Login")]
 		// Login & Logout
 		public ActionResult Login()
         {
-            return View();
+            return View("Login");
         }
 
 

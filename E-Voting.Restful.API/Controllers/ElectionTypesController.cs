@@ -17,12 +17,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities(); 
 
-        // GET: api/ElectionTypes
-        //public IQueryable<ElectionType> GetElectionTypes()
-        //{
-        //    return db.ElectionTypes;
-        //}
-
         // GET: api/ElectionTypes/5
         [ResponseType(typeof(ElectionType))]
         public async Task<IHttpActionResult> GetElectionType(int id)

@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Evoting</RootNamespace>
     <AssemblyName>Evoting</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44332</IISExpressSSLPort>
@@ -70,6 +70,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -2719,6 +2720,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SinglePageController.cs" />
@@ -2822,6 +2824,9 @@
     <Content Include="Views\Partial\_Testimonial.cshtml" />
     <Content Include="Views\Partial\_Annoucement.cshtml" />
     <Content Include="Views\Partial\_GivevoteBanner.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\SinglePage\SinglePageAnnoucement.cshtml" />
+    <Content Include="Views\SinglePage\SinglePageElectionDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2832,7 +2837,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\SinglePage\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evoting.BusinessLayer\Evoting.BusinessLayer.csproj">
@@ -2856,7 +2860,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Content\ErrorPage\vendors\tinymce\tinymce.d.ts" />
     <TypeScriptCompile Include="Content\vendors\tinymce\tinymce.d.ts" />
   </ItemGroup>
   <PropertyGroup>
