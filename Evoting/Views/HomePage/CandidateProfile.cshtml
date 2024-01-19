@@ -36,40 +36,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="team-top">
+            <div class="team-top" id="candidatelist">
                 @if (Model.CandidateList.Count > 0)
                 {
                     foreach (var CandidateDetail in Model.CandidateList)
                     {
-                        <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="col-md-3 col-sm-3 col-xs-12 removeitem">
                             <div class="single-team-member">
                                 <div class="team-img">
                                     <a href="#">
                                         <img src="@(CandidateDetail.CandidateImage != null ? GlobalSettingsPatternsandConstant.ImageURLWeb + CandidateDetail.CandidateImage : GlobalSettingsPatternsandConstant.DefaultImageURLProfileImageWeb )" alt="">
                                     </a>
-                                    <div class="team-social-icon text-center">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                                 <div class="team-content text-center">
-                                    <h4>Jhon Mickel</h4>
-                                    <p>Seo</p>
+                                    <h4>@CandidateDetail.CandidateName</h4>
+                                    <p>@CandidateDetail.CandidateGender</p>
+                                    <p>@(CandidateDetail.Party != null ?  CandidateDetail.Party.PartyName:"Independent")</p>
                                 </div>
                             </div>
                         </div>
@@ -85,10 +67,17 @@
 <div class="blog-pagination paginationindexpage">
     <ul class="pagination">
         <li><a href="#">&lt;</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">&gt;</a></li>
+        @for (var i = 1; i <= Model.TotalPage; i++)
+        {
+            if (i == 1)
+            {
+                <li class="paginationlist active"><a href="#" onclick="PaginationItems(@i)">@i</a></li>
+            }
+            else
+            {
+                <li><a href="#" onclick="PaginationItems(@i)">@i</a></li>
+            }
+        }
     </ul>
 </div>
 <style>
@@ -97,3 +86,55 @@
         justify-content: center;
     }
 </style>
+<script>
+    function PaginationItems(pageindex) {
+        var paginationpageindex = document.getElementsByClassName("paginationlist");
+        paginationpageindex.classList.remove("active");
+
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize:10
+        }
+        $.ajax({
+            url: "/HomePage/Getpaginatiotabledata",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                paginationpageindex.eq(pageindex - 1).classList.add("active");
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    if (data[i].CandidateList.Party.PartyName == null) {
+                        data[i].CandidateList.Party.PartyName = "Independent";
+                    }
+                    element += `
+         <div class="col-md-3 col-sm-3 col-xs-12 removeitem">
+            <div class="single-team-member">
+                <div class="team-img">
+                    <a href="#">
+                        <img src="https://localhost:44380/${data[i].CandidateList.CandidateImage}" alt="">
+                    </a>
+                </div>
+                <div class="team-content text-center">
+                    <h4>${data[i].CandidateList.CandidateName}</h4>
+                    <p>${data[i].CandidateList.CandidateGender}</p>
+                    <p>${data[i].CandidateList.Party.PartyName}</p>
+                </div>
+            </div>
+        </div>
+                                        `;
+                    $("#candidatelist").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>

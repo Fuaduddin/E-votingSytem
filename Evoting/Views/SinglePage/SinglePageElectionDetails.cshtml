@@ -15,7 +15,7 @@
                 <div class="slider-content text-center">
                     <div class="header-bottom">
                         <div class="layer2 wow zoomIn" data-wow-duration="1s" data-wow-delay=".4s">
-                            <h1 class="title2">@Model.Annoucement.AnnoucementTitle</h1>
+                            <h1 class="title2">@Model.SingleElectionDetails.ElectionName</h1>
                         </div>
                         <div class="layer3 wow zoomInUp" data-wow-duration="2s" data-wow-delay="1s">
                             <h2 class="title3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h2>
@@ -27,3 +27,133 @@
     </div>
 </div>
 <!-- END Header -->
+<div class="blog-page area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="page-head-blog">
+                    <div class="single-blog-page">
+                        <!-- search option start -->
+                        <form action="#">
+                            <div class="search-option">
+                                <input type="text" placeholder="Search..." onchange="SearchItem()" id="searchbox">
+                                <button class="button" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <!-- search option end -->
+                    </div>
+                    <div class="single-blog-page">
+                        <!-- recent start -->
+                        <div class="left-blog">
+                            <h4>recent post</h4>
+                            <div class="recent-post" id="recent-post">
+                                @if (Model.ElectionDetailsList.Count > 0)
+                                {
+                                    foreach (var ElectionDetails in Model.ElectionDetailsList.OrderByDescending(x => x.StartDate).Take(4))
+                                    {
+                                        <div class="recent-single-post">
+                                            <div class="post-img">
+                                                <a href="/SinglePage/SinglePageElectionDetails/@ElectionDetails.ElectionID">
+                                                    <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="pst-content">
+                                                <p><a href="/SinglePage/SinglePageElectionDetails/@ElectionDetails.ElectionID">@ElectionDetails.ElectionName</a></p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="recent-single-post">
+                                        <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- recent end -->
+                    </div>
+                </div>
+            </div>
+            <!-- End left sidebar -->
+            <!-- Start single blog -->
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <!-- single-blog start -->
+                        <article class="blog-post-wrapper">
+                            <div class="post-thumbnail">
+                                <img src="~/Content/Image/upcomingelectionlist.jpg" alt="" />
+                            </div>
+                            <div class="post-information">
+                                <h2>
+                                    @Model.SingleElectionDetails.ElectionName
+                                </h2>
+                                <div class="entry-meta">
+                                    <span class="author-meta"><i class="fa fa-user"></i> <a href="#">admin</a></span>
+                                    <span><i class="fa fa-clock-o"></i>@Model.SingleElectionDetails.StartDate.ToString()</span>
+                                    <span class="tag-meta">
+                                        <i class="fa fa-folder-o"></i>@Model.SingleElectionDetails.ElectionType
+                                    </span>
+                                    <span>
+                                        <i class="fa fa-tags"></i>
+                                       @Model.SingleElectionDetails.ElectionStatus
+                                    </span>
+                                </div>
+                                <div class="entry-content">
+                                    <p>
+                                      @Model.SingleElectionDetails.ElectionDetails
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                        <div class="clear"></div>
+                        <!-- single-blog end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let SearchItem = () => {
+        var SearchDetails =
+        {
+            search: $("#searchbox").val()
+        }
+        $.ajax({
+            url: "/HomePage/GetAnnoucement",
+            Method: "POST",
+            data: SearchDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    element += `
+         <div class="recent-single-post removeitem" >
+            <div class="post-img">
+                <a href="/SinglePage/SinglePageElectionDetails/${data[i].ElectionID}">
+                    <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
+                </a>
+            </div>
+            <div class="pst-content">
+                <p><a href="/SinglePage/SinglePageElectionDetails/${data[i].ElectionID}">${data[i].ElectionName}</a></p>
+            </div>
+        </div>
+                                        `;
+                    $("#recent-post").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>

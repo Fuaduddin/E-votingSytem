@@ -23,18 +23,9 @@
                                 <h4>Election Status: @ElectionDetails.ElectionStatus</h4>
                                 <p>@ElectionDetails.ElectionDetails</p>
                             </div>
-                            <ol>
-                                <li class="check">Online system</li>
-                                <li class="check cross">Full access</li>
-                                <li class="check">Free apps</li>
-                                <li class="check">Multiple slider</li>
-                                <li class="check cross">Free domin</li>
-                                <li class="check cross">Support unlimited</li>
-                                <li class="check">Payment online</li>
-                                <li class="check cross">Cash back</li>
-                            </ol>
-                            <a href="/s"
-                            <button>Details</button>
+                            <a href="/SinglePage/SinglePageElectionDetails/@ElectionDetails.ElectionID" class="buttondetails">
+                                Details
+                            </a>
                         </div>
                     </div>
                 }
@@ -55,3 +46,19 @@
     </div>
 </div>
 <!-- End pricing table area -->
+<style>
+    .buttondetails {
+        background: #444 none repeat scroll 0 0;
+        border: 1px solid #444;
+        color: #fff;
+        margin-bottom: 25px;
+        padding: 10px 35px;
+        text-transform: uppercase;
+        transition: all 0.4s ease 0s;
+        border-radius: 30px;
+    }
+    .pri_table_list {
+        height: 228px;
+    }
+
+</style>

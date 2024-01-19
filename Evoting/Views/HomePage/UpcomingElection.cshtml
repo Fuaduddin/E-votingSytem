@@ -1,4 +1,4 @@
-﻿
+﻿@model Evoting.Models.CustomerViewModel
 @{
     ViewBag.Title = "UpcomingElection";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,143 +35,39 @@
             </div>
         </div>
         <div class="row">
-            <div class="team-top">
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+            <div class="team-top" id="electionpagination">
+                @if (Model.ElectionDetailsList.Count > 0)
+                {
+                    foreach (var ElectionDetails in Model.ElectionDetailsList)
+                    {
+                        <div class="col-md-3 col-sm-3 col-xs-12 removeitem">
+                            <div class="single-team-member">
+                                <div class="team-img">
+                                    <a href="#">
+                                        <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
+                                    </a>
+                                    <div class="team-social-icon text-center">
+                                        <ul>
+                                            <li>
+                                                <a href="/SinglePage/SinglePageElectionDetails/@ElectionDetails.ElectionID">
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="team-content text-center">
+                                    <h4>@ElectionDetails.ElectionName</h4>
+                                    <p>@ElectionDetails.ElectionStatus</p>
+                                    <p>@ElectionDetails.StartDate</p>
+                                    <p style="text-align: left !important; margin-left: 4% !important">
+                                        @ElectionDetails.ElectionDetails
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-content text-center">
-                            <h4>Jhon Mickel</h4>
-                            <p>Seo</p>
-                            <p style="text-align: left !important; margin-left: 4% !important">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Andrew Arnold</h4>
-                            <p>Web Developer</p>
-                            <p style="text-align: left !important; margin-left: 4% !important">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Lellien Linda</h4>
-                            <p>Web Design</p>
-                            <p style="text-align: left !important; margin-left: 4% !important">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="single-team-member">
-                        <div class="team-img">
-                            <a href="#">
-                                <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
-                            </a>
-                            <div class="team-social-icon text-center">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="team-content text-center">
-                            <h4>Jhon Powel</h4>
-                            <p>Seo Expert</p>
-                            <p style="text-align: left !important; margin-left: 4% !important">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End column -->
+                    }
+                }
             </div>
         </div>
     </div>
@@ -181,16 +77,83 @@
 <div class="blog-pagination paginationindexpage">
     <ul class="pagination">
         <li><a href="#">&lt;</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">&gt;</a></li>
+        @for (var i = 1; i <= Model.TotalPage; i++)
+        {
+            if (i == 1)
+            {
+                <li class="paginationlist active"><a href="#" onclick="PaginationItems(@i)">@i</a></li>
+            }
+            else
+            {
+                <li><a href="#" onclick="PaginationItems(@i)">@i</a></li>
+            }
+        }
     </ul>
 </div>
 <style>
     .paginationindexpage {
         display: flex;
-       
         justify-content: center;
     }
 </style>
+<script>
+    function PaginationItems(pageindex) {
+        var paginationpageindex = document.getElementsByClassName("paginationlist");
+        paginationpageindex.classList.remove("active");
+        
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize:10
+        }
+        $.ajax({
+            url: "/HomePage/GetpaginatiotabledataUpcomingElection",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                paginationpageindex.eq(pageindex - 1).classList.add("active");
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    element += `
+                                      <div class="col-md-3 col-sm-3 col-xs-12 removeitem">
+             <div class="single-team-member">
+                 <div class="team-img">
+                     <a href="#">
+                         <img src="~/Content/Image/upcomingelectionlist.jpg" alt="">
+                     </a>
+                     <div class="team-social-icon text-center">
+                         <ul>
+                             <li>
+                                 <a href="/SinglePage/SinglePageElectionDetails/${data[i].ElectionDetailsList.ElectionID}">
+                                     <i class="fa fa-search"></i>
+                                 </a>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+                 <div class="team-content text-center">
+                     <h4>${data[i].ElectionDetailsList.ElectionName}</h4>
+                     <p>${data[i].ElectionDetailsList.ElectionStatus}</p>
+                     <p>${data[i].ElectionDetailsList.StartDate}</p>
+                     <p style="text-align: left !important; margin-left: 4% !important">
+                        ${data[i].ElectionDetailsList.ElectionDetails}
+                     </p>
+                 </div>
+             </div>
+         </div>
+                                        `;
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>

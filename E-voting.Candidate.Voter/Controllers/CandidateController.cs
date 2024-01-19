@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Evoting.BusinessLayer;
+using Evoting.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,19 @@ namespace E_voting.Candidate.Voter.Controllers
         public ActionResult DashBoard()
         {
             return View();
+        }
+        public ActionResult GetAllElectionDetails()
+        {
+            VoterCandidateViewModel electiondetails = new VoterCandidateViewModel();
+            electiondetails.ElectionDetailsList = ElectionSettingsManager.GetAllElectionDetails();
+            return View("GetAllElectionDetails", electiondetails);
+        }
+        private CandidateModel CandidateDetaisl()
+        {
+            return new CandidateModel
+            {
+
+            };
         }
     }
 }

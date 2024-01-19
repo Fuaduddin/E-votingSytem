@@ -14,7 +14,8 @@ namespace Evoting.Models
         public UserModel UserDetails { get; set; }
         public AnnoucementModel Annoucement { get; set; }
         public CandidateModel Candidate { get; set; }
-
+        public ElectionDetailsModel SingleElectionDetails { get; set; }
+        public AnnoucementModel SingleAnnoucementDetails { get; set; }
 
         // All List
         public List<AnnoucementModel> AnnoucementList { get; set; }
@@ -23,6 +24,7 @@ namespace Evoting.Models
 
 
         // Extra Feautures
+        public int TotalPage { get; set; }
         public List<Options> genders { get; set; }
         public List<Options> AppointmentSubject { get; set; }
         public List<Options> ElectionStatus { get; set; }
