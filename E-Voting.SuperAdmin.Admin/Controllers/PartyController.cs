@@ -11,6 +11,7 @@ using E_Voting.SuperAdmin.Admin.Extension;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
+    [Authorize]
     public class PartyController : Controller
     {
         private readonly GlobalSettingsExtension settings = new GlobalSettingsExtension();

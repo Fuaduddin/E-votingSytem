@@ -13,6 +13,5 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter Party Name")]
         public string PartyName { get; set; }
         public string PartySymbol { get; set; }
-        //public  List<Candidate> Candidates { get; set; }
     }
 }

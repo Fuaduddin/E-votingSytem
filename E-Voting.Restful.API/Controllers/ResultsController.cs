@@ -110,14 +110,14 @@ namespace E_Voting.Restful.API.Controllers
         // Custome API Methods
 
         [ResponseType(typeof(Result))]
-        [Route("api/Results/{ElectionID}")]
-        public ElectionResultDetailsModel GetResult(int ElectionID)
+        [Route("api/Results/{AsignZoneID}")]
+        public ElectionResultDetailsModel GetResult(int AsignZoneID)
         {
             ElectionResultDetailsModel ElectionResult = new ElectionResultDetailsModel();
-            List<VotingResultModel> votingResults = new List<VotingResultModel>();
-            if (ElectionID > 0)
+            if (AsignZoneID > 0)
             {
-                ElectionResult.ElectionDetails = db.Election_Details.Where(x => x.ElectionID == ElectionID)
+                var AreaID = db.ElectionAssignments.Where(x => x.ElectionAssignID == AsignZoneID).FirstOrDefault();
+                ElectionResult.ElectionDetails = db.Election_Details.Where(x => x.ElectionID == AreaID.ElectionAssignID)
                                                .Select(x => new ElectionDetailsModel()
                                                {
                                                    ElectionID = x.ElectionID,
@@ -125,63 +125,55 @@ namespace E_Voting.Restful.API.Controllers
                                                    ElectionDetails = x.ElectionDetails,
                                                    ElectionStatus = x.ElectionStatus,
                                                }).FirstOrDefault();
-                var CentersList = db.ElectionAssignments.Where(x => x.ElectionID == ElectionID).ToList();
-                if (CentersList.Count > 0)
+                VotingResultModel ResultDetails = new VotingResultModel();
+                ResultDetails.AreaDetails = db.Areas.Where(x => x.AreaID == AreaID.AreaID).Select(x => new areamodel()
                 {
-                    foreach (var center in CentersList)
-                    {
-                        VotingResultModel ResultDetails = new VotingResultModel();
-                        ResultDetails.AreaDetails = db.Areas.Where(x => x.AreaID == center.AreaID).Select(x=> new areamodel()
-                        {
-                            AreaID= x.AreaID,
-                            AreaName = x.AreaName,
-                            AreaTitle = x.AreaTitle
-                        }).FirstOrDefault();
-                        ResultDetails.TotalGivenVote = db.Votes.Where(x => x.ElectionID == ElectionID && x.AssignmentElectionID == center.ElectionAssignID).Count();
-                        ResultDetails.ElectionDetails = ElectionID;
-                        ResultDetails.SelectedCandidate = db.Votes.Where(x => x.ElectionID == ElectionID && x.AssignmentElectionID == center.ElectionAssignID).Max(x => x.CandidateID);
-                        ResultDetails.SelectedCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionID && x.CandidateID == ResultDetails.SelectedCandidate && x.AssignmentElectionID == center.ElectionAssignID).Count();
-                        ResultDetails.SelectedCandidateDetails = db.Candidates.Where(x => x.CandidateID == ResultDetails.SelectedCandidate)
-                                             .Select(x =>
-                                             new CandidateModel()
-                                             {
-                                                 CandidateID = x.CandidateID,
-                                                 CandidateName = x.CandidateName,
-                                                 CandidateArea = x.CandidateArea,
-                                                 CandidateEmail = x.CandidateEmail,
-                                                 CandidateGender = x.CandidateGender,
-                                                 CandidateImage = x.CandidateImage,
-                                                 CandidateNID = x.CandidateNID,
-                                                 CandidateParty = x.CandidateParty,
-                                                 CandidatePermanentAddress = x.CandidatePermanentAddress,
-                                                 CandidatePhoneNumber = x.CandidatePhoneNumber,
-                                                 CandidatePresentAddress = x.CandidatePresentAddress,
-                                                 CandidateZone = x.CandidateZone,
-                                             }).FirstOrDefault();
-                        ResultDetails.RunnerUpCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionID && x.CandidateID != ResultDetails.SelectedCandidate && x.AssignmentElectionID == center.ElectionAssignID).Max(x => x.CandidateID);
-                        ResultDetails.RunnerUpCandidateDetails = db.Candidates.Where(x => x.CandidateID == ResultDetails.RunnerUpCandidateVote)
-                                                 .Select(x =>
-                                                 new CandidateModel()
-                                                 {
-                                                     CandidateID = x.CandidateID,
-                                                     CandidateName = x.CandidateName,
-                                                     CandidateArea = x.CandidateArea,
-                                                     CandidateEmail = x.CandidateEmail,
-                                                     CandidateGender = x.CandidateGender,
-                                                     CandidateImage = x.CandidateImage,
-                                                     CandidateNID = x.CandidateNID,
-                                                     CandidateParty = x.CandidateParty,
-                                                     CandidatePermanentAddress = x.CandidatePermanentAddress,
-                                                     CandidatePhoneNumber = x.CandidatePhoneNumber,
-                                                     CandidatePresentAddress = x.CandidatePresentAddress,
-                                                     CandidateZone = x.CandidateZone,
-                                                 }).FirstOrDefault();
-                        ResultDetails.SelectedCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionID && x.CandidateID == ResultDetails.RunnerUpCandidateVote && x.AssignmentElectionID == center.ElectionAssignID).Count();
-                        votingResults.Add(ResultDetails);
-                    }
-                }
+                    AreaID = x.AreaID,
+                    AreaName = x.AreaName,
+                    AreaTitle = x.AreaTitle
+                }).FirstOrDefault();
+                ResultDetails.TotalGivenVote = db.Votes.Where(x => x.ElectionID == ElectionResult.ElectionDetails.ElectionID && x.AssignmentElectionID == AsignZoneID).Count();
+                ResultDetails.ElectionDetails = ElectionResult.ElectionDetails.ElectionID;
+                ResultDetails.SelectedCandidate = db.Votes.Where(x => x.ElectionID == ElectionResult.ElectionDetails.ElectionID && x.AssignmentElectionID == AsignZoneID).Max(x => x.CandidateID);
+                ResultDetails.SelectedCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionResult.ElectionDetails.ElectionID && x.CandidateID == ResultDetails.SelectedCandidate && x.AssignmentElectionID == AsignZoneID).Count();
+                ResultDetails.SelectedCandidateDetails = db.Candidates.Where(x => x.CandidateID == ResultDetails.SelectedCandidate)
+                                     .Select(x =>
+                                     new CandidateModel()
+                                     {
+                                         CandidateID = x.CandidateID,
+                                         CandidateName = x.CandidateName,
+                                         CandidateArea = x.CandidateArea,
+                                         CandidateEmail = x.CandidateEmail,
+                                         CandidateGender = x.CandidateGender,
+                                         CandidateImage = x.CandidateImage,
+                                         CandidateNID = x.CandidateNID,
+                                         CandidateParty =(int) x.CandidateParty,
+                                         CandidatePermanentAddress = x.CandidatePermanentAddress,
+                                         CandidatePhoneNumber = x.CandidatePhoneNumber,
+                                         CandidatePresentAddress = x.CandidatePresentAddress,
+                                         CandidateZone = x.CandidateZone,
+                                     }).FirstOrDefault();
+                ResultDetails.RunnerUpCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionResult.ElectionDetails.ElectionID && x.CandidateID != ResultDetails.SelectedCandidate && x.AssignmentElectionID == AsignZoneID).Max(x => x.CandidateID);
+                ResultDetails.RunnerUpCandidateDetails = db.Candidates.Where(x => x.CandidateID == ResultDetails.RunnerUpCandidateVote)
+                                         .Select(x =>
+                                         new CandidateModel()
+                                         {
+                                             CandidateID = x.CandidateID,
+                                             CandidateName = x.CandidateName,
+                                             CandidateArea = x.CandidateArea,
+                                             CandidateEmail = x.CandidateEmail,
+                                             CandidateGender = x.CandidateGender,
+                                             CandidateImage = x.CandidateImage,
+                                             CandidateNID = x.CandidateNID,
+                                             CandidateParty =(int) x.CandidateParty,
+                                             CandidatePermanentAddress = x.CandidatePermanentAddress,
+                                             CandidatePhoneNumber = x.CandidatePhoneNumber,
+                                             CandidatePresentAddress = x.CandidatePresentAddress,
+                                             CandidateZone = x.CandidateZone,
+                                         }).FirstOrDefault();
+                ResultDetails.SelectedCandidateVote = db.Votes.Where(x => x.ElectionID == ElectionResult.ElectionDetails.ElectionID && x.CandidateID == ResultDetails.RunnerUpCandidateVote && x.AssignmentElectionID == AsignZoneID).Count();
+
             }
-            ElectionResult.ResultDetails= votingResults;
             return ElectionResult;
         }
        
@@ -190,39 +182,45 @@ namespace E_Voting.Restful.API.Controllers
         public ElectionResultDetailsModel GetAllCandidateElectionResultDetails()
         {
             ElectionResultDetailsModel ElectionResult = new ElectionResultDetailsModel();
-            List<SingleCandidateGivenVoteCount> AllCandidateResult= new List<SingleCandidateGivenVoteCount>();
+            SingleCandidateGivenVoteCount OtherCandidateVote = new SingleCandidateGivenVoteCount();
+            List<SingleCandidateGivenVoteCount> OtherCandidateList = new List<SingleCandidateGivenVoteCount>();
+            IDictionary<areamodel, List<SingleCandidateGivenVoteCount>> AllCandidateElectionList = new Dictionary<areamodel, List<SingleCandidateGivenVoteCount>>();
             var ElectionDetails = db.Election_Details.Where(x => x.StartDate == DateTime.Now.Date).FirstOrDefault();
-            if(ElectionDetails.ElectionID > 0)
+            if (ElectionDetails.ElectionID > 0)
             {
-                var CenterList=db.ElectionAssignments.Where(x=>x.ElectionID==ElectionDetails.ElectionID).ToList();
-                if(CenterList.Count > 0)
+                var CenterList =db.ElectionAssignments.Where(x => x.ElectionID == ElectionDetails.ElectionID).ToList();
+                if (CenterList.Count > 0)
                 {
                     foreach (var Ceneter in CenterList)
                     {
-                        var CandidateList=db.ElectionCandidates.Where(x=>x.ZoneandArea == Ceneter.ElectionAssignID).ToList();
-                        foreach(var Candidate in CandidateList)
+                        var AreaDetals =db.Areas.Where(x=>x.AreaID==Ceneter.AreaID).Select(x=> new areamodel()
                         {
-                            var OtherCandidateVote = new SingleCandidateGivenVoteCount()
-                            {
-                                CandidateDetails = db.Candidates.Where(x => x.CandidateID == Candidate.CandidateID)
-                                   .Select(x =>
-                                   new CandidateModel()
-                                   {
-                                       CandidateID = x.CandidateID,
-                                       CandidateName = x.CandidateName,
-                                       CandidateGender = x.CandidateGender,
-                                       CandidateImage = x.CandidateImage,
-                                   }).FirstOrDefault(),
-                                TotalVote = db.Votes.Where(x => x.ElectionID == ElectionDetails.ElectionID && x.AssignmentElectionID == Ceneter.ElectionAssignID && x.CandidateID == Candidate.CandidateID).Count()
-                            };
-                            AllCandidateResult.Add(OtherCandidateVote);
+                            AreaID=x.AreaID,
+                            AreaName=x.AreaName,
+                            AreaTitle=x.AreaTitle,
+                            ZoneID=(int)x.ZoneID
+                        }).FirstOrDefault();
+                        var CandidateList = db.ElectionCandidates.Where(x => x.ZoneandArea == Ceneter.ElectionAssignID).ToList();
+                        foreach (var Candidate in CandidateList)
+                        {
+                            OtherCandidateVote.CandidateDetails = db.Candidates.Where(x => x.CandidateID == Candidate.CandidateID)
+                              .Select(x =>
+                              new CandidateModel()
+                              {
+                                  CandidateID = x.CandidateID,
+                                  CandidateName = x.CandidateName,
+                                  CandidateGender = x.CandidateGender,
+                                  CandidateImage = x.CandidateImage,
+                              }).FirstOrDefault();
+                               OtherCandidateVote.TotalVote = db.Votes.Where(x => x.ElectionID == ElectionDetails.ElectionID && x.AssignmentElectionID == Ceneter.ElectionAssignID && x.CandidateID == Candidate.CandidateID).Count();
+                            OtherCandidateList.Add(OtherCandidateVote);
                         }
+                        AllCandidateElectionList.Add(AreaDetals, OtherCandidateList);
                     }
+            
                 }
             }
-            return ElectionResult;
+                return ElectionResult;
         }
-
-
     }
 }

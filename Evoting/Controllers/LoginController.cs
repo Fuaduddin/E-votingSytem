@@ -67,6 +67,7 @@ namespace Evoting.Controllers
         }
         public ActionResult Logout()
         {
+            Session.Abandon();
             return View("Login");
         }
         private UserModel UserDetailsUpdate(string UserNID)

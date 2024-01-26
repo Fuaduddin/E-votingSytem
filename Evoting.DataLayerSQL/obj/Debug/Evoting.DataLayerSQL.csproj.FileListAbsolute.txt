@@ -30,3 +30,4 @@ E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evot
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayerSQL\obj\Debug\Evoting.DataLayerSQL.csproj.CopyComplete
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayerSQL\obj\Debug\Evoting.DataLayerSQL.dll
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayerSQL\obj\Debug\Evoting.DataLayerSQL.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\Evoting.DataLayerSQL\bin\Debug\Evoting.GlobalSetting.dll.config

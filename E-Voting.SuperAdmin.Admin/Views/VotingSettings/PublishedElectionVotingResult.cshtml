@@ -1,0 +1,72 @@
+﻿@model Evoting.Models.VotingResultModel
+
+@{
+    ViewBag.Title = "PublishedElectionVotingResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("VotingSettings", "PublishedElectionVotingResultSubmit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="hidden"  name="assigID" value="@Model.AssignmentElectionID"/>
+    <div class=" container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="main-panel w-100  documentation">
+                <div class="content-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 pt-5">
+                                <a class="btn btn-primary" href="/VotingSettings/ElectionVotingResult"><i class="ti-home mr-2"></i>Back To Result</a>
+                            </div>
+                        </div>
+                        <div class="row pt-5 mt-5">
+                            <div class="col-12 pt-5 text-center">
+                                <div class="col-12">
+                                    <h4>Total Vote: @Model.TotalGivenVote</h4>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <h3>Selected Candidate</h3>
+                                    <div class="d-flex">
+                                        <div>
+                                            <img src=" @Model.SelectedCandidateDetails.CandidateImage" alt="image">
+                                        </div>
+                                        <div>
+                                            <h3 class="text-primary font-weight-light mt-5">
+                                                @Model.SelectedCandidateDetails.CandidateName
+                                            </h3>
+                                            <h4 class="mt-4 font-weight-light text-primary">
+                                                @Model.SelectedCandidateDetails.CandidateParty
+                                            </h4>
+                                            <h4 class="mt-4 font-weight-light text-primary">
+                                                @Model.SelectedCandidateVote
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <h3>Runner up Candidate</h3>
+                                    <div class="d-flex">
+                                        <div>
+                                            <img src=" @Model.RunnerUpCandidateDetails.CandidateImage" alt="image">
+                                        </div>
+                                        <div>
+                                            <h3 class="text-primary font-weight-light mt-5">
+                                                @Model.RunnerUpCandidateDetails.CandidateName
+                                            </h3>
+                                            <h4 class="mt-4 font-weight-light text-primary">
+                                                @Model.RunnerUpCandidateDetails.CandidateParty
+                                            </h4>
+                                            <h4 class="mt-4 font-weight-light text-primary">
+                                                @Model.RunnerUpCandidateVote
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="submit"> Published Result</button>
+}

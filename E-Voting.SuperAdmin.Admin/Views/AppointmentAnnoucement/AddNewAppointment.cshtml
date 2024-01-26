@@ -30,7 +30,7 @@
                             <label class="col-sm-3 col-form-label">Email</label>
                             <br />
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "form-control", @placeholder = "Annoucement Title" })
+                                @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "form-control EmailAddress", @placeholder = "Annoucement Title" })
                                 @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Phone Number</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Appointment.UserPhoneNumber, new { @class = "form-control", rows = "6", placeholder = "Annoucement Details" })
+                                @Html.TextBoxFor(model => model.Appointment.UserPhoneNumber, new { @class = "form-control PhoneNumber", rows = "6", @placeholder = "Annoucement Details" })
                                 @Html.ValidationMessageFor(model => model.Appointment.UserPhoneNumber)
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <label class="col-sm-3 col-form-label">Appointment Details</label>
                             <div class="col-sm-9">
 
-                                @Html.TextAreaFor(model => model.Appointment.AppointmentDetails, new { @class = "form-control", rows = "6", placeholder = "Annoucement Details" })
+                                @Html.TextAreaFor(model => model.Appointment.AppointmentDetails, new { @class = "form-control", rows = "6", @placeholder = "Annoucement Details" })
                                 @Html.ValidationMessageFor(model => model.Appointment.AppointmentDetails)
                             </div>
                         </div>

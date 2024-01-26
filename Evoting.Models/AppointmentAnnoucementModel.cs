@@ -26,7 +26,6 @@ namespace Evoting.Models
         public int AssignToAdmin { get; set; }
         public int AssignmentUpdate { get; set; }
 
-        //public virtual ICollection<AdminAssignment> AdminAssignments { get; set; }
     }
 
     public class AnnoucementModel
@@ -50,7 +49,7 @@ namespace Evoting.Models
         public int AppointmentID { get; set; }
         public DateTime AssignmentIssueDate { get; set; }
         [Required(ErrorMessage = "Please Select a Fixed Date")]
-        public DateTime? AssignmentFixedDate { get; set; }
+        public DateTime AssignmentFixedDate { get; set; }
         public int AssignmentUpdate { get; set; }
 
         public  AdminModel Admin { get; set; }

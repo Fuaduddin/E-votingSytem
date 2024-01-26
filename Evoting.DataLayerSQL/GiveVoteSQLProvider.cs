@@ -32,7 +32,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage ResponseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Votes", Vote).Result;
-               // id=ResponseADD.Content.ReadAsAsync<int>().Result;
             }
             catch (Exception ex)
             {
@@ -58,12 +57,12 @@ namespace Evoting.DataLayerSQL
 
 
         // Election Results
-        public ElectionResultDetailsModel ElectionResultDetails(int ELectionID)
+        public ElectionResultDetailsModel ElectionResultDetails(int AsignZoneID)
         {
             ElectionResultDetailsModel votingResult = new ElectionResultDetailsModel();
             try
             {
-                HttpResponseMessage ResponseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Results/" + ELectionID.ToString()).Result;
+                HttpResponseMessage ResponseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Results/" + AsignZoneID.ToString()).Result;
                 votingResult= ResponseSingle.Content.ReadAsAsync<ElectionResultDetailsModel>().Result;
             }
             catch (Exception ex)
@@ -72,7 +71,20 @@ namespace Evoting.DataLayerSQL
             }
             return votingResult;
         }
-
+        public bool PublishElectionResultDetails(VotingResultModel Result)
+        {
+            bool Isadded = true;
+            try
+            {
+                HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Results", Result).Result;
+            }
+            catch (Exception ex)
+            {
+                Isadded = false;
+                throw new Exception("Exception Adding Data. " + ex.Message);
+            }
+            return Isadded;
+        }
         public ElectionResultDetailsModel GetAllCandidateElectionResultDetails()
         {
             ElectionResultDetailsModel votingResult = new ElectionResultDetailsModel();

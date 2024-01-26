@@ -54,19 +54,18 @@
                                 <th>Delete Details</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @if (Model.ElectionTypeList.Count>0)
+                        <tbody id="electionpagination">
+                            @if (Model.ElectionTypeList.Count > 0)
                             {
                                 int serialno = 1;
                                 foreach (var electiontype in Model.ElectionTypeList)
                                 {
 
-                                    <tr>
+                                    <tr class="removeitem">
                                         <td>@serialno</td>
                                         <td>@electiontype.ElectionName</td>
-                                        <td><button type="button" class="btn btn-success btn-rounded btn-fw">Update</button></td>
                                         <td>
-                                            @Html.ActionLink("Delete", "DeleteElectionType", new { Id = @electiontype.ElectionID}, new { @class = "btn btn-danger", type = "button" })
+                                            @Html.ActionLink("Delete", "DeleteElectionType", new { Id = @electiontype.ElectionID }, new { @class = "btn btn-danger", type = "button" })
                                         </td>
                                     </tr>
                                     serialno++;
@@ -75,7 +74,7 @@
                             else
                             {
                                 <tr>
-                                     <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
                                 </tr>
                             }
 
@@ -83,9 +82,73 @@
                     </table>
                 </div>
             </div>
+            <nav aria-label="Page navigation example" class="paginationindexpage">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @for (var i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <li class="page-item"><a class="page-link" href="#" onclick="PaginationItems(@i)">@i</a></li>
+                    }
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
 
+
+<style>
+    .paginationindexpage {
+        display: flex !important;
+        justify-content: center !important;
+    }
+</style>
+<script>
+    function PaginationItems(pageindex) {
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize: 10
+        }
+        $.ajax({
+            url: "/ElectionSettings/GetpaginatiotabledataElectiontype",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                        element += `
+    <tr class="removeitem">
+        <td>${serialno}</td>
+        <td>${data[i].ElectionName}</td>
+        <td>
+            <a class = "btn btn-danger" href="/ElectionSettings/DeleteElectionType/${data[i].ElectionID}">Delette</a>
+        </td>
+    </tr>
+
+                                        `;
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>
 
 

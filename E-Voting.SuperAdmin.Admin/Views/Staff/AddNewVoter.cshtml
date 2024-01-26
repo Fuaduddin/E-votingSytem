@@ -28,7 +28,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">NID Number & User ID</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Voter.VoterNID, new { @class = "form-control", @placeholder = "Enter NID Number" })
+                                @Html.TextBoxFor(model => model.Voter.VoterNID, new { @class = "form-control NumberCheck", @placeholder = "Enter NID Number" })
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Phone Number</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.Voter.VoterPhoneNumber, new { @class = "form-control", placeholder = "Enter Phone Number" })
+                                @Html.TextBoxFor(Model => Model.Voter.VoterPhoneNumber, new { @class = "form-control PhoneNumber", @placeholder = "Enter Phone Number" })
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Email Address</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.Voter.VoterEmail, new { @class = "form-control", placeholder = "Enter Email Address" })
+                                @Html.TextBoxFor(Model => Model.Voter.VoterEmail, new { @class = "form-control EmailAddress", @placeholder = "Enter Email Address" })
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">User Password</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(model => model.Voter.User.UserPassword, new { @class = "form-control", @placeholder = "Enter User Password" })
+                                @Html.TextBoxFor(model => model.Voter.User.UserPassword, new { @class = "form-control Password", @placeholder = "Enter User Password" })
                                 @Html.ValidationMessageFor(Model => Model.Voter.User.UserPassword)
                             </div>
                         </div>

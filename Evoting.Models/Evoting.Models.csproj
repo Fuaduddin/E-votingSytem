@@ -48,7 +48,6 @@
     <Compile Include="CandidateModel.cs" />
     <Compile Include="CommonModel.cs" />
     <Compile Include="GiveVoteModel.cs" />
-    <Compile Include="VoteCountDownModel.cs" />
     <Compile Include="VoterCandidateViewModel.cs" />
     <Compile Include="VoterModel.cs" />
     <Compile Include="CustomerViewModel.cs" />

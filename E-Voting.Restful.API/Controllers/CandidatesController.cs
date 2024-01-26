@@ -18,40 +18,6 @@ namespace E_Voting.Restful.API.Controllers
     {
         private Entities db = new Entities();
 
-        // GET: api/Candidates
-        public IQueryable<Candidate> GetCandidates()
-        {
-            return db.Candidates;
-        }
-
-        // GET: api/Candidates/5
-        [ResponseType(typeof(Candidate))]
-        public async Task<IHttpActionResult> GetCandidate(int id)
-        {
-            Candidate candidate = await db.Candidates.FindAsync(id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(candidate);
-        }
-
-        // DELETE: api/Candidates/5
-        [ResponseType(typeof(Candidate))]
-        public async Task<IHttpActionResult> DeleteCandidate(int id)
-        {
-            Candidate candidate = await db.Candidates.FindAsync(id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
-
-            db.Candidates.Remove(candidate);
-            await db.SaveChangesAsync();
-
-            return Ok(candidate);
-        }
 
         protected override void Dispose(bool disposing)
         {
@@ -137,6 +103,150 @@ namespace E_Voting.Restful.API.Controllers
 
             return IsUpdated;
         }
-
+        [ResponseType(typeof(Voter))]
+        [Route("api/ActivateProfile")]
+        public bool ActivateProfile(int id)
+        {
+            bool IsActivated = true;
+            try
+            {
+                var VoterDetails = db.Candidates.Where(x => x.CandidateID == id).FirstOrDefault();
+                var UserDetails = db.Users.Where(x => x.UserIDNo == VoterDetails.UserID).FirstOrDefault();
+                UserDetails.UserStatus = "Active";
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                IsActivated = false;
+                throw new Exception(ex.Message.ToString());
+            }
+            return IsActivated;
+        }
+        [ResponseType(typeof(Candidate))]
+        public bool DeleteCandidate(int id)
+        {
+            bool IsDeleted = true;
+            try
+            {
+                var VoterDetails = db.Candidates.Where(x => x.CandidateID == id).FirstOrDefault();
+                var UserDetails = db.Users.Where(x => x.UserIDNo == VoterDetails.UserID).FirstOrDefault();
+                UserDetails.UserStatus = "Inactive";
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                IsDeleted = false;
+                throw new Exception(ex.Message.ToString());
+            }
+            return IsDeleted;
+        }
+        [ResponseType(typeof(Candidate))]
+        public CandidateModel GetCandidate(int id)
+        {
+            var AreaList = db.Areas;
+            var ZoneList = db.Zones;
+            var UserList = db.Users;
+            var CandidateDetails = db.Candidates;
+            var CandidateList = (from candidate in CandidateDetails
+                             join
+                             user in UserList on candidate.UserID equals user.UserIDNo
+                             join
+                             area in AreaList on candidate.CandidateArea equals area.AreaID
+                             join
+                             zone in ZoneList on candidate.CandidateZone equals zone.ZoneId
+                             where candidate.CandidateID == id
+                             select new CandidateModel
+                             {
+                                 CandidateID = candidate.CandidateID,
+                                 CandidateImage = candidate.CandidateImage,
+                                 CandidateName = candidate.CandidateName,
+                                 CandidatePhoneNumber = candidate.CandidatePhoneNumber,
+                                 CandidateEmail = candidate.CandidateEmail,
+                                 CandidateZone = candidate.CandidateZone,
+                                 CandidateArea = candidate.CandidateArea,
+                                 CandidatePermanentAddress = candidate.CandidatePermanentAddress,
+                                 CandidatePresentAddress = candidate.CandidatePresentAddress,
+                                 CandidateNID = candidate.CandidateNID,
+                                 CandidateParty =(int) candidate.CandidateParty,
+                                 CandidateGender = candidate.CandidateGender,
+                                 Area = new areamodel()
+                                 {
+                                     AreaID = area.AreaID,
+                                     AreaName = area.AreaName,
+                                     AreaTitle = area.AreaTitle,
+                                     ZoneID = (int)area.ZoneID,
+                                 },
+                                 Zone = new zoneModel()
+                                 {
+                                     ZoneId = zone.ZoneId,
+                                     ZoneName = zone.ZoneName
+                                 },
+                                 User = new UserModel()
+                                 {
+                                     UserIDNo = user.UserIDNo,
+                                     UserRole = user.UserRole,
+                                     UserID = user.UserID,
+                                     UserPassword = user.UserPassword,
+                                     UserLastLogin = (DateTime)user.UserLastLogin,
+                                     UserStatus = user.UserStatus,
+                                     UserTotalLogin = (int)user.UserTotalLogin,
+                                     UserLastLogout = (DateTime)user.UserLastLogout,
+                                 }
+                             }).FirstOrDefault();
+            return CandidateList;
+        }
+        public List<CandidateModel> GetCandidates()
+        {
+            var AreaList = db.Areas;
+            var ZoneList = db.Zones;
+            var UserList = db.Users;
+            var CandidateDetails = db.Candidates;
+            var CandidateList = (from candidate in CandidateDetails
+                                 join
+                                 user in UserList on candidate.UserID equals user.UserIDNo
+                                 join
+                                 area in AreaList on candidate.CandidateArea equals area.AreaID
+                                 join
+                                 zone in ZoneList on candidate.CandidateZone equals zone.ZoneId
+                                 select new CandidateModel
+                                 {
+                                     CandidateID = candidate.CandidateID,
+                                     CandidateImage = candidate.CandidateImage,
+                                     CandidateName = candidate.CandidateName,
+                                     CandidatePhoneNumber = candidate.CandidatePhoneNumber,
+                                     CandidateEmail = candidate.CandidateEmail,
+                                     CandidateZone = candidate.CandidateZone,
+                                     CandidateArea = candidate.CandidateArea,
+                                     CandidatePermanentAddress = candidate.CandidatePermanentAddress,
+                                     CandidatePresentAddress = candidate.CandidatePresentAddress,
+                                     CandidateNID = candidate.CandidateNID,
+                                     CandidateParty = (int)candidate.CandidateParty,
+                                     CandidateGender = candidate.CandidateGender,
+                                     Area = new areamodel()
+                                     {
+                                         AreaID = area.AreaID,
+                                         AreaName = area.AreaName,
+                                         AreaTitle = area.AreaTitle,
+                                         ZoneID = (int)area.ZoneID,
+                                     },
+                                     Zone = new zoneModel()
+                                     {
+                                         ZoneId = zone.ZoneId,
+                                         ZoneName = zone.ZoneName
+                                     },
+                                     User = new UserModel()
+                                     {
+                                         UserIDNo = user.UserIDNo,
+                                         UserRole = user.UserRole,
+                                         UserID = user.UserID,
+                                         UserPassword = user.UserPassword,
+                                         UserLastLogin = (DateTime)user.UserLastLogin,
+                                         UserStatus = user.UserStatus,
+                                         UserTotalLogin = (int)user.UserTotalLogin,
+                                         UserLastLogout = (DateTime)user.UserLastLogout,
+                                     }
+                                 }).ToList();
+            return CandidateList;
+        }
     }
 }

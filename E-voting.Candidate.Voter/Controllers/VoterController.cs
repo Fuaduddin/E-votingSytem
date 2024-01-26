@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace E_voting.Candidate.Voter.Controllers
 {
+    [Authorize]
     public class VoterController : Controller
     {
         // GET: Voter
@@ -20,6 +21,10 @@ namespace E_voting.Candidate.Voter.Controllers
             VoterCandidateViewModel electiondetails = new VoterCandidateViewModel();
             electiondetails.ElectionDetailsList = ElectionSettingsManager.GetAllElectionDetails();
             return View("GetAllElectionDetails", electiondetails);
+        }
+        private VoterModel VoterDetaisl()
+        {
+            return (VoterModel)Session["candidateDetails"];
         }
     }
 }

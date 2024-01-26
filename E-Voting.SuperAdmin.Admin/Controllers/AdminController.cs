@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         // GET: Admin

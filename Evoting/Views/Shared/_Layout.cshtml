@@ -1,8 +1,6 @@
 ﻿@using Evoting.BusinessLayer;
 @using Evoting.GlobalSetting;
-@{ 
-    var ElectionType = ElectionSettingsManager.GetAllElectionType();
-}
+
 
 <!DOCTYPE html>
 <html>
@@ -228,6 +226,7 @@
     <script src="~/Content/CustomeJS/Custome.js"></script>
     <!--Custome JS END-->
     <!--Common CSS Start-->
+    <script src="~/Content/CustomeJS/FormValidation.js"></script>
     <style>
         .area-padding {
             padding: 158px 0px 43px !important;

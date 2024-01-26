@@ -17,10 +17,9 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter Full Name")]
         public string AdminName { get; set; }
         [Required(ErrorMessage = "Please Enter Phone Number")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Phone Number")]
         public string AdminPhoneNumber { get; set; }
         [Required(ErrorMessage = "Please Enter Email")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Email")]
+       
         public string AdminEmail { get; set; }
         [Required(ErrorMessage = "Please Select Zone")]
         public int AdminZone { get; set; }

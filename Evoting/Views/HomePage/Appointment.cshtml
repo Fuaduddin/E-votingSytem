@@ -51,14 +51,14 @@
                                     </div>
                                     <div class="subs-feilds">
                                         <div class="suscribe-input">
-                                            @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "email form-control width-80", id = "exampleInputEmail1", placeholder = "Please Enter your Email Address" })
+                                            @Html.TextBoxFor(model => model.Appointment.UserEmaul, new { @class = "EmailAddress email form-control width-80", id = "exampleInputEmail1", placeholder = "Please Enter your Email Address" })
                                             @Html.ValidationMessageFor(model => model.Appointment.UserEmaul)
                                         </div>
                                     </div>
                                     <div class="subs-feilds">
 
                                         <div class="suscribe-input">
-                                            @Html.TextBoxFor(model => model.Appointment.UserPhoneNumber, new { @class = "form-control width-80 email form-control-lg", id = "exampleInputEmail1", placeholder = "Please Enter your Email Phone Number" })
+                                            @Html.TextBoxFor(model => model.Appointment.UserPhoneNumber, new { @class = "PhoneNumber form-control width-80 email form-control-lg", id = "exampleInputEmail1", placeholder = "Please Enter your Email Phone Number" })
 
                                             @Html.ValidationMessageFor(model => model.Appointment.UserPhoneNumber)
 

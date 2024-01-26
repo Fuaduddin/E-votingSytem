@@ -9,11 +9,6 @@ using System.Threading.Tasks;
 
 namespace Evoting.Models
 {
-    public class ElectionSettingModel
-    {
-        //public int ElectionID { get; set; }
-        //public string ElectionName { get; set; }
-    }
     public class ElectionModel
     {
         [Key]
@@ -27,12 +22,6 @@ namespace Evoting.Models
         public int ZoneId { get; set; }
         [Required(ErrorMessage = "Please Enter Zone Name")]
         public string ZoneName { get; set; }
-
-        //public  List<Admin> Admins { get; set; }
-        //public  Area Area { get; set; }
-        //public List<Candidate> Candidates { get; set; }
-        //public List<Election_Detail> Election_Details { get; set; }
-        //public List<Voter> Voters { get; set; }
     }
 
     public class areamodel
@@ -42,7 +31,7 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter  Ward Name")]
         public string AreaTitle { get; set; }
         [Required(ErrorMessage = "Please Select Zone")]
-        public int? ZoneID { get; set; }
+        public int ZoneID { get; set; }
         [Required(ErrorMessage = "Please Select Area")]
         public string AreaName { get; set; }
         public zoneModel ZoneDetailsitem { get; set; }
@@ -58,9 +47,9 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Select Election Type")]
         public int? ElectionType { get; set; }
         [Required(ErrorMessage = "Please Enter Election Start Date")]
-        public DateTime? StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         [Required(ErrorMessage = "Please Enter Election End Date")]
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
         [Required(ErrorMessage = "Please Enter Election Status")]
         public string ElectionStatus { get; set; }
 

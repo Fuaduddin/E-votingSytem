@@ -260,3 +260,4 @@ E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-vo
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.csproj.CopyComplete
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.dll
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\obj\Debug\E-voting.Candidate.Voter.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-voting.Candidate.Voter\bin\Evoting.GlobalSetting.dll.config

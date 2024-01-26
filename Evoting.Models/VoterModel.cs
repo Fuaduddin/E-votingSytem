@@ -16,10 +16,8 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter Full Name")]
         public string VoterName { get; set; }
         [Required(ErrorMessage = "Please Enter Phone Number")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Phone Number")]
         public string VoterPhoneNumber { get; set; }
         [Required(ErrorMessage = "Please Enter Email")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Email")]
         public string VoterEmail { get; set; }
         [Required(ErrorMessage = "Please Select Zone")]
         public int VoterZone { get; set; }
@@ -38,7 +36,6 @@ namespace Evoting.Models
         public areamodel Area { get; set; }
         public UserModel User { get; set; }
         public zoneModel Zone { get; set; }
-        // public virtual ICollection<Vote> Votes { get; set; }
 
     }
 }

@@ -132,7 +132,7 @@ namespace E_Voting.Restful.API.Controllers
                                            AdminID = assignmentappointment.AdminID,
                                            AppointmentID = assignmentappointment.AppointmentID,
                                            AssignmentIssueDate = assignmentappointment.AssignmentIssueDate,
-                                           AssignmentFixedDate = assignmentappointment.AssignmentFixedDate,
+                                           AssignmentFixedDate =(DateTime)assignmentappointment.AssignmentFixedDate ,
                                            AssignmentUpdate = assignmentappointment.AssignmentUpdate,
                                            Admin=new AdminModel()
                                            {

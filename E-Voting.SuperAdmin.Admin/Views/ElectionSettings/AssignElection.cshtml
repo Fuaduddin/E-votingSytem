@@ -51,55 +51,264 @@
                 </div>
             </div>
         }
-    <div class="card-body">
-        @if (Model.AssignElectionDetails.ElectionAssignID > 0)
-        {
-            <div class="">
+        <div class="card-body">
+            @if (Model.AssignElectionDetails.ElectionAssignID > 0)
+            {
+                <div class="">
 
-            </div>
-        }
-        @using (Html.BeginForm("AddNewAssignElection", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.HiddenFor(Model => Model.ElectionDetails.ElectionID)
-            @Html.HiddenFor(Model => Model.AssignElectionDetails.ElectionAssignID)
-            <div class="d-flex">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Zone</label>
-                        <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="zones">
-                            @foreach (var zonedetails in Model.ZoneList)
-                            {
-                                <option value="@zonedetails.ZoneId">@zonedetails.ZoneName</option>
-                            }
-                        </select>
+                </div>
+            }
+            @using (Html.BeginForm("AddNewAssignElection", "ElectionSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(Model => Model.ElectionDetails.ElectionID)
+                @Html.HiddenFor(Model => Model.AssignElectionDetails.ElectionAssignID)
+                <div class="d-flex">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Zone</label>
+                            <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="zones">
+                                @foreach (var zonedetails in Model.ZoneList)
+                                {
+                                    <option value="@zonedetails.ZoneId">@zonedetails.ZoneName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Area</label>
+                            <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="areas">
+                                @foreach (var areadetails in Model.AreaList)
+                                {
+                                    <option value="@areadetails.AreaID">@areadetails.AreaName</option>
+                                }
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Area</label>
-                        <select class="form-control form-control-lg" id="exampleFormControlSelect1" name="areas" >
-                            @foreach (var areadetails in Model.AreaList)
-                            {
-                                <option value="@areadetails.AreaID">@areadetails.AreaName</option>
-                            }
-                        </select>
-                    </div>
+                <div class="mt-3">
+                    @if (Model.AssignElectionDetails.ElectionAssignID > 0)
+                    {
+                        <button type="submit" class="btn btn-success mr-2">Update</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
+                        <button class="btn btn-light">Cancel</button>
+                    }
                 </div>
-            </div>
-            <div class="mt-3">
-                @if (Model.AssignElectionDetails.ElectionAssignID > 0)
-                {
-                    <button type="submit" class="btn btn-success mr-2">Update</button>
-                    <button class="btn btn-light">Cancel</button>
-                }
-                else
-                {
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                }
-            </div>
-        }
-    </div>
+            }
         </div>
-
     </div>
+
+</div>
+<nav aria-label="Page navigation example" class="paginationindexpage">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 1; i <= Model.TotalPage; i++)
+        {
+            <li class="page-item"><a class="page-link" href="#" onclick="PaginationItems(@i)">@i</a></li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<style>
+    .paginationindexpage {
+        display: flex !important;
+        justify-content: center !important;
+    }
+</style>
+<script>
+    function PaginationItems(pageindex) {
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize: 10
+        }
+        $.ajax({
+            url: "/AppointmentAnnoucement/GetpaginatiotabledataAppointment",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    var assignaddmin;
+                    var assignupdate;
+                    if (data.AssignToAdmin>0) {
+                        assignaddmin = "Assign";
+                    }
+                    else {
+                        assignaddmin = "Pending";
+                    }
+                    if (data.AssignmentUpdate>0) {
+                        assignupdate = "Complete";
+                    }
+                    else {
+                        assignupdate = "Pending";
+                    }
+                    if (data.AssignToAdmin == 0) {
+                        element += `
+<tr class="removeitem">
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/AddNewAssignment/${data[i].AppointmentID}">Assign New</a>
+    </td>
+
+                                        `;
+                    }
+                    else {
+                        element += `
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>                             `;
+                    }
+
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+    function SearchItems() {
+        var PagenationDetails =
+        {
+            Search: $(".searchbox").val()
+        }
+        $.ajax({
+            url: "/AppointmentAnnoucement/SearchAppointment",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    var assignaddmin;
+                    var assignupdate;
+                    if (data.AssignToAdmin > 0) {
+                        assignaddmin = "Assign";
+                    }
+                    else {
+                        assignaddmin = "Pending";
+                    }
+                    if (data.AssignmentUpdate > 0) {
+                        assignupdate = "Complete";
+                    }
+                    else {
+                        assignupdate = "Pending";
+                    }
+                    if (data.AssignToAdmin == 0) {
+                        element += `
+<tr class="removeitem">
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/AddNewAssignment/${data[i].AppointmentID}">Assign New</a>
+    </td>
+
+                                        `;
+                    }
+                    else {
+                        element += `
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>                             `;
+                    }
+
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>

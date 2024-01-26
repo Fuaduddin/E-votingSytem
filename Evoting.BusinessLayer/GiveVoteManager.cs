@@ -30,10 +30,16 @@ namespace Evoting.BusinessLayer
         }
 
         // Results
-        public static ElectionResultDetailsModel ElectionResultDetails(int ElectionID)
+        public static ElectionResultDetailsModel ElectionResultDetails(int AsignZoneID)
         {
             GiveVoteSQLProvider Provider = new GiveVoteSQLProvider();
-            var GiveVote = Provider.ElectionResultDetails(ElectionID);
+            var GiveVote = Provider.ElectionResultDetails(AsignZoneID);
+            return GiveVote;
+        }
+        public static bool PublishElectionResultDetails(VotingResultModel Result)
+        {
+            GiveVoteSQLProvider Provider = new GiveVoteSQLProvider();
+            var GiveVote = Provider.PublishElectionResultDetails(Result);
             return GiveVote;
         }
         public static ElectionResultDetailsModel GetAllCandidateElectionResultDetails()

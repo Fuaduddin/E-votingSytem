@@ -12,6 +12,7 @@ using E_Voting.SuperAdmin.Admin.Extension;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
+    [Authorize]
     public class AppointmentAnnoucementController : Controller
     {
         // Global Function
@@ -58,13 +59,16 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     ViewData["Message"] = "!!!!!!! ERROR !!!!!!!!!!";
                 }
             }
-            AnnoucementDetails.AnnoucementList = AppointmentAnnoucementManager.GetAllAnnoucement();
+            SuperAdminAndAdminViewModel Annoucement = new SuperAdminAndAdminViewModel();
+            Annoucement.AnnoucementList = GetPaginationAnnoucement(1, 10);
+            Annoucement.TotalPage = pagecountAnnoucement(10);
             return View("GetAllAnnoucement", AnnoucementDetails);
         }
         public ActionResult GetAllAnnoucement()
         {
             SuperAdminAndAdminViewModel Annoucement = new SuperAdminAndAdminViewModel();
-            Annoucement.AnnoucementList = AppointmentAnnoucementManager.GetAllAnnoucement();
+            Annoucement.AnnoucementList = GetPaginationAnnoucement(1,10);
+            Annoucement.TotalPage = pagecountAnnoucement(10);
             return View("GetAllAnnoucement", Annoucement);
         }
         public ActionResult DeleteAnnoucement(int id)
@@ -81,7 +85,8 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 }
             }
             SuperAdminAndAdminViewModel Annoucement = new SuperAdminAndAdminViewModel();
-            Annoucement.AnnoucementList = AppointmentAnnoucementManager.GetAllAnnoucement();
+            Annoucement.AnnoucementList = GetPaginationAnnoucement(1, 10);
+            Annoucement.TotalPage = pagecountAnnoucement(10);
             return View("GetAllAnnoucement", Annoucement);
         }
         public ActionResult GetSingleAnnoucement(int id)
@@ -90,73 +95,30 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             Annoucement.Annoucement = AppointmentAnnoucementManager.GetSingleAnnoucement(id);
             return View("AddNewAnnoucement", Annoucement);
         }
-
-        // All Extra Feautures not complete
-        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
-        //private int pagecountElectiontype(int perpagedata)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
-        //}
-        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
-
-        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
-        //    party.TotalPage = pagecountElectiontype(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
-        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
-        //    party.TotalPage = pagecountArea(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
-        // All Extra Feautures not complete
-        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
-        //private int pagecountElectiontype(int perpagedata)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
-        //}
-        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
-
-        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
-        //    party.TotalPage = pagecountElectiontype(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
-        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
-        //    party.TotalPage = pagecountArea(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
+        private List<AnnoucementModel> GetPaginationAnnoucement(int pageindex, int pagesize)
+        {
+            List<AnnoucementModel> Annoucementlist = AppointmentAnnoucementManager.GetAllAnnoucement();
+            return Annoucementlist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountAnnoucement(int perpagedata)
+        {
+            List<AnnoucementModel> Annoucementlist = AppointmentAnnoucementManager.GetAllAnnoucement();
+            return Convert.ToInt32(Math.Ceiling(Annoucementlist.Count() / (double)perpagedata));
+        }
+        public JsonResult GetpaginatiotabledataAnnoucement(int pageindex, int pagesize)
+        {
+            List<AnnoucementModel> Annoucementlist= new List<AnnoucementModel>();
+            Annoucementlist = GetPaginationAnnoucement(pageindex, pagesize);
+            var result = JsonConvert.SerializeObject(Annoucementlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchAnnoucement(string Search)
+        {
+            List<AnnoucementModel> Annoucementlist = new List<AnnoucementModel>();
+            Annoucementlist = AppointmentAnnoucementManager.GetAllAnnoucement().Where(x=>x.AnnoucementTitle.Contains(Search)).ToList();
+            var result = JsonConvert.SerializeObject(Annoucementlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
         // Appointment
         public ActionResult AddNewAAppointment()
@@ -190,10 +152,6 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     {
                         ViewData["Message"] = "Your data have been Added ";
                         ModelState.Clear();
-                        SuperAdminAndAdminViewModel AppointmentList = new SuperAdminAndAdminViewModel();
-                        AppointmentList.AppointmentList = AppointmentAnnoucementManager.GetAllAppointment();
-                       // RedirectToActionPermanent();
-                       // return View("GetAllAnnoucement", AppointmentList);
                     }
                     else
                     {
@@ -205,12 +163,16 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                     ViewData["Message"] = "!!!!!!! Error !!!!!!!!!";
                 }
             }
-            return View("GetAllAnnoucement");
+            SuperAdminAndAdminViewModel AppointmentList = new SuperAdminAndAdminViewModel();
+            AppointmentList.AppointmentList = GetPaginationAppointment(1, 10);
+            AppointmentList.TotalPage = pagecountAppointment(10);
+            return View("GetAllAnnoucement", AppointmentList);
         }
         public ActionResult GetAllAppointment()
         {
             SuperAdminAndAdminViewModel Appointment = new SuperAdminAndAdminViewModel();
-            Appointment.AppointmentList = AppointmentAnnoucementManager.GetAllAppointment();
+            Appointment.AppointmentList = GetPaginationAppointment(1, 10);
+            Appointment.TotalPage = pagecountAppointment(10);
             return View("GetAllAppointment", Appointment);
         }
         public ActionResult DeleteAppointment(int id)
@@ -227,7 +189,8 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 }
             }
             SuperAdminAndAdminViewModel Appointment = new SuperAdminAndAdminViewModel();
-            Appointment.AppointmentList = AppointmentAnnoucementManager.GetAllAppointment();
+            Appointment.AppointmentList = GetPaginationAppointment(1,10);
+            Appointment.TotalPage = pagecountAppointment(10);
             return View("GetAllAppointment", Appointment);
         }
         public ActionResult GetSingleAAppointment(int id)
@@ -235,6 +198,33 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             SuperAdminAndAdminViewModel Appointment = new SuperAdminAndAdminViewModel();
             Appointment.Appointment = AppointmentAnnoucementManager.GetSingleAppointment(id);
             return View("AddNewAppointment", Appointment);
+        }
+        // All Extra Feautures not complete
+        private List<AppointmentAnnoucementModel> GetPaginationAppointment(int pageindex, int pagesize)
+        {
+            List<AppointmentAnnoucementModel> Appointmentlist = AppointmentAnnoucementManager.GetAllAppointment();
+            return Appointmentlist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountAppointment(int perpagedata)
+        {
+            List<AppointmentAnnoucementModel> Appointmentlist = AppointmentAnnoucementManager.GetAllAppointment();
+            return Convert.ToInt32(Math.Ceiling(Appointmentlist.Count() / (double)perpagedata));
+        }
+
+        public JsonResult GetpaginatiotabledataAppointment(int pageindex, int pagesize)
+        {
+            List<AppointmentAnnoucementModel> Appointmentlist = new List<AppointmentAnnoucementModel>();
+            Appointmentlist = GetPaginationAppointment(pageindex, pagesize);
+            var result = JsonConvert.SerializeObject(Appointmentlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchAppointment(string Search)
+        {
+            List<AppointmentAnnoucementModel> Appointmentlist = new List<AppointmentAnnoucementModel>();
+            Appointmentlist = AppointmentAnnoucementManager.GetAllAppointment().Where(x=>x.AppointmentSubject.Contains(Search) 
+             || x.CustomerName.Contains(Search) || x.UserEmaul.Contains(Search) || x.UserPhoneNumber.Contains(Search)).ToList();
+            var result = JsonConvert.SerializeObject(Appointmentlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         // Assign to admin
@@ -291,7 +281,8 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         public ActionResult GetAllAssignment()
         {
             SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
-            AssignmentAppointmentList.AssignemntAppointmentList = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            AssignmentAppointmentList.AssignemntAppointmentList = GetPaginationAssignAppointment(1, 10);
+            AssignmentAppointmentList.TotalPage = pagecountAssignAppointment(10);
             return View("GetAllAssignment", AssignmentAppointmentList);
         }
         public ActionResult DeleteAssignment(int id)
@@ -308,7 +299,8 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
                 }
             }
             SuperAdminAndAdminViewModel AssignmentAppointmentList = new SuperAdminAndAdminViewModel();
-            AssignmentAppointmentList.AssignemntAppointmentList = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            AssignmentAppointmentList.AssignemntAppointmentList = GetPaginationAssignAppointment(1,10);
+            AssignmentAppointmentList.TotalPage = pagecountAssignAppointment(10);
             return View("GetAllAssignment", AssignmentAppointmentList);
         }
         public ActionResult GetSingleAssignment(int id)
@@ -319,37 +311,36 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
         }
 
         // All Extra Feautures not complete
-        //private List<ElectionModel> GetPaginationElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
-        //private int pagecountElectiontype(int perpagedata)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return Convert.ToInt32(Math.Ceiling(partylist.Count() / (double)perpagedata));
-        //}
-        //public List<ElectionModel> perpageshowdataElectiontype(int pageindex, int pagesize)
-        //{
-        //    List<PartyModel> partylist = PartyManager.GetAllParty();
-        //    return partylist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
-        //}
+        private List<AssignmentAppointment> GetPaginationAssignAppointment(int pageindex, int pagesize)
+        {
+            List<AssignmentAppointment> AssignAppointmentlist = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            return AssignAppointmentlist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
+        private int pagecountAssignAppointment(int perpagedata)
+        {
+            List<AssignmentAppointment> AssignAppointmentlist = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            return Convert.ToInt32(Math.Ceiling(AssignAppointmentlist.Count() / (double)perpagedata));
+        }
+        public List<AssignmentAppointment> perpageshowdataAssignAppointment(int pageindex, int pagesize)
+        {
+            List<AssignmentAppointment> AssignAppointmentlist = AppointmentAnnoucementManager.GetAllAssignmentAppointment();
+            return AssignAppointmentlist.Skip((pageindex - 1) * pagesize).Take(pagesize).ToList();
+        }
 
-        //public JsonResult GetpaginatiotabledataElectiontype(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataElectiontype(pageindex, pagesize);
-        //    party.TotalPage = pagecountElectiontype(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
-        //public JsonResult SearchElectionTypeData(int pageindex, int pagesize)
-        //{
-        //    SuperAdminAndAdminViewModel party = new SuperAdminAndAdminViewModel();
-        //    party.PartyList = perpageshowdataArea(pageindex, pagesize);
-        //    party.TotalPage = pagecountArea(pagesize);
-        //    var result = JsonConvert.SerializeObject(party);
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
+        public JsonResult GetpaginatiotabledataAssignAppointment(int pageindex, int pagesize)
+        {
+            List<AssignmentAppointment> AssignAppointmentlist = new List<AssignmentAppointment>();
+            AssignAppointmentlist = GetPaginationAssignAppointment(pageindex, pagesize);
+            var result = JsonConvert.SerializeObject(AssignAppointmentlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SearchAssignAppointment(string Search)
+        {
+            List<AssignmentAppointment> AssignAppointmentlist = new List<AssignmentAppointment>();
+            AssignAppointmentlist = AppointmentAnnoucementManager.GetAllAssignmentAppointment().Where(x=>x.Admin.AdminName.Contains(Search)
+            || x.Appointment.AppointmentSubject.Contains(Search)).ToList();
+            var result = JsonConvert.SerializeObject(AssignAppointmentlist);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

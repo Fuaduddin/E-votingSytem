@@ -24,7 +24,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("ElectionTypes", electiontype).Result;
-               // Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
@@ -53,7 +52,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("ElectionTypes").Result;
-                // electiontype = (List<ElectionModel>)responseSingle.Content.ReadAsAsync<IEnumerable<List<ElectionModel>>>().Result;
                 electiontype = (List<ElectionModel>)responseSingle.Content.ReadAsAsync<IEnumerable<ElectionModel>>().Result;
             }
             catch (Exception ex)
@@ -70,7 +68,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Zones", zone).Result;
-                //Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
@@ -128,7 +125,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage responseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Areas", Area).Result;
-                //Isadded = responseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
@@ -326,7 +322,6 @@ namespace Evoting.DataLayerSQL
         }
         public int GetSingleAssingElectionDetailsList(int electionID, int zoneID, int areaID)
         {
-            // ElectionAssignmentModel AllAssingElectionDetails = new ElectionAssignmentModel();
             int AssingmentDetailsID;
             try
             {

@@ -1,5 +1,5 @@
 ﻿@model Evoting.Models.VoterCandidateViewModel
-
+@using Evoting.GlobalSetting;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,13 +7,10 @@
 <div class="col-md-12 stretch-card grid-margin grid-margin-md-0 mb-4">
     <div class="card data-icon-card-primary">
         <div class="card-body">
-            <p class="card-title text-white">Number of Meetings</p>
+            <p class="card-title text-white text-center">Please Submit your vote with in time</p>
             <div class="row">
-                <div class="col-8 text-white">
-                    <h3>34040</h3>
-                    <p class="text-white font-weight-500 mb-0">The total number of sessions within the date range.It is calculated as the sum . </p>
-                </div>
-                <div class="col-4 background-icon">
+                <div class="col-12 text-white">
+                    <h3 class="text-center" id="timecounter" style="font-size:40px">10:00</h3>
                 </div>
             </div>
         </div>
@@ -34,7 +31,7 @@
                                     <p class="fs-30 mb-2"><b>@Candidte.CandidateName</b></p>
                                 </div>
                                 <div>
-                                    <img src="@Candidte.AssignmentCandidate.CandidateSymbol" />
+                                    <img src="@(GlobalSettingsPatternsandConstant.ImageURLWeb + Candidte.AssignmentCandidate.CandidateSymbol) " />
                                 </div>
                             </div>
                         </div>
@@ -42,6 +39,70 @@
                 </div>
             }
         </div>
-        <button type="submit" class="btn btn-success mr-2">Submit</button>
+        <button type="button" class="btn btn-success mr-2" id="votesubmitbutton" onclick="OTPCodeCheck()">Submit</button>
+    </div>
+    <div class="modal" tabindex="-1" id="otpchekcer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5 class="modal-title">Please Enter OTP Code</h5>
+                    <input type="text" class="form-control otpnumberinput" id="exampleFormControlInput1" onchange="CheckOTPCode()" placeholder="OTP Number">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="OTPCheeckerModal()">Close</button>
+                    <button type="submit" class="btn btn-primary" id="givevote">Give Vote</button>
+                </div>
+            </div>
+        </div>
     </div>
 }
+
+<script>
+    const votingtime = 10;
+    let VotingTotalTime = votingtime * 60;
+    let OTPCode;
+
+    $("#givevote").prop("disabled", true);
+    let CounterTimer = () => {
+        var TotalMinutes = Math.floor(VotingTotalTime / 60);
+        let TotalSecond = VotingTotalTime % 60;
+        TotalSecond = TotalSecond < 10 ? `0` + TotalSecond : TotalSecond;
+        document.getElementById("timecounter").innerHTML = `${TotalMinutes}:${TotalSecond}`;
+        VotingTotalTime--;
+        if (VotingTotalTime == 0) {
+            alert("your time is over");
+            $("#votesubmitbutton").attr('disabled', 'disabled');
+        }
+    }
+    let OTPCheeckerModal = () => {
+        $("#otpchekcer").hide();
+    }
+    let CheckOTPCode = () => {
+        debugger
+        const givevoteform = document.getElementById("givevote");
+        var UserGivenOTP = $(".otpnumberinput").val();
+        if (OTPCode == UserGivenOTP) {
+            $("#givevote").prop("disabled", false);
+        }
+        else {
+            $("#givevote").prop("disabled", true);
+        }
+    }
+    let OTPCodeCheck = () => {
+        $.ajax({
+            url: "/GiveVote/OTPCodeGenerator",
+            Method: "GET",
+            success: function (data) {
+                OTPCode = JSON.stringify(data);
+                if (OTPCode > 0) {
+                    $("#otpchekcer").show();
+                }
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+    setInterval(CounterTimer, 1000);
+</script>

@@ -16,7 +16,6 @@ namespace Evoting.Models
         public zoneModel Zone { get; set; }
         public areamodel Area { get; set; }
         public ElectionDetailsModel ElectionDetails { get; set; }
-        //public ElectionSettingModel ElectionType { get; set; }
         public ElectionAssignmentModel AssignElectionDetails { get; set; }
         public VoterModel Voter { get; set; }
         public CandidateModel Candidate { get; set; }

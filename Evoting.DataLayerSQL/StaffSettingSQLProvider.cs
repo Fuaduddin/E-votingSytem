@@ -20,7 +20,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage ResponseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Voters", Voter).Result;
-              //  IsAdded = ResponseADD.Content.ReadAsAsync<bool>().Result;
             }
             catch (Exception ex)
             {
@@ -48,7 +47,7 @@ namespace Evoting.DataLayerSQL
             bool IsUpdated = true;
             try
             {
-
+                HttpResponseMessage ResponseUpdate = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Voters/" + Voter.VoterID.ToString(), Voter).Result;
             }
             catch (Exception ex)
             {
@@ -62,7 +61,8 @@ namespace Evoting.DataLayerSQL
             VoterModel Voter = new VoterModel();
             try
             {
-
+                HttpResponseMessage ResponseGetSingle = GlobalSettingsWebAPI.WebApiClient.GetAsync("Voters/" + id.ToString()).Result;
+                Voter = ResponseGetSingle.Content.ReadAsAsync<VoterModel>().Result;
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace Evoting.DataLayerSQL
             bool IsDeleted = true;
             try
             {
-
+                HttpResponseMessage ResponseDelete = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("Voters/" + id.ToString()).Result;
             }
             catch (Exception ex)
             {
@@ -84,7 +84,20 @@ namespace Evoting.DataLayerSQL
             }
             return IsDeleted;
         }
-
+        public bool ActiveVoter(int id)
+        {
+            bool IsActivated = true;
+            try
+            {
+                HttpResponseMessage ResponseDelete = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("ActivateProfile/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsActivated = false;
+                throw new Exception(ex.Message);
+            }
+            return IsActivated;
+        }
         // Candidate
 
         public int AddNewCandidate(CandidateModel Candidate)
@@ -107,7 +120,8 @@ namespace Evoting.DataLayerSQL
             List<CandidateModel> Voters = new List<CandidateModel>();
             try
             {
-
+                HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.GetAsync("Candidates").Result;
+                Voters = ResponseGetAll.Content.ReadAsAsync<List<CandidateModel>>().Result;
             }
             catch (Exception ex)
             {
@@ -134,7 +148,8 @@ namespace Evoting.DataLayerSQL
             CandidateModel Candidate = new CandidateModel();
             try
             {
-
+                HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.GetAsync("Candidates").Result;
+                Candidate = ResponseGetAll.Content.ReadAsAsync<CandidateModel>().Result;
             }
             catch (Exception ex)
             {
@@ -147,7 +162,7 @@ namespace Evoting.DataLayerSQL
             bool IsDeleted = true;
             try
             {
-
+                HttpResponseMessage ResponseDelete = GlobalSettingsWebAPI.WebApiClient.GetAsync("Candidates/" + id.ToString()).Result;
             }
             catch (Exception ex)
             {
@@ -164,7 +179,6 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage ResponseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Admins", Admin).Result;
-
             }
             catch (Exception ex)
             {
@@ -192,7 +206,7 @@ namespace Evoting.DataLayerSQL
             bool IsUpdated = true;
             try
             {
-
+                HttpResponseMessage ResponseUpdate = GlobalSettingsWebAPI.WebApiClient.PutAsJsonAsync("Admins/" + Admin.AdminID.ToString(), Admin).Result;
             }
             catch (Exception ex)
             {
@@ -206,7 +220,8 @@ namespace Evoting.DataLayerSQL
             AdminModel Admin = new AdminModel();
             try
             {
-
+                HttpResponseMessage ResponseGetAll = GlobalSettingsWebAPI.WebApiClient.GetAsync("Admins").Result;
+                Admin = ResponseGetAll.Content.ReadAsAsync<AdminModel>().Result;
             }
             catch (Exception ex)
             {
@@ -219,7 +234,7 @@ namespace Evoting.DataLayerSQL
             bool IsDeleted = true;
             try
             {
-
+                HttpResponseMessage ResponseDelete = GlobalSettingsWebAPI.WebApiClient.GetAsync("Admins/"+id.ToString()).Result;
             }
             catch (Exception ex)
             {
@@ -228,7 +243,20 @@ namespace Evoting.DataLayerSQL
             }
             return IsDeleted;
         }
-
+        public bool ActiveCandidate(int id)
+        {
+            bool IsActivated = true;
+            try
+            {
+                HttpResponseMessage ResponseDelete = GlobalSettingsWebAPI.WebApiClient.DeleteAsync("ActivateProfile/" + id.ToString()).Result;
+            }
+            catch (Exception ex)
+            {
+                IsActivated = false;
+                throw new Exception(ex.Message);
+            }
+            return IsActivated;
+        }
         // User
         public int AddNewUser(UserModel User)
         {
@@ -236,11 +264,9 @@ namespace Evoting.DataLayerSQL
             try
             {
                 HttpResponseMessage ResponseADD = GlobalSettingsWebAPI.WebApiClient.PostAsJsonAsync("Users", User).Result;
-               /// IsAdded = ResponseADD.Content.ReadAsAsync<int>().Result;
             }
             catch (Exception ex)
             {
-                //IsAdded = false;
                 throw new Exception(ex.Message);
             }
             return IsAdded;
@@ -273,32 +299,5 @@ namespace Evoting.DataLayerSQL
             }
             return IsUpdated;
         }
-        //public VoterModel GetSingleUser(int id)
-        //{
-        //    VoterModel Voter = new VoterModel();
-        //    try
-        //    {
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return Voter;
-        //}
-        //public bool DeleteUser(int id)
-        //{
-        //    bool IsDeleted = true;
-        //    try
-        //    {
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        IsDeleted = false;
-        //        throw new Exception(ex.Message);
-        //    }
-        //    return IsDeleted;
-        //}
     }
 }

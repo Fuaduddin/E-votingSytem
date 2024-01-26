@@ -1,0 +1,361 @@
+﻿@model Evoting.Models.SuperAdminAndAdminViewModel
+
+@{
+    ViewBag.Title = "GetAllAdmin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Candidate Table</h4>
+                <p class="card-description">
+                    Candidate <code>Details</code>
+                </p>
+                <div class="table-responsive">
+                    <div class="">
+                        <h5 style="color:red">@ViewData["Message"]</h5>
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Candidate Image</th>
+                                <th>Candidate Details</th>
+                                <th>Contact Information</th>
+                                <th>Address Details</th>
+                                <th>User Profile Details</th>
+                                <th>User Profile Status</th>
+                                <th>Delete</th>
+                                <th>Update</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AdminList.Count > 0)
+                            {
+                                int serialno = 1;
+                                foreach (var AdminDetails in Model.CandidateList)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @serialno
+                                        </td>
+                                        <td class="py-1">
+                                            <img src="@AdminDetails.CandidateImage" alt="image">
+                                        </td>
+                                        <td>
+                                            <span><b><i>Full Name: </i></b>@AdminDetails.CandidateName</span> <br />
+                                            <span><b><i>Gender: </i></b>@AdminDetails.CandidateGender</span> <br />
+                                            <span><b><i>User ID </i></b>@AdminDetails.User.UserID.ToString()</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Phone Number: </i></b>@AdminDetails.CandidatePhoneNumber</span> <br />
+                                            <span><b><i>Email Address: </i></b>@AdminDetails.CandidateEmail</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Zone Name: </i></b>@AdminDetails.Zone.ZoneName</span> <br />
+                                            <span><b><i>Area Name: </i></b>@AdminDetails.Area.AreaName</span> <br />
+                                            <span><b><i>Permanent Address: </i></b>@AdminDetails.CandidatePermanentAddress</span> <br />
+                                            <span><b><i>Present Address: </i></b>@AdminDetails.CandidatePresentAddress</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Last Login: </i></b>@AdminDetails.User.UserLastLogin.ToString("dd/MM/yyyy, hh:mm")</span> <br />
+                                            <span><b><i>Total Login: </i></b>@AdminDetails.User.UserTotalLogin</span> <br />
+                                            <span><b><i>Last Logout: </i></b>@AdminDetails.User.UserLastLogout.ToString("dd/MM/yyyy, hh:mm")</span> <br />
+                                        </td>
+
+                                        <td>
+                                            @AdminDetails.User.UserStatus
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "DeleteAdmin", new { Id = AdminDetails.CandidateID }, new { @class = "btn btn-danger", type = "button" })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Update", "GetSingleAdmin", new { Id = AdminDetails.CandidateID }, new { @class = "btn btn-success", type = "button" })
+                                        </td>
+                                        @if (AdminDetails.User.UserStatus == "Inactive")
+                                        {
+                                            <td>
+                                                @Html.ActionLink("Active Profile", "ActiveProfileAdmin", new { Id = AdminDetails.CandidateID }, new { @class = "btn btn-success", type = "button" })
+                                            </td>
+                                        }
+                                    </tr>
+                                    serialno++;
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td> <h6 style="color:red; text-align:center"> <b>NO DATA FOUND</b> </h6> </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav aria-label="Page navigation example" class="paginationindexpage">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 1; i <= Model.TotalPage; i++)
+        {
+            <li class="page-item"><a class="page-link" href="#" onclick="PaginationItems(@i)">@i</a></li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<style>
+    .paginationindexpage {
+        display: flex !important;
+        justify-content: center !important;
+    }
+</style>
+<script>
+    function PaginationItems(pageindex) {
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize: 10
+        }
+        $.ajax({
+            url: "/Staff/GetPaginationCandidate",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    if (data[i].User.UserStatus == "Inactive") {
+                        element += `
+
+
+                                    <tr class="removeitem">
+                                        <td>
+                                            ${serialno}
+                                        </td>
+                                        <td class="py-1">
+                                            <img src="${data[i].CandidateImage}" alt="image">
+                                        </td>
+                                        <td>
+                                            <span><b><i>Full Name: </i></b>${data[i].CandidateName}</span> <br />
+                                            <span><b><i>Gender: </i></b>${data[i].CandidateGender} </span> <br />
+                                            <span><b><i>User ID </i></b>${data[i].User.UserID} </span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Phone Number: </i></b>${data[i].CandidatePhoneNumber}</span> <br />
+                                            <span><b><i>Email Address: </i></b>${data[i].CandidateEmail}</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Zone Name: </i></b>${data[i].Zone.ZoneName}</span> <br />
+                                            <span><b><i>Area Name: </i></b>${data[i].Area.AreaName}</span> <br />
+                                            <span><b><i>Permanent Address: </i></b>${data[i].CandidatePermanentAddress}</span> <br />
+                                            <span><b><i>Present Address: </i></b>${data[i].CandidatePresentAddress}</span> <br />
+                                        </td>
+                                        <td>
+                                            <span><b><i>Last Login: </i></b>${data[i].User.UserLastLogin}</span> <br />
+                                            <span><b><i>Total Login: </i></b>${data[i].User.UserTotalLogin}</span> <br />
+                                            <span><b><i>Last Logout: </i></b>${data[i].User.UserLastLogout}</span> <br />
+                                        </td>
+
+                                        <td>
+                                           ${data[i].User.UserStatus}
+                                        </td>
+                                        <td>
+                                        <a class = "btn btn-danger" href="/Staff/DeleteVoter/${data[i].CandidateID}">Delete</a>
+                                        </td>
+                                        <td>
+                                         <a class = "btn btn-danger" href="/Staff/DeleteAdmin/${data[i].CandidateID}">Update</a>
+                                        </td>
+                                        <td>
+                                            <a class = "btn btn-danger" href="/Staff/ActiveProfileAdmin/${data[i].CandidateID}">Active Profile</a>
+                                        </td>
+                                    </tr>
+                                        `;
+                    }
+                    else {
+                        element += `
+          <tr class="removeitem">
+              <td>
+                  ${serialno}
+              </td>
+              <td class="py-1">
+                  <img src="${data[i].CandidateImage}" alt="image">
+              </td>
+              <td>
+                  <span><b><i>Full Name: </i></b>${data[i].CandidateName}</span> <br />
+                  <span><b><i>Gender: </i></b>${data[i].CandidateGender} </span> <br />
+                  <span><b><i>User ID </i></b>${data[i].User.UserID} </span> <br />
+              </td>
+              <td>
+                  <span><b><i>Phone Number: </i></b>${data[i].CandidatePhoneNumber}</span> <br />
+                  <span><b><i>Email Address: </i></b>${data[i].CandidateEmail}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Zone Name: </i></b>${data[i].Zone.ZoneName}</span> <br />
+                  <span><b><i>Area Name: </i></b>${data[i].Area.AreaName}</span> <br />
+                  <span><b><i>Permanent Address: </i></b>${data[i].CandidatePermanentAddress}</span> <br />
+                  <span><b><i>Present Address: </i></b>${data[i].CandidatePresentAddress}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Last Login: </i></b>${data[i].User.UserLastLogin}</span> <br />
+                  <span><b><i>Total Login: </i></b>${data[i].User.UserTotalLogin}</span> <br />
+                  <span><b><i>Last Logout: </i></b>${data[i].User.UserLastLogout}</span> <br />
+              </td>
+
+              <td>
+                 ${data[i].User.UserStatus}
+              </td>
+              <td>
+              <a class = "btn btn-danger" href="/Staff/DeleteVoter/${data[i].CandidateID}">Delete</a>
+              </td>
+              <td>
+               <a class = "btn btn-danger" href="/Staff/DeleteAdmin/${data[i].CandidateID}">Update</a>
+              </td>
+
+          </tr>
+                                        `;
+                    }
+
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+    function SearchItems() {
+        var PagenationDetails =
+        {
+            Search: $(".searchbox").val()
+        }
+        $.ajax({
+            url: "/Staff/SearchCandidate",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    if (data[i].User.UserStatus == "Inactive") {
+                        element += `
+          <tr class="removeitem">
+              <td>
+                  ${serialno}
+              </td>
+              <td class="py-1">
+                  <img src="${data[i].CandidateImage}" alt="image">
+              </td>
+              <td>
+                  <span><b><i>Full Name: </i></b>${data[i].CandidateName}</span> <br />
+                  <span><b><i>Gender: </i></b>${data[i].CandidateGender} </span> <br />
+                  <span><b><i>User ID </i></b>${data[i].User.UserID} </span> <br />
+              </td>
+              <td>
+                  <span><b><i>Phone Number: </i></b>${data[i].CandidatePhoneNumber}</span> <br />
+                  <span><b><i>Email Address: </i></b>${data[i].CandidateEmail}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Zone Name: </i></b>${data[i].Zone.ZoneName}</span> <br />
+                  <span><b><i>Area Name: </i></b>${data[i].Area.AreaName}</span> <br />
+                  <span><b><i>Permanent Address: </i></b>${data[i].CandidatePermanentAddress}</span> <br />
+                  <span><b><i>Present Address: </i></b>${data[i].CandidatePresentAddress}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Last Login: </i></b>${data[i].User.UserLastLogin}</span> <br />
+                  <span><b><i>Total Login: </i></b>${data[i].User.UserTotalLogin}</span> <br />
+                  <span><b><i>Last Logout: </i></b>${data[i].User.UserLastLogout}</span> <br />
+              </td>
+
+              <td>
+                 ${data[i].User.UserStatus}
+              </td>
+              <td>
+              <a class = "btn btn-danger" href="/Staff/DeleteVoter/${data[i].CandidateID}">Delete</a>
+              </td>
+              <td>
+               <a class = "btn btn-danger" href="/Staff/DeleteAdmin/${data[i].CandidateID}">Update</a>
+              </td>
+              <td>
+                  <a class = "btn btn-danger" href="/Staff/ActiveProfileAdmin/${data[i].CandidateID}">Active Profile</a>
+              </td>
+          </tr>
+                            `;
+                    }
+                    else {
+                        element += `
+                              <tr class="removeitem">
+          <tr class="removeitem">
+              <td>
+                  ${serialno}
+              </td>
+              <td class="py-1">
+                  <img src="${data[i].CandidateImage}" alt="image">
+              </td>
+              <td>
+                  <span><b><i>Full Name: </i></b>${data[i].CandidateName}</span> <br />
+                  <span><b><i>Gender: </i></b>${data[i].CandidateGender} </span> <br />
+                  <span><b><i>User ID </i></b>${data[i].User.UserID} </span> <br />
+              </td>
+              <td>
+                  <span><b><i>Phone Number: </i></b>${data[i].CandidatePhoneNumber}</span> <br />
+                  <span><b><i>Email Address: </i></b>${data[i].CandidateEmail}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Zone Name: </i></b>${data[i].Zone.ZoneName}</span> <br />
+                  <span><b><i>Area Name: </i></b>${data[i].Area.AreaName}</span> <br />
+                  <span><b><i>Permanent Address: </i></b>${data[i].CandidatePermanentAddress}</span> <br />
+                  <span><b><i>Present Address: </i></b>${data[i].CandidatePresentAddress}</span> <br />
+              </td>
+              <td>
+                  <span><b><i>Last Login: </i></b>${data[i].User.UserLastLogin}</span> <br />
+                  <span><b><i>Total Login: </i></b>${data[i].User.UserTotalLogin}</span> <br />
+                  <span><b><i>Last Logout: </i></b>${data[i].User.UserLastLogout}</span> <br />
+              </td>
+
+              <td>
+                 ${data[i].User.UserStatus}
+              </td>
+              <td>
+              <a class = "btn btn-danger" href="/Staff/DeleteVoter/${data[i].CandidateID}">Delete</a>
+              </td>
+              <td>
+               <a class = "btn btn-danger" href="/Staff/DeleteAdmin/${data[i].CandidateID}">Update</a>
+              </td>
+          </tr>
+                            `;
+                    }
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>

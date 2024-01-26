@@ -1,0 +1,64 @@
+﻿@model Evoting.Models.DashBoardModel
+
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-md-12 grid-margin transparent">
+    <div class="row">
+        <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+                <div class="card-body">
+                    <p class="mb-4">Total Voters</p>
+                    <p class="fs-30 mb-2">@Model.TotalVoter</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+                <div class="card-body">
+                    <p class="mb-4">Total Candidates</p>
+                    <p class="fs-30 mb-2">@Model.TotalCandiddate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+                <div class="card-body">
+                    <p class="mb-4">Total Election</p>
+                    <p class="fs-30 mb-2">@Model.TotalElection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+            <div class="card card-light-blue">
+                <div class="card-body">
+                    <p class="mb-4">Total Zone</p>
+                    <p class="fs-30 mb-2">@Model.TotalZone</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+                <div class="card-body">
+                    <p class="mb-4">Total Area</p>
+                    <p class="fs-30 mb-2">@Model.TotalArea</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 stretch-card transparent">
+            <div class="card card-light-danger">
+                <div class="card-body">
+                    <p class="mb-4">Total Appointment</p>
+                    <p class="fs-30 mb-2">@Model.TotalAppointment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

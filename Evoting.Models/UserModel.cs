@@ -14,11 +14,10 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter User ID")]
         public string UserID { get; set; }
         [Required(ErrorMessage = "Please Enter Password")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Email")]
         public string UserPassword { get; set; }
-        public DateTime? UserLastLogin { get; set; }
+        public DateTime UserLastLogin { get; set; }
         public int UserTotalLogin { get; set; }
-        public DateTime? UserLastLogout { get; set; }
+        public DateTime UserLastLogout { get; set; }
         public string UserRole { get; set; }
         public string UserStatus { get; set; }
     }

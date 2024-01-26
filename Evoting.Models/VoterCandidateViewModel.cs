@@ -11,7 +11,7 @@ namespace Evoting.Models
         public CandidateModel Candidate { get; set; }
         public GiveVoteModel GiveVote { get; set; }
         public VoterModel Voter { get; set; }
-
+        public ElectionResultDetailsModel ElectionResult { get; set; }
         // All List
         public List<CandidateModel> CandidateList { get; set; }
         public List<ElectionDetailsModel> ElectionDetailsList { get; set; }

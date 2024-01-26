@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace E_Voting.SuperAdmin.Admin.Controllers
 {
+    [Authorize]
     public class VotingSettingsController : Controller
     {
         // GET: VotingSettings
@@ -17,20 +18,34 @@ namespace E_Voting.SuperAdmin.Admin.Controllers
             ElectionResultDetails.ElectionResult = GiveVoteManager.ElectionResultDetails(1);
             return View("ElectionVotingResult", ElectionResultDetails);
         }
-        //public ActionResult ElectionVotingResult(int ElectionID)
-        //{
-        //    SuperAdminAndAdminViewModel ElectionResultDetails = new SuperAdminAndAdminViewModel();
-        //    if (ElectionID < 0)
-        //    {
-        //        ElectionResultDetails.ElectionResultDetails = GiveVoteManager.ElectionResultDetails(ElectionID);
-        //    }
-        //    return View("ElectionVotingResult", ElectionResultDetails);
-        //}
 
-        [HttpPost]
-        public ActionResult ElectionVotingResult(SuperAdminAndAdminViewModel VotingResult)
+        public ActionResult PublishedElectionVotingResult(int AssingElectionID)
         {
-            return View();
+            ElectionResultDetailsModel ResultDetails =new ElectionResultDetailsModel() ;
+            if (AssingElectionID < 0)
+            {
+                 ResultDetails = GiveVoteManager.ElectionResultDetails(AssingElectionID);
+            }
+            return View("ElectionVotingResult", ResultDetails);
+        }
+        [HttpPost]
+        public ActionResult PublishedElectionVotingResultSubmit(int assigID)
+        {
+            var result= GiveVoteManager.ElectionResultDetails(assigID);
+            if (result != null)
+            {
+                if (GiveVoteManager.PublishElectionResultDetails(result.Result))
+                {
+                    ViewData["Message"] = "Your data  have  been Published";
+                }
+                else
+                {
+                    ViewData["Message"] = "Your data  have  not been Published";
+                }
+            }
+            SuperAdminAndAdminViewModel ElectionResultDetails = new SuperAdminAndAdminViewModel();
+            ElectionResultDetails.ElectionResult = GiveVoteManager.ElectionResultDetails(1);
+            return View("ElectionVotingResult", ElectionResultDetails);
         }
     }
 }

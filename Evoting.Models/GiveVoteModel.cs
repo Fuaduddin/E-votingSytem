@@ -10,8 +10,8 @@ namespace Evoting.Models
     public class ElectionResultDetailsModel
     {
         public ElectionDetailsModel ElectionDetails { get; set; }
-        public List<VotingResultModel> ResultDetails {get; set;}
-        public List<SingleCandidateGivenVoteCount> AllCandidateVotingResult { get; set;}
+        public VotingResultModel Result { get; set; }
+        public Dictionary<areamodel,List<SingleCandidateGivenVoteCount>> AllCandidateResults { get; set;}
     }
     public class GiveVoteModel
     {
@@ -36,7 +36,7 @@ namespace Evoting.Models
         public int SelectedCandidateVote { get; set; }
         public int RunnerUpCandidate { get; set; }
         public int RunnerUpCandidateVote { get; set; }
-
+        public int AssignmentElectionID { get; set; }
         public areamodel AreaDetails { get; set; }
         public CandidateModel SelectedCandidateDetails { get; set; }
         public CandidateModel RunnerUpCandidateDetails { get; set; }

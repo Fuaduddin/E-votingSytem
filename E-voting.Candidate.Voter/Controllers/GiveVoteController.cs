@@ -2,17 +2,31 @@
 using Evoting.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static Evoting.GlobalSetting.Enums;
+using Evoting.GlobalSetting;
 
 namespace E_voting.Candidate.Voter.Controllers
 {
+    [Authorize]
     public class GiveVoteController : Controller
     {
+        private readonly GlobalSettingEmailSMS Extension = new GlobalSettingEmailSMS();
         // GET: GiveVote
-
+        public ActionResult ElectionVotingResult()
+        {
+            VoterCandidateViewModel ElectionResultDetails = new VoterCandidateViewModel();
+            ElectionResultDetails.ElectionResult = GiveVoteManager.ElectionResultDetails(1);
+            return View("ElectionVotingResult", ElectionResultDetails);
+        }
+        public ActionResult GetAllElectionDetails()
+        {
+            VoterCandidateViewModel electiondetails = new VoterCandidateViewModel();
+            electiondetails.ElectionDetailsList = ElectionSettingsManager.GetAllElectionDetails();
+            return View("GetAllElectionDetails", electiondetails);
+        }
         public ActionResult GiveVote()
         {
             VoterCandidateViewModel Voter = new VoterCandidateViewModel();
@@ -48,7 +62,11 @@ namespace E_voting.Candidate.Voter.Controllers
             {
                 ViewData["Message"] = "!!!!!!! ERROR !!!!!!!!!!";
             }
-            return View("GivenVote");
+            return View("ThankYou");
+        }
+        public ActionResult ThankYou()
+        {
+            return View("ThankYou");
         }
         public ActionResult ErrorPage()
         {
@@ -64,7 +82,7 @@ namespace E_voting.Candidate.Voter.Controllers
         }
         private ElectionDetailsModel GetElectionDetails()
         {
-            var ElectionDetails = ElectionSettingsManager.GetAllElectionDetails().Where(x => x.StartDate == DateTime.Now && x.ElectionStatus == ElectionStatus.Pending.ToString()).FirstOrDefault();
+            var ElectionDetails = ElectionSettingsManager.GetAllElectionDetails().Where(x => x.StartDate == DateTime.Now && x.ElectionStatus == Enums.ElectionStatus.Pending.ToString()).FirstOrDefault();
             return ElectionDetails;
         }
         private List<CandidateModel> GetVotingCandidate()
@@ -98,6 +116,19 @@ namespace E_voting.Candidate.Voter.Controllers
                 vote.VoteDate=DateTime.Now;
             }
             return vote;
+        }
+        public JsonResult OTPCodeGenerator()
+        {
+            Random Code = new Random();
+            int UserSenderCode = 0;
+            int OTPCode = Code.Next(1001, 9999);
+            var apikey = ConfigurationManager.AppSettings["API key"];
+            var VoterDetails = GetVoterDetails();
+             if (Extension.SentSMS(OTPCode, VoterDetails.VoterPhoneNumber, apikey))
+            {
+                UserSenderCode = OTPCode;
+            }
+            return Json(UserSenderCode, JsonRequestBehavior.AllowGet);
         }
     }
 }

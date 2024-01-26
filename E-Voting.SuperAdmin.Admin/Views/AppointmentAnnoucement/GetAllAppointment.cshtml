@@ -17,6 +17,9 @@
                     <div class="">
                         <h5 style="color:red">@ViewData["Message"]</h5>
                     </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control searchbox" id="exampleFormControlInput1" onchange="SearchItems()" placeholder="Search.....">
+                    </div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -31,14 +34,14 @@
                                 <th>Assign to</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="electionpagination">
                             @if (Model.AppointmentList.Count > 0)
                             {
                                 int serialno = 1;
                                 foreach (var Appointment in Model.AppointmentList)
                                 {
 
-                                    <tr>
+                                    <tr class="removeitem">
                                         <td>@serialno</td>
                                         <td>@Appointment.AppointmentSubject</td>
                                         <td>@Appointment.AppointmentDetails</td>
@@ -103,5 +106,213 @@
     </div>
 </div>
 
+<nav aria-label="Page navigation example" class="paginationindexpage">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (var i = 1; i <= Model.TotalPage; i++)
+        {
+            <li class="page-item"><a class="page-link" href="#" onclick="PaginationItems(@i)">@i</a></li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<style>
+    .paginationindexpage {
+        display: flex !important;
+        justify-content: center !important;
+    }
+</style>
+<script>
+    function PaginationItems(pageindex) {
+        var PagenationDetails =
+        {
+            pageindex: pageindex,
+            pagesize: 10
+        }
+        $.ajax({
+            url: "/AppointmentAnnoucement/GetpaginatiotabledataAppointment",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    var assignaddmin;
+                    var assignupdate;
+                    if (data.AssignToAdmin>0) {
+                        assignaddmin = "Assign";
+                    }
+                    else {
+                        assignaddmin = "Pending";
+                    }
+                    if (data.AssignmentUpdate>0) {
+                        assignupdate = "Complete";
+                    }
+                    else {
+                        assignupdate = "Pending";
+                    }
+                    if (data.AssignToAdmin == 0) {
+                        element += `
+<tr class="removeitem">
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/AddNewAssignment/${data[i].AppointmentID}">Assign New</a>
+    </td>
 
+                                        `;
+                    }
+                    else {
+                        element += `
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>                             `;
+                    }
+
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+    function SearchItems() {
+        var PagenationDetails =
+        {
+            Search: $(".searchbox").val()
+        }
+        $.ajax({
+            url: "/AppointmentAnnoucement/SearchAppointment",
+            Method: "POST",
+            data: PagenationDetails,
+            success: function (data) {
+                $(".removeitem").remove();
+                data = JSON.parse(data);
+                var serialno = 1;
+                var element = "";
+                $.each(data, function (i) {
+                    var assignaddmin;
+                    var assignupdate;
+                    if (data.AssignToAdmin > 0) {
+                        assignaddmin = "Assign";
+                    }
+                    else {
+                        assignaddmin = "Pending";
+                    }
+                    if (data.AssignmentUpdate > 0) {
+                        assignupdate = "Complete";
+                    }
+                    else {
+                        assignupdate = "Pending";
+                    }
+                    if (data.AssignToAdmin == 0) {
+                        element += `
+<tr class="removeitem">
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/AddNewAssignment/${data[i].AppointmentID}">Assign New</a>
+    </td>
+
+                                        `;
+                    }
+                    else {
+                        element += `
+    <td>${serialno}</td>
+    <td>${data[i].AppointmentSubject}</td>
+    <td>${data[i].AppointmentDetails}</td>
+    <td>
+        <span><b><i>Email: </i></b>${data[i].UserEmaul}</span> <br />
+        <span><b><i>Phone Number: </i></b>${data[i].UserPhoneNumber}</span> <br />
+    </td>
+    <td>
+        <span><b><i>${assignaddmin} </i></b></span>
+    </td>
+    <td>
+        <span><b><i>${assignupdate} </i></b></span>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/DeleteAppointment/${data[i].AppointmentID}">Delete</a>
+    </td>
+    <td>
+        <a class = "btn btn-danger" href="/AppointmentAnnoucement/GetSingleAAppointment/${data[i].AppointmentID}">Update</a>
+    </td>                             `;
+                    }
+
+                    $("#electionpagination").append(element);
+                    serialno++;
+                    var element = "";
+                });
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+</script>
 

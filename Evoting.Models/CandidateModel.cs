@@ -16,10 +16,8 @@ namespace Evoting.Models
         [Required(ErrorMessage = "Please Enter Full Name")]
         public string CandidateName { get; set; }
         [Required(ErrorMessage = "Please Enter Phone Number")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Phone Number")]
         public string CandidatePhoneNumber { get; set; }
         [Required(ErrorMessage = "Please Enter Email")]
-        [RegularExpression("", ErrorMessage = "Please Enter Valid Email")]
         public string CandidateEmail { get; set; }
         [Required(ErrorMessage = "Please Select Zone")]
         public int CandidateZone { get; set; }
@@ -31,7 +29,7 @@ namespace Evoting.Models
         public string CandidatePresentAddress { get; set; }
         [Required(ErrorMessage = "Please Enter NID")]
         public string CandidateNID { get; set; }
-        public int? CandidateParty { get; set; }
+        public int CandidateParty { get; set; }
         public int UserID { get; set; }
         [Required(ErrorMessage = "Please Select Gender")]
         public string CandidateGender { get; set; }

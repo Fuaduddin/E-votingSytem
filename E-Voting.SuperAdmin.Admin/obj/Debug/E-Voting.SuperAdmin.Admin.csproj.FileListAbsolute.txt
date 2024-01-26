@@ -286,3 +286,4 @@ E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Vo
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.csproj.CopyComplete
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.dll
 E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\obj\Debug\E-Voting.SuperAdmin.Admin.pdb
+E:\Final Protfolio Update\Protfolios\E-voting\Project\Evoting\E-votingSytem\E-Voting.SuperAdmin.Admin\bin\Evoting.GlobalSetting.dll.config

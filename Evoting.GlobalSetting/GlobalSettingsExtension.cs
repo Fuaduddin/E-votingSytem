@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.ClientServices;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Evoting.GlobalSetting
 {

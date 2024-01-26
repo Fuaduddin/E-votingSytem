@@ -117,8 +117,8 @@ namespace E_Voting.Restful.API.Controllers
                                            ElectionDetails = electiondetails.ElectionDetails,
                                            ElectionStatus = electiondetails.ElectionStatus,
                                            ElectionType = electiondetails.ElectionType,
-                                           StartDate= electiondetails.StartDate,
-                                           EndDate= electiondetails.EndDate,
+                                           StartDate= (DateTime)electiondetails.StartDate,
+                                           EndDate= (DateTime)electiondetails.EndDate,
                                            ElectionTypeDetails =new ElectionModel
                                            {
                                                ElectionID= electiondetailstype.ElectionID,
@@ -147,8 +147,8 @@ namespace E_Voting.Restful.API.Controllers
                                            ElectionDetails = electiondetails.ElectionDetails,
                                            ElectionStatus = electiondetails.ElectionStatus,
                                            ElectionType = electiondetails.ElectionType,
-                                           StartDate = electiondetails.StartDate,
-                                           EndDate = electiondetails.EndDate,
+                                           StartDate =(DateTime) electiondetails.StartDate,
+                                           EndDate = (DateTime)electiondetails.EndDate,
                                            ElectionTypeDetails = new ElectionModel
                                            {
                                                ElectionID = electiondetailstype.ElectionID,

@@ -28,7 +28,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Election Details</label>
                             <div class="col-sm-9">
-                                @Html.TextAreaFor(Model => Model.ElectionDetails.ElectionDetails, new { @class = "form-control", rows = "6", placeholder = "Enter Election Details1" })
+                                @Html.TextAreaFor(Model => Model.ElectionDetails.ElectionDetails, new { @class = "form-control", rows = "6", @placeholder = "Enter Election Details1" })
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Start Date</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.ElectionDetails.StartDate, new { @class = "form-control", type="date",placeholder = "Enter Election Details1" })
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.StartDate, new { @class = "form-control", type="date",@placeholder = "Enter Election Details1" })
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">End Date</label>
                             <div class="col-sm-9">
-                                @Html.TextBoxFor(Model => Model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", placeholder = "Enter Election Details1" })
+                                @Html.TextBoxFor(Model => Model.ElectionDetails.EndDate, new { @class = "form-control", type = "date", @placeholder = "Enter Election Details1" })
                             </div>
                         </div>
                     </div>

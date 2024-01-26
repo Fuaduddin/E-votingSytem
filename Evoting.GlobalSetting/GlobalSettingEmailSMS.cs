@@ -4,13 +4,27 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Services.Description;
+using System.Web;
+using System.Net;
+using System.Collections.Specialized;
+using System.Runtime.Remoting.Messaging;
+using Vonage;
+using Vonage.Request;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
+using Vonage.Common;
+using Vonage.Messaging;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace Evoting.GlobalSetting
 {
     public interface IEmailSMSGlobalSettings
     {
         bool SendingMail(string Emailbody, string CustomerEmail, string Subject);
-        bool SentSMS();
+        bool SentSMS(int OTPCode, string ReciverNumber, string apikey);
         bool ProfileActivationConfirmationEmailBody(string CustomerName, string ElectionDetails, string CustomerEmail);
         bool AppointmentConfirmationEmailBody(string CustomerName, string AppointmentSubject,
             string AppoinmentWIth, string AppointmentDate, string CustomerEmail);
@@ -35,7 +49,7 @@ namespace Evoting.GlobalSetting
             {
                 //Send Email
                 MailMessage Msg = new MailMessage();
-                Msg.From = new MailAddress(System_Official_Mail, Email_From_CompanyName);// replace with valid value
+              // Msg.From = new MailAddress(System_Official_Mail, Email_From_CompanyName);// replace with valid value
                 Msg.Subject = Subject;
                 Msg.To.Add(CustomerEmail); //replace with correct values
                 Msg.Body = Emailbody;
@@ -108,28 +122,24 @@ namespace Evoting.GlobalSetting
             }
             return IsSent;
         }
-
-
-        // Phone SMS Settings
-
-        //public const string Email_Subject = "Email Subject";
-        //public const string Email_Recipients = "Email Recipients";
-        //public const string Email_Sender = "Email Sender";
-        //public const string Email_Body = "Email Body";
-        //public const string Confirmation_Email_Subject = "Confirmation Email Subject";
-        //public const string Confirmation_Email_Sender = "Confirmation Email Sender";
-        //public const string Confirmation_Email_Body = "Confirmation Email Body";
-
-        public bool SentSMS()
+        public bool SentSMS(int OTPCode,string ReciverNumber,string apikey)
         {
             bool isSent = true;
             try
             {
-
+                using(var clientserver = new HttpClient())
+                {
+                    string APIURLSMS= "https://api.sms.net.bd/sendsms";
+                    string Message = "Your OTP is " + OTPCode + "(Send by E-Voting)";
+                    clientserver.BaseAddress = new Uri(APIURLSMS);
+                    clientserver.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    var responseMSG = clientserver.GetAsync("?api_key=" + apikey + "&msg=" + Message + "&to=" + ReciverNumber).Result;
+                }
             }
-            catch
+            catch(Exception ex)
             {
                 isSent = false;
+                throw new Exception(ex.ToString() );
             }
             return isSent;
         }
